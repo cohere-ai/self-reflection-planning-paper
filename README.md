@@ -9,12 +9,10 @@ The root of the repository contains the following sub-repositories:
 - `ToolSandbox/`: Contains our version of the [ToolSandbox benchmark repository](https://github.com/apple/ToolSandbox).
 
 
-## Details
+## Experiments
 
-Both `ToolTalk` and `ToolSandbox` contain the original benchmark code with the necessary adaptations to run our experiments. 
-Both sub-repositories contain the necessary code to run the experiments with, instructions provided in the top the respective READMEs. Note the different environment settings will likely be required to run each benchmark.
-Additonally, the respective experimental results for each benchmark can be found in the `results` folder in the root of each sub-repository.
-
+The `ToolTalk/` and `ToolSandbox/` sub-repositories contain the code necessary to run our experiments on each  benchmark, with instructions provided in the top the respective READMEs. Note that the different environments will likely be required to run each benchmark - after creating a new python environment, you will have to: 1) follow the benchmark installation instructions described in its README, and 2) locally install the SEA repository as a package by running `pip install .` within the `SEA/` subrepository.
+The respective experimental results for each benchmark can be found in the `results` folder in the root of each sub-repository.
 
 ## Citation
 ```

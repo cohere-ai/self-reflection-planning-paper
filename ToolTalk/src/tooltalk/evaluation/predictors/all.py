@@ -1,0 +1,6 @@
+from tooltalk.evaluation.predictors.anthropic_predictor import AnthropicPredictor
+from tooltalk.evaluation.predictors.base import BaseAPIPredictor
+from tooltalk.evaluation.predictors.cohere_predictor import CoherePredictor
+from tooltalk.evaluation.predictors.mistral_predictor import MistralPredictor
+from tooltalk.evaluation.predictors.openai_predictor import OpenAIPredictor
+

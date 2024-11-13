@@ -1,0 +1,106 @@
+{
+    "name": "SendMessage-easy",
+    "conversation_id": "79898399-9748-4482-b842-e9f0c95befbb",
+    "suites_used": [
+        "Messages"
+    ],
+    "apis_used": [
+        "SendMessage"
+    ],
+    "scenario": "SendMessage easy scenario",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey, can I send a message to my friend justinkool?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what do you want to say?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Reflection: Respond to user with: \"1. Validate the receiver's username:\n   #V1 = QueryUser[username=justinkool]\n2. If the username is valid, prompt the user for their message:\n   #V2 = UserInput[message]\n3. Send the user's message:\n   #V3 = SendMessage[receiver=justinkool, message=V2]\n4. Confirm the action to the user:\n   #V4 = ConfirmationMessage[message=\"Message sent to justinkool.\"]\"\nModel calls directly_answer (separate model-call ommitted)",
+                    "metadata": {
+                        "reflection": "Respond to user with: \"1. Validate the receiver's username:\n   #V1 = QueryUser[username=justinkool]\n2. If the username is valid, prompt the user for their message:\n   #V2 = UserInput[message]\n3. Send the user's message:\n   #V3 = SendMessage[receiver=justinkool, message=V2]\n4. Confirm the action to the user:\n   #V4 = ConfirmationMessage[message=\"Message sent to justinkool.\"]\"",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "How about something simple like a greeting?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sounds good, I'll send it now.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "justinkool",
+                            "message": "Hello, how are you?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Error: model makes no tool calls",
+                    "metadata": {
+                        "reflection": "Step 1: Send a message to justinkool with the greeting \"Hey, how are you?\"\n#V1 = SendMessage(receiver='justinkool', message='Hey, how are you?')",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Great, thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 0,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0,
+        "recall": 0.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.0,
+        "api_name_recall": 0.0,
+        "api_name_precision": 1
+    }
+}

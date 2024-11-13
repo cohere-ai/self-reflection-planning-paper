@@ -1,0 +1,149 @@
+{
+    "name": "DeleteReminder-easy",
+    "conversation_id": "d0f9d405-c454-4c7a-8ea6-594ecf3ffec2",
+    "suites_used": [
+        "Reminder"
+    ],
+    "apis_used": [
+        "DeleteReminder"
+    ],
+    "scenario": "DeleteReminder easy scenario",
+    "user": {
+        "username": "lifeng",
+        "email": "lifeng@gahoo.com",
+        "phone": "512-322-9516",
+        "name": "Li Feng",
+        "password": "ooZ0ahKae",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "lifeng"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have a reminder I'd like to delete, it's id is 59-80bc"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Done, I have deleted the reminder.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "59-80bc"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "59-80bc",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Delete the reminder with the provided ID.\n#V1 = DeleteReminder(reminder_id=\"59-80bc\")\n\nStep 2: Confirm the deletion by retrieving the updated list of reminders.\n#V2 = GetReminders()",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Write abstract",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-2a3b",
+                                "task": "Complete survey",
+                                "due_date": "2023-09-11 22:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "ff-7890",
+                                "task": "Review Sarah's presentation",
+                                "due_date": "2023-09-11 22:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The reminder with the ID 59-80bc has been deleted. Here is the updated list of reminders:\n\n| Reminder ID | Task | Due Date | Status |\n|---|---|---|---|\n| 14-579a | Write abstract | 2023-09-12 00:00:00 | pending |\n| 0b-5119 | Call grandma | null | pending |\n| 1f-2a3b | Complete survey | 2023-09-11 22:00:00 | pending |\n| ff-7890 | Review Sarah's presentation | 2023-09-11 22:00:00 | pending |",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

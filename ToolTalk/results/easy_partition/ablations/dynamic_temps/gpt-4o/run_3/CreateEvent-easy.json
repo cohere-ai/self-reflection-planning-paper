@@ -1,0 +1,133 @@
+{
+    "name": "CreateEvent-easy",
+    "conversation_id": "0be430e6-236f-432c-9287-82666ef1b1a3",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "CreateEvent"
+    ],
+    "scenario": "CreateEvent easy scenario",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I just got tickets for a Beatles concert this Friday. Can you create an event for me?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when is the concert?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Could you please provide the start time for the Beatles concert this Friday?",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It goes from 8-11 at Madison Square Garden."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've created the event for you.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "description": "Attending the Beatles concert at Madison Square Garden.",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden",
+                            "attendees": [],
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Create an event for the Beatles concert in the user's calendar.\n#V1 = CreateEvent(name=\"Beatles Concert\", event_type=\"event\", description=\"Attending the Beatles concert at Madison Square Garden.\", start_time=\"2023-09-15 20:00:00\", end_time=\"2023-09-15 23:00:00\", location=\"Madison Square Garden\", attendees=[])",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've created the event for the Beatles concert at Madison Square Garden on Friday from 8 PM to 11 PM. Enjoy the concert! \ud83c\udfb6",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

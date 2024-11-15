@@ -1,0 +1,105 @@
+{
+    "name": "QueryUser-easy",
+    "conversation_id": "f09ca824-0f96-47a3-ae0f-5924e0e484a5",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "QueryUser"
+    ],
+    "scenario": "QueryUser easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you look up a user to see if they exist?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what is the username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Certainly! First, can you specify the username or email of the user to search for?",
+                    "metadata": {
+                        "reflection": "Certainly! First, can you specify the username or email of the user to search for?",
+                        "response": "{\n  \"id\": \"5183ac91dd9144d79667c35b104a13d3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727120711,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Certainly! First, can you specify the username or email of the user to search for?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3626,\n    \"total_tokens\": 3645,\n    \"completion_tokens\": 19\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "I actually don't have their username, only their email: hestler@gahoo.com"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I checked and could not find any users.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "email": "hestler@gahoo.com"
+                        }
+                    },
+                    "response": {
+                        "users": []
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Step 1. Query the user using their email to see if they match.\n\n#V1 = QueryUser[email = \"hestler@gahoo.com\"]",
+                    "metadata": {
+                        "reflection": "Step 1. Query the user using their email to see if they match.\n\n#V1 = QueryUser[email = \"hestler@gahoo.com\"]",
+                        "response": "{\n  \"id\": \"a5943ce1ffff49e6b7784055a49eb93b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727120714,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Step 1. Query the user using their email to see if they match.\\n\\n#V1 = QueryUser[email = \\\"hestler@gahoo.com\\\"]\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3657,\n    \"total_tokens\": 3693,\n    \"completion_tokens\": 36\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Ah I see, oh well."
+        }
+    ],
+    "metrics": {
+        "predictions": 0,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0,
+        "recall": 0.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.0,
+        "api_name_recall": 0.0,
+        "api_name_precision": 1
+    }
+}

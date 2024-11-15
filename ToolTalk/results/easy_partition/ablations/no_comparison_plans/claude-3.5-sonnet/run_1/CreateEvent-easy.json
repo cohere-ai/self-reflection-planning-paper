@@ -1,0 +1,155 @@
+{
+    "name": "CreateEvent-easy",
+    "conversation_id": "0be430e6-236f-432c-9287-82666ef1b1a3",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "CreateEvent"
+    ],
+    "scenario": "CreateEvent easy scenario",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I just got tickets for a Beatles concert this Friday. Can you create an event for me?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when is the concert?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "olivedo",
+                            "message": "To create the event for the Beatles concert this Friday, could you please provide the start time, end time, and location of the concert?",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Ask the user for additional information\n#V1 = SendMessage[receiver=\"olivedo\", message=\"To create the event for the Beatles concert this Friday, could you please provide the start time, end time, and location of the concert?\"]\n\nStep 2: Create the event using the information provided by the user\n#V2 = CreateEvent[name=\"Beatles Concert\", event_type=\"event\", description=\"Attending a Beatles concert\", start_time=\"2023-09-15 {user_provided_start_time}\", end_time=\"2023-09-15 {user_provided_end_time}\", location=\"{user_provided_location}\"]\n\nStep 3: Confirm event creation to the user\n#V3 = SendMessage[receiver=\"olivedo\", message=\"Your event 'Beatles Concert' has been created for Friday, September 15th. The event starts at {user_provided_start_time} and ends at {user_provided_end_time} at {user_provided_location}.\"]",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I'd be happy to help you create an event for the Beatles concert this Friday. However, to create an accurate event, I'll need a bit more information from you. I've sent you a message asking for some additional details. Once you provide that information, I'll be able to create the event for you.\n\nIn the meantime, here's what I'll need to know:\n\n1. The start time of the concert\n2. The expected end time of the concert\n3. The location of the concert\n\nOnce you have this information, please let me know, and I'll create the event in your calendar right away.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It goes from 8-11 at Madison Square Garden."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've created the event for you.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "description": "Beatles concert at Madison Square Garden",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Create the event for the Beatles concert.\n#V1 = CreateEvent(name=\"Beatles Concert\", event_type=\"event\", description=\"Beatles concert at Madison Square Garden\", start_time=\"2023-09-15 20:00:00\", end_time=\"2023-09-15 23:00:00\", location=\"Madison Square Garden\")",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat! I've created an event for your Beatles concert this Friday. Here are the details:\n\n- Event: Beatles Concert\n- Date: Friday, September 15, 2023\n- Time: 8:00 PM to 11:00 PM\n- Location: Madison Square Garden\n\nThe event has been added to your calendar with the event ID 'e149636f-d9ca'. Is there anything else you'd like me to do regarding this event, such as setting a reminder or inviting friends?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 2,
+        "valid_actions": 1,
+        "bad_actions": 1,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.5,
+        "success": false,
+        "soft_success": 0.5,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

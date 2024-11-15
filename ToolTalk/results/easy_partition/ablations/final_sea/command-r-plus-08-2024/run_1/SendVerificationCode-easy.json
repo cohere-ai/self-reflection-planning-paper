@@ -1,0 +1,140 @@
+{
+    "name": "SendVerificationCode-easy",
+    "conversation_id": "163ea4f3-57e8-4f95-a6f1-d01bf4fe2b3b",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "SendVerificationCode"
+    ],
+    "scenario": "SendVerificationCode easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I think I forgot my password, can you help me reset it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "{\"tool_input\": \"To reset your password, I need some additional information. Could you please provide your username or email address associated with your account?\"}",
+                    "metadata": {
+                        "reflection": "Step 1: Ask the user for their username or email address.\n#V1 = directly_answer(\"To reset your password, I need some additional information. Could you please provide your username or email address associated with your account?\")\n\nStep 2: Send a verification code to the user's backup email.\n#V2 = SendVerificationCode[username=user_input, email=user_input]\n\nStep 3: Prompt the user to enter the verification code.\n#V3 = directly_answer(\"A verification code has been sent to your backup email. Please enter the code to continue with the password reset.\")\n\nStep 4: Reset the password using the provided verification code and new password.\n#V4 = ResetPassword[username=user_input, verification_code=user_input, new_password=user_input]",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok, what's your email address associated with the account?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": null
+                        }
+                    },
+                    "response": null,
+                    "exception": "The email is incorrect.",
+                    "metadata": {
+                        "reflection": "Step 1: Ask for the user's email address.\n#V1 = SendVerificationCode(username='justinkool', email=#V1)\nStep 2: Send a verification code to the user's backup email.\nStep 3: Check if the user received the code.\nStep 4: Prompt the user to enter the verification code.\nStep 5: Reset the password using the provided verification code and a new password from the user.\n#V2 = ResetPassword(username='justinkool', verification_code=#V2, new_password=#V2)",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The email address you provided is incorrect. Please provide the correct email address.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Should be justintime@fmail.com"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok, I've sent you a verification code to your email address. You can use this to reset your password.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Error: model makes no tool calls",
+                    "metadata": {
+                        "reflection": "Step 1: Send a verification code to the user's email address.\n#V1 = SendVerificationCode(username='justinkool', email='justintime@fmail.com')\nStep 2: Ask the user for the 6-digit verification code and their desired new password.\n#V2 = ResetPassword(username='justinkool', verification_code='<user_input>', new_password='<user_input>')",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks I got it!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 1,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 0.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

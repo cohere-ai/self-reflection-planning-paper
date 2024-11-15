@@ -1,0 +1,120 @@
+{
+    "name": "ForecastWeather-easy",
+    "conversation_id": "f459e40a-0b32-4146-984b-7489fd4fe805",
+    "suites_used": [
+        "Weather"
+    ],
+    "apis_used": [
+        "ForecastWeather"
+    ],
+    "scenario": "ForecastWeather easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey what's the weather like tomorrow?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Tomorrow has a high of 72 and a low of 61 with 60% chance of rain. Would you like to hear the forecast for the next 5 days?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "London"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 72,
+                                "low": 61,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 67,
+                                "low": 55,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 67,
+                                "low": 53,
+                                "conditions": "30% Rainy"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Step 1: Get the 3-day forecast weather of the user's location.\n#V1 = ForecastWeather[London]",
+                    "metadata": {
+                        "reflection": "Step 1: Get the 3-day forecast weather of the user's location.\n#V1 = ForecastWeather[London]",
+                        "response": "{\n  \"id\": \"35a98b483f5c4b9d93673f34300dd408\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727111814,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Step 1: Get the 3-day forecast weather of the user's location.\\n#V1 = ForecastWeather[London]\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3665,\n    \"total_tokens\": 3696,\n    \"completion_tokens\": 31\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Sure, how long is the rain going to continue for?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The rain will continue for the next 5 days, but is forecasted to ease up starting Thursday.",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "I can find the forecast for the next 5 days. Would you like to hear it?",
+                    "metadata": {
+                        "reflection": "I can find the forecast for the next 5 days. Would you like to hear it?",
+                        "response": "{\n  \"id\": \"65f30fff5561402aae05731204e6a577\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727111815,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I can find the forecast for the next 5 days. Would you like to hear it?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3854,\n    \"total_tokens\": 3873,\n    \"completion_tokens\": 19\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "I see, thank!"
+        }
+    ],
+    "metrics": {
+        "predictions": 0,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0,
+        "recall": 0.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.0,
+        "api_name_recall": 0.0,
+        "api_name_precision": 1
+    }
+}

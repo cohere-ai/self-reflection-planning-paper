@@ -1,0 +1,504 @@
+{
+    "name": "Calendar-Reminder-Weather-ModifyEvent-0",
+    "conversation_id": "6dd5b1b5-a81b-4d25-a77a-cb430544c45d",
+    "suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CreateEvent",
+        "ModifyEvent",
+        "AddReminder",
+        "ForecastWeather",
+        "HistoricWeather"
+    ],
+    "scenario": "The user is planning a trip to New York with their friends. They want to create an event for the trip on their calendar (CreateEvent). They also want to check the weather forecast for New York for the next 3 days (ForecastWeather). They see that it will be sunny and warm, so they decide to add a reminder to pack sunscreen and sunglasses (AddReminder). They also want to see if there are any historic weather records for New York on the same dates as their trip (HistoricWeather). They find out that there was a heat wave two years ago, so they decide to modify their event to include a note about staying hydrated (ModifyEvent). They also want to invite their friends to the event, so they add their usernames as attendees (ModifyEvent).",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-06 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have a trip to New York. Can you add an event to my calendar for it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when is your trip?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "decture",
+                            "email": "VirginiaJGraham@gahoo.com",
+                            "phone": "703-607-3363",
+                            "name": "Virginia J. Graham"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\nStep 1: Check if the user is logged in.\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I'd be happy to help you add an event to your calendar for your trip to New York. To do this effectively, we'll need some more information about your trip. Let's create a plan to add this event to your calendar.\n\nPlan:\nStep 1: Query the user for necessary trip details.\nStep 2: Create the event in the calendar using the provided information.\nStep 3: Confirm the event creation and provide the event details to the user.\n\nLet's start with Step 1. Before we can add the event to your calendar, we need some more information about your trip. Could you please provide the following details:\n\n1. What are the start and end dates of your trip to New York?\n2. Do you have specific start and end times for each day, or should we set it as an all-day event?\n3. Do you want to add any description or additional information to the event?\n4. Is there a specific location in New York you want to add to the event (e.g., hotel address)?\n\nOnce you provide this information, we can proceed with adding the event to your calendar.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's this weekend. I leave this Friday at 4. Can you check the weather too?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I've added an event to your calendar for this Friday at 4. I've also checked the weather for New York this weekend. It looks like it will be sunny and warm.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Trip to New York",
+                            "event_type": "event",
+                            "start_time": "2023-09-08 16:00:00",
+                            "end_time": "2023-09-08 16:00:00",
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-07",
+                                "high": 93,
+                                "low": 77,
+                                "conditions": "Sunny"
+                            },
+                            {
+                                "date": "2023-09-08",
+                                "high": 90,
+                                "low": 72,
+                                "conditions": "50% Rainy"
+                            },
+                            {
+                                "date": "2023-09-09",
+                                "high": 82,
+                                "low": 73,
+                                "conditions": "Cloudy"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Trip to New York",
+                            "event_type": "event",
+                            "description": "Weekend trip to New York",
+                            "start_time": "2023-09-08 16:00:00",
+                            "end_time": "2023-09-10 23:59:59",
+                            "location": "New York",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-07",
+                                "high": 93,
+                                "low": 77,
+                                "conditions": "Sunny"
+                            },
+                            {
+                                "date": "2023-09-08",
+                                "high": 90,
+                                "low": 72,
+                                "conditions": "50% Rainy"
+                            },
+                            {
+                                "date": "2023-09-09",
+                                "high": 82,
+                                "low": 73,
+                                "conditions": "Cloudy"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nCertainly! I've added an event to your calendar for your trip to New York. The event details are as follows:\n\n- Name: Trip to New York\n- Start Time: Friday, September 8, 2023, at 4:00 PM\n- End Time: Sunday, September 10, 2023, at 11:59 PM (assuming you'll be there for the weekend)\n- Location: New York\n\nNow, let me check the weather forecast for New York for you.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've added the event to your calendar and checked the weather forecast for New York. Here's a summary:\n\n1. Event added to your calendar:\n   - Name: Trip to New York\n   - Start time: Friday, September 8, 2023, at 4:00 PM\n   - End time: Sunday, September 10, 2023, at 11:59 PM\n   - Location: New York\n\n2. Weather forecast for New York:\n   - Friday (Sep 8): High 90\u00b0F, Low 72\u00b0F, 50% chance of rain\n   - Saturday (Sep 9): High 82\u00b0F, Low 73\u00b0F, Cloudy\n   - Sunday (Sep 10): The forecast doesn't extend to Sunday, but you can expect similar temperatures.\n\nIt looks like it might be a bit warm and there's a chance of rain on Friday when you arrive. Saturday will be slightly cooler and cloudy. Make sure to pack accordingly, bringing some light rain gear and comfortable clothes for warm weather.\n\nIs there anything else you'd like me to do regarding your trip, such as setting a reminder to pack or checking your flight details?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Oh seems pretty hot, looks like it's going to rain too. Can you set a reminder to pack sunscreen and an umbrella?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "I've set a reminder, is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pack sunscreen and an umbrella"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Pack sunscreen and umbrella for New York trip",
+                            "due_date": "2023-09-07 09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've set a reminder for you to pack sunscreen and an umbrella for your New York trip. The reminder is set for tomorrow morning at 9:00 AM, giving you plenty of time to prepare before your trip on Friday.\n\nYou're right about the weather. It's going to be quite warm, with temperatures reaching up to 93\u00b0F (34\u00b0C) on Thursday and 90\u00b0F (32\u00b0C) on Friday. There's also a 50% chance of rain on Friday, the day you're leaving, so it's good to be prepared with both sun protection and rain gear.\n\nIs there anything else you'd like me to do to help you prepare for your trip?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Is New York normally this hot?"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "New York normally has a high of 66 and a low of 55 this time of year. This year seems abnormally hot.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "New York",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "New York",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nBased on the historical weather data for New York in September, it appears that the current temperatures are indeed higher than usual. Here's a breakdown of the typical September weather in New York:\n\n1. Average high temperature: 66\u00b0F (19\u00b0C)\n2. Average low temperature: 55\u00b0F (13\u00b0C)\n3. Record high temperature: 89\u00b0F (32\u00b0C)\n4. Record low temperature: 40\u00b0F (4\u00b0C)\n\nThe forecast for your trip shows temperatures significantly above these averages:\n- September 7: High of 93\u00b0F (34\u00b0C)\n- September 8: High of 90\u00b0F (32\u00b0C)\n- September 9: High of 82\u00b0F (28\u00b0C)\n\nThese temperatures are closer to (and even exceeding) the record high for September in New York. So, to answer your question: No, New York is not normally this hot in September. The temperatures you're experiencing are unusually high for this time of year.\n\nThe average rainfall for September in New York is about 2.13 inches (54 mm), spread throughout the month. The forecast showing a 50% chance of rain on September 8th (the day of your arrival) is not unusual, as some rain is expected in September.\n\nGiven these unusually high temperatures, it's good that you're packing sunscreen. The umbrella is also a wise choice for the potential rain. You might also want to pack light, breathable clothing to stay comfortable in the heat.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "Oh wow, can you add a note to my event description to stay hydrated?"
+        },
+        {
+            "index": 9,
+            "role": "assistant",
+            "text": "Sure, I've added a note to your event to stay hydrated. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "e149636f-d9ca",
+                            "new_description": "Note: stay hydrated"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "e149636f-d9ca",
+                            "new_description": "Remember to stay hydrated due to unusually hot weather.",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've added a note to your event description to remind you to stay hydrated due to the unusually hot weather. Is there anything else you'd like me to do to help prepare for your trip?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 10,
+            "role": "user",
+            "text": "Yeah, I'm going with my friends. Can you add them to the event?"
+        },
+        {
+            "index": 11,
+            "role": "assistant",
+            "text": "Sure, who are your friends?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": " \n\nStep 1: Wait for the user to provide the usernames of their friends.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 12,
+            "role": "user",
+            "text": "I'm going with my friends, Virginia (decture), Michael (mstein), and Olive (olivedo)."
+        },
+        {
+            "index": 13,
+            "role": "assistant",
+            "text": "Okay, I've added John, Mary, and Sam to your event. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "e149636f-d9ca",
+                            "new_attendees": [
+                                "decture",
+                                "mstein",
+                                "olivedo"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "e149636f-d9ca",
+                            "new_attendees": [
+                                "mstein",
+                                "olivedo"
+                            ],
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've added Michael (mstein) and Olive (olivedo) to your event. I didn't add Virginia (decture) because that appears to be your own username, and you're already the organizer of the event.\n\nIs there anything else you'd like me to do regarding your trip to New York?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 14,
+            "role": "user",
+            "text": "No, that's it. Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 7,
+        "ground_truths": 6,
+        "matches": 4,
+        "actions": 4,
+        "valid_actions": 2,
+        "bad_actions": 2,
+        "precision": 0.5714285714285714,
+        "recall": 0.6666666666666666,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.5,
+        "success": false,
+        "soft_success": 0.3333333333333333,
+        "api_name_jaccard": 0.8333333333333334,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.8333333333333334
+    }
+}

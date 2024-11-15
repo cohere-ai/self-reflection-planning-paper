@@ -1,0 +1,170 @@
+{
+    "name": "SearchMessages-easy",
+    "conversation_id": "25b33708-5285-4984-898c-ac7537adbad6",
+    "suites_used": [
+        "Messages"
+    ],
+    "apis_used": [
+        "SearchMessages"
+    ],
+    "scenario": "SearchMessages easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I'm looking for a message my boss sent me last week. It was about the new project we're working on. Can you help me find it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I can help you find that message. What was the name of the project?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "new project",
+                            "start_date": "2023-09-04 00:00:00",
+                            "end_date": "2023-09-11 09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "mrbossman",
+                                "message": "Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Define the time range for the search. Since today is September 11, 2023, set the start date as September 4, 2023, and the end date as September 11, 2023.\n#V1 = {'start_date': '2023-09-04 00:00:00', 'end_date': '2023-09-11 09:00:00'}\n\nStep 2: Use the `SearchMessages` function to search for messages containing the keyword 'new project' within the specified time range.\n#V2 = SearchMessages(query='new project', match_type='any', sender=None, start_date=#V1['start_date'], end_date=#V1['end_date'])",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I found a message from your boss about the new project. Here it is:\n\n- **Sender:** mrbossman\n- **Date:** September 5, 2023, 13:00\n- **Message:** \"Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!\"",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It was called project aiden. I think it was sent last Tuesday."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I found the message. Here it is: Hey Justin, have you started work on project aiden yet? I need you to get started on it as soon as possible. Thanks!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "project aiden",
+                            "start_date": "2023-09-05 00:00:00",
+                            "end_date": "2023-09-05 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "mrbossman",
+                                "message": "Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "Project Aiden",
+                            "start_date": "2023-09-05 00:00:00",
+                            "end_date": "2023-09-05 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "mrbossman",
+                                "message": "Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Use the `SearchMessages` function to search for messages using the keyword \"Project Aiden\" within the time frame from 2023-09-05 to 2023-09-05.\n\n#V1 = SearchMessages(query=\"Project Aiden\", start_date=\"2023-09-05 00:00:00\", end_date=\"2023-09-05 23:59:59\")",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I found the message from your boss about Project Aiden. Here it is:\n\n- **Sender:** mrbossman\n- **Date:** September 5, 2023, 13:00\n- **Message:** \"Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!\"\n\nLet me know if you need any more help!",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks! That's the one I was looking for."
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

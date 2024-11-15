@@ -1,0 +1,196 @@
+{
+    "name": "SearchMessages-easy",
+    "conversation_id": "25b33708-5285-4984-898c-ac7537adbad6",
+    "suites_used": [
+        "Messages"
+    ],
+    "apis_used": [
+        "SearchMessages"
+    ],
+    "scenario": "SearchMessages easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I'm looking for a message my boss sent me last week. It was about the new project we're working on. Can you help me find it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I can help you find that message. What was the name of the project?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "new project",
+                            "sender": "boss",
+                            "start_date": "2023-09-04 00:00:00",
+                            "end_date": "2023-09-10 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to help you find the message from your boss about the new project. To search for this message, we'll use the SearchMessages function, which allows us to look for specific messages within a given time frame. Let's set up the search parameters based on the information you've provided.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "new project",
+                            "start_date": "2023-09-01 00:00:00",
+                            "end_date": "2023-09-11 09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "mrbossman",
+                                "message": "Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nI apologize, but I couldn't find any messages from your boss about the new project from last week. Let's try a broader search to see if we can locate the message you're looking for. I'll remove the sender filter and extend the date range slightly.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've found a message that might be the one you're looking for. Here are the details:\n\nSender: mrbossman (which appears to be your boss)\nDate: September 5, 2023 at 1:00 PM\nMessage: \"Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!\"\n\nThis message mentions a new project called \"project aiden\" and discusses its deadline. Is this the message you were looking for? If not, I can try searching with different keywords or time ranges.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It was called project aiden. I think it was sent last Tuesday."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I found the message. Here it is: Hey Justin, have you started work on project aiden yet? I need you to get started on it as soon as possible. Thanks!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "project aiden",
+                            "start_date": "2023-09-05 00:00:00",
+                            "end_date": "2023-09-05 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "mrbossman",
+                                "message": "Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "project aiden",
+                            "start_date": "2023-09-05 00:00:00",
+                            "end_date": "2023-09-06 00:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "mrbossman",
+                                "message": "Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll help you search for the message about Project Aiden that your boss sent last Tuesday. To do this, we'll use the SearchMessages function, which allows us to search for messages based on specific criteria. Let's set up the search parameters:\n\n1. We'll use \"project aiden\" as our search query.\n2. We'll set the start date to last Tuesday (September 5, 2023) and the end date to the following day to cover the full day.\n3. We won't specify a sender since you're not sure of your boss's username.\n\nHere's how we'll use the SearchMessages function:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat news! I've found a message that matches your description. Here are the details:\n\n- Sender: mrbossman (presumably your boss)\n- Date: September 5, 2023 (last Tuesday) at 1:00 PM\n- Message: \"Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!\"\n\nThis message mentions Project Aiden and was sent by your boss last Tuesday, just as you remembered. Is this the message you were looking for?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks! That's the one I was looking for."
+        }
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

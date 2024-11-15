@@ -1,0 +1,410 @@
+{
+    "name": "Calendar-Messages-Reminder-CreateEvent-1",
+    "conversation_id": "3775d081-8ca6-4f8d-9961-e52be068478d",
+    "suites_used": [
+        "Calendar",
+        "Messages",
+        "Reminder"
+    ],
+    "apis_used": [
+        "CreateEvent",
+        "ModifyEvent",
+        "SearchMessages",
+        "SendMessage",
+        "AddReminder"
+    ],
+    "scenario": "The user wants to plan a birthday party for their friend. They first create a reminder with the task 'Buy cake' and the due date as the day before the party (AddReminder). They then create an event with the name 'Birthday Party', the type 'event', the description 'Celebrate friend's birthday', the start time and end time as the party duration, and the location as the friend's address (CreateEvent). They then send a message to the friend asking for their guest list (SendMessage). They receive a message from the friend with the names of the guests (SearchMessages). They then modify the event to add the guests as attendees (ModifyEvent). They then send a message to each guest inviting them to the party and asking for their RSVP (SendMessage).",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey my friend's birthday is coming up, can you set a reminder for me to buy cake a day before?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when's your friend's birthday?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sorry! There was an error: No valid tool-use call found",
+                    "metadata": {
+                        "source": "multihop_call",
+                        "reflection": "Step 1: Ask the user for the date of their friend's birthday.\n#V1 = UserInput[date_format=\"%Y-%m-%d\"]\n\nStep 2: Validate the user's input and ensure the date is in the future.\n#V2 = ValidateDate[date=V1]\n\nStep 3: Calculate the due date for the reminder by subtracting one day from the friend's birthday.\n#V3 = CalculateDueDate[date=V1]\n\nStep 4: Set a reminder to buy cake for the friend's birthday with the calculated due date.\n#V4 = AddReminder[task=\"Buy cake for friend's birthday\", due_date=V3]\n\nStep 5: Confirm the reminder details with the user and provide an option to modify or cancel.\n#V5 = ConfirmReminder[reminder_id=V4]"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Should be September 28th"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I've set a reminder for you to buy cake on September 27th",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Buy cake",
+                            "due_date": "2023-09-27 00:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Buy cake for friend's birthday",
+                            "due_date": "2023-09-27 09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: #V1 = AddReminder(task=\"Buy cake for friend's birthday\", due_date=\"2023-09-27 09:00:00\")",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've set a reminder for you to buy cake for your friend's birthday on September 27th at 9am.\n\nReminder ID: 5b-dd80",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Can you also create an event for my friend's birthday party? We're holding it at her house on 551 Washington Street. It should be from 12 to 6 her birthday."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "I've created the event",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Birthday Party",
+                            "event_type": "event",
+                            "description": "Celebrate friend's birthday",
+                            "start_time": "2023-09-28 12:00:00",
+                            "end_time": "2023-09-28 18:00:00",
+                            "location": "551 Washington Street"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Birthday party",
+                            "event_type": "event",
+                            "description": "Party for my friend's birthday",
+                            "start_time": "2023-09-28 12:00:00",
+                            "end_time": "2023-09-28 18:00:00",
+                            "location": "551 Washington Street",
+                            "attendees": [],
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: #V1 = CreateEvent(name=\"Birthday party\", event_type=\"event\", description=\"Party for my friend's birthday\", start_time=\"2023-09-28 12:00:00\", end_time=\"2023-09-28 18:00:00\", location=\"551 Washington Street\", attendees=[])",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've created an event for your friend's birthday party on September 28th from 12 to 6. The event ID is e149636f-d9ca.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Oh shoot, I forgot to invite people. Can you add the guests to the event and send them a message asking for their RSVP?"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "Sure, who are the guests?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "e149636f-d9ca",
+                            "new_attendees": [
+                                "justinkool"
+                            ],
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Create a list of attendees.\n#V1 = ModifyEvent[event_id = \"e149636f-d9ca\", new_attendees = [\"\"]]\n\n# Step 2: Send the attendees a message asking for their RSVP to the party.\n#V2 = SendMessage[receiver = \"\", message = \"\"]",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "justinkool",
+                            "message": "Hey, you're invited to my friend's birthday party on September 28th from 12 to 6. Can you RSVP?",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "I've added the user to the event.\n\nStep 2: Send the attendees a message asking for their RSVP to the party.\n#V2 = SendMessage[receiver = \"justinkool\", message = \"Hey, you're invited to my friend's birthday party on September 28th from 12 to 6. Can you RSVP?\"]",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've sent you a message asking for your RSVP.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "I don't know, I think my friend sent me a message with the guest list. Can you search for it?"
+        },
+        {
+            "index": 9,
+            "role": "assistant",
+            "text": "Sure, I found the message. Looks like the guests are Olivie, Hugo, Kong, and Michael. I have updated your events and sent them a message asking for their RSVP.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "birthday guests"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "00747977-006f526d",
+                                "sender": "lifeng",
+                                "message": "Hey Justin here's the guest list for my birthday: Olivie (olivedo), Hugo (salcano), Kong (ahhchiu), and Michael (mstein).",
+                                "timestamp": "2023-09-08 20:00:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "e149636f-d9ca",
+                            "new_attendees": [
+                                "lifeng",
+                                "olivedo",
+                                "salcano",
+                                "ahhchiu",
+                                "mstein"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "salcano",
+                            "message": "Hey Hugo, I'm holding a birthday party for Lifeng on September 28th. Can you make it?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "ahhchiu",
+                            "message": "Hey Kong, I'm holding a birthday party for Lifeng on September 28th. Can you make it?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "5c5373e0-ecf4712d"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "mstein",
+                            "message": "Hey Michael, I'm holding a birthday party for Lifeng on September 28th. Can you make it?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "c1cc4dc9-36298341"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "olivedo",
+                            "message": "Hey Olivie, I'm holding a birthday party for Lifeng on September 28th. Can you make it?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "27559f6b-1400d29d"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "birthday party guests",
+                            "match_type": "all",
+                            "sender": "justinkool",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Search for the guest list message with more specific keywords.\n#V1 = SearchMessages[birthday party guests, match_type: all, sender: justinkool]\n\nStep 2: If the message is found, extract the usernames and add them as attendees to the event.\n#V2 = ModifyEvent[e149636f-d9ca, new_attendees: #V1.usernames]\n\nStep 3: Send a personalized RSVP message to each guest.\n#V3 = SendMessage[#V1.usernames, \"Hi, you're invited to a birthday party on September 28th from 12 to 6 at 551 Washington Street. Please RSVP by replying to this message.\"]",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, I couldn't find the message with the guest list.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 10,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 5,
+        "ground_truths": 8,
+        "matches": 3,
+        "actions": 4,
+        "valid_actions": 3,
+        "bad_actions": 1,
+        "precision": 0.6,
+        "recall": 0.375,
+        "action_precision": 0.75,
+        "bad_action_rate": 0.25,
+        "success": false,
+        "soft_success": 0.28125,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,313 @@
+{
+    "name": "Calendar-Reminder-Weather-CompleteReminder-1",
+    "conversation_id": "90d1b411-80aa-467c-883b-a9e363912c05",
+    "suites_used": [
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "GetReminders",
+        "CompleteReminder",
+        "AddReminder"
+    ],
+    "scenario": "The user has a reminder to buy a birthday gift for their friend by Monday (AddReminder). They want to see what the weather is like in their friend's city, so they can choose an appropriate gift (CurrentWeather). They see that the weather is cold and snowy, so they decide to buy a warm scarf and gloves. They create an event on their calendar to go to the mall on Saturday (CreateEvent). They also want to compare the weather in their friend's city to their own, so they use the HistoricWeather API to get the average temperature and precipitation for both locations in the past month (HistoricWeather). They see that their friend's city is much colder and wetter than theirs, so they feel good about their gift choice. They buy the gift on Saturday and complete the reminder (CompleteReminder).",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Check my reminders."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have a reminder to buy Brody a birthday present by next Monday.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-09-18 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Call Bob",
+                                "due_date": "2023-09-20 15:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Buy groceries",
+                                "due_date": "2023-09-20 18:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-09-18 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve the user's reminders.\n#V1 = GetReminders()",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have three reminders:\n- Call Bob by 20th September 2023 at 15:00\n- Buy groceries by 20th September 2023 at 18:00\n- Buy Brody a birthday present by 18th September 2023",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Is it getting cold yet in Juneau?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The current weather in Juneau is rainy with a low of 50 and a high of 59.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "Juneau"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 59,
+                            "low": 50,
+                            "conditions": "30% Rainy"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "Juneau"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 59,
+                            "low": 50,
+                            "conditions": "30% Rainy"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Check the weather in Juneau.\n#V1 = CurrentWeather[location=\"Juneau\"]\nStep 2: Forecast the weather for the next few days.\n#V2 = ForecastWeather[location=\"Juneau\"]",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "Juneau"
+                        }
+                    },
+                    "response": null,
+                    "exception": "datetime.date(2023, 9, 12)",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The weather in Juneau today is 59\u00b0F at its highest and 50\u00b0F at its lowest. There's a 30% chance of rain.\n\nI couldn't get the forecast for the next few days.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Ok I think I'll get them a new raincoat, can you set a reminder to go buy that for Saturday? Mark the original reminder as complete."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "I have added a reminder to buy Brody a new raincoat on Saturday and marked the reminder to buy them a birthday present as complete.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Buy Brody a new raincoat",
+                            "due_date": "2023-09-16 00:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "1f-8a4c"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Buy Brody a new raincoat",
+                            "due_date": "2023-09-16 00:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: #V1 = AddReminder(task=\"Buy Brody a new raincoat\", due_date=\"2023-09-16 00:00:00\")\nStep 2: #V2 = CompleteReminder(reminder_id=\"1f-8a4c\")",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "1f-8a4c",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've added a reminder to buy Brody a new raincoat by Saturday and marked the original reminder as complete.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "CreateEvent",
+        "AddReminder",
+        "CompleteReminder",
+        "CurrentWeather",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 5,
+        "ground_truths": 4,
+        "matches": 4,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 0.8,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.8,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.8
+    }
+}

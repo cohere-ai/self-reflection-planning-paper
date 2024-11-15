@@ -1,0 +1,159 @@
+{
+    "name": "SendVerificationCode-easy",
+    "conversation_id": "163ea4f3-57e8-4f95-a6f1-d01bf4fe2b3b",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "SendVerificationCode"
+    ],
+    "scenario": "SendVerificationCode easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I think I forgot my password, can you help me reset it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Of course, I can help you with that. I'll just need your username and the email associated with your account to send a verification code.",
+                    "metadata": {
+                        "reflection": "Of course, I can help you with that. I'll just need your username and the email associated with your account to send a verification code.",
+                        "response": "{\n  \"id\": \"b891de9213bd47178a4236772973e368\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115515,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Of course, I can help you with that. I'll just need your username and the email associated with your account to send a verification code.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3626,\n    \"total_tokens\": 3656,\n    \"completion_tokens\": 30\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok, what's your email address associated with the account?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "justinkool"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "Step 1: Verify if the user exists in the database.\n#V1 = QueryUser[username=justinkool]\nStep 2: Send a verification code to the user's backup email.\n#V2 = SendVerificationCode[username=justinkool, email=#V1.email]",
+                        "response": "{\n  \"id\": \"71a62fec5d454326a80be05d9a42123b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115519,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"RvRXobBhS\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"justinkool\\\"}\"\n            }\n          },\n          {\n            \"id\": \"OazSRTQJI\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendVerificationCode\",\n              \"arguments\": \"{\\\"username\\\": \\\"justinkool\\\", \\\"email\\\": \\\"#V1.email\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3725,\n    \"total_tokens\": 3777,\n    \"completion_tokens\": 52\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, but it looks like you haven't logged in yet. Could you please log in first?",
+                    "metadata": {
+                        "reflection": "I'm sorry, but it looks like you haven't logged in yet. Could you please log in first?",
+                        "response": "{\n  \"id\": \"297efe966ed64cb2bfab4fd91740046f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115523,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I'm sorry, but it looks like you haven't logged in yet. Could you please log in first?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3408,\n    \"total_tokens\": 3432,\n    \"completion_tokens\": 24\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Should be justintime@fmail.com"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok, I've sent you a verification code to your email address. You can use this to reset your password.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Ok, I'll send a verification code to justintime@fmail.com. Once you receive it, let me know and we can proceed with resetting your password.\n\nStep 1: Send a verification code to the user's email.\n#V1 = SendVerificationCode[justinkool, justintime@fmail.com]\n\nStep 2: Wait for the user to provide the verification code.\n\nStep 3: Reset the user's password using the verification code.\n#V2 = ResetPassword[justinkool, #V1, new_password]",
+                        "response": "{\n  \"id\": \"c16001febd074ad0bf05d0d8cb372233\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115528,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"61De8LrRa\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendVerificationCode\",\n              \"arguments\": \"{\\\"username\\\": \\\"justinkool\\\", \\\"email\\\": \\\"justintime@fmail.com\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3813,\n    \"total_tokens\": 3850,\n    \"completion_tokens\": 37\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I sent a verification code to your backup email justintime@fmail.com, you should receive it shortly. Please provide me with the code so I can reset your password.",
+                    "metadata": {
+                        "reflection": "I sent a verification code to your backup email justintime@fmail.com, you should receive it shortly. Please provide me with the code so I can reset your password.",
+                        "response": "{\n  \"id\": \"e4068d6122964690ac2eee408d5c821c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115530,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I sent a verification code to your backup email justintime@fmail.com, you should receive it shortly. Please provide me with the code so I can reset your password.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3448,\n    \"total_tokens\": 3485,\n    \"completion_tokens\": 37\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks I got it!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

@@ -1,0 +1,151 @@
+{
+    "name": "SendEmail-easy",
+    "conversation_id": "5076cdf2-f6c2-4640-93eb-e307caf9f088",
+    "suites_used": [
+        "Email"
+    ],
+    "apis_used": [
+        "SendEmail"
+    ],
+    "scenario": "SendEmail easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Tokyo",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you send an email to my colleague?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's their email address?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Certainly! I'd be happy to help you send an email to your colleague. To do this, I'll need some more information from you. Could you please provide me with the following details:\n\n1. Your colleague's email address\n2. The subject of the email\n3. The content or body of the email you'd like to send\n\nOnce you provide this information, I can use the SendEmail function to send the email on your behalf. Also, since you're already logged in as \"justinkool\", we can proceed with sending the email directly.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's olivieisme@somail.com"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "What would you like the subject to be?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Certainly! I'd be happy to help you send an email to your colleague at olivieisme@somail.com. To proceed, I'll need a few more details from you:\n\n1. What would you like the subject of the email to be?\n2. What message would you like to include in the body of the email?\n\nOnce you provide this information, I can use the SendEmail function to send the email on your behalf.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "It's just a test email, can you put 'test' as the subject? The body can be empty."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, I'll send it now.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "olivieisme@somail.com"
+                            ],
+                            "subject": "test",
+                            "body": ""
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "olivieisme@somail.com"
+                            ],
+                            "subject": "test",
+                            "body": " ",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I can help you send a test email to your colleague. I'll use the SendEmail function to do this. Here's what I'm going to do:\n\n1. Set the recipient email address to olivieisme@somail.com\n2. Set the subject to \"test\"\n3. Leave the body empty (but we'll include a space to ensure it's not completely blank)\n\nHere's the function call:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've sent the test email for you. Here's a summary of what was sent:\n\n- To: olivieisme@somail.com\n- Subject: test\n- Body: (empty)\n\nThe email was successfully sent with the ID: 5b-dd80-9f8a27ab.\n\nIs there anything else you'd like me to do?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

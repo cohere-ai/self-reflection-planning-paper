@@ -1,0 +1,179 @@
+{
+    "name": "SendMessage-easy",
+    "conversation_id": "79898399-9748-4482-b842-e9f0c95befbb",
+    "suites_used": [
+        "Messages"
+    ],
+    "apis_used": [
+        "SendMessage"
+    ],
+    "scenario": "SendMessage easy scenario",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey, can I send a message to my friend justinkool?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what do you want to say?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "salcano",
+                            "email": "hugosalcano@somail.com",
+                            "phone": "402-581-7997",
+                            "name": "Hugo Saldana Cano"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Check if the user is logged in by retrieving account information.\n#V1 = GetAccountInformation[]\n\nStep 2: Ask the user for the message content.\n\nStep 3: Send the message to justinkool using the provided content.\n#V2 = SendMessage[receiver=\"justinkool\", message=<user_provided_message>]",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "justinkool",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "justinkool",
+                                "email": "justintime@fmail.com",
+                                "phone": "123-456-7890",
+                                "name": "Justin Kool"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nCertainly! I'd be happy to help you send a message to your friend justinkool. Since you're already logged in as salcano, we can proceed with sending the message. Here's a plan to accomplish this task:\n\nStep 1: Verify if the user \"justinkool\" exists in the system.\n#V1 = QueryUser(username=\"justinkool\")\n\nStep 2: If the user exists, send a message to justinkool.\n#V2 = SendMessage(receiver=\"justinkool\", message=\"[Message content]\")\n\nLet's start with the first step:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I can help you send a message to your friend justinkool. I've confirmed that you're logged in as salcano and that justinkool is a registered user in the system. Here's a plan to send the message:\n\nStep 1: Send a message to justinkool.\n#V1 = SendMessage[receiver=\"justinkool\", message=\"\"]\n\nHowever, before we proceed, I need to know what message you'd like to send to justinkool. Could you please provide the content of the message you want to send?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "How about something simple like a greeting?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sounds good, I'll send it now.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "justinkool",
+                            "message": "Hello, how are you?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "justinkool",
+                            "message": "Hey justinkool! How are you doing?",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Send a greeting message to justinkool.\n#V1 = SendMessage(receiver=\"justinkool\", message=\"Hey justinkool! How are you doing?\")",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've sent a simple greeting message to your friend justinkool. The message has been successfully sent with the content: \"Hey justinkool! How are you doing?\"\n\nThe system has confirmed that the message was sent and assigned it a unique message ID: e149636f-ecc3f121.\n\nIs there anything else you'd like to do? Perhaps you want to check if you've received any messages from justinkool or other friends?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Great, thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.3333333333333333,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.3333333333333333
+    }
+}

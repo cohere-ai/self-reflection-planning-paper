@@ -1,0 +1,329 @@
+{
+    "name": "Alarm-Messages-Reminder-GetReminder-2",
+    "conversation_id": "912ddbc2-663b-4fbd-ac9c-e54d572bdfac",
+    "suites_used": [
+        "Alarm",
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders",
+        "CompleteReminder",
+        "AddAlarm"
+    ],
+    "scenario": "The user wants to study for an exam and has a reminder to review the notes and practice the exercises (GetReminders). They see that the reminder has a due date of tomorrow, which is the day of the exam. They decide to complete the reminder today and mark it as done (CompleteReminder). They then use a note-taking app to access their notes and a quiz app to practice the exercises. They spend two hours studying and then take a break. They send a message to their study group to ask how they are doing and share some tips (SendMessage). They also search for messages from their instructor to see if there are any updates or clarifications on the exam (SearchMessages). They then set an alarm for the next morning to wake up early and review the notes one more time (AddAlarm).",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-08 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ahhchiu"
+    },
+    "conversation": [
+        {
+            "role": "user",
+            "text": "What are my reminders today?"
+        },
+        {
+            "role": "assistant",
+            "text": "You have a pending reminder to review the notes for your exam and to practice the exercises.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "12-949b",
+                                "task": "Review exam notes",
+                                "due_date": "2023-09-08 20:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "e3-793f",
+                                "task": "Practice exercises",
+                                "due_date": "2023-09-08 20:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Buy groceries",
+                                "due_date": "2023-09-11 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Call Amy",
+                                "due_date": "2023-09-11 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Dentist appointment",
+                                "due_date": "2023-09-15 14:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "12-949b",
+                                "task": "Review exam notes",
+                                "due_date": "2023-09-08 20:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "e3-793f",
+                                "task": "Practice exercises",
+                                "due_date": "2023-09-08 20:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Get a list of reminders.\n#V1 = GetReminders[]\n\nStep 2: Filter the list of reminders to only include reminders for today.\n#V2 = Filter[#V1, due_date == \"2023-09-08\"]\n\nStep 3: Return the list of reminders for today.\n#V3 = #V2",
+                        "response": "{\n  \"id\": \"55aff55e016d4f0ab7875c93dbdf84cb\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116683,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"aNnlHwcLZ\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3727,\n    \"total_tokens\": 3744,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here are your reminders today:\n\n- Review exam notes\n- Practice exercises\n\nWould you like to do anything else?",
+                    "metadata": {
+                        "reflection": "Here are your reminders today:\n\n- Review exam notes\n- Practice exercises\n\nWould you like to do anything else?",
+                        "response": "{\n  \"id\": \"09e95a9c8aa44b6e9541cda5d5bf7988\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116684,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here are your reminders today:\\n\\n- Review exam notes\\n- Practice exercises\\n\\nWould you like to do anything else?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3660,\n    \"total_tokens\": 3687,\n    \"completion_tokens\": 27\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "text": "Ok, I'll do that in the next two hours. Can you set an alarm to go off in two hours and mark the reminders as complete?"
+        },
+        {
+            "role": "assistant",
+            "text": "Ok I set an alarm for 11 am and completed two reminders.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "time": "11:00:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "12-949b"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "e3-793f"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "11:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Certainly! Let's create a plan to set an alarm and mark the reminders as complete.\n\nStep 1: Set an alarm for two hours from now.\n#V1 = AddAlarm[time: 11:00:00]\n\nStep 2: Mark the first reminder as complete.\n#V2 = CompleteReminder[reminder_id: 12-949b]\n\nStep 3: Mark the second reminder as complete.\n#V3 = CompleteReminder[reminder_id: e3-793f]\n\nWould you like me to proceed with this plan?",
+                        "response": "{\n  \"id\": \"286b2bf71985491f8bffbf5ddad7c597\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116690,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"QKUfkQ9ZM\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddAlarm\",\n              \"arguments\": \"{\\\"time\\\": \\\"11:00:00\\\"}\"\n            }\n          },\n          {\n            \"id\": \"ZydNMtPmW\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CompleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"12-949b\\\"}\"\n            }\n          },\n          {\n            \"id\": \"PFGm8Pdwg\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CompleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"e3-793f\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3999,\n    \"total_tokens\": 4081,\n    \"completion_tokens\": 82\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "12-949b",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "e3-793f",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've set an alarm for 11:00:00 and marked the reminders as complete.",
+                    "metadata": {
+                        "reflection": "I've set an alarm for 11:00:00 and marked the reminders as complete.",
+                        "response": "{\n  \"id\": \"3d3bec349e934bda8559a5a9fddf51d4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116693,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I've set an alarm for 11:00:00 and marked the reminders as complete.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3764,\n    \"total_tokens\": 3788,\n    \"completion_tokens\": 24\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "text": "also set an alarm for 8 am tomorrow"
+        },
+        {
+            "role": "assistant",
+            "text": "Ok I've set an alarm for 8 am tomorrow.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "time": "08:00:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "dd80-5bff"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "08:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "20d0-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Add an alarm for 8 am tomorrow.\n#V1 = AddAlarm[time=\"08:00:00\"]",
+                        "response": "{\n  \"id\": \"51d40913b34d4d0784c58494e881d602\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727114914,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"i8E4NEjbm\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddAlarm\",\n              \"arguments\": \"{\\\"time\\\": \\\"08:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4137,\n    \"total_tokens\": 4165,\n    \"completion_tokens\": 28\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I set an alarm for 8 am tomorrow.",
+                    "metadata": {
+                        "reflection": "I set an alarm for 8 am tomorrow.",
+                        "response": "{\n  \"id\": \"1e7d6bf7769a4c75aff3295cbf6239c6\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727114915,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I set an alarm for 8 am tomorrow.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3870,\n    \"total_tokens\": 3880,\n    \"completion_tokens\": 10\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm",
+        "SearchMessages",
+        "SendMessage",
+        "CompleteReminder",
+        "GetReminders"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Messages",
+        "Reminder"
+    ],
+    "metrics": {
+        "predictions": 5,
+        "ground_truths": 5,
+        "matches": 5,
+        "actions": 4,
+        "valid_actions": 4,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,168 @@
+{
+    "name": "SearchMessages-easy",
+    "conversation_id": "25b33708-5285-4984-898c-ac7537adbad6",
+    "suites_used": [
+        "Messages"
+    ],
+    "apis_used": [
+        "SearchMessages"
+    ],
+    "scenario": "SearchMessages easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I'm looking for a message my boss sent me last week. It was about the new project we're working on. Can you help me find it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I can help you find that message. What was the name of the project?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "new project",
+                            "match_type": "any",
+                            "sender": "boss_username",
+                            "start_date": "2023-09-04 00:00:00",
+                            "end_date": "2023-09-10 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "1. #V SearchMessages\n   - query: \"new project\"\n   - match_type: \"any\"\n   - sender: \"boss_username\"\n   - start_date: \"2023-09-04 00:00:00\"\n   - end_date: \"2023-09-10 23:59:59\"",
+                        "response": "{\n  \"id\": \"2ad1d00b2c1b4e27bae3b203e621291d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731176791,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"Wa3XxrmNS\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchMessages\",\n              \"arguments\": \"{\\\"query\\\": \\\"new project\\\", \\\"match_type\\\": \\\"any\\\", \\\"sender\\\": \\\"boss_username\\\", \\\"start_date\\\": \\\"2023-09-04 00:00:00\\\", \\\"end_date\\\": \\\"2023-09-10 23:59:59\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3767,\n    \"total_tokens\": 3857,\n    \"completion_tokens\": 90\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I couldn't find any messages from your boss about the new project last week. Is there anything else I can help you with?",
+                    "metadata": {
+                        "reflection": "I couldn't find any messages from your boss about the new project last week. Is there anything else I can help you with?",
+                        "response": "{\n  \"id\": \"48fadd2eaee044e585d2b7da8bb8c42c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731176794,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I couldn't find any messages from your boss about the new project last week. Is there anything else I can help you with?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3479,\n    \"total_tokens\": 3506,\n    \"completion_tokens\": 27\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It was called project aiden. I think it was sent last Tuesday."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I found the message. Here it is: Hey Justin, have you started work on project aiden yet? I need you to get started on it as soon as possible. Thanks!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "project aiden",
+                            "start_date": "2023-09-05 00:00:00",
+                            "end_date": "2023-09-05 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "mrbossman",
+                                "message": "Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "project aiden",
+                            "match_type": "all",
+                            "start_date": "2023-09-05 00:00:00",
+                            "end_date": "2023-09-06 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "mrbossman",
+                                "message": "Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "1. #V: SearchMessages\n   - query: \"project aiden\"\n   - match_type: \"all\"\n   - start_date: \"2023-09-05 00:00:00\"\n   - end_date: \"2023-09-06 23:59:59\"\n2. #V: Respond to user with the results from step 1.",
+                        "response": "{\n  \"id\": \"7baad2b113c64576a141cda81b826303\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731176810,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"uYUEEte5Y\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchMessages\",\n              \"arguments\": \"{\\\"query\\\": \\\"project aiden\\\", \\\"match_type\\\": \\\"all\\\", \\\"start_date\\\": \\\"2023-09-05 00:00:00\\\", \\\"end_date\\\": \\\"2023-09-06 23:59:59\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3812,\n    \"total_tokens\": 3894,\n    \"completion_tokens\": 82\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I found a message from your boss about project aiden. Here it is:\n\nHey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!",
+                    "metadata": {
+                        "reflection": "I found a message from your boss about project aiden. Here it is:\n\nHey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!",
+                        "response": "{\n  \"id\": \"ac6a966873be4e1f8bd8898a72b81559\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731176813,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I found a message from your boss about project aiden. Here it is:\\n\\nHey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3592,\n    \"total_tokens\": 3635,\n    \"completion_tokens\": 43\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks! That's the one I was looking for."
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

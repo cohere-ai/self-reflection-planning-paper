@@ -1,0 +1,215 @@
+{
+    "name": "UpdateAccountInformation-easy",
+    "conversation_id": "467a1c1f-ab6d-4b32-8e64-dfca1fb08525",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "UpdateAccountInformation"
+    ],
+    "scenario": "UpdateAccountInformation easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I think my account information is out of date. Can you help me update it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I can help you with that. What would you like to update?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "decture",
+                            "email": "VirginiaJGraham@gahoo.com",
+                            "phone": "703-607-3363",
+                            "name": "Virginia J. Graham"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve the user's current account information.\n#V1 = GetAccountInformation()\n\nStep 2: Prompt the user for their updated details.\n#V2 = User input for new name, email, phone number, and password.\n\nStep 3: Update the user's account with the new information.\n#V3 = UpdateAccountInformation(password=#V2['password'], new_email=#V2['email'], new_phone_number=#V2['phone_number'], new_name=#V2['name'])\n\nStep 4: Inform the user of the successful update.\n#V4 = Inform user of successful update.",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "{\"answer\": \"What are your updated details?\"}",
+                    "metadata": {
+                        "reflection": "The user's current account information is as follows:\n\nUsername: decture\nEmail: VirginiaJGraham@gahoo.com\nPhone: 703-607-3363\nName: Virginia J. Graham\n\nI will now prompt the user for their updated details.",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Just my phone number and email."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, let me update that for you. What is your new information?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "decture",
+                            "email": "VirginiaJGraham@gahoo.com",
+                            "phone": "703-607-3363",
+                            "name": "Virginia J. Graham"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: #V1 = GetAccountInformation()\nStep 2: Ask user for new phone number and email.\nStep 3: #V3 = UpdateAccountInformation(password = #V1['password'], new_email = user_input, new_phone_number = user_input)",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I can see that your current email is VirginiaJGraham@gahoo.com and your current phone number is 703-607-3363. What would you like to change these to?",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "virginia.j.graham@fmail.com, (276) 216-0133"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Okay, I also need your password to confirm these changes.",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, I can't do that. I don't have access to your password.",
+                    "metadata": {
+                        "reflection": "Respond to user with: \"1. #V UpdateAccountInformation\n   - password: #V (user's password)\n   - new_email: virginia.j.graham@fmail.com\n   - new_phone_number: (276) 216-0133\"",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Sure it's chaew5Oeth"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "Okay, I've updated your information. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UpdateAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "password": "chaew5Oeth",
+                            "new_email": "virginia.j.graham@fmail.com",
+                            "new_phone_number": "276-216-0133"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UpdateAccountInformation",
+                        "parameters": {
+                            "new_email": "virginia.j.graham@fmail.com",
+                            "new_phone_number": "(276) 216-0133",
+                            "password": "chaew5Oeth",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": null,
+                    "exception": "The phone number format is invalid.",
+                    "metadata": {
+                        "reflection": "Step 1: Update the user's account information with the new email and phone number.\n#V1 = UpdateAccountInformation(new_email='virginia.j.graham@fmail.com', new_phone_number='(276) 216-0133', password='chaew5Oeth')\n\nStep 2: Verify the changes by retrieving the updated account information.\n#V2 = GetAccountInformation()\n\nStep 3: Inform the user about the successful update and provide the updated details.",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, the phone number format is invalid. Please provide the phone number in the format xxx-xxx-xxxx.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "No that's it. Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 1,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 0.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

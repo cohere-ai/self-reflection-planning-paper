@@ -1,0 +1,196 @@
+{
+    "name": "ForecastWeather-easy",
+    "conversation_id": "f459e40a-0b32-4146-984b-7489fd4fe805",
+    "suites_used": [
+        "Weather"
+    ],
+    "apis_used": [
+        "ForecastWeather"
+    ],
+    "scenario": "ForecastWeather easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey what's the weather like tomorrow?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Tomorrow has a high of 72 and a low of 61 with 60% chance of rain. Would you like to hear the forecast for the next 5 days?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "London"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 72,
+                                "low": 61,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 67,
+                                "low": 55,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 67,
+                                "low": 53,
+                                "conditions": "30% Rainy"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "London"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 72,
+                                "low": 61,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 67,
+                                "low": 55,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 67,
+                                "low": 53,
+                                "conditions": "30% Rainy"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Respond to user with: \"#V1 = ForecastWeather[location: London]\"",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nBased on the forecast weather information for London, I can provide you with the weather details for tomorrow. \n\nTomorrow, which is September 12, 2023, the weather in London is expected to be:\n\n- High temperature: 72\u00b0F (about 22\u00b0C)\n- Low temperature: 61\u00b0F (about 16\u00b0C)\n- Conditions: 60% chance of rain\n\nIt looks like it might be a bit rainy tomorrow, with a fairly high chance of precipitation. The temperature will be mild, with a high of 72\u00b0F (22\u00b0C) and a low of 61\u00b0F (16\u00b0C). It would be a good idea to be prepared for rain, perhaps by carrying an umbrella or wearing a light raincoat. Despite the chance of rain, the temperatures are quite comfortable for this time of year in London.\n\nIs there anything else you'd like to know about the weather or any other information I can help you with?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Sure, how long is the rain going to continue for?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The rain will continue for the next 5 days, but is forecasted to ease up starting Thursday.",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "London"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 72,
+                                "low": 61,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 67,
+                                "low": 55,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 67,
+                                "low": 53,
+                                "conditions": "30% Rainy"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Respond to user with: \"\"",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nBased on the 3-day forecast for London, it looks like the rainy conditions are expected to continue for at least the next three days, but with decreasing probability:\n\n1. Tomorrow (September 12): 60% chance of rain\n2. The day after tomorrow (September 13): 60% chance of rain\n3. The following day (September 14): 30% chance of rain\n\nThe rain probability decreases on the third day, but there's still a chance of rain. Unfortunately, the forecast only provides information for the next three days, so I can't say for certain how long the rain will continue beyond that. However, it appears that the rainy pattern may start to taper off after the second day.\n\nWould you like any more specific information about the forecast, such as temperatures or any other weather-related questions?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "I see, thank!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

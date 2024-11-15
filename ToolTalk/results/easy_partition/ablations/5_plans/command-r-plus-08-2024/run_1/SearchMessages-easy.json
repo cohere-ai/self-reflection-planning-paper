@@ -1,0 +1,158 @@
+{
+    "name": "SearchMessages-easy",
+    "conversation_id": "25b33708-5285-4984-898c-ac7537adbad6",
+    "suites_used": [
+        "Messages"
+    ],
+    "apis_used": [
+        "SearchMessages"
+    ],
+    "scenario": "SearchMessages easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I'm looking for a message my boss sent me last week. It was about the new project we're working on. Can you help me find it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I can help you find that message. What was the name of the project?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "new project",
+                            "sender": "boss",
+                            "start_date": "2023-09-04 00:00:00",
+                            "end_date": "2023-09-10 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Respond to user with: \"#V1 = SearchMessages[query=new project, sender=boss, start_date=2023-09-04 00:00:00, end_date=2023-09-10 23:59:59]\"",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, I couldn't find any messages from your boss about the new project.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It was called project aiden. I think it was sent last Tuesday."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I found the message. Here it is: Hey Justin, have you started work on project aiden yet? I need you to get started on it as soon as possible. Thanks!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "project aiden",
+                            "start_date": "2023-09-05 00:00:00",
+                            "end_date": "2023-09-05 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "mrbossman",
+                                "message": "Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "project aiden",
+                            "sender": "boss",
+                            "start_date": "2023-09-05",
+                            "end_date": "2023-09-11",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": null,
+                    "exception": "time data '2023-09-05' does not match format '%Y-%m-%d %H:%M:%S'",
+                    "metadata": {
+                        "reflection": "Step 1: Search for messages containing the phrase 'project aiden' sent by the user's boss between the dates 2023-09-05 and 2023-09-11.\n#V1 = SearchMessages[query=project aiden, sender=boss, start_date=2023-09-05, end_date=2023-09-11]\nStep 2: Present the search results to the user and ask if the desired message is found. If the user confirms, provide the message content. If not, ask for additional search criteria or refine the search based on user feedback.",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, I'm unable to search for messages sent between those dates. Can you provide a different date range?",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks! That's the one I was looking for."
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

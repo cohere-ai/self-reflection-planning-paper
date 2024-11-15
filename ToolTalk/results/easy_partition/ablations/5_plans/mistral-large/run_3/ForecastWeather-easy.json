@@ -1,0 +1,196 @@
+{
+    "name": "ForecastWeather-easy",
+    "conversation_id": "f459e40a-0b32-4146-984b-7489fd4fe805",
+    "suites_used": [
+        "Weather"
+    ],
+    "apis_used": [
+        "ForecastWeather"
+    ],
+    "scenario": "ForecastWeather easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey what's the weather like tomorrow?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Tomorrow has a high of 72 and a low of 61 with 60% chance of rain. Would you like to hear the forecast for the next 5 days?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "London"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 72,
+                                "low": 61,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 67,
+                                "low": 55,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 67,
+                                "low": 53,
+                                "conditions": "30% Rainy"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "London"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 72,
+                                "low": 61,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 67,
+                                "low": 55,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 67,
+                                "low": 53,
+                                "conditions": "30% Rainy"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Get the weather forecast for the next three days.\n#V1 = ForecastWeather(location: \"London\")",
+                        "response": "{\n  \"id\": \"1d826125db3540d2877c0d7e00640c2f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731173132,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"HZXWxwpsp\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ForecastWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"London\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3676,\n    \"total_tokens\": 3698,\n    \"completion_tokens\": 22\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here is the weather forecast for the next 3 days:\n\n- 2023-09-12: High of 72\u00b0F, Low of 61\u00b0F, 60% Rainy\n- 2023-09-13: High of 67\u00b0F, Low of 55\u00b0F, 60% Rainy\n- 2023-09-14: High of 67\u00b0F, Low of 53\u00b0F, 30% Rainy",
+                    "metadata": {
+                        "reflection": "Here is the weather forecast for the next 3 days:\n\n- 2023-09-12: High of 72\u00b0F, Low of 61\u00b0F, 60% Rainy\n- 2023-09-13: High of 67\u00b0F, Low of 55\u00b0F, 60% Rainy\n- 2023-09-14: High of 67\u00b0F, Low of 53\u00b0F, 30% Rainy",
+                        "response": "{\n  \"id\": \"f329b816038e4b91ab561d75abcb0af6\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731173133,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here is the weather forecast for the next 3 days:\\n\\n- 2023-09-12: High of 72\u00b0F, Low of 61\u00b0F, 60% Rainy\\n- 2023-09-13: High of 67\u00b0F, Low of 55\u00b0F, 60% Rainy\\n- 2023-09-14: High of 67\u00b0F, Low of 53\u00b0F, 30% Rainy\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3502,\n    \"total_tokens\": 3623,\n    \"completion_tokens\": 121\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Sure, how long is the rain going to continue for?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The rain will continue for the next 5 days, but is forecasted to ease up starting Thursday.",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "London"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 72,
+                                "low": 61,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 67,
+                                "low": 55,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 67,
+                                "low": 53,
+                                "conditions": "30% Rainy"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "- Step 1: Use the ForecastWeather function to fetch a 3-day weather forecast.\n  #V1 = ForecastWeather[location=\"London\"]\n- Step 2: Respond to the user with the forecast details, specifically mentioning the duration of the rainy weather.\n  Response: \"Rain will continue until September 13 with a probability of 60% on both days.\"",
+                        "response": "{\n  \"id\": \"108fb91c32354690aabeb107422bf974\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731173200,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"SsphuBHWx\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ForecastWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"London\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3971,\n    \"total_tokens\": 3993,\n    \"completion_tokens\": 22\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "It looks like it will continue to rain for the next 3 days.",
+                    "metadata": {
+                        "reflection": "It looks like it will continue to rain for the next 3 days.",
+                        "response": "{\n  \"id\": \"e1f031b45dfd4952a215d7db7b3adb10\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731173201,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"It looks like it will continue to rain for the next 3 days.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3736,\n    \"total_tokens\": 3751,\n    \"completion_tokens\": 15\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "I see, thank!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

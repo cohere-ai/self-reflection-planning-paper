@@ -1,0 +1,159 @@
+{
+    "name": "SendVerificationCode-easy",
+    "conversation_id": "163ea4f3-57e8-4f95-a6f1-d01bf4fe2b3b",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "SendVerificationCode"
+    ],
+    "scenario": "SendVerificationCode easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I think I forgot my password, can you help me reset it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Of course! I'd be happy to help you reset your password. Since you've forgotten your password, we'll need to use the password reset process. This typically involves sending a verification code to your registered email address. Let's go through the steps to reset your password:\n\n1. First, we'll need to send a verification code to your email. For this, I'll need your username and the email address associated with your account.\n\n2. Once you receive the verification code, we'll use it to reset your password.\n\nCan you please provide me with your username? Also, do you remember the email address you used when registering your account?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok, what's your email address associated with the account?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": ""
+                        }
+                    },
+                    "response": null,
+                    "exception": "The email is incorrect.",
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to help you reset your password, Justin. To start the password reset process, we'll need to send a verification code to the email associated with your account. Let me initiate that for you.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize for the confusion. It seems there might be an issue with the email associated with your account. Let me try to help you further.\n\nTo reset your password, we need to send a verification code to the email address associated with your account. However, it appears that there might be a problem with the email on file.\n\nCan you please provide the email address you used when you registered your account? This will help us send the verification code to the correct email.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Should be justintime@fmail.com"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok, I've sent you a verification code to your email address. You can use this to reset your password.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Thank you for providing that information. I can help you reset your password. I'll initiate the process to send a verification code to your email. Once you receive the code, we'll use it to reset your password. Let me start that process for you now.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat news! I've initiated the password reset process for your account. A verification code has been sent to your email address (justintime@fmail.com). Please check your email and provide me with the 6-digit verification code you received. Once you have the code, we can proceed with resetting your password.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks I got it!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 2,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,159 @@
+{
+    "name": "UserLogin-easy",
+    "conversation_id": "1df9e4a7-b93c-45c1-8914-10fdaf0b86ab",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "UserLogin"
+    ],
+    "scenario": "UserLogin easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you log me in?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, I can help with that. Please provide your username and password.",
+                    "metadata": {
+                        "reflection": "Sure, I can help with that. Please provide your username and password.",
+                        "response": "{\n  \"id\": \"f28f5c8892d343bdb84ea55871db518c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147640,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, I can help with that. Please provide your username and password.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3320,\n    \"total_tokens\": 3335,\n    \"completion_tokens\": 15\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "What's your password?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "justinkool"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"2ae1c78ed74b46a1941763b5539f6430\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147640,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"5OgTWkjRZ\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"justinkool\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3334,\n    \"total_tokens\": 3356,\n    \"completion_tokens\": 22\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, but it seems like you're not logged in. Would you like to log in or register a new account?",
+                    "metadata": {
+                        "reflection": "I'm sorry, but it seems like you're not logged in. Would you like to log in or register a new account?",
+                        "response": "{\n  \"id\": \"32baf79bcf4d4783af1317718f063e34\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147642,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I'm sorry, but it seems like you're not logged in. Would you like to log in or register a new account?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3397,\n    \"total_tokens\": 3425,\n    \"completion_tokens\": 28\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "justforkicks123"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "You're logged in!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"3409dce761894edcb7ca8529e45d9b0e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147643,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"zHFUBTUJ8\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"UserLogin\",\n              \"arguments\": \"{\\\"username\\\": \\\"justinkool\\\", \\\"password\\\": \\\"justforkicks123\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3350,\n    \"total_tokens\": 3384,\n    \"completion_tokens\": 34\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have been logged in successfully!",
+                    "metadata": {
+                        "reflection": "You have been logged in successfully!",
+                        "response": "{\n  \"id\": \"7962389d4055451ea1661826c42525ed\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147644,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"You have been logged in successfully!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3442,\n    \"total_tokens\": 3449,\n    \"completion_tokens\": 7\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

@@ -1,0 +1,125 @@
+{
+    "name": "FindAlarms-easy",
+    "conversation_id": "7e27daee-d11e-4a3b-8fb1-cb976029668e",
+    "suites_used": [
+        "Alarm"
+    ],
+    "apis_used": [
+        "FindAlarms"
+    ],
+    "scenario": "FindAlarms easy scenario",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "mstein"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey do I have any alarms set around 6 PM?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I found two alarm around 6 PM, one for 6 PM and one for 6:30 PM.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "FindAlarms",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_range": "17:00:00",
+                            "end_range": "19:00:00"
+                        }
+                    },
+                    "response": {
+                        "alarms": [
+                            {
+                                "alarm_id": "4631-000e",
+                                "time": "18:00:00"
+                            },
+                            {
+                                "alarm_id": "4e20-0a4c",
+                                "time": "18:30:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "FindAlarms",
+                        "parameters": {
+                            "start_range": "17:00:00",
+                            "end_range": "19:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarms": [
+                            {
+                                "alarm_id": "4631-000e",
+                                "time": "18:00:00"
+                            },
+                            {
+                                "alarm_id": "4e20-0a4c",
+                                "time": "18:30:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Find all alarms set around 6 PM.\n#V1 = FindAlarms[start_range: \"17:00:00\", end_range: \"19:00:00\"]",
+                        "response": "{\n  \"id\": \"0a78e0d7169c4610b097bd09be2fef7f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727111676,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"KLJVzhVUf\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"FindAlarms\",\n              \"arguments\": \"{\\\"start_range\\\": \\\"17:00:00\\\", \\\"end_range\\\": \\\"19:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3690,\n    \"total_tokens\": 3735,\n    \"completion_tokens\": 45\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Yes, you have an alarm set for 6:00 PM and another at 6:30 PM.",
+                    "metadata": {
+                        "reflection": "Yes, you have an alarm set for 6:00 PM and another at 6:30 PM.",
+                        "response": "{\n  \"id\": \"5e8962f564d6491da4821fcf04a30b8e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727111678,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Yes, you have an alarm set for 6:00 PM and another at 6:30 PM.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3473,\n    \"total_tokens\": 3497,\n    \"completion_tokens\": 24\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Oh good, I don't need to set one then."
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

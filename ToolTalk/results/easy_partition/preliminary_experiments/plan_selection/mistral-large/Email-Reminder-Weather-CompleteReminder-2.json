@@ -1,0 +1,432 @@
+{
+    "name": "Email-Reminder-Weather-CompleteReminder-2",
+    "conversation_id": "f91e4a9d-7a72-4512-889c-5586378e1138",
+    "suites_used": [
+        "Email",
+        "AccountTools",
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "CompleteReminder",
+        "GetReminders",
+        "SendEmail",
+        "QueryUser",
+        "HistoricWeather"
+    ],
+    "scenario": "The user has a reminder to write a blog post about the weather trends in their city (AddReminder). They use the HistoricWeather API to get the weather data for the past month (HistoricWeather). They analyze the data and write the blog post. They then search their inbox for any emails from their editor or readers (SearchInbox). They reply to any relevant emails and ask for feedback on their post (SendEmail). They complete the reminder (CompleteReminder).",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "When is my submission deadline for my blog post?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have a reminder to submit your blog post by 10 am today.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "submit blog post",
+                                "due_date": "2023-09-11 10:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 09:00:00",
+                            "end_time": "2023-09-18 09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2949b409-6535",
+                                "name": "1 on 1",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            },
+                            {
+                                "event_id": "2ff57743-1180",
+                                "name": "Hugo-Alice",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-15 10:00:00",
+                                "end_time": "2023-09-15 10:30:00",
+                                "location": "Conference Room 2",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "alice"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Determine the deadline for the blog post submission\n#V1 = QueryCalendar[start_time=2023-09-11 09:00:00, end_time=2023-09-18 09:00:00]",
+                        "response": "{\n  \"id\": \"0b23443869cb40a8b496c45f45be8045\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116945,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"rlIn2hlFH\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryCalendar\",\n              \"arguments\": \"{\\\"start_time\\\": \\\"2023-09-11 09:00:00\\\", \\\"end_time\\\": \\\"2023-09-18 09:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3707,\n    \"total_tokens\": 3773,\n    \"completion_tokens\": 66\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Hello! Here are the upcoming events on your calendar:\n\n- **1 on 1** (meeting)\n  - Time: September 11, 2023, 14:00:00 to 15:00:00\n  - Location: online\n  - Description: bi-weekly sync\n  - Attendees: justinkool, salcano\n\n- **Hugo-Alice** (meeting)\n  - Time: September 15, 2023, 10:00:00 to 10:30:00\n  - Location: Conference Room 2\n  - Attendees: salcano, alice",
+                    "metadata": {
+                        "reflection": "Hello! Here are the upcoming events on your calendar:\n\n- **1 on 1** (meeting)\n  - Time: September 11, 2023, 14:00:00 to 15:00:00\n  - Location: online\n  - Description: bi-weekly sync\n  - Attendees: justinkool, salcano\n\n- **Hugo-Alice** (meeting)\n  - Time: September 15, 2023, 10:00:00 to 10:30:00\n  - Location: Conference Room 2\n  - Attendees: salcano, alice",
+                        "response": "{\n  \"id\": \"38dec02aa00d438e9fa00430e2026f4e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116948,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Hello! Here are the upcoming events on your calendar:\\n\\n- **1 on 1** (meeting)\\n  - Time: September 11, 2023, 14:00:00 to 15:00:00\\n  - Location: online\\n  - Description: bi-weekly sync\\n  - Attendees: justinkool, salcano\\n\\n- **Hugo-Alice** (meeting)\\n  - Time: September 15, 2023, 10:00:00 to 10:30:00\\n  - Location: Conference Room 2\\n  - Attendees: salcano, alice\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3674,\n    \"total_tokens\": 3835,\n    \"completion_tokens\": 161\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Ok maybe I'll just write about the weather. What's the weather today and the historic weather for the month?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The weather in San Francisco today is cloudy with a high of 67 and a low of 52. The historic weather in September has a maximum of 78 and a minimum of 50.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "San Francisco"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 85,
+                            "low": 72,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "San Francisco",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 50,
+                            "max_temp": 90,
+                            "record_min_temp": 48,
+                            "record_max_temp": 102,
+                            "avg_rainfall": 3.0,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "San Francisco"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 85,
+                            "low": 72,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Sure thing! Here's my plan:\nStep 1: Get the current weather for San Francisco.\n#V1 = CurrentWeather[San Francisco]\nStep 2: Get the historic weather for the month for San Francisco.\n#V2 = HistoricWeather[San Francisco, September]\n\nDoes this plan sound good to you?",
+                        "response": "{\n  \"id\": \"59f7e51b79ae419db49037c80a8e69ad\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116955,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"3yp9tK6lS\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CurrentWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"San Francisco\\\"}\"\n            }\n          },\n          {\n            \"id\": \"z0M73NzHT\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"HistoricWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"San Francisco\\\", \\\"month\\\": \\\"September\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3870,\n    \"total_tokens\": 3919,\n    \"completion_tokens\": 49\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "San Francisco",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 50,
+                            "max_temp": 90,
+                            "record_min_temp": 48,
+                            "record_max_temp": 102,
+                            "avg_rainfall": 3.0,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The weather today is sunny with a high of 85 degrees and a low of 72 degrees. Historically, in September, the temperature in San Francisco ranges from 50 to 90 degrees. The record low was 48 degrees and the record high was 102 degrees. The average rainfall is 3.0 inches and there are typically no snow days.",
+                    "metadata": {
+                        "reflection": "The weather today is sunny with a high of 85 degrees and a low of 72 degrees. Historically, in September, the temperature in San Francisco ranges from 50 to 90 degrees. The record low was 48 degrees and the record high was 102 degrees. The average rainfall is 3.0 inches and there are typically no snow days.",
+                        "response": "{\n  \"id\": \"cb49424c516c4a7b962d9c456f0610fc\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116958,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"The weather today is sunny with a high of 85 degrees and a low of 72 degrees. Historically, in September, the temperature in San Francisco ranges from 50 to 90 degrees. The record low was 48 degrees and the record high was 102 degrees. The average rainfall is 3.0 inches and there are typically no snow days.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3711,\n    \"total_tokens\": 3793,\n    \"completion_tokens\": 82\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Ok send an email to my editor (larajean) with this link to my blog post draft: 'docshare.com/12o89417uoihjns'"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok I've sent an email to your editor with the link to your blog post draft.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "username": "larajean"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "larajean",
+                                "email": "lara.jean@fmail.com",
+                                "phone": "941-773-9153",
+                                "name": "Lara C Jean"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "lara.jean@fmail.com"
+                            ],
+                            "subject": "blog post",
+                            "body": "here's my blogpost draft: docshare.com/12o89417uoihjns"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, what is the subject and the body of the email?",
+                    "metadata": {
+                        "reflection": "Sure, what is the subject and the body of the email?",
+                        "response": "{\n  \"id\": \"de14575af8d3456dac7398404b94bcf7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116960,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, what is the subject and the body of the email?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4097,\n    \"total_tokens\": 4110,\n    \"completion_tokens\": 13\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Ok mark reminder as complete"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "Reminder to submit your blog post has been marked complete.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "14-579a"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Finish report",
+                                "due_date": "2023-09-11 08:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "apologize to landlord",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "submit blog post",
+                                "due_date": "2023-09-11 10:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "98-d687",
+                                "task": "buy Ana a present",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-08-27 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Here's the plan:\nStep 1: Find out the reminder_id for the task \"submit blog post\"\n#V1 = GetReminders[{}]\nStep 2: Complete the reminder\n#V2 = CompleteReminder[{\"reminder_id\": #V1[\"reminders\"][0][\"reminder_id\"]}]\n\nIs this ok, or would you like to do something else?",
+                        "response": "{\n  \"id\": \"bf646d9b2fa6488bb4a8d38267d0c6f0\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116967,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"XWkjrCcPR\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4464,\n    \"total_tokens\": 4481,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "14-579a",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"2be2374e7e744766a0fa0e78c6efc62f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116969,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"uPeE1hXmi\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CompleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"14-579a\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4363,\n    \"total_tokens\": 4393,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have marked your reminder to submit your blog post as complete.",
+                    "metadata": {
+                        "reflection": "I have marked your reminder to submit your blog post as complete.",
+                        "response": "{\n  \"id\": \"86811717335849b99a2338b47c9bcd5c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116971,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have marked your reminder to submit your blog post as complete.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4433,\n    \"total_tokens\": 4446,\n    \"completion_tokens\": 13\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchInbox",
+        "SendEmail",
+        "AddReminder",
+        "CompleteReminder",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Email",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 5,
+        "ground_truths": 6,
+        "matches": 4,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.8,
+        "recall": 0.6666666666666666,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.6666666666666666,
+        "api_name_jaccard": 0.5714285714285714,
+        "api_name_recall": 0.6666666666666666,
+        "api_name_precision": 0.8
+    }
+}

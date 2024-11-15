@@ -1,0 +1,196 @@
+{
+    "name": "SendVerificationCode-easy",
+    "conversation_id": "163ea4f3-57e8-4f95-a6f1-d01bf4fe2b3b",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "SendVerificationCode"
+    ],
+    "scenario": "SendVerificationCode easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I think I forgot my password, can you help me reset it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "None",
+                            "email": "None"
+                        }
+                    },
+                    "response": null,
+                    "exception": "The username does not exist.",
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to help you reset your password. To do this, we'll need to go through a few steps to verify your identity and set up a new password. Here's the plan we'll follow:\n\nStep 1: Send a verification code to your registered email.\n#V1 = SendVerificationCode[username=None, email=None]\n\nStep 2: Ask the user for their username and the verification code they received.\n\nStep 3: Reset the password with the provided information.\n#V3 = ResetPassword[username=None, verification_code=None, new_password=None]\n\nLet's start with the first step:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize, but I'm unable to initiate the password reset process at this moment because you're not currently logged in, and I don't have your username or email address. To help you reset your password, I'll need some more information. Here's what we can do:\n\n1. First, I'll need your username or the email address associated with your account. Can you please provide either of these?\n\n2. Once you give me this information, I can help you start the password reset process.\n\n3. After that, I'll guide you through the steps to reset your password.\n\nCould you please provide your username or the email address linked to your account?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok, what's your email address associated with the account?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": ""
+                        }
+                    },
+                    "response": null,
+                    "exception": "The email is incorrect.",
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to help you reset your password, Justin. Let's go through the process step by step to reset your password securely.\n\nHere's the plan we'll follow:\n\nStep 1: Initiate the password reset process by sending a verification code to your registered email.\n#V1 = SendVerificationCode[username=\"justinkool\", email=\"\"]\n\nStep 2: Ask you to check your email for the verification code and provide it to me.\n\nStep 3: Use the verification code you provide to reset your password with a new one that you choose.\n\nLet's start with Step 1:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "justinkool"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "content": "\n\nI apologize for the confusion. It seems there might be an issue with the email associated with your account. Let me try to get more information about your account.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize for the confusion. It seems that there might be an issue with the username you provided. Let's try to verify your information.\n\n1. Can you please confirm that \"justinkool\" is the correct username?\n2. If you're sure about the username, do you remember the email address associated with your account?\n\nIf you're not sure about either of these, we might need to explore other options to help you regain access to your account. Please provide any additional information you can remember about your account, and I'll do my best to assist you.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Should be justintime@fmail.com"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok, I've sent you a verification code to your email address. You can use this to reset your password.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Thank you for providing that information. I can help you reset your password. I'll create a plan to guide you through the process of resetting your password using the available tools.\n\nPlan:\nStep 1: Send a verification code to the user's email.\n#V1 = SendVerificationCode[username=\"justinkool\", email=\"justintime@fmail.com\"]\n\nStep 2: Ask the user to check their email for the verification code.\n\nStep 3: Once the user provides the verification code, reset the password.\n#V3 = ResetPassword[username=\"justinkool\", verification_code=USER_PROVIDED_CODE, new_password=NEW_PASSWORD]\n\nLet's start with Step 1:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat, I've sent a verification code to your email address justintime@fmail.com. Please check your email and provide me with the 6-digit verification code you received.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks I got it!"
+        }
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 3,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.25,
+        "recall": 1.0,
+        "action_precision": 0.3333333333333333,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

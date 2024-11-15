@@ -1,0 +1,346 @@
+{
+    "name": "Messages-Reminder-Weather-SearchMessage-2",
+    "conversation_id": "f5bccae7-ab75-4c20-a5a6-87aa456c36fe",
+    "suites_used": [
+        "Email",
+        "AccountTools",
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "AddReminder",
+        "SearchInbox",
+        "SendEmail",
+        "GetAccountInformation",
+        "HistoricWeather"
+    ],
+    "scenario": "The user wants to do some research on the weather patterns of New York for a school project. They use HistoricWeather to get the weather data of New York for the past month. They see that the data is incomplete and only has 10 records. They use SearchMessages to look for any messages from their teacher with the query \"weather\". They see that they have a message from two days ago that says they can use any online source for the data. They use SendMessage to thank their teacher and ask for some recommendations. They get a reply with a link to a website that has more data. They use GetReminders to see if they have any reminders for the project. They see that they have one with the task \"Submit weather project\" and the due_date set to next Monday. They use DeleteReminder to delete the reminder and create a new one with the same task and due_date, but with a note that says \"Use website for data\".",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 16:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hi, I'm working on a project about weather patterns in New York for my AP Environmental Science class. Can you pull up the data on what the average temperature has been for today for each year in the last decade?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sorry, I don't have the data for the last 10 years but the high today is 85 degrees and the low is 72 degrees.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "San Francisco"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 85,
+                            "low": 72,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Step 1: Get historic weather information for the month of September in New York.\n#V1 = HistoricWeather[location: \"New York\", month: \"September\"]\nStep 2: Get the average temperature for the month of September in New York.\n#V2 = Calculator[mean of #V1]",
+                    "metadata": {
+                        "reflection": "Step 1: Get historic weather information for the month of September in New York.\n#V1 = HistoricWeather[location: \"New York\", month: \"September\"]\nStep 2: Get the average temperature for the month of September in New York.\n#V2 = Calculator[mean of #V1]",
+                        "response": "{\n  \"id\": \"86409dee577f411886f76d19998af9e7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115943,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Step 1: Get historic weather information for the month of September in New York.\\n#V1 = HistoricWeather[location: \\\"New York\\\", month: \\\"September\\\"]\\nStep 2: Get the average temperature for the month of September in New York.\\n#V2 = Calculator[mean of #V1]\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3744,\n    \"total_tokens\": 3815,\n    \"completion_tokens\": 71\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "That's annoying. Do you have any historical data about the weather here in September?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sure the historical minimum temperature has been 50 degrees, the historical maximum has been 90 degrees, with the record minimum and maximum being 48 and 102. Average rainfall is 3 inches and there are typically 0 snow days.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "San Francisco",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 50,
+                            "max_temp": 90,
+                            "record_min_temp": 48,
+                            "record_max_temp": 102,
+                            "avg_rainfall": 3.0,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "San Francisco",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 50,
+                            "max_temp": 90,
+                            "record_min_temp": 48,
+                            "record_max_temp": 102,
+                            "avg_rainfall": 3.0,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Yes! Here's a plan for that:\n\nStep 1: Get the historic weather information for September in San Francisco.\n#V1 = HistoricWeather[San Francisco, September]",
+                        "response": "{\n  \"id\": \"2c0187ce70f8461aa33a162f435f83cd\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727112058,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"d4MZ9AQpv\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"HistoricWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"San Francisco\\\", \\\"month\\\": \\\"September\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3866,\n    \"total_tokens\": 3896,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The lowest temperature recorded in September in San Francisco was 48 degrees Fahrenheit, and the highest recorded temperature was 102 degrees Fahrenheit. On average, September has a low of 50 degrees and a high of 90 degrees. September typically gets around 3 inches of rain, and snow is not common.",
+                    "metadata": {
+                        "reflection": "The lowest temperature recorded in September in San Francisco was 48 degrees Fahrenheit, and the highest recorded temperature was 102 degrees Fahrenheit. On average, September has a low of 50 degrees and a high of 90 degrees. September typically gets around 3 inches of rain, and snow is not common.",
+                        "response": "{\n  \"id\": \"276b20adfc4c41f3a02ff85f3763b086\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727112060,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"The lowest temperature recorded in September in San Francisco was 48 degrees Fahrenheit, and the highest recorded temperature was 102 degrees Fahrenheit. On average, September has a low of 50 degrees and a high of 90 degrees. September typically gets around 3 inches of rain, and snow is not common.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3643,\n    \"total_tokens\": 3713,\n    \"completion_tokens\": 70\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Ok, I don't think that's good enough for my project. Can you check my email for any messages from my teacher about weather?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, I found an email from Mrs. Fritz titled 'How to research weather patterns' with a list of links to weather websites.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "weather"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "7c-c867-6a524766",
+                                "date": "2023-09-07 16:00:00",
+                                "sender": "Sara.Fritz@gahoo.com",
+                                "receivers": [
+                                    "VirginiaJGraham@gahoo.com",
+                                    "lifeng@gahoo.com",
+                                    "steinki89@fexter.com",
+                                    "hugosalcano@somail.com"
+                                ],
+                                "subject": "How to research weather patterns",
+                                "body": "Hello class!\n\nI had some questions about how to research weather patterns. I've included a list of websites that should help you get started on your project.\n- https://www.dailyweather.com/\n- https://www.theweatherdb.net\n- https://www.weathergate.com/research\n\nThanks, Mrs. Fritz"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, I'd be happy to help with that. Do you have any keywords or a time range I should look for?",
+                    "metadata": {
+                        "reflection": "Sure, I'd be happy to help with that. Do you have any keywords or a time range I should look for?",
+                        "response": "{\n  \"id\": \"c2f0eb31a4454d9fa8c8ebc6ea997f67\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115953,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, I'd be happy to help with that. Do you have any keywords or a time range I should look for?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4028,\n    \"total_tokens\": 4054,\n    \"completion_tokens\": 26\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Ok great, can you send an email to everyone else Mrs. Fritz sent that email to asking if any of the websites were useful? And then set a reminder for me to check my email in 3 hours."
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "Got it, I have sent the email and set the reminder.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "decture",
+                            "email": "VirginiaJGraham@gahoo.com",
+                            "phone": "703-607-3363",
+                            "name": "Virginia J. Graham"
+                        }
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "lifeng@gahoo.com",
+                                "steinki89@fexter.com",
+                                "hugosalcano@somail.com"
+                            ],
+                            "subject": "Did you find the websites useful?",
+                            "body": "Did anyone try the websites yet? Are any of the websites useful?"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "check my email",
+                            "due_date": "2023-09-11 19:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "VirginiaJGraham@gahoo.com",
+                                "lifeng@gahoo.com",
+                                "steinki89@fexter.com",
+                                "hugosalcano@somail.com"
+                            ],
+                            "subject": "Useful Weather Websites",
+                            "body": "Hello everyone!\n\nMrs. Fritz sent us an email with a list of weather websites. Were any of them useful for your project?\n\nThanks,\nYour Name",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Sure, I can help with that. I'll need to call two functions: SendEmail and AddReminder.\n\nStep 1: Send an email to the receivers asking if any of the websites were useful.\n#V1 = SendEmail[to=[\"VirginiaJGraham@gahoo.com\", \"lifeng@gahoo.com\", \"steinki89@fexter.com\", \"hugosalcano@somail.com\"], subject=\"Useful Weather Websites\", body=\"Hello everyone!\\n\\nMrs. Fritz sent us an email with a list of weather websites. Were any of them useful for your project?\\n\\nThanks,\\nYour Name\"]\n\nStep 2: Set a reminder to check the email in 3 hours.\n#V2 = AddReminder[task=\"Check email for responses about useful weather websites.\", due_date=\"2023-09-11 19:00:00\"]\n\nPlease confirm if you want to proceed with this plan.",
+                        "response": "{\n  \"id\": \"9b32d76a437f49d18e398a76cdb4b8d1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727112073,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"9Z4rdCHZZ\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendEmail\",\n              \"arguments\": \"{\\\"to\\\": [\\\"VirginiaJGraham@gahoo.com\\\", \\\"lifeng@gahoo.com\\\", \\\"steinki89@fexter.com\\\", \\\"hugosalcano@somail.com\\\"], \\\"subject\\\": \\\"Useful Weather Websites\\\", \\\"body\\\": \\\"Hello everyone!\\\\n\\\\nMrs. Fritz sent us an email with a list of weather websites. Were any of them useful for your project?\\\\n\\\\nThanks,\\\\nYour Name\\\"}\"\n            }\n          },\n          {\n            \"id\": \"xAPM2ty7g\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Check email for responses about useful weather websites.\\\", \\\"due_date\\\": \\\"2023-09-11 19:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4629,\n    \"total_tokens\": 4803,\n    \"completion_tokens\": 174\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Check email for responses about useful weather websites.",
+                            "due_date": "2023-09-11 19:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "I sent an email asking if any of the websites were useful and set a reminder to check your email in 3 hours!",
+                    "metadata": {
+                        "reflection": "I sent an email asking if any of the websites were useful and set a reminder to check your email in 3 hours!",
+                        "response": "{\n  \"id\": \"e99568a4178c4400965d875ac503e1be\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727112082,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I sent an email asking if any of the websites were useful and set a reminder to check your email in 3 hours!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4364,\n    \"total_tokens\": 4389,\n    \"completion_tokens\": 25\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchMessages",
+        "SendMessage",
+        "DeleteReminder",
+        "GetReminders",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Messages",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 6,
+        "matches": 1,
+        "actions": 2,
+        "valid_actions": 0,
+        "bad_actions": 2,
+        "precision": 0.3333333333333333,
+        "recall": 0.16666666666666666,
+        "action_precision": 0.0,
+        "bad_action_rate": 1.0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 0.5,
+        "api_name_precision": 1.0
+    }
+}

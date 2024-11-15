@@ -1,0 +1,123 @@
+{
+    "name": "DeleteAccount-easy",
+    "conversation_id": "c40b9b9e-e8f6-4a9b-8832-a119ed3e75b6",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "DeleteAccount"
+    ],
+    "scenario": "DeleteAccount easy scenario",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ahhchiu"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey this service sucks, I'd like to delete my account"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sorry to hear that, I need your password to delete your account.",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "I'll need your password to proceed with deleting your account. Please provide it, and I'll take care of the rest.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Agh everything is annoying on this platform. It's eehahTe2t"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I have deleted your account. Please let us know if you have any feedback",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "password": "eehahTe2t"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "password": "eehahTe2t",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "I'm sorry to hear that you're having a frustrating experience. Let's proceed with deleting your account. Here's the plan:\n\nStep 1: Use the `DeleteAccount` function to delete your account.\n- Parameters: \n  - password: \"eehahTe2t\"\n\n#V1 = DeleteAccount(password=\"eehahTe2t\")\n\nLet's execute this step and see if it succeeds.",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your account has been successfully deleted. If you have any other concerns or need further assistance, feel free to let me know.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Just that you suck, bye bye!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,158 @@
+{
+    "name": "UserLogin-easy",
+    "conversation_id": "1df9e4a7-b93c-45c1-8914-10fdaf0b86ab",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "UserLogin"
+    ],
+    "scenario": "UserLogin easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you log me in?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Reflection: Step 1: Inform the user that logging in requires a registered account and ask if they have an existing account.\nStep 2: If the user confirms having an account, use the #V QueryUser tool with the parameter username from the user's input.\nStep 3: If the QueryUser tool returns a user, proceed to Step 4. Otherwise, inform the user that the account was not found and suggest checking the username or registering a new account.\nStep 4: Use the #V UserLogin tool with the parameters username and password provided by the user.\nStep 5: Check the return value of UserLogin. If a session_token is returned, inform the user about the successful login and provide any relevant account information. If the login fails, inform the user and suggest checking their credentials or using a password reset option.\nModel calls directly_answer (separate model-call ommitted)",
+                    "metadata": {
+                        "reflection": "Step 1: Inform the user that logging in requires a registered account and ask if they have an existing account.\nStep 2: If the user confirms having an account, use the #V QueryUser tool with the parameter username from the user's input.\nStep 3: If the QueryUser tool returns a user, proceed to Step 4. Otherwise, inform the user that the account was not found and suggest checking the username or registering a new account.\nStep 4: Use the #V UserLogin tool with the parameters username and password provided by the user.\nStep 5: Check the return value of UserLogin. If a session_token is returned, inform the user about the successful login and provide any relevant account information. If the login fails, inform the user and suggest checking their credentials or using a password reset option.",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "What's your password?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": null
+                        }
+                    },
+                    "response": null,
+                    "exception": "The password is incorrect.",
+                    "metadata": {
+                        "reflection": "Step 1: #V1 = UserLogin(username='justinkool', password=None)",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The password is incorrect. What's your password?",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "justforkicks123"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "You're logged in!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "justinkool",
+                            "message": "The password you provided is incorrect. Please provide the correct password or reset your password if you have forgotten it."
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "Step 1: Inform the user that the password is incorrect and ask them to provide the correct password or reset their password if they have forgotten it.\n#V1 = SendMessage[receiver = \"justinkool\", message = \"The password you provided is incorrect. Please provide the correct password or reset your password if you have forgotten it.\"]",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, the password you provided is incorrect. Please provide the correct password or reset your password if you have forgotten it.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 2,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 0.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

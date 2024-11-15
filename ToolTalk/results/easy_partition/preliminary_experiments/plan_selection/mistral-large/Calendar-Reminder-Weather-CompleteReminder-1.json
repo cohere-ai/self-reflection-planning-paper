@@ -1,0 +1,295 @@
+{
+    "name": "Calendar-Reminder-Weather-CompleteReminder-1",
+    "conversation_id": "90d1b411-80aa-467c-883b-a9e363912c05",
+    "suites_used": [
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "GetReminders",
+        "CompleteReminder",
+        "AddReminder"
+    ],
+    "scenario": "The user has a reminder to buy a birthday gift for their friend by Monday (AddReminder). They want to see what the weather is like in their friend's city, so they can choose an appropriate gift (CurrentWeather). They see that the weather is cold and snowy, so they decide to buy a warm scarf and gloves. They create an event on their calendar to go to the mall on Saturday (CreateEvent). They also want to compare the weather in their friend's city to their own, so they use the HistoricWeather API to get the average temperature and precipitation for both locations in the past month (HistoricWeather). They see that their friend's city is much colder and wetter than theirs, so they feel good about their gift choice. They buy the gift on Saturday and complete the reminder (CompleteReminder).",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Check my reminders."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have a reminder to buy Brody a birthday present by next Monday.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-09-18 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Call Bob",
+                                "due_date": "2023-09-20 15:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Buy groceries",
+                                "due_date": "2023-09-20 18:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-09-18 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Plan:\nStep 1: Retrieve reminders.\n#V1 = GetReminders[]",
+                        "response": "{\n  \"id\": \"3c7885a5d48143c78409ceea0b8f5b1d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116123,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"6dXRFZAeI\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3655,\n    \"total_tokens\": 3672,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here are your current reminders:\n\n- Call Bob, due on 2023-09-20 15:00:00\n- Buy groceries, due on 2023-09-20 18:00:00\n- Buy Brody a birthday present, due on 2023-09-18 00:00:00",
+                    "metadata": {
+                        "reflection": "Here are your current reminders:\n\n- Call Bob, due on 2023-09-20 15:00:00\n- Buy groceries, due on 2023-09-20 18:00:00\n- Buy Brody a birthday present, due on 2023-09-18 00:00:00",
+                        "response": "{\n  \"id\": \"ce43f603da1b46d485b89dbcb95d1db9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116124,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here are your current reminders:\\n\\n- Call Bob, due on 2023-09-20 15:00:00\\n- Buy groceries, due on 2023-09-20 18:00:00\\n- Buy Brody a birthday present, due on 2023-09-18 00:00:00\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3550,\n    \"total_tokens\": 3645,\n    \"completion_tokens\": 95\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Is it getting cold yet in Juneau?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The current weather in Juneau is rainy with a low of 50 and a high of 59.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "Juneau"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 59,
+                            "low": 50,
+                            "conditions": "30% Rainy"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "Juneau"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 59,
+                            "low": 50,
+                            "conditions": "30% Rainy"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Check the current weather in Juneau.\n#V1 = CurrentWeather[Juneau]",
+                        "response": "{\n  \"id\": \"56cbab15fd314bcca038a6740df87407\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727112243,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"XmLgt29iU\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CurrentWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"Juneau\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3803,\n    \"total_tokens\": 3826,\n    \"completion_tokens\": 23\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "It's currently 59 degrees in Juneau with a low of 50 degrees. It's also 30% likely to rain.",
+                    "metadata": {
+                        "reflection": "It's currently 59 degrees in Juneau with a low of 50 degrees. It's also 30% likely to rain.",
+                        "response": "{\n  \"id\": \"ec66cf88655a48ef924b91d0accd25b7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727112244,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"It's currently 59 degrees in Juneau with a low of 50 degrees. It's also 30% likely to rain.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3567,\n    \"total_tokens\": 3599,\n    \"completion_tokens\": 32\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Ok I think I'll get them a new raincoat, can you set a reminder to go buy that for Saturday? Mark the original reminder as complete."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "I have added a reminder to buy Brody a new raincoat on Saturday and marked the reminder to buy them a birthday present as complete.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Buy Brody a new raincoat",
+                            "due_date": "2023-09-16 00:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "1f-8a4c"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Buy a new raincoat for Brody",
+                            "due_date": "2023-09-16 00:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Add a reminder to buy a new raincoat for Saturday.\n#V1 = AddReminder[task = \"Buy a new raincoat for Brody\", due_date = \"2023-09-16 00:00:00\"]\nStep 2: Complete the original reminder.\n#V2 = CompleteReminder[reminder_id = \"1f-8a4c\"]",
+                        "response": "{\n  \"id\": \"206e7efd5b1f44749ddf6eb336d5a2b1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116136,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"XrR9qXI6B\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Buy a new raincoat for Brody\\\", \\\"due_date\\\": \\\"2023-09-16 00:00:00\\\"}\"\n            }\n          },\n          {\n            \"id\": \"a48TDLkq9\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CompleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"1f-8a4c\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4037,\n    \"total_tokens\": 4120,\n    \"completion_tokens\": 83\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "1f-8a4c",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've set a reminder for you to buy a new raincoat for Brody on Saturday.",
+                    "metadata": {
+                        "reflection": "I've set a reminder for you to buy a new raincoat for Brody on Saturday.",
+                        "response": "{\n  \"id\": \"e18ddcf98f024e998c932769d65c8eb5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116139,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I've set a reminder for you to buy a new raincoat for Brody on Saturday.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3801,\n    \"total_tokens\": 3822,\n    \"completion_tokens\": 21\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "CreateEvent",
+        "AddReminder",
+        "CompleteReminder",
+        "CurrentWeather",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 4,
+        "matches": 4,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

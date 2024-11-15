@@ -1,0 +1,389 @@
+{
+    "name": "golden_conversation_3",
+    "conversation_id": "3",
+    "suites_used": [
+        "Calendar",
+        "Messages",
+        "AccountTools"
+    ],
+    "apis_used": [
+        "QueryCalendar",
+        "SearchMessages",
+        "QueryUser",
+        "ModifyEvent",
+        "SendMessage"
+    ],
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 14:15:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have a one on one but the other person hasn't show up yet. Did the meeting get cancelled?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Looks like you have a meeting with Hugo from 2 to 3pm. Would you like me to send him a message?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 14:00:00",
+                            "end_time": "2023-09-11 15:00:00"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "294b409-6535",
+                                "name": "1 on 1 with Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 14:00:00",
+                            "end_time": "2023-09-11 15:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "294b409-6535",
+                                "name": "1 on 1 with Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Query the user's calendar for events around the specified time to check the status of the meeting.\n#V1 = QueryCalendar[start_time: \"2023-09-11 14:00:00\", end_time: \"2023-09-11 15:00:00\"]\n\nStep 2: Search the user's inbox for any emails related to meeting cancellations or rescheduling.\n#V2 = SearchInbox[query: \"one-on-one meeting cancellation OR rescheduled\", match_type: \"any\", start_date: \"2023-09-11 00:00:00\", end_date: \"2023-09-11 14:15:00\"]\n\nStep 3: Based on the results from steps 1 and 2, inform the user about the status of the meeting.\n#V3 = TextResponse[If #V1 indicates canceled or #V2 contains relevant emails, \"The meeting has been canceled or rescheduled.\", else \"The meeting is still scheduled, but the other participant hasn't joined yet.\"]",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"query\": \"one-on-one meeting cancellation OR rescheduled\", \"match_type\": \"any\", \"start_date\": \"2023-09-11 00:00:00\", \"end_date\": \"2023-09-11 14:15:00\"}",
+                                "name": "SearchInbox"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "query": "one-on-one meeting cancellation OR rescheduled",
+                            "match_type": "any",
+                            "start_date": "2023-09-11 00:00:00",
+                            "end_date": "2023-09-11 14:15:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your one-on-one meeting with Hugo is still scheduled from 2:00 PM to 3:00 PM today, and there are no emails indicating that it has been cancelled or rescheduled. It seems like the meeting is still on, so the other person might just be running late.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Hmm, that might be too slow. Do you have his phone number? Also can you check if he's sent any messages?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Hugo's phone number is 650-555-7832. He sent you a message at 2:05pm saying he'll be 5 minutes late. Would you like me to send him a message?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "sender": "salcano"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "006f526d-00747977",
+                                "timestamp": "2023-09-11 14:05:00",
+                                "sender": "salcano",
+                                "message": "Hey I'm running a bit late. I'll be there in 5 minutes."
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "username": "salcano"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "salcano",
+                                "email": "hugosalcano@somail.com",
+                                "phone": "402-581-7997",
+                                "name": "Hugo Saldana Cano"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "",
+                            "sender": "salcano",
+                            "start_date": "2023-09-11 13:00:00",
+                            "end_date": "2023-09-11 14:15:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "006f526d-00747977",
+                                "timestamp": "2023-09-11 14:05:00",
+                                "sender": "salcano",
+                                "message": "Hey I'm running a bit late. I'll be there in 5 minutes."
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Check if there are any messages from Hugo.\n#V1 = SearchMessages(query=\"\", sender=\"salcano\", start_date=\"2023-09-11 13:00:00\", end_date=\"2023-09-11 14:15:00\")\n\nStep 2: Attempt to retrieve Hugo's account information to check for contact details.\n#V2 = QueryUser(username=\"salcano\")",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"username\": \"salcano\"}",
+                                "name": "QueryUser"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "salcano",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "salcano",
+                                "email": "hugosalcano@somail.com",
+                                "phone": "402-581-7997",
+                                "name": "Hugo Saldana Cano"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Hugo sent a message at 2:05 PM saying he's running a bit late and will be there in 5 minutes. \n\nIf you need to reach him by phone, his number is 402-581-7997.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Yes, can you reschedule the meeting to tomorrow at the same time? Also send him a message asking what's going on and that I've rescheduled the meeting."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "I've rescheduled your meeting with Jose Garcia to tomorrow at 2pm. I've also sent him a message saying you've rescheduled the meeting and asking what's going on. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "294b409-6535",
+                            "new_start_time": "2023-09-12 14:00:00",
+                            "new_end_time": "2023-09-12 15:00:00"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "salcano",
+                            "message": "Hey Hugo, I've rescheduled our meeting to tomorrow at the same time. What's going on?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "294b409-6535",
+                            "new_start_time": "2023-09-12 14:00:00",
+                            "new_end_time": "2023-09-12 15:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Reschedule the current meeting with Hugo to the same time tomorrow.\n#V1 = ModifyEvent(event_id=\"294b409-6535\", new_start_time=\"2023-09-12 14:00:00\", new_end_time=\"2023-09-12 15:00:00\")\n\nStep 2: Send a message to Hugo informing him about the rescheduled meeting.\n#V2 = SendMessage(receiver=\"salcano\", message=\"Hi Hugo, I've rescheduled our 1-on-1 to tomorrow at the same time. Let me know what's going on.\")",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"receiver\": \"salcano\", \"message\": \"Hi Hugo, I've rescheduled our 1-on-1 to tomorrow at the same time. Let me know what's going on.\"}",
+                                "name": "SendMessage"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "salcano",
+                            "message": "Hi Hugo, I've rescheduled our 1-on-1 to tomorrow at the same time. Let me know what's going on.",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've rescheduled your 1-on-1 meeting with Hugo to tomorrow at the same time, and I've sent him a message asking what's going on. Let me know if there's anything else you need!",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "No, that's all. Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 6,
+        "ground_truths": 5,
+        "matches": 5,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.8333333333333334,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.8333333333333334
+    }
+}

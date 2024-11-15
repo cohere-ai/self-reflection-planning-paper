@@ -246,7 +246,7 @@ class OpenAIPredictor(BaseAPIPredictor):
 
                 response = openai_chat_completion(
                     model=self.model,
-                    messages=messages,
+                    messages=deep_plan_messages,
                     # tools=self.tools,
                     temperature=self.temperature,
                     # tool_choice="none",

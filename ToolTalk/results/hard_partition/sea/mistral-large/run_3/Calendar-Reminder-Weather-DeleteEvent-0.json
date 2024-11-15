@@ -1,0 +1,397 @@
+{
+    "name": "Calendar-Reminder-Weather-DeleteEvent-0",
+    "conversation_id": "3594e114-eb95-4d4c-a368-98a18a7db1a9",
+    "suites_used": [
+        "Calendar",
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders",
+        "DeleteEvent",
+        "QueryCalendar",
+        "DeleteReminder"
+    ],
+    "scenario": "The user is planning a trip to Paris and wants to check the weather before booking their flights and hotels. They use ForecastWeather to get the 3-day forecast of Paris and see that it is sunny and mild. They then use CreateEvent to add a flight reservation event to their calendar, with the name, start_time, end_time, and location of the flight. They also use CreateEvent to add a hotel reservation event to their calendar, with the name, start_time, end_time, and location of the hotel. They then use AddReminder to create a reminder to pack their suitcase, with the task and due_date. They also use AddReminder to create a reminder to check in online, with the task and due_date. However, they later receive an email that their flight has been cancelled due to a strike. They use DeleteEvent to delete the flight reservation event from their calendar. They also use DeleteEvent to delete the hotel reservation event from their calendar. They then use DeleteReminder to delete the reminder to pack their suitcase. They also use DeleteReminder to delete the reminder to check in online. They then use QueryCalendar to see if they have any other events planned for the next week.",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "mstein"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I need to cancel my Paris trip because of the strikes. Can you delete all the events on my calendar and all my reminders that have Paris in the title or description"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Ok I deleted your events \"Fly to Paris\", \"Shopping\", \"Fly back from Paris\", and your reminder \"Pack for Paris\"",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-30 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "5480d946-2381",
+                                "name": "Fly to Paris",
+                                "event_type": "event",
+                                "start_time": "2023-09-12 10:00:00",
+                                "end_time": "2023-09-13 04:00:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": null
+                            },
+                            {
+                                "event_id": "7ea2fc9f-f7b4",
+                                "name": "Shopping",
+                                "event_type": "event",
+                                "start_time": "2023-09-13 14:00:00",
+                                "end_time": "2023-09-13 15:00:00",
+                                "location": "Paris",
+                                "description": "Get those paris goods!",
+                                "attendees": null
+                            },
+                            {
+                                "event_id": "7cdd6d20-040e",
+                                "name": "Fly back from Paris",
+                                "event_type": "event",
+                                "start_time": "2023-09-17 11:00:00",
+                                "end_time": "2023-09-18 05:30:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": null
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "5480d946-2381"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "7ea2fc9f-f7b4"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "7cdd6d20-040e"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "4f-9a41",
+                                "task": "Pack for Paris",
+                                "due_date": "2023-09-11 20:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "4f-9a41"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-01-01 00:00:00",
+                            "end_time": "2023-12-31 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "5480d946-2381",
+                                "name": "Fly to Paris",
+                                "event_type": "event",
+                                "start_time": "2023-09-12 10:00:00",
+                                "end_time": "2023-09-13 04:00:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": null
+                            },
+                            {
+                                "event_id": "2ff57743-1180",
+                                "name": "Client Meeting",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-29 10:00:00",
+                                "end_time": "2023-09-29 10:30:00",
+                                "location": "Conference Room 2",
+                                "description": "Meeting with client from XBoe.",
+                                "attendees": [
+                                    "justinkool",
+                                    "mstein"
+                                ]
+                            },
+                            {
+                                "event_id": "7ea2fc9f-f7b4",
+                                "name": "Shopping",
+                                "event_type": "event",
+                                "start_time": "2023-09-13 14:00:00",
+                                "end_time": "2023-09-13 15:00:00",
+                                "location": "Paris",
+                                "description": "Get those paris goods!",
+                                "attendees": null
+                            },
+                            {
+                                "event_id": "7cdd6d20-040e",
+                                "name": "Fly back from Paris",
+                                "event_type": "event",
+                                "start_time": "2023-09-17 11:00:00",
+                                "end_time": "2023-09-18 05:30:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": null
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Query for events that contain \"Paris\" in the title or description.\n#V1 = QueryCalendar[{start_time: \"2023-01-01 00:00:00\", end_time: \"2023-12-31 23:59:59\"}]\n\nStep 2: Filter and delete each event that contains \"Paris\" in the title or description.\n#V2 = DeleteEvent[{event_id: event.id}] for each event in #V1 if \"Paris\" in event.title or \"Paris\" in event.description\n\nStep 3: Get all reminders.\n#V3 = GetReminders[]\n\nStep 4: Filter and delete each reminder that contains \"Paris\" in the task.\n#V4 = DeleteReminder[{reminder_id: reminder.id}] for each reminder in #V3 if \"Paris\" in reminder.task",
+                        "response": "{\n  \"id\": \"41e8bac5cc6c449ca551e412ef97c10f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729693199,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"Pbg4sbNps\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryCalendar\",\n              \"arguments\": \"{\\\"start_time\\\": \\\"2023-01-01 00:00:00\\\", \\\"end_time\\\": \\\"2023-12-31 23:59:59\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3894,\n    \"total_tokens\": 3960,\n    \"completion_tokens\": 66\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Take out the trash",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Write abstract",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Write up some goals before meeting",
+                                "due_date": "2023-09-12 15:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-9a41",
+                                "task": "Pack for Paris",
+                                "due_date": "2023-09-11 20:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"65573979774d4d2687d0de442e596897\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729693202,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"uUqeLFoHa\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3900,\n    \"total_tokens\": 3917,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteEvent",
+                        "parameters": {
+                            "event_id": "5480d946-2381",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"227ca4a3834843aaba4a8247b5339886\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729693204,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"gEEesdjzv\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"5480d946-2381\\\"}\"\n            }\n          },\n          {\n            \"id\": \"BjhQVeRnI\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"7ea2fc9f-f7b4\\\"}\"\n            }\n          },\n          {\n            \"id\": \"dtjlwsk8S\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"7cdd6d20-040e\\\"}\"\n            }\n          },\n          {\n            \"id\": \"digKHNgWW\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"4f-9a41\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4198,\n    \"total_tokens\": 4318,\n    \"completion_tokens\": 120\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteEvent",
+                        "parameters": {
+                            "event_id": "7ea2fc9f-f7b4",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteEvent",
+                        "parameters": {
+                            "event_id": "7cdd6d20-040e",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "4f-9a41",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have deleted all the events and reminders that have Paris in the title or description.",
+                    "metadata": {
+                        "reflection": "I have deleted all the events and reminders that have Paris in the title or description.",
+                        "response": "{\n  \"id\": \"f9f54eded9de49f4b4e6fa1339b70a2f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729693209,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have deleted all the events and reminders that have Paris in the title or description.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4487,\n    \"total_tokens\": 4505,\n    \"completion_tokens\": 18\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "CreateEvent",
+        "DeleteEvent",
+        "QueryCalendar",
+        "AddReminder",
+        "DeleteReminder",
+        "ForecastWeather"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 6,
+        "ground_truths": 6,
+        "matches": 6,
+        "actions": 4,
+        "valid_actions": 4,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

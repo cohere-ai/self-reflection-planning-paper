@@ -1,0 +1,183 @@
+{
+    "name": "golden_conversation_2",
+    "conversation_id": "2",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "QueryCalendar",
+        "CreateEvent"
+    ],
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 13:20:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey, I think I need a break. Do I have an hour for a walk?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You do not have any events for the next hour. Would you like to schedule a walk?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00"
+                        }
+                    },
+                    "response": {
+                        "events": []
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "294b409-6535",
+                                "name": "1 on 1 with Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"56d20213ab764b019bb3162abb9ce3b8\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147783,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"TlZIvjttc\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryCalendar\",\n              \"arguments\": \"{\\\"start_time\\\": \\\"2023-09-11 13:20:00\\\", \\\"end_time\\\": \\\"2023-09-11 14:20:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3333,\n    \"total_tokens\": 3399,\n    \"completion_tokens\": 66\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have a meeting with Hugo at 2:00 PM. You have about 40 minutes for a walk.",
+                    "metadata": {
+                        "reflection": "You have a meeting with Hugo at 2:00 PM. You have about 40 minutes for a walk.",
+                        "response": "{\n  \"id\": \"f19da6e6d852484c898f13b72620704b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147785,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"You have a meeting with Hugo at 2:00 PM. You have about 40 minutes for a walk.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3561,\n    \"total_tokens\": 3586,\n    \"completion_tokens\": 25\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Yes, please block the next hour for me."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Your event has been created. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Walk",
+                            "event_type": "event",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "walk",
+                            "event_type": "event",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"9963aa455e434a0abd3c7d4a67ad9348\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147787,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"uM35PN0zS\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CreateEvent\",\n              \"arguments\": \"{\\\"name\\\": \\\"walk\\\", \\\"event_type\\\": \\\"event\\\", \\\"start_time\\\": \\\"2023-09-11 13:20:00\\\", \\\"end_time\\\": \\\"2023-09-11 14:20:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3470,\n    \"total_tokens\": 3550,\n    \"completion_tokens\": 80\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have scheduled a walk for you from 13:20:00 to 14:20:00. Enjoy your break!",
+                    "metadata": {
+                        "reflection": "I have scheduled a walk for you from 13:20:00 to 14:20:00. Enjoy your break!",
+                        "response": "{\n  \"id\": \"f638eda2f9e1494894fb3139b387b62f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147789,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have scheduled a walk for you from 13:20:00 to 14:20:00. Enjoy your break!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3603,\n    \"total_tokens\": 3635,\n    \"completion_tokens\": 32\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "No, thank you. I'm heading out now."
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 2,
+        "matches": 2,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

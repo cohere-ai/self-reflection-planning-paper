@@ -1,0 +1,177 @@
+{
+    "name": "UserLogin-easy",
+    "conversation_id": "1df9e4a7-b93c-45c1-8914-10fdaf0b86ab",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "UserLogin"
+    ],
+    "scenario": "UserLogin easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you log me in?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "test",
+                            "password": "test"
+                        }
+                    },
+                    "response": null,
+                    "exception": "The username does not exist.",
+                    "metadata": {
+                        "reflection": "Respond to user with: \"Sure, please provide your login credentials (username and password):\"",
+                        "response": "{\n  \"id\": \"dba37edf10e6425aa41e000901cbe0c3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731065365,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"CeoiUON5p\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"UserLogin\",\n              \"arguments\": \"{\\\"username\\\": \\\"test\\\", \\\"password\\\": \\\"test\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3665,\n    \"total_tokens\": 3691,\n    \"completion_tokens\": 26\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, but the username does not exist.",
+                    "metadata": {
+                        "reflection": "I'm sorry, but the username does not exist.",
+                        "response": "{\n  \"id\": \"991b91cd75a045babd95608edba5346b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731065367,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I'm sorry, but the username does not exist.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3388,\n    \"total_tokens\": 3400,\n    \"completion_tokens\": 12\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "What's your password?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "justinkool"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "Step 1: Check that user exists.\n#V1 = QueryUser[username=justinkool]\nStep 2: Ask the user for their password.\nStep 3: Log in the user using the provided password.\n#V2 = UserLogin[username=justinkool, password=(user's input)]",
+                        "response": "{\n  \"id\": \"4f61fb08377642cc85725a6e020ca716\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731065440,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"1CfpEzzRq\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"justinkool\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3729,\n    \"total_tokens\": 3751,\n    \"completion_tokens\": 22\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, but it seems like you're not logged in. Would you like to log in?",
+                    "metadata": {
+                        "reflection": "I'm sorry, but it seems like you're not logged in. Would you like to log in?",
+                        "response": "{\n  \"id\": \"590b7a0d566941908ffb4ef71f3b0fb2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731065441,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I'm sorry, but it seems like you're not logged in. Would you like to log in?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3397,\n    \"total_tokens\": 3420,\n    \"completion_tokens\": 23\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "justforkicks123"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "You're logged in!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Log the user in to confirm credentials.\n#V1 = UserLogin[username: 'justinkool', password: 'justforkicks123']",
+                        "response": "{\n  \"id\": \"ee5fd55817f54e37b05b5c0ab00af2a9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731065561,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"lJ0SdvvS9\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"UserLogin\",\n              \"arguments\": \"{\\\"username\\\": \\\"justinkool\\\", \\\"password\\\": \\\"justforkicks123\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3713,\n    \"total_tokens\": 3747,\n    \"completion_tokens\": 34\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have been logged in successfully!",
+                    "metadata": {
+                        "reflection": "You have been logged in successfully!",
+                        "response": "{\n  \"id\": \"029c9de8ccaa4bb2991f5b555abd7f9b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731065563,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"You have been logged in successfully!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3442,\n    \"total_tokens\": 3449,\n    \"completion_tokens\": 7\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 2,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

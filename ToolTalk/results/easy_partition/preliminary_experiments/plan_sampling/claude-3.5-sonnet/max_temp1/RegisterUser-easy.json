@@ -1,0 +1,139 @@
+{
+    "name": "RegisterUser-easy",
+    "conversation_id": "79e26be0-f2bb-41e1-b3a7-2273ef6dd194",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "RegisterUser"
+    ],
+    "scenario": "RegisterUser easy scenario",
+    "user": {
+        "username": "hestler",
+        "email": "j.hester@gahoo.com",
+        "phone": "708-340-0190",
+        "name": "Julian Hester",
+        "password": "Meizuch4uu"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I'd like to sign up for a new account!"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, to sign up for a new account, I'll need your name, email, phone number, username, and a password.",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Certainly! I'd be happy to help you sign up for a new account. To do this, we'll use the RegisterUser tool to create your account. Before we proceed, I'll need to gather some information from you. Let's go through the process step by step.\n\nPlan:\nStep 1: Register the new user with the provided information.\n#V1 = RegisterUser[username, password, email, name, phone]\n\nNow, let's gather the necessary information:\n\n1. Username: What would you like your username to be?\n2. Password: Please provide a secure password for your account.\n3. Email: What's your email address?\n4. Name: What's your full name?\n5. Phone: What's your phone number? (Please provide it in the format xxx-xxx-xxxx)\n\nOnce you provide this information, I'll use it to create your account. Please note that for security reasons, you should never share your password with anyone, including me. When you provide the password, I'll use it directly in the registration process without storing or displaying it.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "My name is Julian Hester, my email is j.hester@gahoo.com, my phone number is 708-340-0190. Can you set my username to hestler and my password to Meizuch4uu?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sure, I've created your account. You have already been logged in.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "hestler",
+                            "password": "Meizuch4uu",
+                            "email": "j.hester@gahoo.com",
+                            "phone": "708-340-0190",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "hestler",
+                            "email": "j.hester@gahoo.com",
+                            "phone": "708-340-0190",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "hestler",
+                            "password": "Meizuch4uu",
+                            "email": "j.hester@gahoo.com",
+                            "name": "Julian Hester",
+                            "phone": "708-340-0190"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "hestler",
+                            "email": "j.hester@gahoo.com",
+                            "phone": "708-340-0190",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll help you register a new account with the information you've provided. Let me create a plan to use the RegisterUser tool to set up your account.\n\nStep 1: Register the new user account\n#V1 = RegisterUser[username=\"hestler\", password=\"Meizuch4uu\", email=\"j.hester@gahoo.com\", name=\"Julian Hester\", phone=\"708-340-0190\"]\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat news, Julian! Your account has been successfully created. Here's a summary of your account details:\n\n- Username: hestler\n- Name: Julian Hester\n- Email: j.hester@gahoo.com\n- Phone: 708-340-0190\n\nYour account is now active, and you've been automatically logged in. The system has generated a session token for you, which means you're ready to start using the platform.\n\nIs there anything else you'd like to do with your new account? Perhaps set up a reminder, check the weather, or add an event to your calendar?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Wow that was easy! Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

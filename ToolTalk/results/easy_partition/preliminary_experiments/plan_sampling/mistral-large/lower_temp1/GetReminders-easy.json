@@ -1,0 +1,199 @@
+{
+    "name": "GetReminders-easy",
+    "conversation_id": "20c0fec4-3ef9-4ca3-99b9-163f1ab8049d",
+    "suites_used": [
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders"
+    ],
+    "scenario": "GetReminders easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey do I have any reminders set? I feel like I'm forgetting to do something."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have 3 reminders set. Would you like me to read them to you?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Take out the trash",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Write abstract",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Take out the trash",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Write abstract",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Get a list of reminders.\n#V1 = GetReminders[]",
+                        "response": "{\n  \"id\": \"e6f07bfdf9f24ea0926db09386ad39a1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727108130,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"5leOV2IRa\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3669,\n    \"total_tokens\": 3686,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here are your reminders:\n\n- Take out the trash (completed)\n- Write abstract (due 2023-09-12 00:00:00)\n- Call grandma",
+                    "metadata": {
+                        "reflection": "Here are your reminders:\n\n- Take out the trash (completed)\n- Write abstract (due 2023-09-12 00:00:00)\n- Call grandma",
+                        "response": "{\n  \"id\": \"cc49a5a9ebc548d6a309885a152c9dd1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727108132,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here are your reminders:\\n\\n- Take out the trash (completed)\\n- Write abstract (due 2023-09-12 00:00:00)\\n- Call grandma\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3521,\n    \"total_tokens\": 3570,\n    \"completion_tokens\": 49\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Sure"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "You have reminders to take out the trash, write abstract, and call grandma. Take out the trash is complete. Write abstract is due tomorrow. Call grandma is pending.",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Take out the trash",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Write abstract",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve the user's reminders.\n#V1 = GetReminders[]",
+                        "response": "{\n  \"id\": \"3f7c756fc8344c8abe70d4dcb82db5f8\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727108134,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"0NRbKDjZQ\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3878,\n    \"total_tokens\": 3895,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have the following reminders:\n\n- Write abstract by 2023-09-12 00:00:00\n- Call grandma",
+                    "metadata": {
+                        "reflection": "You have the following reminders:\n\n- Write abstract by 2023-09-12 00:00:00\n- Call grandma",
+                        "response": "{\n  \"id\": \"8480f154829d4322bc0c3b414a86e1b6\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727108136,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"You have the following reminders:\\n\\n- Write abstract by 2023-09-12 00:00:00\\n- Call grandma\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3728,\n    \"total_tokens\": 3766,\n    \"completion_tokens\": 38\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Oh yikes, I knew I forgot something."
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

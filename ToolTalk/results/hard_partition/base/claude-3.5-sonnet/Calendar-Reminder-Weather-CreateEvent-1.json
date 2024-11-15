@@ -1,0 +1,419 @@
+{
+    "name": "Calendar-Reminder-Weather-CreateEvent-1",
+    "conversation_id": "a23c46c4-9e85-426e-8649-64c440067fd1",
+    "suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "AddReminder",
+        "CompleteReminder",
+        "GetReminders",
+        "CreateEvent",
+        "ForecastWeather"
+    ],
+    "scenario": "The user wants to create a reminder event for their anniversary with their partner. They first use the CurrentWeather API with their partner's location to get the current weather of their partner's city (CurrentWeather). They see that it is raining and cold there, so they decide to send them a warm and cozy gift. They then create a reminder event with the name \"Anniversary\", the event type as \"reminder\", the description as \"Send gift to partner\", and the start time and end time as the same date and time, which is one week before their anniversary (CreateEvent). They also want to book a flight and a hotel for their anniversary trip, which they plan to take two weeks after their anniversary. They use a third-party API to search for flights and hotels based on their destination, budget, and preferences (SearchFlightsAndHotels). They find a suitable flight and hotel and book them using another third-party API (BookFlightAndHotel). They then create two more events on their calendar, one for the flight departure and arrival, and one for the hotel check-in and check-out, with the corresponding names, event types, descriptions, start times, end times, and locations (CreateEvent x 2). They also want to set a reminder for themselves to pack their bags and print their tickets. They add a reminder with the task \"Pack and print\" and the due date as one day before their flight (AddReminder).",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Tokyo",
+        "timestamp": "2023-09-14 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Need help getting set up for my 5th anniversary with Ana. I want to surprise her with a nice vacation to Italy. Can you add an event to our calendar for Saturday titled \"Anniversary Dinner\" from 8 pm to 10 pm? That's actually when we need to go to the airport though, so can you also add a reminder for me to pack our bags Friday at 9pm?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I've added a reminder to pack your bags on 9/15 at 9pm. What is Ana's username?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pack our bags",
+                            "due_date": "2023-09-15 21:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Anniversary Dinner",
+                            "event_type": "event",
+                            "description": "5th anniversary celebration and departure for Italy vacation",
+                            "start_time": "2023-09-16 20:00:00",
+                            "end_time": "2023-09-16 22:00:00",
+                            "location": "Airport",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to help you set up for your 5th anniversary with Ana. It's wonderful that you're planning a surprise vacation to Italy. I'll add the event to your calendar and set a reminder for packing. Let's do this step by step.\n\nFirst, let's add the \"Anniversary Dinner\" event to your calendar for Saturday:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Pack bags for 5th anniversary trip to Italy",
+                            "due_date": "2023-09-15 21:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nCertainly! I've added the \"Anniversary Dinner\" event to your calendar for this Saturday from 8 PM to 10 PM. The event has been created successfully with the ID 'e149636f-d9ca'. I've included in the description that it's for your 5th anniversary celebration and departure for your Italy vacation. I've also set the location as \"Airport\" since you mentioned that's when you need to go to the airport.\n\nNow, let's add a reminder for you to pack your bags on Friday at 9 PM.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I'd be happy to help you set up for your 5th anniversary with Ana. I've added the event to your calendar and set a reminder for packing. Here's what I've done:\n\n1. Added an event to your calendar:\n   - Title: \"Anniversary Dinner\"\n   - Date: This Saturday (September 16, 2023)\n   - Time: 8:00 PM to 10:00 PM\n   - Location: Airport (since you mentioned you need to go to the airport at that time)\n   - Description: 5th anniversary celebration and departure for Italy vacation\n\n2. Set a reminder:\n   - Task: Pack bags for 5th anniversary trip to Italy\n   - Due: Friday (September 15, 2023) at 9:00 PM\n\nBoth the event and the reminder have been successfully added to your account. The event ID is 'e149636f-d9ca', and the reminder ID is '5b-dd80'.\n\nIs there anything else you'd like me to do to help prepare for your anniversary trip to Italy? Perhaps you'd like me to check the weather forecast for your destination or help with any other planning details?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "anabanana"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've added a calendar event to both of your calendars from 8 to 10pm on 9/16 titled \"Anniversary Dinner\".",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Anniversary Dinner",
+                            "event_type": "event",
+                            "start_time": "2023-09-16 20:00:00",
+                            "end_time": "2023-09-16 22:00:00",
+                            "attendees": [
+                                "anabanana"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Anniversary Dinner (Airport Departure)",
+                            "event_type": "meeting",
+                            "description": "5th anniversary celebration and departure for Italy vacation",
+                            "start_time": "2023-09-16 20:00:00",
+                            "end_time": "2023-09-16 22:00:00",
+                            "location": "Airport",
+                            "attendees": [
+                                "salcano",
+                                "anabanana"
+                            ],
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Thank you for providing Ana's username. Now, I'll add the event to your calendar for your anniversary dinner, which will actually be when you need to go to the airport. I'll make sure to include both you and Ana as attendees.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat! I've added the event to your calendar and created a reminder for you. Here's a summary of what I've done:\n\n1. Added a reminder:\n   - Task: Pack our bags\n   - Due date: Friday, September 15, 2023, at 9:00 PM\n\n2. Created a calendar event:\n   - Title: Anniversary Dinner (Airport Departure)\n   - Date: Saturday, September 16, 2023\n   - Time: 8:00 PM to 10:00 PM\n   - Location: Airport\n   - Attendees: You (salcano) and Ana (anabanana)\n   - Description: 5th anniversary celebration and departure for Italy vacation\n\nIs there anything else you'd like me to do to help you prepare for your anniversary trip to Italy?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Great, I also just bought her present so you can mark that reminder as complete."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Okay I marked the reminder to buy Ana a present as complete.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "98-d687",
+                                "task": "buy Ana a present",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "98-d687"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Finish report",
+                                "due_date": "2023-09-11 08:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "apologize to landlord",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "submit blog post",
+                                "due_date": "2023-09-11 10:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "98-d687",
+                                "task": "buy Ana a present",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-08-27 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "5b-dd80",
+                                "task": "Pack our bags",
+                                "due_date": "2023-09-15 21:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'm glad you've bought the present for Ana. Let's mark that reminder as complete for you.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "98-d687",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nI see that you have a reminder to \"buy Ana a present\" with the reminder ID '98-d687'. Since you've completed this task, I'll mark it as complete for you.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've marked the reminder to buy Ana's present as complete. The reminder with ID '98-d687' for the task \"buy Ana a present\" has been successfully completed.\n\nIs there anything else you'd like me to do to help with your anniversary preparations?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "What's the weather going to be when we land in Rome?"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "The three day weather forcast for Rome is sunny with a low of 68 and a high of 75, sunny with a low of 65 and a high of 72, and sunny with a low of 69 and a high of 75.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "Rome"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-15",
+                                "high": 75,
+                                "low": 68,
+                                "conditions": "Sunny"
+                            },
+                            {
+                                "date": "2023-09-16",
+                                "high": 72,
+                                "low": 65,
+                                "conditions": "Sunny"
+                            },
+                            {
+                                "date": "2023-09-17",
+                                "high": 75,
+                                "low": 69,
+                                "conditions": "Sunny"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "Rome, Italy"
+                        }
+                    },
+                    "response": null,
+                    "exception": "Location rome, italy not found in database",
+                    "metadata": {
+                        "content": "To provide you with accurate weather information for Rome when you land, I'll need to know the exact date of your arrival. Based on your previous messages, it seems you're planning to leave on Saturday evening (September 16th), so I'll assume you'll be arriving in Rome on Sunday, September 17th. Let me check the weather forecast for Rome on that day.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize, but I wasn't able to retrieve the weather forecast for Rome, Italy. The weather service might be experiencing some issues or the location might not be in their database. \n\nHowever, I can provide you with some general information about the weather in Rome:\n\n1. Rome typically has a Mediterranean climate, which means mild winters and hot summers.\n2. In September (assuming you're traveling soon), Rome usually experiences pleasant weather. Average temperatures in September range from about 16\u00b0C (61\u00b0F) to 27\u00b0C (81\u00b0F).\n3. September is generally a dry month in Rome, but there can still be some occasional rainfall.\n\nTo get the most accurate and up-to-date weather information for your trip, I would recommend:\n\n1. Checking a reliable weather website or app a few days before your departure.\n2. Packing layers, as temperatures can vary throughout the day.\n3. Bringing a light raincoat or umbrella, just in case.\n\nIs there anything else you'd like to know about your trip or any other preparations I can help you with?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "CreateEvent",
+        "AddReminder",
+        "CurrentWeather"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 6,
+        "ground_truths": 5,
+        "matches": 2,
+        "actions": 4,
+        "valid_actions": 1,
+        "bad_actions": 3,
+        "precision": 0.3333333333333333,
+        "recall": 0.4,
+        "action_precision": 0.25,
+        "bad_action_rate": 0.75,
+        "success": false,
+        "soft_success": 0.1,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

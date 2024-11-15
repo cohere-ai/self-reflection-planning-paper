@@ -1,0 +1,234 @@
+{
+    "name": "Alarm-Reminder-Weather-DeleteAlarm-2",
+    "conversation_id": "1c95ccbf-03ad-4791-89a7-f9f3708eb3dc",
+    "suites_used": [
+        "Alarm",
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "AddReminder",
+        "AddAlarm"
+    ],
+    "scenario": "The user is a freelancer who works from home. They set an alarm for 9:00 AM using AddAlarm. They also add a reminder to finish a project by noon using AddReminder. They check the current weather of their city using CurrentWeather and see that it is cloudy and windy. They decide to work indoors and add another reminder to order lunch using AddReminder. They wake up to the alarm and complete the first reminder using CompleteReminder. They check the forecast weather of their city using ForecastWeather and see that it will be sunny and warm in the afternoon. They decide to go for a walk after work and add another reminder to apply sunscreen using AddReminder. They delete the alarm using DeleteAlarm and start working on the project.",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 10:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Set an alarm for tomorrow at 9 AM. Also a reminder to send an email to the client at noon."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Alarm has been set for tomorrow at 9 am and a reminder has been set to email the client at noon.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "time": "09:00:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "send an email to the client",
+                            "due_date": "2023-09-11 12:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Error: model makes no tool calls",
+                    "metadata": {
+                        "reflection": "Step 1: Set an alarm for tomorrow at 9 AM.\n#V1 = AddAlarm(time = '%H:%M:%S')\n\nStep 2: Set a reminder to send an email to the client at noon tomorrow.\n#V2 = AddReminder(task = 'Send an email to the client at noon', due_date = '%Y-%m-%d %H:%M:%S')",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Is it sunny outside?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The current weather is sunny with a high of 78 and a low of 60.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 78,
+                            "low": 60,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 78,
+                            "low": 60,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Find out the current weather in New York.\n#V1 = CurrentWeather[\"New York\"]",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "It is sunny in New York today. The high is 78 and the low is 60.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Set a reminder to apply sunscreen before lunch at 12:30."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok, reminder added to apply sunscreen at 12:30 pm.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "apply sunscreen",
+                            "due_date": "2023-09-11 12:30:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-d80"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Apply sunscreen before lunch",
+                            "due_date": "2023-09-11 12:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "20-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Respond to user with: \"#V1 = AddReminder[\"Apply sunscreen before lunch\", \"2023-09-11 12:30:00\"]\"",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Reminder has been set to apply sunscreen before lunch at 12:30.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm",
+        "DeleteAlarm",
+        "AddReminder",
+        "CompleteReminder",
+        "CurrentWeather",
+        "ForecastWeather"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 4,
+        "matches": 2,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 0.5,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.5,
+        "api_name_jaccard": 0.6666666666666666,
+        "api_name_recall": 0.6666666666666666,
+        "api_name_precision": 1.0
+    }
+}

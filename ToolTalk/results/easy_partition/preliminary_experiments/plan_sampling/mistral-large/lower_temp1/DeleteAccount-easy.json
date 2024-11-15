@@ -1,0 +1,125 @@
+{
+    "name": "DeleteAccount-easy",
+    "conversation_id": "c40b9b9e-e8f6-4a9b-8832-a119ed3e75b6",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "DeleteAccount"
+    ],
+    "scenario": "DeleteAccount easy scenario",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ahhchiu"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey this service sucks, I'd like to delete my account"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sorry to hear that, I need your password to delete your account.",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "To delete your account, I will need to verify your identity by confirming your password. Please provide your password.",
+                    "metadata": {
+                        "reflection": "To delete your account, I will need to verify your identity by confirming your password. Please provide your password.",
+                        "response": "{\n  \"id\": \"c9ab21c23f064524a0ea8b339b131cfe\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727108159,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"To delete your account, I will need to verify your identity by confirming your password. Please provide your password.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3627,\n    \"total_tokens\": 3650,\n    \"completion_tokens\": 23\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Agh everything is annoying on this platform. It's eehahTe2t"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I have deleted your account. Please let us know if you have any feedback",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "password": "eehahTe2t"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "password": "eehahTe2t",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Delete the user's account.\n#V1 = DeleteAccount[password=eehahTe2t]",
+                        "response": "{\n  \"id\": \"3d65d4599256496aa09a093384b3ddfc\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727108162,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"rUzSOMpy1\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteAccount\",\n              \"arguments\": \"{\\\"password\\\": \\\"eehahTe2t\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3704,\n    \"total_tokens\": 3729,\n    \"completion_tokens\": 25\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your account has been deleted.",
+                    "metadata": {
+                        "reflection": "Your account has been deleted.",
+                        "response": "{\n  \"id\": \"db28c537ddff4576ba04a903a1478e67\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727108164,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your account has been deleted.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3429,\n    \"total_tokens\": 3435,\n    \"completion_tokens\": 6\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Just that you suck, bye bye!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

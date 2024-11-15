@@ -1,0 +1,86 @@
+{
+    "name": "CurrentWeather-easy",
+    "conversation_id": "c59b5bc7-64a2-4b5f-8148-05675b78b019",
+    "suites_used": [
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather"
+    ],
+    "scenario": "CurrentWeather easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I'm thinking about going for a walk soon. What the weather currently like?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Conditions are sunny with a high of 78 and a low of 60. Have a nice walk!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 78,
+                            "low": 60,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "[{\"name\": \"CurrentWeather\", \"arguments\": {\"location\": \"New York\"}}]",
+                    "metadata": {
+                        "reflection": "For this, we need to check the weather in New york.\nThe steps are:\nStep 1: Find the weather for today.\n#V1 = \"CurrentWeather[\\\"New York\\\"]\"",
+                        "response": "{\n  \"id\": \"9171d79d0bfc46cfbf4c3957915ea37a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727120684,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"[{\\\"name\\\": \\\"CurrentWeather\\\", \\\"arguments\\\": {\\\"location\\\": \\\"New York\\\"}}]\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3689,\n    \"total_tokens\": 3710,\n    \"completion_tokens\": 21\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Great, I'll go now."
+        }
+    ],
+    "metrics": {
+        "predictions": 0,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0,
+        "recall": 0.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.0,
+        "api_name_recall": 0.0,
+        "api_name_precision": 1
+    }
+}

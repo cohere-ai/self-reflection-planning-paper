@@ -1,0 +1,456 @@
+{
+    "name": "golden_conversation_4",
+    "conversation_id": "4",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "CreateEvent",
+        "QueryCalendar"
+    ],
+    "scenario": "The user wants uses (QueryCalendar) to see what events occurred last week. They then copy their meetings for next week using (CreateEvent).",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-15 16:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ahhchiu"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey assistant, what's on my calendar for next week?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You currently have no events on your calendar for next week.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-18 00:00:00",
+                            "end_time": "2023-09-22 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": []
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "end_time": "2023-09-24 23:59:59",
+                            "start_time": "2023-09-18 00:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "text": "I will search the user's calendar for events between 2023-09-18 00:00:00 and 2023-09-24 23:59:59.",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "There are no events on your calendar for next week.",
+                    "metadata": {
+                        "text": "There are no events on your calendar for next week."
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "That doesn't seem right. What about this week?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "You had the following events this week: Weekly team sync, 1:1 with manager, and lunch with Justin.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-15 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "644db5d6-1603",
+                                "name": "Weekly team sync",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 09:00:00",
+                                "end_time": "2023-09-11 10:00:00",
+                                "location": "online",
+                                "description": "Weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano",
+                                    "ahhchiu",
+                                    "decture"
+                                ]
+                            },
+                            {
+                                "event_id": "b6f21640-b047",
+                                "name": "1:1 with manager",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-13 14:00:00",
+                                "end_time": "2023-09-13 15:00:00",
+                                "location": "online",
+                                "description": null,
+                                "attendees": [
+                                    "ahhchiu",
+                                    "salcano"
+                                ]
+                            },
+                            {
+                                "event_id": "05cc41d0-ef0d",
+                                "name": "Lunch",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-14 12:00:00",
+                                "end_time": "2023-09-14 13:00:00",
+                                "location": "online",
+                                "description": "Let's try out that new sushi place!",
+                                "attendees": [
+                                    "justinkool",
+                                    "ahhchiu"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "end_time": "2023-09-22 00:00:00",
+                            "start_time": "2023-09-15 00:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "text": "I'll search for events on the user's calendar this week.",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You currently have no events on your calendar for this week.",
+                    "metadata": {
+                        "text": "You currently have no events on your calendar for this week."
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Oh I guess I must've forgotten to extend the weekly team sync. Can you set it up to occur weekly until the end of next month?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, I've set up the weekly team sync to occur weekly until the end of next month. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Weekly team sync",
+                            "event_type": "event",
+                            "start_time": "2023-09-18 09:00:00",
+                            "end_time": "2023-09-18 10:00:00",
+                            "location": "online",
+                            "description": "Weekly sync",
+                            "attendees": [
+                                "justinkool",
+                                "salcano",
+                                "ahhchiu",
+                                "decture"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Weekly team sync",
+                            "event_type": "event",
+                            "start_time": "2023-09-25 09:00:00",
+                            "end_time": "2023-09-25 10:00:00",
+                            "location": "online",
+                            "description": "Weekly sync",
+                            "attendees": [
+                                "justinkool",
+                                "salcano",
+                                "ahhchiu",
+                                "decture"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "event_id": "03c93f31-b8a6"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Weekly team sync",
+                            "event_type": "event",
+                            "start_time": "2023-10-02 09:00:00",
+                            "end_time": "2023-10-02 10:00:00",
+                            "location": "online",
+                            "description": "Weekly sync",
+                            "attendees": [
+                                "justinkool",
+                                "salcano",
+                                "ahhchiu",
+                                "decture"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "event_id": "4261c3e1-71e7"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Weekly team sync",
+                            "event_type": "event",
+                            "start_time": "2023-10-09 09:00:00",
+                            "end_time": "2023-10-09 10:00:00",
+                            "location": "online",
+                            "description": "Weekly sync",
+                            "attendees": [
+                                "justinkool",
+                                "salcano",
+                                "ahhchiu",
+                                "decture"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "event_id": "27559f6b-2801"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Weekly team sync",
+                            "event_type": "event",
+                            "start_time": "2023-10-16 09:00:00",
+                            "end_time": "2023-10-16 10:00:00",
+                            "location": "online",
+                            "description": "Weekly sync",
+                            "attendees": [
+                                "justinkool",
+                                "salcano",
+                                "ahhchiu",
+                                "decture"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "event_id": "b499c1ff-7c1f"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Weekly team sync",
+                            "event_type": "event",
+                            "start_time": "2023-10-23 09:00:00",
+                            "end_time": "2023-10-23 10:00:00",
+                            "location": "online",
+                            "description": "Weekly sync",
+                            "attendees": [
+                                "justinkool",
+                                "salcano",
+                                "ahhchiu",
+                                "decture"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "event_id": "ae2e544a-013c"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Weekly team sync",
+                            "event_type": "event",
+                            "start_time": "2023-10-30 09:00:00",
+                            "end_time": "2023-10-30 10:00:00",
+                            "location": "online",
+                            "description": "Weekly sync",
+                            "attendees": [
+                                "justinkool",
+                                "salcano",
+                                "ahhchiu",
+                                "decture"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "event_id": "eac5126b-8573"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "end_time": "2023-10-31 23:59:59",
+                            "start_time": "2023-09-15 00:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "f1328156-9a76",
+                                "name": "Matt's Birthday",
+                                "event_type": "event",
+                                "start_time": "2023-10-04 00:00:00",
+                                "end_time": "2023-10-04 23:59:59",
+                                "location": null,
+                                "description": null,
+                                "attendees": null
+                            },
+                            {
+                                "event_id": "6b486bbb-e4b8",
+                                "name": "The Cave",
+                                "event_type": "event",
+                                "start_time": "2023-10-31 20:00:00",
+                                "end_time": "2023-11-01 02:00:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": null
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "text": "I'll be making a few tool calls to help me answer this question.",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've found two events on your calendar for the period you specified: Matt's Birthday and The Cave.",
+                    "metadata": {
+                        "text": "I've found two events on your calendar for the period you specified: Matt's Birthday and The Cave."
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "No that seems good. Thanks!"
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm",
+        "FindAlarms",
+        "QueryCalendar",
+        "SearchInbox",
+        "SendEmail"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Calendar",
+        "Email"
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 9,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.3333333333333333,
+        "recall": 0.1111111111111111,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.1111111111111111,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 0.5,
+        "api_name_precision": 1.0
+    }
+}

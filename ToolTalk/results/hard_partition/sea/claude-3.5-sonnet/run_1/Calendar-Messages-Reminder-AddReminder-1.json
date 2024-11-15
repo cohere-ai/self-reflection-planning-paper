@@ -1,0 +1,576 @@
+{
+    "name": "Calendar-Messages-Reminder-AddReminder-1",
+    "conversation_id": "35b5029c-e42d-429a-b0cc-d0be8a73ef87",
+    "suites_used": [
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders",
+        "CompleteReminder",
+        "DeleteReminder",
+        "AddReminder"
+    ],
+    "scenario": "The user wants to check their calendar for any upcoming events and reminders. They first query their calendar for the events that occur in the next week (QueryCalendar). They then get a list of their reminders that are due in the next week (GetReminders). They see that they have a reminder to pay their rent by the end of the month, and they decide to do it right away (CompleteReminder). They also see that they have an event for a birthday party on the weekend, and they want to buy a gift for the host. They add a reminder to order a gift online by Friday (AddReminder). They then send a message to the host to RSVP and ask for their address (SendMessage).",
+    "user": {
+        "username": "ShadowRider32",
+        "name": "Alex Knight",
+        "email": "shadowrider32@emailprovider.com",
+        "phone": "555-555-1234",
+        "password": "MysticKnight#123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ShadowRider32"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I want to go through my upcoming reminders for the week one at a time. Can you help with that?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, your first reminder is to pay rent.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "pay rent",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "buy gift for Emily",
+                                "due_date": "2023-09-16 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Schedule date with Barnie",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "pay rent",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "buy gift for Emily",
+                                "due_date": "2023-09-16 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Schedule date with Barnie",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I'd be happy to help you go through your upcoming reminders for the week one at a time. I've retrieved your current reminders, and I'll present them to you individually. Let's start with the first one:\n\n1. Reminder ID: 59-80bc\n   Task: Pay rent\n   Due Date: Not specified\n   Status: Pending\n\nWould you like to take any action on this reminder, such as completing it, deleting it, or moving on to the next one?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Ok, done. Mark as complete."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Marked reminder as complete. Do you want to move on to your next reminder?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "59-80bc"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "59-80bc",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\nStep 1: Mark the \"pay rent\" reminder as complete.\n#V1 = CompleteReminder(reminder_id=\"59-80bc\")\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat! I've marked the \"pay rent\" reminder as complete. \n\nYour next reminder is to buy a gift for Emily, which is due on September 16, 2023. Would you like to take any action on this reminder?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "yes"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "The next reminder is to buy a gift for Emily by Friday.",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "pay rent",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "buy gift for Emily",
+                                "due_date": "2023-09-16 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Schedule date with Barnie",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\nStep 1: Retrieve the next reminder.\n#V1 = GetReminders[]\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nYour next reminder is to buy a gift for Emily. This reminder is due on September 16, 2023. Would you like to mark this as complete, or do you need more time?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "next"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "The next reminder is to call your grandma",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "pay rent",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "buy gift for Emily",
+                                "due_date": "2023-09-16 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Schedule date with Barnie",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\nStep 1: Retrieve the current list of reminders to ensure we're working with the most up-to-date information.\n#V1 = GetReminders[]\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nThe next reminder on your list is to call your grandma. There's no specific due date for this task.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "Add a reminder to call my mom tomorrow"
+        },
+        {
+            "index": 9,
+            "role": "assistant",
+            "text": "Okay, I added the reminder. Do you want to move on to your next reminder?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Call my mom",
+                            "due_date": "2023-09-12 00:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Call mom",
+                            "due_date": "2023-09-12 00:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've added a reminder for you to call your mom tomorrow. The reminder has been set with the following details:\n- Task: Call mom\n- Due date: September 12, 2023 (tomorrow)\n- Reminder ID: 5b-dd80\n\nIs there anything else you'd like to do with your reminders?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 10,
+            "role": "user",
+            "text": "yes"
+        },
+        {
+            "index": 11,
+            "role": "assistant",
+            "text": "The next reminder is to schedule a date with Barnie.",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "pay rent",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "buy gift for Emily",
+                                "due_date": "2023-09-16 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Schedule date with Barnie",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "5b-dd80",
+                                "task": "Call my mom",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\nStep 1: Retrieve the updated list of reminders to ensure we have the most current information.\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nThe next reminder on your list is to schedule a date with Barnie. This is the last reminder in your original list. Would you like to review the new reminder you just added to call your mom tomorrow?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 12,
+            "role": "user",
+            "text": "Delete that one."
+        },
+        {
+            "index": 13,
+            "role": "assistant",
+            "text": "Reminder deleted. That is all the reminders you have.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "4f-7a1d"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "4f-7a1d",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\nStep 1: Delete the reminder to schedule a date with Barnie.\n#V1 = DeleteReminder(reminder_id=\"4f-7a1d\")\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "pay rent",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "buy gift for Emily",
+                                "due_date": "2023-09-16 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "5b-dd80",
+                                "task": "Call my mom",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nThe reminder to schedule a date with Barnie has been deleted. \n\nLet's review your current reminders:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nOkay, I've deleted the reminder to schedule a date with Barnie. That was the last reminder on your list. Here's a summary of your current reminders:\n\n1. Pay rent (completed)\n2. Buy gift for Emily (due on September 16, 2023)\n3. Call grandma (no due date)\n4. Call my mom (due tomorrow, September 12, 2023)\n\nIs there anything else you'd like to do with your reminders?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "QueryCalendar",
+        "SendMessage",
+        "AddReminder",
+        "CompleteReminder",
+        "GetReminders"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Messages",
+        "Reminder"
+    ],
+    "metrics": {
+        "predictions": 8,
+        "ground_truths": 4,
+        "matches": 4,
+        "actions": 3,
+        "valid_actions": 3,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,341 @@
+{
+    "name": "Email-Reminder-Weather-DeleteReminder-0",
+    "conversation_id": "dff87b01-d181-4323-9955-655bc991ac4e",
+    "suites_used": [
+        "Email",
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders",
+        "DeleteReminder",
+        "AddReminder",
+        "SearchInbox"
+    ],
+    "scenario": "The user wants to delete a reminder for a meeting that has been cancelled. They first want to check their inbox for any emails related to the meeting (SearchInbox). They find one email from the organizer confirming the cancellation and another email from a colleague asking for some feedback on a report (SearchInbox). They reply to the organizer with a polite message (SendEmail) and open the report attachment from the colleague. They decide to add a new reminder to review the report later (AddReminder). They then go to their list of reminders (GetReminders) and find the reminder for the cancelled meeting. They delete the reminder (DeleteReminder) and check the current weather (CurrentWeather) to see if they can go for a walk.",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-12 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "mstein"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Can you check my email for information about the meeting today at 3 about going over our team's goals?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Ok I found two emails about your meeting todaay at 3 about going over your team's goals. The first email was sent a week ago to schedule the meeting. The second email was sent last night canceling the meeting.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "meeting 3"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "8c-7e2a-df490b13",
+                                "date": "2023-09-05 17:40:00",
+                                "sender": "misha.diae@somail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com",
+                                    "john.carbugle@fmail.com"
+                                ],
+                                "subject": "Meeting for team goals",
+                                "body": "Hey can we set up a meeting sometime to go over our team goals for the next quarter? Would next Tuesday at 3 work?"
+                            },
+                            {
+                                "email_id": "2f-9c6d-5e7a81c4",
+                                "date": "2023-09-11 18:00:00",
+                                "sender": "misha.diae@somail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com",
+                                    "john.carbugle@fmail.com"
+                                ],
+                                "subject": "Canceled: Meeting for team goals",
+                                "body": "Seems like multiple people can't make the meeting tomorrow. Let's reschedule for next week."
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "query": "meeting team goals",
+                            "match_type": "all",
+                            "start_date": "2023-09-12 00:00:00",
+                            "end_date": "2023-09-12 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-12 00:00:00",
+                            "end_time": "2023-09-12 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "5480d946-2381",
+                                "name": "Fly to Paris",
+                                "event_type": "event",
+                                "start_time": "2023-09-12 10:00:00",
+                                "end_time": "2023-09-13 04:00:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": null
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nI apologize, but I couldn't find any emails in your inbox today about a meeting at 3 PM regarding team goals. Let me check your calendar to see if there's an event scheduled for this meeting.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize, but I couldn't find any information about a meeting today at 3 PM regarding team goals in your email or calendar. Here's what I found:\n\n1. There are no emails matching the search criteria for today's date with the keywords \"meeting,\" \"team,\" and \"goals.\"\n\n2. In your calendar for today (September 12, 2023), there is only one event scheduled:\n   - Event: Fly to Paris\n   - Start time: 2023-09-12 10:00:00\n   - End time: 2023-09-13 04:00:00\n\nThis event doesn't seem to be related to the meeting you're asking about. It's possible that:\n\n1. The meeting might not have been added to your calendar yet.\n2. The meeting details might be in an older email that wasn't captured in today's search.\n3. The meeting might have been scheduled verbally or through another communication channel.\n\nWould you like me to search for emails or calendar events using different criteria or for a different date range? Or would you prefer to check with your colleagues about the meeting details?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Ok can you delete my reminder to write up some goals and add a new reminder to follow up with my manager at 3?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok I deleted your reminder to write up team goals and added a new reminder to follow up with your manager at 3 today.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Write up some goals before meeting",
+                                "due_date": "2023-09-12 15:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "4f-7a1d"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "follow up with my manager at 3"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Take out the trash",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Write abstract",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Write up some goals before meeting",
+                                "due_date": "2023-09-12 15:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-9a41",
+                                "task": "Pack for Paris",
+                                "due_date": "2023-09-11 20:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "4f-7a1d",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nCertainly! I'll delete the reminder to write up some goals and add a new reminder to follow up with your manager at 3. Here's the plan:\n\nStep 1: Delete the reminder to write up goals.\n#V1 = DeleteReminder[reminder_id=\"4f-7a1d\"]\n\nStep 2: Add a new reminder to follow up with the manager at 3.\n#V2 = AddReminder[task=\"Follow up with manager\", due_date=\"2023-09-12 15:00:00\"]\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Follow up with manager about rescheduling team goals meeting",
+                            "due_date": "2023-09-12 15:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've completed the tasks you requested. Here's what I did:\n\n1. I checked your current reminders and found the one related to writing up goals for the meeting.\n2. I deleted the reminder with ID '4f-7a1d' which was \"Write up some goals before meeting\".\n3. I added a new reminder to follow up with your manager at 3 PM today about rescheduling the team goals meeting.\n\nThe new reminder has been set with the following details:\n- Task: \"Follow up with manager about rescheduling team goals meeting\"\n- Due date: Today (2023-09-12) at 15:00:00 (3 PM)\n- Reminder ID: '5b-dd80'\n\nIs there anything else you'd like me to do regarding your reminders or schedule?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchInbox",
+        "SendEmail",
+        "AddReminder",
+        "DeleteReminder",
+        "GetReminders",
+        "CurrentWeather"
+    ],
+    "intended_suites_used": [
+        "Email",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 5,
+        "ground_truths": 4,
+        "matches": 3,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 0.6,
+        "recall": 0.75,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.75,
+        "api_name_jaccard": 0.8,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.8
+    }
+}

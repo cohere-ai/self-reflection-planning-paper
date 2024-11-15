@@ -1,0 +1,378 @@
+{
+    "name": "Alarm-Calendar-Messages-AddAlarm-1",
+    "conversation_id": "32c24562-a4f2-4188-8070-97d863ca835a",
+    "suites_used": [
+        "Alarm",
+        "Calendar",
+        "Email",
+        "Messages"
+    ],
+    "apis_used": [
+        "SendMessage",
+        "CreateEvent",
+        "AddAlarm",
+        "SearchInbox"
+    ],
+    "scenario": "The user wants to set an alarm for a flight they have to catch at 6:00 PM. They use AddAlarm to create an alarm for 4:00 PM. They also use CreateEvent to add the flight details to their calendar, with the name, description, start_time, end_time, and location. They then use SearchMessages to look for the confirmation email from the airline, with the query \"flight\", sender \"airline@example.com\", and start_date and end_date as today's date. They find the email and check the flight number, boarding time, and gate number. They also use SendMessage to send a message to their friend who is picking them up at the destination, with the message containing their flight information and arrival time.",
+    "user": {
+        "username": "lifeng",
+        "email": "lifeng@gahoo.com",
+        "phone": "512-322-9516",
+        "name": "Li Feng",
+        "password": "ooZ0ahKae",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "lifeng"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have a flight today at 6 PM. Can you set an alarm for me?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when would you like me to set the alarm for?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "18:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"346291079c3049b2a173ba17af291d9b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147714,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"JcIvCSYOU\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddAlarm\",\n              \"arguments\": \"{\\\"time\\\": \\\"18:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3334,\n    \"total_tokens\": 3362,\n    \"completion_tokens\": 28\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "Alarm set for 6:00 PM.",
+                    "metadata": {
+                        "reflection": "Alarm set for 6:00 PM.",
+                        "response": "{\n  \"id\": \"146c69ae71a14252ba8db58884f8116c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147715,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Alarm set for 6:00 PM.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3411,\n    \"total_tokens\": 3422,\n    \"completion_tokens\": 11\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "4 PM"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I've set an alarm for 4 PM.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "time": "16:00:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "16:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"90a9efa2e0de49d3a80559cf774098b7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147716,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"wFSzsoALy\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddAlarm\",\n              \"arguments\": \"{\\\"time\\\": \\\"16:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3352,\n    \"total_tokens\": 3380,\n    \"completion_tokens\": 28\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have set an alarm for 4 PM.",
+                    "metadata": {
+                        "reflection": "I have set an alarm for 4 PM.",
+                        "response": "{\n  \"id\": \"dfe46da440ce42bfb2a74e633a7e45d5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147717,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have set an alarm for 4 PM.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3429,\n    \"total_tokens\": 3439,\n    \"completion_tokens\": 10\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Can you also add my flight to my calendar?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, when is the flight?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, I can help with that. Could you please provide the flight details such as the flight number, departure and arrival times, and any other relevant information?",
+                    "metadata": {
+                        "reflection": "Sure, I can help with that. Could you please provide the flight details such as the flight number, departure and arrival times, and any other relevant information?",
+                        "response": "{\n  \"id\": \"ab53ecabe74a4165a12d0a14d71788f4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147718,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, I can help with that. Could you please provide the flight details such as the flight number, departure and arrival times, and any other relevant information?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3456,\n    \"total_tokens\": 3488,\n    \"completion_tokens\": 32\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Yeah, the flight details should be in my inbox. Can you add the flight number, boarding time, and gate number information as well?"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "Okay, I've added the flight details to your calendar.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "flight"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "7c-c867-6a524766",
+                                "date": "2023-09-01 00:00:00",
+                                "sender": "bigair-noreply@auto-bigair.com",
+                                "receivers": [
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "Your flight details",
+                                "body": "Here are your flights details for your flight from San Francisco to New York on September 11, 2023. Flight number: BA168. Boarding time: 5:30 PM. Gate number: 12A. Duration 6:30 PM to 12:30 AM."
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_type": "event",
+                            "name": "Flight to New York",
+                            "description": "Flight number: BA168. Boarding time: 5:30 PM. Gate number: 12A.",
+                            "start_time": "2023-09-11 17:30:00",
+                            "end_time": "2023-09-12 00:30:00",
+                            "location": "San Francisco"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "query": "flight",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "7c-c867-6a524766",
+                                "date": "2023-09-01 00:00:00",
+                                "sender": "bigair-noreply@auto-bigair.com",
+                                "receivers": [
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "Your flight details",
+                                "body": "Here are your flights details for your flight from San Francisco to New York on September 11, 2023. Flight number: BA168. Boarding time: 5:30 PM. Gate number: 12A. Duration 6:30 PM to 12:30 AM."
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"f674b80f1b264d53a4b2237760e019c4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147719,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"TI4LgmFKP\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchInbox\",\n              \"arguments\": \"{\\\"query\\\": \\\"flight\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3496,\n    \"total_tokens\": 3518,\n    \"completion_tokens\": 22\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Flight to New York",
+                            "event_type": "event",
+                            "description": "Flight number: BA168. Boarding time: 5:30 PM. Gate number: 12A. Duration 6:30 PM to 12:30 AM.",
+                            "start_time": "2023-09-11 17:30:00",
+                            "end_time": "2023-09-11 18:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"0d42aef33b6148b6ad4056a6fd934186\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147720,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"CaBv4u6rJ\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CreateEvent\",\n              \"arguments\": \"{\\\"name\\\": \\\"Flight to New York\\\", \\\"event_type\\\": \\\"event\\\", \\\"description\\\": \\\"Flight number: BA168. Boarding time: 5:30 PM. Gate number: 12A. Duration 6:30 PM to 12:30 AM.\\\", \\\"start_time\\\": \\\"2023-09-11 17:30:00\\\", \\\"end_time\\\": \\\"2023-09-11 18:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3720,\n    \"total_tokens\": 3853,\n    \"completion_tokens\": 133\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've added your flight to your calendar.",
+                    "metadata": {
+                        "reflection": "I've added your flight to your calendar.",
+                        "response": "{\n  \"id\": \"a5514a40896d47249b012e7551d8f3f4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147724,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I've added your flight to your calendar.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3906,\n    \"total_tokens\": 3916,\n    \"completion_tokens\": 10\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "Assume! Can you also message my friend what time to pick me up at the airport?"
+        },
+        {
+            "index": 9,
+            "role": "assistant",
+            "text": "Sure, what's your friend's name?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, what is your friend's username?",
+                    "metadata": {
+                        "reflection": "Sure, what is your friend's username?",
+                        "response": "{\n  \"id\": \"75a3b62664fd4ec18e0d1887ff1b685c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147725,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, what is your friend's username?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3931,\n    \"total_tokens\": 3941,\n    \"completion_tokens\": 10\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 10,
+            "role": "user",
+            "text": "Her name is Olivie (olivedo)."
+        },
+        {
+            "index": 11,
+            "role": "assistant",
+            "text": "Okay, I've sent a message to Olivie (olivedo) with your flight information and arrival time.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "olivedo",
+                            "message": "Hey Olivie, I'm arriving at 12:30 AM. Can you pick me up at the airport?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "olivedo",
+                            "message": "Hey Olivie, can you pick me up at the airport at 12:30 AM?",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"e3ccfc9cd45a4b0a871125f10fc1a1ba\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147726,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"k95JqQJRF\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendMessage\",\n              \"arguments\": \"{\\\"receiver\\\": \\\"olivedo\\\", \\\"message\\\": \\\"Hey Olivie, can you pick me up at the airport at 12:30 AM?\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3955,\n    \"total_tokens\": 4004,\n    \"completion_tokens\": 49\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Okay, I've sent a message to Olivie.",
+                    "metadata": {
+                        "reflection": "Okay, I've sent a message to Olivie.",
+                        "response": "{\n  \"id\": \"9bd94a341d0f48f0adc54e935e835068\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147728,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Okay, I've sent a message to Olivie.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4062,\n    \"total_tokens\": 4075,\n    \"completion_tokens\": 13\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 12,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Calendar",
+        "Messages"
+    ],
+    "metrics": {
+        "predictions": 5,
+        "ground_truths": 4,
+        "matches": 3,
+        "actions": 4,
+        "valid_actions": 2,
+        "bad_actions": 2,
+        "precision": 0.6,
+        "recall": 0.75,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.5,
+        "success": false,
+        "soft_success": 0.375,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

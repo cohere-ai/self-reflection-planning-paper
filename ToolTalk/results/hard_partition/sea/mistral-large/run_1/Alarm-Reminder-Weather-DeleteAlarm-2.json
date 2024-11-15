@@ -1,0 +1,274 @@
+{
+    "name": "Alarm-Reminder-Weather-DeleteAlarm-2",
+    "conversation_id": "1c95ccbf-03ad-4791-89a7-f9f3708eb3dc",
+    "suites_used": [
+        "Alarm",
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "AddReminder",
+        "AddAlarm"
+    ],
+    "scenario": "The user is a freelancer who works from home. They set an alarm for 9:00 AM using AddAlarm. They also add a reminder to finish a project by noon using AddReminder. They check the current weather of their city using CurrentWeather and see that it is cloudy and windy. They decide to work indoors and add another reminder to order lunch using AddReminder. They wake up to the alarm and complete the first reminder using CompleteReminder. They check the forecast weather of their city using ForecastWeather and see that it will be sunny and warm in the afternoon. They decide to go for a walk after work and add another reminder to apply sunscreen using AddReminder. They delete the alarm using DeleteAlarm and start working on the project.",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 10:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Set an alarm for tomorrow at 9 AM. Also a reminder to send an email to the client at noon."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Alarm has been set for tomorrow at 9 am and a reminder has been set to email the client at noon.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "time": "09:00:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "send an email to the client",
+                            "due_date": "2023-09-11 12:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Set an alarm for tomorrow at 9 AM.\n#V1 = AddAlarm[time=09:00:00]\n\nStep 2: Set a reminder to send an email to the client at noon.\n#V2 = AddReminder[task=\"Send email to client\", due_date=2023-09-11 12:00:00]",
+                        "response": "{\n  \"id\": \"7b71093a33774dfab246308a3ede04e2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727964644,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"fOWt05Yaz\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddAlarm\",\n              \"arguments\": \"{\\\"time\\\": \\\"09:00:00\\\"}\"\n            }\n          },\n          {\n            \"id\": \"dLhpNRRUj\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Send email to client\\\", \\\"due_date\\\": \\\"2023-09-11 12:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3757,\n    \"total_tokens\": 3832,\n    \"completion_tokens\": 75\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Send email to client",
+                            "due_date": "2023-09-11 12:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Alarm set for 9 AM tomorrow. Reminder set to send email to client at noon.",
+                    "metadata": {
+                        "reflection": "Alarm set for 9 AM tomorrow. Reminder set to send email to client at noon.",
+                        "response": "{\n  \"id\": \"33495a28a5b74b7aad2fb9a49bc5b16d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727964649,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Alarm set for 9 AM tomorrow. Reminder set to send email to client at noon.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3514,\n    \"total_tokens\": 3534,\n    \"completion_tokens\": 20\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Is it sunny outside?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The current weather is sunny with a high of 78 and a low of 60.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 78,
+                            "low": 60,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 78,
+                            "low": 60,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Get the current weather data for New York.\n#V1 = CurrentWeather[{\"location\": \"New York\"}]",
+                        "response": "{\n  \"id\": \"a3a1343a5ffb4be0bcd128336b6b83b2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727964715,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"9fG9ZDiOA\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CurrentWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"New York\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3904,\n    \"total_tokens\": 3926,\n    \"completion_tokens\": 22\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Yes, it is sunny outside.",
+                    "metadata": {
+                        "reflection": "Yes, it is sunny outside.",
+                        "response": "{\n  \"id\": \"5651440cd7754d4f8433b0b6ced9348e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727964716,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Yes, it is sunny outside.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3646,\n    \"total_tokens\": 3654,\n    \"completion_tokens\": 8\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Set a reminder to apply sunscreen before lunch at 12:30."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok, reminder added to apply sunscreen at 12:30 pm.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "apply sunscreen",
+                            "due_date": "2023-09-11 12:30:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-d80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "apply sunscreen before lunch",
+                            "due_date": "2023-09-11 12:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "20-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Set a reminder to apply sunscreen before lunch at 12:30.\n#V1 = AddReminder({\"task\": \"apply sunscreen before lunch\", \"due_date\": \"2023-09-11 12:30:00\"})",
+                        "response": "{\n  \"id\": \"99a21d7fea5f490d964a9735b37c8751\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727964772,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"SUesHNvF3\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"apply sunscreen before lunch\\\", \\\"due_date\\\": \\\"2023-09-11 12:30:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4079,\n    \"total_tokens\": 4130,\n    \"completion_tokens\": 51\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "A reminder has been set to apply sunscreen before lunch at 12:30.",
+                    "metadata": {
+                        "reflection": "A reminder has been set to apply sunscreen before lunch at 12:30.",
+                        "response": "{\n  \"id\": \"080def8093614b98851c74f752ed63d2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727964775,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"A reminder has been set to apply sunscreen before lunch at 12:30.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3786,\n    \"total_tokens\": 3805,\n    \"completion_tokens\": 19\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm",
+        "DeleteAlarm",
+        "AddReminder",
+        "CompleteReminder",
+        "CurrentWeather",
+        "ForecastWeather"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 4,
+        "matches": 4,
+        "actions": 3,
+        "valid_actions": 3,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,109 @@
+{
+    "name": "ModifyEvent-easy",
+    "conversation_id": "1907f0d4-fa80-4c6f-ae72-38fc443608c7",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "ModifyEvent"
+    ],
+    "scenario": "ModifyEvent easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have a dentist appoint today from 3-5 that I can no longer make. I called the office and rescheduled it for the same time next month on the 18th. Can you update my calendar? The event_id is 29496535-b409"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I've updated your calendar. Anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "29496535-b409",
+                            "new_start_time": "2023-10-18 15:00:00",
+                            "new_end_time": "2023-10-18 17:00:00"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "29496535-b409",
+                            "new_start_time": "2023-10-18 15:00:00",
+                            "new_end_time": "2023-10-18 17:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"eca9be5fabb243d6bc8c18790c5e2b51\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147670,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"ZTh2Jc1oe\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ModifyEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"29496535-b409\\\", \\\"new_start_time\\\": \\\"2023-10-18 15:00:00\\\", \\\"new_end_time\\\": \\\"2023-10-18 17:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3381,\n    \"total_tokens\": 3472,\n    \"completion_tokens\": 91\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your event has been updated!",
+                    "metadata": {
+                        "reflection": "Your event has been updated!",
+                        "response": "{\n  \"id\": \"cd862f9a334c4264913238c7d0cf4f4b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147673,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your event has been updated!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3512,\n    \"total_tokens\": 3518,\n    \"completion_tokens\": 6\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Nope, that's it. Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

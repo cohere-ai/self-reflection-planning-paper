@@ -1,0 +1,388 @@
+{
+    "name": "Email-Reminder-Weather-GetReminder-0",
+    "conversation_id": "c135a231-484f-4e82-937e-d4853cb13eef",
+    "suites_used": [
+        "Email",
+        "AccountTools",
+        "Reminder"
+    ],
+    "apis_used": [
+        "CompleteReminder",
+        "SearchInbox",
+        "GetReminders",
+        "SendEmail",
+        "QueryUser"
+    ],
+    "scenario": "The user wants to check their reminders for the day (GetReminders). They see that they have a reminder to send an email to their boss with a report attached (SendEmail). They search their inbox for the report that was sent to them by a colleague (SearchInbox). They find the email and download the attachment. They compose the email to their boss and send it (SendEmail). They then mark the reminder as complete (CompleteReminder).",
+    "user": {
+        "username": "SuryaRani90",
+        "email": "suryarani.kumar@myfictionalemail.com",
+        "phone": "415-555-6789",
+        "name": "Surya Rani Kumar",
+        "password": "Tiger@Lily22",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "SuryaRani90"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Can you check my reminders for today?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have a reminder to send an email to Jeff (geoff) with your invoices.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "send invoices to Jeff (geoff)",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "send invoices to Jeff (geoff)",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve all reminders for the user.\n#V1 = GetReminders()",
+                        "response": "{\n  \"id\": \"d1cea289b38345b299affe59673a792e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691460,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"fewny16tp\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3676,\n    \"total_tokens\": 3693,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here are your reminders for today:\n\n- send invoices to Jeff (geoff)",
+                    "metadata": {
+                        "reflection": "Here are your reminders for today:\n\n- send invoices to Jeff (geoff)",
+                        "response": "{\n  \"id\": \"13e6643f504b4394b42d743e02169dac\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691461,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here are your reminders for today:\\n\\n- send invoices to Jeff (geoff)\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3448,\n    \"total_tokens\": 3469,\n    \"completion_tokens\": 21\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Ok I got the intern (larajean) to do that for me, can you find the email they sent?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok, I found some emails from (larajean) with the title 'Your invoices'.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "username": "larajean"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "larajean",
+                                "email": "lara.jean@fmail.com",
+                                "phone": "941-773-9153",
+                                "name": "Lara C Jean"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "sender": "lara.jean@fmail.com",
+                            "query": "Your invoices"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "75-ff99-d8d1383b",
+                                "date": "2023-09-09 11:00:00",
+                                "sender": "lara.jean@fmail.com",
+                                "receivers": [
+                                    "suryarani.kumar@myfictionalemail.com"
+                                ],
+                                "subject": "Your invoices",
+                                "body": "I completed your invoices for last month. Here they are: MyCloudDocs.com/invoice-12345"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "query": "from:larajean",
+                            "match_type": "any",
+                            "sender": "larajean",
+                            "start_date": "2023-09-11 00:00:00",
+                            "end_date": "2023-09-11 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Search for emails from Larajean.\n#V1 = SearchInbox[query=\"from:larajean\", match_type=\"any\", sender=\"larajean\", start_date=\"2023-09-11 00:00:00\", end_date=\"2023-09-11 23:59:59\"]",
+                        "response": "{\n  \"id\": \"e697533e44c748fab515a890359c80d7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691530,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"KJiw008HV\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchInbox\",\n              \"arguments\": \"{\\\"query\\\": \\\"from:larajean\\\", \\\"match_type\\\": \\\"any\\\", \\\"sender\\\": \\\"larajean\\\", \\\"start_date\\\": \\\"2023-09-11 00:00:00\\\", \\\"end_date\\\": \\\"2023-09-11 23:59:59\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3909,\n    \"total_tokens\": 4002,\n    \"completion_tokens\": 93\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I couldn't find any emails from larajean.",
+                    "metadata": {
+                        "reflection": "I couldn't find any emails from larajean.",
+                        "response": "{\n  \"id\": \"d848dbe9e4364caa8ac803da24577968\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691535,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I couldn't find any emails from larajean.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3628,\n    \"total_tokens\": 3641,\n    \"completion_tokens\": 13\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Copy the body of the newest one and send it to Jeff with the title 'My invoices'. And mark my reminer as complete."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "I have sent Jeff an email with the title 'My invoices' and marked your reminder as complete.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "username": "geoff"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "geoff",
+                                "email": "geoff.smith@example.com",
+                                "phone": "555-123-4567",
+                                "name": "Jeff Smith"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "geoff.smith@example.com"
+                            ],
+                            "subject": "My invoices",
+                            "body": "I completed your invoices for last month. Here they are: MyCloudDocs.com/invoice-12345"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "1f-8a4c"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "jeff",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve user information for the intern.\n```\n#V1 = QueryUser[username='larajean']\n```\n\nStep 2: Search the inbox for emails from the intern about the invoices and extract the body of the newest email.\n```\n#V2 = SearchInbox[sender=#V1.email, query='Your invoices']\n```\n\nStep 3: Retrieve user information for Jeff.\n```\n#V3 = QueryUser[username='jeff']\n```\n\nStep 4: Send an email to Jeff with the copied body and the title 'My invoices'.\n```\n#V4 = SendEmail[receiver=#V3.email, subject='My invoices', body=#V2.emails[0].body]\n```\n\nStep 5: Mark the reminder as complete.\n```\n#V5 = CompleteReminder[reminder_id='1f-8a4c']",
+                        "response": "{\n  \"id\": \"902282fc2b7e489896fedd3dc7aaf2a0\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691788,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"CvjiMnlUf\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"jeff\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4418,\n    \"total_tokens\": 4439,\n    \"completion_tokens\": 21\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "geoff",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "geoff",
+                                "email": "geoff.smith@example.com",
+                                "phone": "555-123-4567",
+                                "name": "Jeff Smith"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"ba066c73da3544058f0f5bbecd08adc2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691790,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"bRQrGVq2k\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"geoff\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3926,\n    \"total_tokens\": 3947,\n    \"completion_tokens\": 21\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "geoff.smith@example.com"
+                            ],
+                            "subject": "My invoices",
+                            "body": "I completed your invoices for last month. Here they are: MyCloudDocs.com/invoice-12345",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"37149d340455459285ec1a4609c27db2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691792,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"LIo8Pm4aS\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendEmail\",\n              \"arguments\": \"{\\\"to\\\": [\\\"geoff.smith@example.com\\\"], \\\"subject\\\": \\\"My invoices\\\", \\\"body\\\": \\\"I completed your invoices for last month. Here they are: MyCloudDocs.com/invoice-12345\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4032,\n    \"total_tokens\": 4102,\n    \"completion_tokens\": 70\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "1f-8a4c",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"338bfe88e7a046539def1531d5bc6c19\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691795,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"zPUTxTwRd\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CompleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"1f-8a4c\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4157,\n    \"total_tokens\": 4187,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have sent the email to Jeff and marked your reminder as complete.",
+                    "metadata": {
+                        "reflection": "I have sent the email to Jeff and marked your reminder as complete.",
+                        "response": "{\n  \"id\": \"7e87af2d83b84597959265f1c9ca79c8\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691797,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have sent the email to Jeff and marked your reminder as complete.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4227,\n    \"total_tokens\": 4241,\n    \"completion_tokens\": 14\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchInbox",
+        "SendEmail",
+        "CompleteReminder",
+        "GetReminders"
+    ],
+    "intended_suites_used": [
+        "Email",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 6,
+        "ground_truths": 6,
+        "matches": 4,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.6666666666666666,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,182 @@
+{
+    "name": "golden_conversation_2",
+    "conversation_id": "2",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "QueryCalendar",
+        "CreateEvent"
+    ],
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 13:20:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey, I think I need a break. Do I have an hour for a walk?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You do not have any events for the next hour. Would you like to schedule a walk?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00"
+                        }
+                    },
+                    "response": {
+                        "events": []
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "294b409-6535",
+                                "name": "1 on 1 with Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Query the user's calendar to check for any events scheduled in the next hour.\n#V1 = QueryCalendar(start_time=\"2023-09-11 13:20:00\", end_time=\"2023-09-11 14:20:00\")\n\nStep 2: Determine if there are any events in the response from Step 1 and provide feedback to the user.\n#V2 = \"You have an hour free! Enjoy your walk around Seattle.\" if len(#V1['events']) == 0 else \"You have events scheduled. Check your calendar.\"",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have a meeting scheduled from 2:00 PM to 3:00 PM today. You have free time until 2:00 PM, so you can take a walk for about 40 minutes. Enjoy your break!",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Yes, please block the next hour for me."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Your event has been created. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Walk",
+                            "event_type": "event",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Walk",
+                            "event_type": "event",
+                            "description": "Taking a break with a walk.",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Schedule an event for a walk in the user's calendar from 13:20 to 14:20.\n#V1 = CreateEvent[name=\"Walk\", event_type=\"event\", description=\"Taking a break with a walk.\", start_time=\"2023-09-11 13:20:00\", end_time=\"2023-09-11 14:20:00\"]",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've scheduled a walk for you from 1:20 PM to 2:20 PM. Enjoy your break!",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "No, thank you. I'm heading out now."
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 2,
+        "matches": 2,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,332 @@
+{
+    "name": "Email-Messages-Reminder-SendEmail-2",
+    "conversation_id": "bd463e6e-8fc7-43ac-95ce-e620ec3e013d",
+    "suites_used": [
+        "Email",
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders",
+        "SendEmail",
+        "DeleteReminder"
+    ],
+    "scenario": "The user wants to delete some old emails and reminders that are no longer relevant. They search their inbox (SearchInbox) for emails older than a year using the query \"*\" and the end_date \"2019-10-01 00:00:00\". They select all the emails and delete them. They then search their reminders (GetReminders) for reminders that are past due. They find several reminders that they have already completed or cancelled. They delete each reminder (DeleteReminder) using the reminder_id. They then send an email (SendEmail) to their personal account with the subject \"Backup\" and the body \"Hi user, this is a backup of your important emails and reminders. Please keep it safe. Regards, user\". They attach a file containing the emails and reminders that they want to keep. They then complete the reminder (CompleteReminder) with the task \"Backup emails and reminders\" using the reminder_id. They then log out of their account.",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Tokyo",
+        "timestamp": "2023-09-12 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "ugh need to do a digital cleanup. Can you delete all the reminders that were due in the past month?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Okay I queried your reminders between August 12 and September 12 2023 and found 3. I have deleted them all.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Finish report",
+                                "due_date": "2023-09-11 08:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "submit blog post",
+                                "due_date": "2023-09-11 10:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-08-27 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "0b-5119"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "14-579a"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "1f-8a4c"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Finish report",
+                                "due_date": "2023-09-11 08:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "apologize to landlord",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "submit blog post",
+                                "due_date": "2023-09-11 10:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "98-d687",
+                                "task": "buy Ana a present",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-08-27 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Retrieve all current reminders.\n#V1 = GetReminders()\n\nStep 2: Get the current date and time.\n#V2 = CurrentWeather(location=\"Tokyo\")",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "0b-5119",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nCertainly! I'll help you delete all the reminders that were due in the past month. First, let's analyze the reminders we have and then delete the ones that meet the criteria.\n\nBased on the current date (2023-09-12) provided in your user data, we'll consider reminders due from 2023-08-12 to 2023-09-12 as \"due in the past month\".\n\nHere's the plan to delete the relevant reminders:\n\nStep 1: Identify reminders due in the past month\n#V1 = The reminders due in the past month are:\n1. '0b-5119': 'Finish report' (due 2023-09-11)\n2. '14-579a': 'submit blog post' (due 2023-09-11)\n3. '1f-8a4c': 'Buy Brody a birthday present' (due 2023-08-27)\n\nStep 2: Delete the first reminder\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "14-579a",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "1f-8a4c",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've gone ahead and deleted all the reminders that were due in the past month. Here's a summary of what I did:\n\n1. First, I retrieved all your current reminders using the GetReminders tool.\n2. Then, I identified the reminders that were due in the past month (considering today's date is 2023-09-12).\n3. I deleted the following reminders:\n   - \"Finish report\" (due 2023-09-11)\n   - \"submit blog post\" (due 2023-09-11)\n   - \"Buy Brody a birthday present\" (due 2023-08-27)\n\nThe reminders without due dates were not deleted, as we can't determine if they were meant for the past month. These remaining reminders are:\n- \"apologize to landlord\"\n- \"buy Ana a present\"\n\nIs there anything else you'd like me to do regarding your reminders or any other digital cleanup tasks?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Thanks, can you also send a summary of the reminders you deleted to my personal email (hugoes@fmail.com)?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay I have sent an email to your personal email with a list of all the reminders I deleted.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "hugoes@fmail.com"
+                            ],
+                            "subject": "Deleted reminders",
+                            "body": "Hi Hugo, I have deleted the following reminders:\n\n- Finish report\n- submit blog post\n- Buy Brody a birthday present\n\nRegards, your assistant"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "hugoes@fmail.com"
+                            ],
+                            "subject": "Summary of Deleted Reminders",
+                            "body": "Dear Salcano,\n\nAs per your request, I have deleted all reminders that were due in the past month. Here's a summary of the deleted reminders:\n\n1. Reminder ID: 0b-5119\n   Task: Finish report\n   Due Date: September 11, 2023 at 08:00:00\n\n2. Reminder ID: 14-579a\n   Task: Submit blog post\n   Due Date: September 11, 2023 at 10:00:00\n\n3. Reminder ID: 1f-8a4c\n   Task: Buy Brody a birthday present\n   Due Date: August 27, 2023 at 00:00:00\n\nAll of these reminders have been successfully deleted from your account. If you need to reinstate any of these reminders or if you have any questions, please don't hesitate to ask.\n\nBest regards,\nYour Digital Assistant",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Send email with summary of deleted reminders\n#V = SendEmail[to=[\"hugoes@fmail.com\"], subject=\"Summary of Deleted Reminders\", body=\"Dear Salcano,",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've sent a summary of the deleted reminders to your personal email address (hugoes@fmail.com). The email includes details of all three reminders that were deleted, including their reminder IDs, tasks, and due dates. The email has been successfully sent with the ID '5b-dd80-9f8a27ab'. You should receive it shortly in your inbox. Is there anything else you'd like me to do?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchInbox",
+        "SendEmail",
+        "CompleteReminder",
+        "DeleteReminder",
+        "GetReminders"
+    ],
+    "intended_suites_used": [
+        "Email",
+        "Messages",
+        "Reminder"
+    ],
+    "metrics": {
+        "predictions": 5,
+        "ground_truths": 5,
+        "matches": 5,
+        "actions": 4,
+        "valid_actions": 4,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

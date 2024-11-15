@@ -1,0 +1,333 @@
+{
+    "name": "Email-Messages-Weather-SendMessage-2",
+    "conversation_id": "41778a52-58b0-4ff1-aa42-e82eb8fe904b",
+    "suites_used": [
+        "Weather",
+        "Messages"
+    ],
+    "apis_used": [
+        "SearchMessages",
+        "SendMessage",
+        "ForecastWeather"
+    ],
+    "scenario": "The user wants to send a message to their online date to ask them out for a coffee. They want to impress them with their knowledge of the weather and suggest a nice place to meet. They want to check the historic weather of their date's location to see if there is a pattern or trend (HistoricWeather). They search for the weather of their date's location for the last 10 days (HistoricWeather). They find that the weather has been mostly sunny and warm. They also want to check the forecast weather of their date's location for the next 3 days to see if there is any chance of rain or snow (ForecastWeather). They find that the weather will be mostly cloudy and cool. They then search for messages from their date to see if they have mentioned any preferences or hobbies (SearchMessages). They search for messages with the sender \"date\" and the query \"coffee\" or \"hobby\" in the last week (SearchMessages). They find that their date likes coffee with almond milk and enjoys reading books. They then compose a message to their date with the weather information and a suggestion of a cozy cafe with a bookshelf (SendMessage).",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I want to ask Virginia from FindADate out on a date but not sure if we should go to the park or some cafe. Can you check the weather tomorrow?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure the weather tomorrow is partly cloudy with a low of 58 and a high of 78.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 78,
+                                "low": 58,
+                                "conditions": "Partly Cloudy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 72,
+                                "low": 64,
+                                "conditions": "80% Rainy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 76,
+                                "low": 60,
+                                "conditions": "Sunny"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 78,
+                                "low": 58,
+                                "conditions": "Partly Cloudy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 72,
+                                "low": 64,
+                                "conditions": "80% Rainy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 76,
+                                "low": 60,
+                                "conditions": "Sunny"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to help you check the weather for tomorrow in New York to assist with your date planning. Let's use the ForecastWeather tool to get a 3-day forecast, which will include tomorrow's weather. This information should help you decide between the park or a cafe for your date with Virginia.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I'd be happy to help you plan your date with Virginia from FindADate. I've checked the weather forecast for New York for the next three days. Here's what I found for tomorrow, September 12th:\n\n- High temperature: 78\u00b0F (about 26\u00b0C)\n- Low temperature: 58\u00b0F (about 14\u00b0C)\n- Conditions: Partly Cloudy\n\nBased on this forecast, it looks like tomorrow will be a pleasant day with mild temperatures and partly cloudy skies. This weather is suitable for both outdoor and indoor activities, so you have options for your date!\n\nHere are my suggestions:\n\n1. Park Date: With the comfortable temperature and partly cloudy conditions, a park date could be lovely. You could have a picnic, go for a walk, or enjoy some outdoor activities. The weather is nice enough to spend time outside, but not too hot.\n\n2. Cafe Date: If you prefer a more controlled environment or want to avoid any potential cloud cover, a cafe date is also a great option. You can enjoy conversation in a cozy setting, and if it gets warmer during the day, you'll be comfortable indoors.\n\nGiven the forecast, I would suggest planning for the park, but having a cafe as a backup option. This way, you can take advantage of the nice weather if it holds up, but you also have a plan B if you or Virginia prefer to be indoors or if the clouds become more prominent.\n\nRemember, the most important thing is the company and the conversation. Whether you choose the park or a cafe, focus on getting to know Virginia and enjoying your time together.\n\nWould you like any more specific suggestions for park locations or cafes in New York?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Ok can you search through messages with her for \"milk\"?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "What is her username?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "milk",
+                            "sender": "Virginia",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll search through your messages for any conversations with Virginia that mention \"milk\". First, I'll need to use the SearchMessages function to look for these messages. Let me do that for you now.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI'm sorry, but it seems there are no messages containing the word \"milk\" from Virginia. The search returned an empty result. This could mean that either:\n\n1. You haven't had any conversations with Virginia about milk.\n2. Virginia might be using a different username that we're not aware of.\n3. There might not be any messages from Virginia at all.\n\nIs there anything else you'd like me to search for in your messages with Virginia? Or would you like to proceed with planning your date based on the weather information we found earlier?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "It's decture"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Okay, I found two messages: \"Why are people so obsessed with oat milk?\" and \"I could never drink oat milk\"",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "milk",
+                            "sender": "decture"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "006f526d-00747977",
+                                "timestamp": "2023-09-10 14:05:00",
+                                "sender": "decture",
+                                "message": "Why are people so obsessed with oat milk?"
+                            },
+                            {
+                                "message_id": "00747977-006f526d",
+                                "timestamp": "2023-09-10 14:07:13",
+                                "sender": "decture",
+                                "message": "I could never drink oat milk"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "milk",
+                            "sender": "decture",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "00747977-006f526d",
+                                "timestamp": "2023-09-10 14:07:13",
+                                "sender": "decture",
+                                "message": "I could never drink oat milk"
+                            },
+                            {
+                                "message_id": "006f526d-00747977",
+                                "timestamp": "2023-09-10 14:05:00",
+                                "sender": "decture",
+                                "message": "Why are people so obsessed with oat milk?"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll search through your messages with Virginia (username: decture) for the keyword \"milk\". Let me do that for you now.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've searched through your messages with decture for the keyword \"milk\". Here are the results:\n\n1. On September 10, 2023, at 14:07:13, decture said: \"I could never drink oat milk\"\n2. On September 10, 2023, at 14:05:00, decture said: \"Why are people so obsessed with oat milk?\"\n\nIt seems that decture has expressed some opinions about oat milk. She appears to be skeptical or not fond of oat milk. This information might be useful when planning your date. You might want to avoid suggesting places that primarily serve oat milk or other plant-based milk alternatives.\n\nGiven this information and the weather forecast for tomorrow (partly cloudy with a high of 78\u00b0F), here are some suggestions for your date:\n\n1. Park date: The weather seems nice for an outdoor activity. You could suggest a picnic in a park, bringing some snacks and beverages (perhaps avoiding oat milk-based drinks).\n\n2. Cafe date: If you prefer indoor options, you could suggest a cafe that offers a variety of drink options, including traditional dairy milk for coffee or tea.\n\nRemember, the key is to choose a place where both of you will be comfortable. You could even casually mention that you noticed she's not a fan of oat milk, which shows you pay attention to details in your conversations.\n\nWould you like me to help you draft a message to ask her out?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Ok send her a message saying \"Meet me at Oatz tomorrow at 10. You'll get why people are so obsessed once you try their latte.\""
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "Okay I sent Virginia the message.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "decture",
+                            "message": "Meet me at Oatz tomorrow at 10. You'll get why people are so obsessed once you try their latte."
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "decture",
+                            "message": "Meet me at Oatz tomorrow at 10. You'll get why people are so obsessed once you try their latte.",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll send that message to Virginia (username: decture) right away using the SendMessage function.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've sent the message to decture as requested. The message reads: \"Meet me at Oatz tomorrow at 10. You'll get why people are so obsessed once you try their latte.\" The system has assigned this message the ID 'e149636f-ecc3f121'.\n\nIs there anything else you'd like me to do regarding your date plans with Virginia?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchMessages",
+        "SendMessage",
+        "ForecastWeather",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Email",
+        "Messages",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 3,
+        "matches": 3,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

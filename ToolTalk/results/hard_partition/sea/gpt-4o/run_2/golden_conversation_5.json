@@ -1,0 +1,617 @@
+{
+    "name": "golden_conversation_5",
+    "conversation_id": "5",
+    "suites_used": [
+        "Alarm",
+        "Calendar",
+        "AccountTools"
+    ],
+    "apis_used": [
+        "QueryCalendar",
+        "CreateEvent",
+        "AddAlarm",
+        "FindAlarms",
+        "RegisterUser",
+        "DeleteAccount"
+    ],
+    "scenario": "The user wants to create a new account. However, they want to keep any events (no meetings) occurring for the next month. They also want to keep any alarms. The user wants uses (QueryCalendar) to see what events are occurring next month. They then recreate the events for their new account and deletes their old account (DeleteAccount).",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ahhchiu"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I've been getting too much spam lately. Can I create a new account?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I can help you with that. What would you like to do with your old account?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Please provide the following information to create a new account:\n\n1. **Username**: \n2. **Password**: \n3. **Email**: \n4. **Name** (optional): \n5. **Phone Number** (optional, format: xxx-xxx-xxxx): \n\nOnce you provide this information, I'll proceed with creating the new account for you.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Probably delete it after creating the new one."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I can do that too. However, I would need your password for verification purposes.",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Let's start by gathering the necessary information to create your new account. Could you please provide the following details?\n\n1. New username\n2. New password\n3. Email address\n4. Your name (optional)\n5. Phone number in the format xxx-xxx-xxxx (optional)",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Sure, it's eehahTe2t. I think I have some alarms and events next month that I want to keep though. Can you check for me?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, looks like you have 4 alarms and 2 events next month. Your alarms are set for 7:30, 7:40, 7:50, and 8:30 AM. Your events are Matt's Birthday on 10/04 and The Cave on 10/31. Would you like to keep them all?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-10-01 00:00:00",
+                            "end_time": "2023-10-31 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "f1328156-9a76",
+                                "name": "Matt's Birthday",
+                                "event_type": "event",
+                                "start_time": "2023-10-04 00:00:00",
+                                "end_time": "2023-10-04 23:59:59",
+                                "location": null,
+                                "description": null,
+                                "attendees": null
+                            },
+                            {
+                                "event_id": "6b486bbb-e4b8",
+                                "name": "The Cave",
+                                "event_type": "event",
+                                "start_time": "2023-10-31 20:00:00",
+                                "end_time": "2023-11-01 02:00:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": null
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "FindAlarms",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarms": [
+                            {
+                                "alarm_id": "593d-49e9",
+                                "time": "07:30:00"
+                            },
+                            {
+                                "alarm_id": "4631-000e",
+                                "time": "07:40:00"
+                            },
+                            {
+                                "alarm_id": "4e20-0a4c",
+                                "time": "07:50:00"
+                            },
+                            {
+                                "alarm_id": "987a-5fa5",
+                                "time": "08:30:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-10-01 00:00:00",
+                            "end_time": "2023-10-31 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "f1328156-9a76",
+                                "name": "Matt's Birthday",
+                                "event_type": "event",
+                                "start_time": "2023-10-04 00:00:00",
+                                "end_time": "2023-10-04 23:59:59",
+                                "location": null,
+                                "description": null,
+                                "attendees": null
+                            },
+                            {
+                                "event_id": "6b486bbb-e4b8",
+                                "name": "The Cave",
+                                "event_type": "event",
+                                "start_time": "2023-10-31 20:00:00",
+                                "end_time": "2023-11-01 02:00:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": null
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Query the user's calendar for events in the next month.\n#V1 = QueryCalendar[start_time=\"2023-10-01 00:00:00\", end_time=\"2023-10-31 23:59:59\"]\n\nStep 2: Find the user's alarms set for the next month.\n#V2 = FindAlarms[start_range=\"00:00:00\", end_range=\"23:59:59\"]\n\nStep 3: Ask the user for the necessary information to register a new account.\n#V3 = \"Please provide the following details to create a new account: username, password, email, name, and phone number.\"\n\nStep 4: Register a new user account with the provided details.\n#V4 = RegisterUser[username=#V3.username, password=#V3.password, email=#V3.email, name=#V3.name, phone=#V3.phone]\n\nStep 5: Delete the old user account.\n#V5 = DeleteAccount[password=\"eehahTe2t\"]",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"start_range\": \"00:00:00\", \"end_range\": \"23:59:59\"}",
+                                "name": "FindAlarms"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "FindAlarms",
+                        "parameters": {
+                            "start_range": "00:00:00",
+                            "end_range": "23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarms": [
+                            {
+                                "alarm_id": "593d-49e9",
+                                "time": "07:30:00"
+                            },
+                            {
+                                "alarm_id": "4631-000e",
+                                "time": "07:40:00"
+                            },
+                            {
+                                "alarm_id": "4e20-0a4c",
+                                "time": "07:50:00"
+                            },
+                            {
+                                "alarm_id": "987a-5fa5",
+                                "time": "08:30:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have the following events and alarms:\n\n### Events in October:\n1. **Matt's Birthday**\n   - Date: October 4, 2023\n   - All-day event\n\n2. **The Cave**\n   - Date: October 31, 2023, 8:00 PM to November 1, 2023, 2:00 AM\n\n### Alarms:\n1. **07:30 AM**\n2. **07:40 AM**\n3. **07:50 AM**\n4. **08:30 AM**\n\nWould you like to proceed with creating a new account and deleting the old one, or do you want to transfer these events and alarms to your new account first?",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Can you keep just my events and instead set an alarm for 8 AM?"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "Sounds good. What would you like your new account to be called?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "alarm_id": "593d-49e9",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Delete the first alarm.\n#V1 = functions.DeleteAlarm({\"alarm_id\": \"593d-49e9\"})\n\nStep 2: Delete the second alarm.\n#V2 = functions.DeleteAlarm({\"alarm_id\": \"4631-000e\"})\n\nStep 3: Delete the third alarm.\n#V3 = functions.DeleteAlarm({\"alarm_id\": \"4e20-0a4c\"})\n\nStep 4: Delete the fourth alarm.\n#V4 = functions.DeleteAlarm({\"alarm_id\": \"987a-5fa5\"})\n\nStep 5: Add a new alarm for 8:00 AM.\n#V5 = functions.AddAlarm({\"time\": \"08:00:00\"})",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"alarm_id\": \"4631-000e\"}",
+                                "name": "DeleteAlarm"
+                            },
+                            {
+                                "arguments": "{\"alarm_id\": \"4e20-0a4c\"}",
+                                "name": "DeleteAlarm"
+                            },
+                            {
+                                "arguments": "{\"alarm_id\": \"987a-5fa5\"}",
+                                "name": "DeleteAlarm"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "alarm_id": "4631-000e",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "alarm_id": "4e20-0a4c",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "alarm_id": "987a-5fa5",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "08:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": null,
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've deleted your existing alarms and set a new alarm for 8:00 AM. Now, let's proceed with creating your new account. Could you please provide the following details for your new account?\n\n1. Username\n2. Password\n3. Email\n4. Name (optional)\n5. Phone number (optional)",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "Can you set the username to kongster, the password to Meizuch4uu, and the email to kong.zi@gahoo.com?"
+        },
+        {
+            "index": 9,
+            "role": "assistant",
+            "text": "Sounds good, I've created your new account, copied over your alarms and events, and deleted your old account. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "password": "eehahTe2t"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "kongster",
+                            "password": "Meizuch4uu",
+                            "email": "kong.zi@gahoo.com"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "kongster",
+                            "email": "kong.zi@gahoo.com",
+                            "phone": null,
+                            "name": null
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "time": "08:00:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "name": "Matt's Birthday",
+                            "event_type": "event",
+                            "start_time": "2023-10-04 00:00:00",
+                            "end_time": "2023-10-04 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "name": "The Cave",
+                            "event_type": "event",
+                            "start_time": "2023-10-31 20:00:00",
+                            "end_time": "2023-11-01 02:00:00"
+                        }
+                    },
+                    "response": {
+                        "event_id": "03c93f31-b8a6"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "kongster",
+                            "password": "Meizuch4uu",
+                            "email": "kong.zi@gahoo.com"
+                        }
+                    },
+                    "response": null,
+                    "exception": "Only one user can be logged in at a time. Current user is ahhchiu.",
+                    "metadata": {
+                        "reflection": "Step 1: Register a new user account with the desired username, password, and email.\n#V1 = RegisterUser(username=\"kongster\", password=\"Meizuch4uu\", email=\"kong.zi@gahoo.com\", name=\"\", phone=\"\")\n\nStep 2: Add a new alarm for 8:00 AM in the new account.\n#V2 = AddAlarm(time=\"08:00:00\")\n\nStep 3: Delete the old alarms from the old account.\n#V3 = DeleteAlarm(alarm_id=\"593d-49e9\")\n#V4 = DeleteAlarm(alarm_id=\"4631-000e\")\n#V5 = DeleteAlarm(alarm_id=\"4e20-0a4c\")\n#V6 = DeleteAlarm(alarm_id=\"987a-5fa5\")\n\nStep 4: Recreate the events in the new account.\n#V7 = CreateEvent(name=\"Matt's Birthday\", event_type=\"event\", description=\"\", start_time=\"2023-10-04 00:00:00\", end_time=\"2023-10-04 23:59:59\", location=\"\", attendees=[])\n#V8 = CreateEvent(name=\"The Cave\", event_type=\"event\", description=\"\", start_time=\"2023-10-31 20:00:00\", end_time=\"2023-11-01 02:00:00\", location=\"\", attendees=[])\n\nStep 5: Delete the old account for ahhchiu.\n#V9 = DeleteAccount(password=\"eehahTe2t\")",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "LogoutUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "It seems that I need to log you out of your current account before creating a new one. Let me do that for you.",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "kongster",
+                            "password": "Meizuch4uu",
+                            "email": "kong.zi@gahoo.com"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "kongster",
+                            "email": "kong.zi@gahoo.com",
+                            "phone": null,
+                            "name": null
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "It seems I need to log you out first before creating the new account. Let me do that and then proceed with the registration.",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "08:00:00",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": null,
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"password\": \"eehahTe2t\"}",
+                                "name": "DeleteAccount"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "password": "eehahTe2t",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": null,
+                    "exception": "The password is incorrect.",
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "It seems that your old account was logged out successfully, and a new account with the username \"kongster\" has been created. An alarm for 8:00 AM has also been set.\n\nHowever, I encountered an issue while trying to delete your old account due to an incorrect password. Could you please verify the password for your old account?",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 10,
+            "role": "user",
+            "text": "Fantastic, you're an efficient worker. I'm good for now."
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm",
+        "FindAlarms",
+        "QueryCalendar",
+        "SearchInbox",
+        "SendEmail"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Calendar",
+        "Email"
+    ],
+    "metrics": {
+        "predictions": 12,
+        "ground_truths": 7,
+        "matches": 4,
+        "actions": 10,
+        "valid_actions": 2,
+        "bad_actions": 6,
+        "precision": 0.3333333333333333,
+        "recall": 0.5714285714285714,
+        "action_precision": 0.2,
+        "bad_action_rate": 0.6,
+        "success": false,
+        "soft_success": 0.22857142857142856,
+        "api_name_jaccard": 0.625,
+        "api_name_recall": 0.8333333333333334,
+        "api_name_precision": 0.7142857142857143
+    }
+}

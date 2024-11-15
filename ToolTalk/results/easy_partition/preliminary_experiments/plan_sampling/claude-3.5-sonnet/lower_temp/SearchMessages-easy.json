@@ -1,0 +1,181 @@
+{
+    "name": "SearchMessages-easy",
+    "conversation_id": "25b33708-5285-4984-898c-ac7537adbad6",
+    "suites_used": [
+        "Messages"
+    ],
+    "apis_used": [
+        "SearchMessages"
+    ],
+    "scenario": "SearchMessages easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I'm looking for a message my boss sent me last week. It was about the new project we're working on. Can you help me find it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I can help you find that message. What was the name of the project?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "new project",
+                            "sender": "boss",
+                            "start_date": "2023-09-04 00:00:00",
+                            "end_date": "2023-09-11 09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to help you find the message from your boss about the new project. Let's use the SearchMessages tool to locate this specific message. I'll create a plan to search for the message using the information you've provided.\n\nPlan:\nStep 1: Search for messages from your boss about the new project within the last week.\n#V1 = SearchMessages(query=\"new project\", sender=\"boss\", start_date=\"2023-09-04 00:00:00\", end_date=\"2023-09-11 09:00:00\")\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "project",
+                            "sender": "boss",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nI apologize, but I couldn't find any messages from your boss about the new project from last week. It's possible that the message wasn't sent or it might have been sent earlier than last week. Let's try expanding our search parameters. I'll search for messages from your boss mentioning \"project\" without a specific date range.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "query": "project",
+                            "start_date": "2023-09-04 00:00:00",
+                            "end_date": "2023-09-11 09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nI apologize, but I couldn't find any messages from your boss about the new project from last week or any time period. There are a few possibilities:\n\n1. The message might not have been sent through the messaging system we have access to. It's possible your boss sent it via email instead.\n\n2. The search terms might not be specific enough. Your boss might have used different words to describe the project.\n\n3. The sender might not be recognized as \"boss\" in the system.\n\nLet's try searching your emails instead. I'll search for emails from last week containing \"project\" in the subject or body.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize, but I couldn't find any messages or emails from your boss about the new project from last week. Here are the steps I took to try to find the message:\n\n1. I searched for messages containing \"new project\" from your boss sent between September 4th and September 11th.\n2. When that didn't yield results, I broadened the search to just \"project\" from your boss without date restrictions.\n3. Finally, I checked your email inbox for any emails containing \"project\" sent last week.\n\nUnfortunately, none of these searches returned any results. There could be a few reasons for this:\n\n1. The message might have been sent earlier than last week.\n2. The message might not contain the word \"project\" or might use different terminology.\n3. Your boss might have used a different communication method.\n4. There might be an issue with the message search or email system.\n\nTo help you find the message, I suggest:\n\n1. Try to remember any specific words or phrases your boss used in the message. We could search for those instead.\n2. Check if the message might have been sent earlier than last week.\n3. Consider other platforms where your boss might have communicated this information (e.g., a project management tool, company intranet, etc.).\n4. If you remember who else was included in the message, we could try searching for messages from them.\n\nWould you like to try another search with different keywords or parameters?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It was called project aiden. I think it was sent last Tuesday."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I found the message. Here it is: Hey Justin, have you started work on project aiden yet? I need you to get started on it as soon as possible. Thanks!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "project aiden",
+                            "start_date": "2023-09-05 00:00:00",
+                            "end_date": "2023-09-05 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "mrbossman",
+                                "message": "Hey Justin, have you started work on project aiden yet? The deadline is by the end of this month. Thanks!"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Thank you for providing that information. I'll help you search for the message about Project Aiden that your boss sent last Tuesday. Let's create a plan to find this message using the available tools.\n\nPlan:\nStep 1: Log in to your account to access your messages.\n#V1 = UserLogin(username=\"justinkool\", password=\"\")\n\nStep 2: Search for messages containing \"Project Aiden\" from last Tuesday.\n#V2 = SearchMessages(query=\"Project Aiden\", sender=\"\", start_date=\"2023-09-05 00:00:00\", end_date=\"2023-09-05 23:59:59\")\n\nNow, let's execute this plan:\n\nStep 1: First, we need to log you in. However, I don't have your password, so I'll need to ask you for it.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks! That's the one I was looking for."
+        }
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

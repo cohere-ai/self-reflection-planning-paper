@@ -1,0 +1,110 @@
+{
+    "name": "CurrentWeather-easy",
+    "conversation_id": "c59b5bc7-64a2-4b5f-8148-05675b78b019",
+    "suites_used": [
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather"
+    ],
+    "scenario": "CurrentWeather easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I'm thinking about going for a walk soon. What the weather currently like?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Conditions are sunny with a high of 78 and a low of 60. Have a nice walk!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 78,
+                            "low": 60,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 78,
+                            "low": 60,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Get the current weather for New York using the CurrentWeather tool.\n#V1 = CurrentWeather[location=\"New York\"]",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nBased on the current weather information for New York, it's a great day for a walk! Here's what the weather is like:\n\n- Date: September 11, 2023\n- High temperature: 78\u00b0F (about 26\u00b0C)\n- Low temperature: 60\u00b0F (about 16\u00b0C)\n- Conditions: Sunny\n\nThe weather is sunny with comfortable temperatures. The current temperature is likely somewhere between 60\u00b0F and 78\u00b0F, which is perfect for a walk. It's warm enough to be comfortable but not too hot, and the sunny conditions make it a pleasant day to be outside.\n\nIf you're planning to go for a walk soon, it would be a good idea to:\n1. Wear comfortable, breathable clothing suitable for warm weather.\n2. Bring sunglasses and maybe a hat to protect yourself from the sun.\n3. Apply sunscreen if you're planning a longer walk or if you burn easily.\n4. Bring a water bottle to stay hydrated, especially if you plan on walking for an extended period.\n\nEnjoy your walk in this lovely weather!",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Great, I'll go now."
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

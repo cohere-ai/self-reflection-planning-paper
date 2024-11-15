@@ -1,0 +1,159 @@
+{
+    "name": "UserLogin-easy",
+    "conversation_id": "1df9e4a7-b93c-45c1-8914-10fdaf0b86ab",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "UserLogin"
+    ],
+    "scenario": "UserLogin easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you log me in?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, please provide your username and password.",
+                    "metadata": {
+                        "reflection": "Sure, please provide your username and password.",
+                        "response": "{\n  \"id\": \"090991c2f626450eb2d7dc00f2731575\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727120763,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, please provide your username and password.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3618,\n    \"total_tokens\": 3627,\n    \"completion_tokens\": 9\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "What's your password?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "justinkool"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "Step 1: Query if the username exists and get the user\n#V1 = QueryUser[{\"username\": \"justinkool\"}]",
+                        "response": "{\n  \"id\": \"9e37b8ef79404610bdcf78864dfd286d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727120766,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"Wpy3EaRLH\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"justinkool\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3676,\n    \"total_tokens\": 3698,\n    \"completion_tokens\": 22\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Hi! It looks like I'm unable to log you in right now, could you try again later? If you're having trouble, feel free to reach out and let me know how I can assist you further. If the issue persists, please consider contacting support for more help. Thank you for your patience!",
+                    "metadata": {
+                        "reflection": "Hi! It looks like I'm unable to log you in right now, could you try again later? If you're having trouble, feel free to reach out and let me know how I can assist you further. If the issue persists, please consider contacting support for more help. Thank you for your patience!",
+                        "response": "{\n  \"id\": \"9d5f41ff5832477db92cba3a6e50c2c7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727120767,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Hi! It looks like I'm unable to log you in right now, could you try again later? If you're having trouble, feel free to reach out and let me know how I can assist you further. If the issue persists, please consider contacting support for more help. Thank you for your patience!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3397,\n    \"total_tokens\": 3463,\n    \"completion_tokens\": 66\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "justforkicks123"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "You're logged in!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Use UserLogin\n#V1 = UserLogin(username=justinkool, password=justforkicks123)",
+                        "response": "{\n  \"id\": \"64460915ace04a48a5e226c46413c618\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727120770,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"vr4PbzVWa\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"UserLogin\",\n              \"arguments\": \"{\\\"username\\\": \\\"justinkool\\\", \\\"password\\\": \\\"justforkicks123\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3693,\n    \"total_tokens\": 3727,\n    \"completion_tokens\": 34\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Login successful. Need help with anything else?",
+                    "metadata": {
+                        "reflection": "Login successful. Need help with anything else?",
+                        "response": "{\n  \"id\": \"b8762f262e0e431581f387fc58748eba\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727120772,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Login successful. Need help with anything else?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3442,\n    \"total_tokens\": 3451,\n    \"completion_tokens\": 9\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

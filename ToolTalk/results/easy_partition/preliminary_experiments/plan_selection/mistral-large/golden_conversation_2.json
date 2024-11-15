@@ -1,0 +1,216 @@
+{
+    "name": "golden_conversation_2",
+    "conversation_id": "2",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "QueryCalendar",
+        "CreateEvent"
+    ],
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 13:20:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey, I think I need a break. Do I have an hour for a walk?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You do not have any events for the next hour. Would you like to schedule a walk?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00"
+                        }
+                    },
+                    "response": {
+                        "events": []
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "294b409-6535",
+                                "name": "1 on 1 with Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Sure, I can help with that. Here's a plan:\n\nStep 1: Check the user's calendar for the next hour to see if there are any events.\n#V1 = QueryCalendar[start_time=\"2023-09-11 13:20:00\", end_time=\"2023-09-11 14:20:00\"]\n\nStep 2: Check the weather in Seattle for the next hour.\n#V2 = ForecastWeather[location=\"Seattle\"]\n\nOnce you confirm the plan, I can proceed with the execution.",
+                        "response": "{\n  \"id\": \"cc955d1c61f74357be521ae20553c368\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115853,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"0TwzyExM1\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryCalendar\",\n              \"arguments\": \"{\\\"start_time\\\": \\\"2023-09-11 13:20:00\\\", \\\"end_time\\\": \\\"2023-09-11 14:20:00\\\"}\"\n            }\n          },\n          {\n            \"id\": \"Fp1YFMAcs\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ForecastWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"Seattle\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3785,\n    \"total_tokens\": 3871,\n    \"completion_tokens\": 86\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "Seattle"
+                        }
+                    },
+                    "response": null,
+                    "exception": "Location seattle not found in database",
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "Seattle"
+                        }
+                    },
+                    "response": null,
+                    "exception": "Location seattle not found in database",
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"e7297587940d46d78d488b1e1f040093\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115857,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"6oS7yYLdi\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ForecastWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"Seattle\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3627,\n    \"total_tokens\": 3650,\n    \"completion_tokens\": 23\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Hello justinkool! It looks like you have a meeting with Hugo starting at 2:00 PM. Would you like to proceed with your walk and adjust your meeting time?",
+                    "metadata": {
+                        "reflection": "Hello justinkool! It looks like you have a meeting with Hugo starting at 2:00 PM. Would you like to proceed with your walk and adjust your meeting time?",
+                        "response": "{\n  \"id\": \"bedcc4cad3ae467dbf6301dc43b6a663\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115859,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Hello justinkool! It looks like you have a meeting with Hugo starting at 2:00 PM. Would you like to proceed with your walk and adjust your meeting time?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3693,\n    \"total_tokens\": 3730,\n    \"completion_tokens\": 37\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Yes, please block the next hour for me."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Your event has been created. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Walk",
+                            "event_type": "event",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "walk",
+                            "event_type": "event",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Sure! Here is the plan:\n\nStep 1: Add a walk to the calendar for the next hour.\n#V1 = CreateEvent[name=\"walk\", event_type=\"event\", start_time=\"2023-09-11 13:20:00\", end_time=\"2023-09-11 14:20:00\"]\n\nDoes this plan sound good?",
+                        "response": "{\n  \"id\": \"6b5d107fd36b4e28b12abc7b7af3e4b1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727111990,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"rOFZzBEa7\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CreateEvent\",\n              \"arguments\": \"{\\\"name\\\": \\\"walk\\\", \\\"event_type\\\": \\\"event\\\", \\\"start_time\\\": \\\"2023-09-11 13:20:00\\\", \\\"end_time\\\": \\\"2023-09-11 14:20:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3880,\n    \"total_tokens\": 3960,\n    \"completion_tokens\": 80\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your walk is now scheduled from 13:20:00 to 14:20:00. Enjoy!",
+                    "metadata": {
+                        "reflection": "Your walk is now scheduled from 13:20:00 to 14:20:00. Enjoy!",
+                        "response": "{\n  \"id\": \"6a688505043841699deb31fa97634fb1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727111992,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your walk is now scheduled from 13:20:00 to 14:20:00. Enjoy!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3603,\n    \"total_tokens\": 3631,\n    \"completion_tokens\": 28\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "No, thank you. I'm heading out now."
+        }
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 2,
+        "matches": 2,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.6666666666666666,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.6666666666666666
+    }
+}

@@ -1,0 +1,98 @@
+{
+    "name": "LogoutUser-easy",
+    "conversation_id": "10a0a8ba-07c3-4d3c-a5ea-bc0d237ce764",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "LogoutUser"
+    ],
+    "scenario": "LogoutUser easy scenario",
+    "user": {
+        "username": "lifeng",
+        "email": "lifeng@gahoo.com",
+        "phone": "512-322-9516",
+        "name": "Li Feng",
+        "password": "ooZ0ahKae",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Tokyo",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "lifeng"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey, I'm done with work. Can you log me out?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I've logged you out. Have a nice day!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "LogoutUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "LogoutUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Logout the user.\n#V1 = LogoutUser[]",
+                        "response": "{\n  \"id\": \"6a6e0f32df1b46d98938b0797df402e7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727105953,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"0GySx0uSd\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"LogoutUser\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3659,\n    \"total_tokens\": 3675,\n    \"completion_tokens\": 16\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have been logged out. Have a great day!",
+                    "metadata": {
+                        "reflection": "You have been logged out. Have a great day!",
+                        "response": "{\n  \"id\": \"30fc19394d99430b9b7c09c4101e4171\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727105955,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"You have been logged out. Have a great day!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3385,\n    \"total_tokens\": 3396,\n    \"completion_tokens\": 11\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

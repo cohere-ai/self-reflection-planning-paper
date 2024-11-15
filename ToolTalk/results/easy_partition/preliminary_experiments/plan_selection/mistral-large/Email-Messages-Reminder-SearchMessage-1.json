@@ -1,0 +1,260 @@
+{
+    "name": "Email-Messages-Reminder-SearchMessage-1",
+    "conversation_id": "9a308bfa-6e45-42db-b65c-ae0bcd80b6de",
+    "suites_used": [
+        "Email",
+        "Messages",
+        "Reminder"
+    ],
+    "apis_used": [
+        "SearchMessages",
+        "SendMessage"
+    ],
+    "scenario": "The user wants to chat with their friend who is also using the same app. They first search for messages from their friend using their username (SearchMessages). They then open the most recent message and reply to it (SendMessage). They then want to see if their friend has read the message, so they search for messages from their friend again (SearchMessages). They then open the message they just sent and check the read status (no API call). They then see that their friend has replied with a link to a funny video, so they open the link and watch the video (no API call). They then want to share the video with another friend, so they copy the link and send a message to the other friend (SendMessage).",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "mstein"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I need to catch up on Nick's memes. Can you look for messages from (nickie) mentioning \"video\"?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Here are the last five messages from (nickie) mentioning \"video\": \"Check out this video: utube.com/slkd\", \"Check out this video: utube.com/2351f\", \"Check out this video: utube.com/aw2hg\", \"Check out this video: utube.com/53ehbs\", \"Check out this video: utube.com/a2q3eg\"",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "video",
+                            "sender": "nickie"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-10 14:01:37",
+                                "sender": "nickie",
+                                "message": "Check out this video: utube.com/slkd"
+                            },
+                            {
+                                "message_id": "006f526d-00747977",
+                                "timestamp": "2023-09-10 14:05:00",
+                                "sender": "nickie",
+                                "message": "Check out this video: utube.com/2351f"
+                            },
+                            {
+                                "message_id": "00747977-006f526d",
+                                "timestamp": "2023-09-10 14:13:14",
+                                "sender": "nickie",
+                                "message": "Check out this video: utube.com/aw2hg"
+                            },
+                            {
+                                "message_id": "42090fe9-dd1bb6ac",
+                                "timestamp": "2023-09-10 14:14:20",
+                                "sender": "nickie",
+                                "message": "Check out this video: utube.com/53ehbs"
+                            },
+                            {
+                                "message_id": "c9171891-949e647d",
+                                "timestamp": "2023-09-10 14:15:00",
+                                "sender": "nickie",
+                                "message": "Check out this video: utube.com/a2q3eg"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "video",
+                            "sender": "nickie",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "c9171891-949e647d",
+                                "timestamp": "2023-09-10 14:15:00",
+                                "sender": "nickie",
+                                "message": "Check out this video: utube.com/a2q3eg"
+                            },
+                            {
+                                "message_id": "42090fe9-dd1bb6ac",
+                                "timestamp": "2023-09-10 14:14:20",
+                                "sender": "nickie",
+                                "message": "Check out this video: utube.com/53ehbs"
+                            },
+                            {
+                                "message_id": "00747977-006f526d",
+                                "timestamp": "2023-09-10 14:13:14",
+                                "sender": "nickie",
+                                "message": "Check out this video: utube.com/aw2hg"
+                            },
+                            {
+                                "message_id": "006f526d-00747977",
+                                "timestamp": "2023-09-10 14:05:00",
+                                "sender": "nickie",
+                                "message": "Check out this video: utube.com/2351f"
+                            },
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-10 14:01:37",
+                                "sender": "nickie",
+                                "message": "Check out this video: utube.com/slkd"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Sure, I can help you with that. Below is the plan to find messages from Nick that mention \"video\":\n\nStep 1: Search for messages from \"nickie\" that mention \"video\".\n#V1 = SearchMessages[query: \"video\", sender: \"nickie\"]\n\nPlease confirm if you would like to proceed with this plan.",
+                        "response": "{\n  \"id\": \"17dc0c4312aa4a8388812ca3adb62613\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115367,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"mYAKqtvP5\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchMessages\",\n              \"arguments\": \"{\\\"query\\\": \\\"video\\\", \\\"sender\\\": \\\"nickie\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3729,\n    \"total_tokens\": 3756,\n    \"completion_tokens\": 27\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here are the messages from Nickie that mention videos:\n\n1. **Message ID:** c9171891-949e647d\n   **Timestamp:** 2023-09-10 14:15:00\n   **Message:** Check out this video: utube.com/a2q3eg\n\n2. **Message ID:** 42090fe9-dd1bb6ac\n   **Timestamp:** 2023-09-10 14:14:20\n   **Message:** Check out this video: utube.com/53ehbs\n\n3. **Message ID:** 00747977-006f526d\n   **Timestamp:** 2023-09-10 14:13:14\n   **Message:** Check out this video: utube.com/aw2hg\n\n4. **Message ID:** 006f526d-00747977\n   **Timestamp:** 2023-09-10 14:05:00\n   **Message:** Check out this video: utube.com/2351f\n\n5. **Message ID:** b6bd49bf-949f71a5\n   **Timestamp:** 2023-09-10 14:01:37\n   **Message:** Check out this video: utube.com/slkd\n\nWould you like to do anything else?",
+                    "metadata": {
+                        "reflection": "Here are the messages from Nickie that mention videos:\n\n1. **Message ID:** c9171891-949e647d\n   **Timestamp:** 2023-09-10 14:15:00\n   **Message:** Check out this video: utube.com/a2q3eg\n\n2. **Message ID:** 42090fe9-dd1bb6ac\n   **Timestamp:** 2023-09-10 14:14:20\n   **Message:** Check out this video: utube.com/53ehbs\n\n3. **Message ID:** 00747977-006f526d\n   **Timestamp:** 2023-09-10 14:13:14\n   **Message:** Check out this video: utube.com/aw2hg\n\n4. **Message ID:** 006f526d-00747977\n   **Timestamp:** 2023-09-10 14:05:00\n   **Message:** Check out this video: utube.com/2351f\n\n5. **Message ID:** b6bd49bf-949f71a5\n   **Timestamp:** 2023-09-10 14:01:37\n   **Message:** Check out this video: utube.com/slkd\n\nWould you like to do anything else?",
+                        "response": "{\n  \"id\": \"8c13236c91e9426ab9cc78c328ede93b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115368,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here are the messages from Nickie that mention videos:\\n\\n1. **Message ID:** c9171891-949e647d\\n   **Timestamp:** 2023-09-10 14:15:00\\n   **Message:** Check out this video: utube.com/a2q3eg\\n\\n2. **Message ID:** 42090fe9-dd1bb6ac\\n   **Timestamp:** 2023-09-10 14:14:20\\n   **Message:** Check out this video: utube.com/53ehbs\\n\\n3. **Message ID:** 00747977-006f526d\\n   **Timestamp:** 2023-09-10 14:13:14\\n   **Message:** Check out this video: utube.com/aw2hg\\n\\n4. **Message ID:** 006f526d-00747977\\n   **Timestamp:** 2023-09-10 14:05:00\\n   **Message:** Check out this video: utube.com/2351f\\n\\n5. **Message ID:** b6bd49bf-949f71a5\\n   **Timestamp:** 2023-09-10 14:01:37\\n   **Message:** Check out this video: utube.com/slkd\\n\\nWould you like to do anything else?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3774,\n    \"total_tokens\": 4138,\n    \"completion_tokens\": 364\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "lol that first video was funny, can you send it to vick (ickyvicky)? Also reply to Nick saying lol"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay I sent a message to Vick saying \"Check out this video: utube.com/slkd\", and a message to Nick saying \"lol\"",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "ickyvicky",
+                            "message": "Check out this video: utube.com/slkd"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "nickie",
+                            "message": "lol"
+                        }
+                    },
+                    "response": {
+                        "message_id": "5c5373e0-ecf4712d"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "ickyvicky",
+                            "message": "Check out this video: utube.com/slkd",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Sure! I'll send the video to vick (ickyvicky) and reply to Nick with \"lol\".\n\nStep 1: Send the video to ickyvicky.\n#V1 = SendMessage[receiver=\"ickyvicky\", message=\"Check out this video: utube.com/slkd\"]\n\nStep 2: Reply to Nick with \"lol\".\n#V2 = SendMessage[receiver=\"nickie\", message=\"lol\"]\n\nWould you like me to proceed with this plan?",
+                        "response": "{\n  \"id\": \"36650bffee9c43e1894b0bbf183ee10b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727113343,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"ChwK8BlSK\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendMessage\",\n              \"arguments\": \"{\\\"receiver\\\": \\\"ickyvicky\\\", \\\"message\\\": \\\"Check out this video: utube.com/slkd\\\"}\"\n            }\n          },\n          {\n            \"id\": \"OqOr84gYo\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendMessage\",\n              \"arguments\": \"{\\\"receiver\\\": \\\"nickie\\\", \\\"message\\\": \\\"lol\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4328,\n    \"total_tokens\": 4395,\n    \"completion_tokens\": 67\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "nickie",
+                            "message": "lol",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "5c5373e0-ecf4712d"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Message sent to vick: \"Check out this video: utube.com/slkd\"\nMessage sent to Nick: \"lol\"",
+                    "metadata": {
+                        "reflection": "Message sent to vick: \"Check out this video: utube.com/slkd\"\nMessage sent to Nick: \"lol\"",
+                        "response": "{\n  \"id\": \"d089c1b2c1ac43c0b4458c8c8e210d87\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727113347,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Message sent to vick: \\\"Check out this video: utube.com/slkd\\\"\\nMessage sent to Nick: \\\"lol\\\"\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4084,\n    \"total_tokens\": 4115,\n    \"completion_tokens\": 31\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 3,
+        "matches": 3,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

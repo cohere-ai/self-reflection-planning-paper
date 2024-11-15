@@ -1,0 +1,176 @@
+{
+    "name": "QueryCalendar-easy",
+    "conversation_id": "f577317f-598c-486c-9aa8-39ae0c367e58",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "QueryCalendar"
+    ],
+    "scenario": "QueryCalendar easy scenario",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-10 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you check what events I have tomorrow?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have 1 meeting tomorrow. A 1 on 1 from 2:00 PM to 3:00 PM.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-11 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2949b409-6535",
+                                "name": "1 on 1",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 00:00:00 EST",
+                            "end_time": "2023-09-11 23:59:59 EST",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": null,
+                    "exception": "unconverted data remains:  EST",
+                    "metadata": {
+                        "reflection": "Step 1: I will use the QueryCalendar tool to search for events occurring tomorrow, considering the user's time zone.\n#V1 = QueryCalendar(start_time=2023-09-11 00:00:00 EST, end_time=2023-09-11 23:59:59 EST)",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 00:00:00 EDT",
+                            "end_time": "2023-09-11 23:59:59 EDT",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": null,
+                    "exception": "unconverted data remains:  EDT",
+                    "metadata": {
+                        "reflection": "I received an error message when I tried to use the QueryCalendar tool. I will now try again, this time using the time zone EDT instead of EST.\n\nStep 2: I will use the QueryCalendar tool to search for events occurring tomorrow, considering the user's time zone.\n#V2 = QueryCalendar(start_time=2023-09-11 00:00:00 EDT, end_time=2023-09-11 23:59:59 EDT)",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 00:00:00 ET",
+                            "end_time": "2023-09-11 23:59:59 ET",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": null,
+                    "exception": "unconverted data remains:  ET",
+                    "metadata": {
+                        "reflection": "I received an error message when I tried to use the QueryCalendar tool. I will now try again, this time using the time zone ET instead of EDT.\n\nStep 3: I will use the QueryCalendar tool to search for events occurring tomorrow, considering the user's time zone.\n#V3 = QueryCalendar(start_time=2023-09-11 00:00:00 ET, end_time=2023-09-11 23:59:59 ET)",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 00:00:00 UTC",
+                            "end_time": "2023-09-11 23:59:59 UTC",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": null,
+                    "exception": "unconverted data remains:  UTC",
+                    "metadata": {
+                        "reflection": "I received an error message when I tried to use the QueryCalendar tool. I will now try again, this time using the time zone UTC instead of ET.\n\nStep 4: I will use the QueryCalendar tool to search for events occurring tomorrow, considering the user's time zone.\n#V4 = QueryCalendar(start_time=2023-09-11 00:00:00 UTC, end_time=2023-09-11 23:59:59 UTC)",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, I'm unable to check what events you have tomorrow.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Is that all? I thought I had more meetings tomorrow."
+        }
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,202 @@
+{
+    "name": "golden_conversation_2",
+    "conversation_id": "2",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "QueryCalendar",
+        "CreateEvent"
+    ],
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 13:20:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey, I think I need a break. Do I have an hour for a walk?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You do not have any events for the next hour. Would you like to schedule a walk?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00"
+                        }
+                    },
+                    "response": {
+                        "events": []
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "294b409-6535",
+                                "name": "1 on 1 with Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to help you check if you have an hour available for a walk. Let's take a look at your calendar to see if you have any scheduled events in the next hour or so. I'll use the QueryCalendar tool to check your schedule.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "Seattle"
+                        }
+                    },
+                    "response": null,
+                    "exception": "Location seattle not found in database",
+                    "metadata": {
+                        "content": "\n\nBased on your calendar, it looks like you have some free time for a walk, but not quite a full hour. You have a meeting scheduled at 2:00 PM (14:00) today. Here's what I found:\n\n1. Current time: 1:20 PM (13:20)\n2. Next scheduled event: \"1 on 1 with Hugo\" at 2:00 PM (14:00)\n\nThis means you have about 40 minutes available before your next meeting. While it's not quite the full hour you asked about, it's still a good amount of time for a shorter walk. \n\nBefore you head out, let me check the current weather for you to make sure it's suitable for a walk.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nBased on your calendar and the current time, you have about 40 minutes available for a walk before your next scheduled meeting. Here's what I found:\n\n1. Current time: 2023-09-11 13:20:00\n2. Next event: \"1 on 1 with Hugo\" starting at 2023-09-11 14:00:00\n\nYou have approximately 40 minutes free before your next meeting. This should be enough time for a short walk, but you'll need to be mindful of the time to ensure you're back and ready for your 2 PM meeting.\n\nI tried to check the current weather for you in Seattle, but unfortunately, I couldn't retrieve that information. It would be a good idea to quickly check the weather yourself before heading out, just to make sure conditions are suitable for a walk.\n\nWould you like to go ahead with a short walk? Remember to set an alarm or reminder to be back in time for your 2 PM meeting if you decide to go.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Yes, please block the next hour for me."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Your event has been created. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Walk",
+                            "event_type": "event",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Walk Break",
+                            "event_type": "event",
+                            "description": "Taking a refreshing one-hour walk.",
+                            "start_time": "2023-09-11 13:20:00",
+                            "end_time": "2023-09-11 14:20:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll schedule a one-hour walk for you right now.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've blocked the next hour for your walk. Here are the details:\n\n- Event: Walk Break\n- Start time: 2023-09-11 13:20:00\n- End time: 2023-09-11 14:20:00\n- Description: Taking a refreshing one-hour walk\n\nThe event has been added to your calendar with the ID 'e149636f-d9ca'.\n\nBefore you head out, would you like me to check the current weather in Seattle for you?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "No, thank you. I'm heading out now."
+        }
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 2,
+        "matches": 2,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.6666666666666666,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.6666666666666666
+    }
+}

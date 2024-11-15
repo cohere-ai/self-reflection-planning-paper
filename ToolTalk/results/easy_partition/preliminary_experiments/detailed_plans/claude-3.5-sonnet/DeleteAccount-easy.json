@@ -1,0 +1,124 @@
+{
+    "name": "DeleteAccount-easy",
+    "conversation_id": "c40b9b9e-e8f6-4a9b-8832-a119ed3e75b6",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "DeleteAccount"
+    ],
+    "scenario": "DeleteAccount easy scenario",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ahhchiu"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey this service sucks, I'd like to delete my account"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sorry to hear that, I need your password to delete your account.",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "I apologize that you're not satisfied with the service. I understand you'd like to delete your account. I can help you with that process, but first, I want to make sure you're aware that this action is permanent and cannot be undone. Are you certain you want to proceed with deleting your account? If so, I can guide you through the steps to do so.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Agh everything is annoying on this platform. It's eehahTe2t"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I have deleted your account. Please let us know if you have any feedback",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "password": "eehahTe2t"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "password": "eehahTe2t",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "I apologize for the frustration you're experiencing. I understand you want to delete your account, and I can help you with that process. Let's proceed with deleting your account using the password you provided.\n\nHere's the plan to delete your account:\n\nStep 1: Delete the account using the provided password.\n#V1 = DeleteAccount[password=\"eehahTe2t\"]\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI understand your frustration, and I've successfully processed your request to delete your account. Your account has been deleted from our system. Is there anything else I can help you with or any feedback you'd like to share about your experience with the platform?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Just that you suck, bye bye!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

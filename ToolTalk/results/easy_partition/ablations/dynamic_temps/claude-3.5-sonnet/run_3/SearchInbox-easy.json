@@ -1,0 +1,212 @@
+{
+    "name": "SearchInbox-easy",
+    "conversation_id": "92a4155a-ec03-4e64-b74f-b2b890738b6f",
+    "suites_used": [
+        "Email"
+    ],
+    "apis_used": [
+        "SearchInbox"
+    ],
+    "scenario": "SearchInbox easy scenario",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "mstein"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you search my inbox for emails from John?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's John's email address?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "sender": "John",
+                            "query": "",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Search the inbox for emails from John\n#V1 = SearchInbox(sender=\"John\", query=\"\")",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize, but I couldn't find any emails from John in your inbox. The search returned an empty result. This could mean a few things:\n\n1. There are no emails from John in your recent inbox (remember, the search only returns the 5 most recent results).\n2. The sender's email address might not contain \"John\" directly.\n3. You might not be logged in, which is necessary to access your inbox.\n\nTo help you better, I have a few questions:\n\n1. Are you sure you're logged in to your account?\n2. Do you know John's full email address? It might be helpful to search using his complete email address instead of just his name.\n3. Would you like to try searching with different criteria, such as a specific subject or date range?\n\nLet me know how you'd like to proceed, and I'll be happy to help you further.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's john.carbugle@fmail.com"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sure, here are the 3 most recent emails from John: London Recommendations, RE: Project Update, RE: Project Update. Would you like to summarize them?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "sender": "john.carbugle@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "75-ff99-d8d1383b",
+                                "date": "2023-09-09 11:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com"
+                                ],
+                                "subject": "London Recommendations",
+                                "body": "Hey I'm coming to London in a few days. Do you have any recommendations for restaurants?"
+                            },
+                            {
+                                "email_id": "b5-cf2d-5231552e",
+                                "date": "2023-09-05 00:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "RE: Project Update",
+                                "body": "Oh I see, that's a good point Li, I can add a new section in the doc about this."
+                            },
+                            {
+                                "email_id": "0b-5119-b5f0a5b5",
+                                "date": "2023-09-02 00:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "RE: Project Update",
+                                "body": "Hey I was able to look at the updates you sent over. I think we should go with the second option. I left some comments in the document. Let me know if you have any questions."
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "sender": "john.carbugle@fmail.com",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "75-ff99-d8d1383b",
+                                "date": "2023-09-09 11:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com"
+                                ],
+                                "subject": "London Recommendations",
+                                "body": "Hey I'm coming to London in a few days. Do you have any recommendations for restaurants?"
+                            },
+                            {
+                                "email_id": "b5-cf2d-5231552e",
+                                "date": "2023-09-05 00:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "RE: Project Update",
+                                "body": "Oh I see, that's a good point Li, I can add a new section in the doc about this."
+                            },
+                            {
+                                "email_id": "0b-5119-b5f0a5b5",
+                                "date": "2023-09-02 00:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "RE: Project Update",
+                                "body": "Hey I was able to look at the updates you sent over. I think we should go with the second option. I left some comments in the document. Let me know if you have any questions."
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Search the inbox for emails from John's email address.\n#V1 = SearchInbox(sender=\"john.carbugle@fmail.com\")",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've searched your inbox for emails from John (john.carbugle@fmail.com) and found 3 recent emails. Here's a summary of them:\n\n1. The most recent email (September 9th):\n   - Subject: London Recommendations\n   - John is asking for restaurant recommendations in London.\n\n2. Email from September 5th:\n   - Subject: RE: Project Update\n   - John mentions adding a new section to a document based on feedback from Li.\n\n3. Email from September 2nd:\n   - Subject: RE: Project Update\n   - John discusses project updates, suggesting the second option and mentioning he left comments in a document.\n\nWould you like more details about any of these emails or do you need any other information?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "No I'm good. Just wanted to see if I missed anything. Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

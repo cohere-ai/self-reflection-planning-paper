@@ -1,0 +1,266 @@
+{
+    "name": "Alarm-Reminder-Weather-AddReminder-1",
+    "conversation_id": "1e1ad400-b86b-4e7c-9809-0351c22d4b6d",
+    "suites_used": [
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "AddReminder",
+        "HistoricWeather"
+    ],
+    "scenario": "The user wants to set a reminder to pay their electricity bill before the due date. They also want to compare the current weather and the historic weather of their location to see if they are using more or less electricity than usual. They use the AddReminder API to create a reminder with the task \"Pay electricity bill\" and the due date \"2021-12-15 23:59:59\". They then use the CurrentWeather API to get the current weather of their location. They see that the temperature is 15 degrees Celsius and the humidity is 60%. They then use the HistoricWeather API to get the weather data of their location for the same date last year. They see that the temperature was 10 degrees Celsius and the humidity was 40%. They conclude that they are using more electricity this year because of the higher temperature and humidity. They then use the GetReminders API to get a list of all their reminders. They see that they have another reminder to pay their rent on the same day. They use the CompleteReminder API to mark that reminder as done, since they have already paid their rent online.",
+    "user": {
+        "username": "lifeng",
+        "email": "lifeng@gahoo.com",
+        "phone": "512-322-9516",
+        "name": "Li Feng",
+        "password": "ooZ0ahKae",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "lifeng"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Set a reminder to pay my electricity bill and a reminder to pay my rent this Friday."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Okay I've set a reminder to pay your electricity bill and a reminder to pay your rend for 9/15.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pay electricity bill",
+                            "due_date": "2023-09-15 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pay rent",
+                            "due_date": "2023-09-15 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Pay electricity bill",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll help you set two reminders: one for paying your electricity bill and another for paying your rent this Friday. Let's break this down into steps and use the appropriate tools.\n\nStep 1: Add a reminder for the electricity bill\n#V1 = AddReminder[task=\"Pay electricity bill\"]\n\nStep 2: Add a reminder for rent payment on Friday\n#V2 = AddReminder[task=\"Pay rent\", due_date=\"2023-09-15 09:00:00\"]\n\nStep 3: Retrieve the list of reminders to confirm they've been added\n#V3 = GetReminders[]\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Pay rent",
+                            "due_date": "2023-09-15 09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "20-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nCertainly! I'll set two reminders for you: one for paying your electricity bill and another for paying your rent this Friday. Let me do that for you step by step.\n\nStep 1: Add a reminder for the electricity bill\n#V1 = AddReminder(task=\"Pay electricity bill\")\n\nStep 2: Add a reminder for the rent payment\n#V2 = AddReminder(task=\"Pay rent\", due_date=\"2023-09-15 09:00:00\")\n\nNow, let's execute the second step:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've set two reminders for you:\n\n1. A reminder to pay your electricity bill (reminder ID: 5b-dd80). This reminder doesn't have a specific due date, so you'll need to take care of it as soon as possible.\n\n2. A reminder to pay your rent (reminder ID: 20-d9ca), set for this Friday, September 15, 2023, at 9:00 AM.\n\nBoth reminders have been successfully added to your list. Is there anything else you'd like me to do for you?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "What's the historical temperature for this month vs the current temperature? I feel like I've been using the heating more."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The historical temperature for September in Paris has a minimum of 50 and a maximum of 74. The current temperature high is 60 with a low of 52.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "Paris"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 60,
+                            "low": 52,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "Paris",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 50,
+                            "max_temp": 74,
+                            "record_min_temp": 40,
+                            "record_max_temp": 94,
+                            "avg_rainfall": 2.01,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "Paris"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 60,
+                            "low": 52,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "To answer your question about the historical temperature for this month compared to the current temperature, we'll need to gather some data. Let's break this down into steps:\n\nStep 1: Get the current weather in Paris.\n#V1 = CurrentWeather[location=Paris]\n\nStep 2: Get the historical weather data for September in Paris.\n#V2 = HistoricWeather[location=Paris, month=September]\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "Paris",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 50,
+                            "max_temp": 74,
+                            "record_min_temp": 40,
+                            "record_max_temp": 94,
+                            "avg_rainfall": 2.01,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nBased on the information I've gathered, I can provide you with a comparison of the current temperature in Paris and the historical data for September:\n\nCurrent weather (as of 2023-09-11):\n- High: 60\u00b0F (15.6\u00b0C)\n- Low: 52\u00b0F (11.1\u00b0C)\n- Conditions: Sunny\n\nHistorical weather for September in Paris:\n- Average minimum temperature: 50\u00b0F (10\u00b0C)\n- Average maximum temperature: 74\u00b0F (23.3\u00b0C)\n- Record low temperature: 40\u00b0F (4.4\u00b0C)\n- Record high temperature: 94\u00b0F (34.4\u00b0C)\n\nComparing the current temperature to the historical averages:\n\n1. The current high temperature (60\u00b0F/15.6\u00b0C) is significantly lower than the historical average maximum temperature for September (74\u00b0F/23.3\u00b0C).\n2. The current low temperature (52\u00b0F/11.1\u00b0C) is only slightly higher than the historical average minimum temperature (50\u00b0F/10\u00b0C).\n\nGiven this information, it appears that the current temperature in Paris is indeed cooler than what is typically expected for September, especially during the daytime. The high temperature is about 14\u00b0F (7.8\u00b0C) lower than the historical average maximum.\n\nThis cooler weather could explain why you feel like you've been using the heating more. The temperatures are lower than what's typical for this time of year, which might necessitate more heating to maintain comfortable indoor temperatures.\n\nIt's worth noting that daily temperatures can fluctuate, and this is just a snapshot of one day. However, if this trend continues throughout the month, you may indeed find yourself using more heating than usual for September in Paris.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "AddReminder",
+        "CompleteReminder",
+        "GetReminders",
+        "CurrentWeather",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 4,
+        "matches": 3,
+        "actions": 2,
+        "valid_actions": 1,
+        "bad_actions": 1,
+        "precision": 0.75,
+        "recall": 0.75,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.5,
+        "success": false,
+        "soft_success": 0.375,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

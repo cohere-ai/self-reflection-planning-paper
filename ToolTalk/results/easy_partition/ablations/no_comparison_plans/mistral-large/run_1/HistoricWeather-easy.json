@@ -1,0 +1,116 @@
+{
+    "name": "HistoricWeather-easy",
+    "conversation_id": "2eda051f-b04b-43db-9ee7-bd121218d9b4",
+    "suites_used": [
+        "Weather"
+    ],
+    "apis_used": [
+        "HistoricWeather"
+    ],
+    "scenario": "HistoricWeather easy scenario",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "It's really hot today, like over 100. Is it normally this hot here?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "From historic weather data, the record high for London in September if 89 F. 100 is a new record.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "London",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "London",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Get the historical weather data for the current month and location.\n#V1 = HistoricWeather[location: London, month: September]",
+                        "response": "{\n  \"id\": \"1eb2347848de4857b71e7c7836e60c38\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731449368,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"d3meiT8rb\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"HistoricWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"London\\\", \\\"month\\\": \\\"September\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3692,\n    \"total_tokens\": 3721,\n    \"completion_tokens\": 29\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "No, it is not normally this hot in London in September. The average high temperature is 66 degrees Fahrenheit, and the record high is 89 degrees Fahrenheit.",
+                    "metadata": {
+                        "reflection": "No, it is not normally this hot in London in September. The average high temperature is 66 degrees Fahrenheit, and the record high is 89 degrees Fahrenheit.",
+                        "response": "{\n  \"id\": \"ef1b665198754f7b9b9424cac1ca148a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731449370,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"No, it is not normally this hot in London in September. The average high temperature is 66 degrees Fahrenheit, and the record high is 89 degrees Fahrenheit.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3463,\n    \"total_tokens\": 3502,\n    \"completion_tokens\": 39\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Great, thanks global warming."
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,247 @@
+{
+    "name": "Alarm-Reminder-Weather-FindAlarm-2",
+    "conversation_id": "1941f3b6-2ce7-431a-ba30-b1e5b5d0019d",
+    "suites_used": [
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "AddReminder",
+        "ForecastWeather"
+    ],
+    "scenario": "The user wants to do some gardening on a sunny day. They want to get the weather forecast for the next three days (ForecastWeather) and choose the best day to do it. They want to set a reminder to buy some seeds and fertilizer (AddReminder). They also want to set an alarm for the morning of the chosen day (AddAlarm). They want to check their existing reminders (GetReminders) and complete any that are related to gardening (CompleteReminder). They want to delete any alarms that are not needed for the chosen day (FindAlarms + DeleteAlarm).",
+    "user": {
+        "username": "lifeng",
+        "email": "lifeng@gahoo.com",
+        "phone": "512-322-9516",
+        "name": "Li Feng",
+        "password": "ooZ0ahKae",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "lifeng"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Is it going to be sunny in the next three days?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "The weather forecast in Paris for the next three days are rainy, cloudy, and sunny.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "Paris"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 78,
+                                "low": 58,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 72,
+                                "low": 64,
+                                "conditions": "Cloudy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 76,
+                                "low": 60,
+                                "conditions": "Sunny"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "Paris"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 78,
+                                "low": 58,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 72,
+                                "low": 64,
+                                "conditions": "Cloudy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 76,
+                                "low": 60,
+                                "conditions": "Sunny"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "To answer your question about the weather forecast for the next three days in Paris, I'll need to use the ForecastWeather tool to get the 3-day forecast. Let me do that for you.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nBased on the 3-day forecast for Paris, it looks like it won't be consistently sunny over the next three days. Here's a breakdown of the weather forecast:\n\n1. September 12, 2023: 60% chance of rain with a high of 78\u00b0F (26\u00b0C) and a low of 58\u00b0F (14\u00b0C).\n2. September 13, 2023: Cloudy with a high of 72\u00b0F (22\u00b0C) and a low of 64\u00b0F (18\u00b0C).\n3. September 14, 2023: Sunny with a high of 76\u00b0F (24\u00b0C) and a low of 60\u00b0F (16\u00b0C).\n\nSo, to answer your question: It won't be sunny for all three days, but the forecast shows that the last day (September 14) is expected to be sunny. The first day has a good chance of rain, and the second day will be cloudy. If you have any outdoor plans, September 14 would be the best day for them based on this forecast.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Set a reminder to buy seeds and fertilizer on the rainy day and to go to sleep early on the cloudy day."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok I've set a reminder on 9/12 to buy seeds and fertilizer and on 9/13 to go to sleep early.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "buy seeds and fertilizer",
+                            "due_date": "2023-09-12 08:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "go to sleep early",
+                            "due_date": "2023-09-13 08:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Buy seeds and fertilizer",
+                            "due_date": "2023-09-12 09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll set reminders for you to buy seeds and fertilizer on the rainy day, and to go to sleep early on the cloudy day based on the weather forecast we just received. Let me set those up for you.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Go to sleep early",
+                            "due_date": "2023-09-13 20:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "20-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nCertainly! I've set a reminder for you to buy seeds and fertilizer on the rainy day, which is tomorrow (September 12, 2023). Now, let's set a reminder for going to sleep early on the cloudy day.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've set two reminders for you:\n\n1. \"Buy seeds and fertilizer\" on the rainy day (September 12, 2023) at 9:00 AM.\n2. \"Go to sleep early\" on the cloudy day (September 13, 2023) at 8:00 PM.\n\nThese reminders have been added to your list. Is there anything else you'd like me to do?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm",
+        "DeleteAlarm",
+        "FindAlarms",
+        "AddReminder",
+        "CompleteReminder",
+        "GetReminders",
+        "ForecastWeather"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 3,
+        "matches": 3,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

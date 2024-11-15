@@ -1,0 +1,105 @@
+{
+    "name": "DeleteAlarm-easy",
+    "conversation_id": "14d400f0-fa64-4ab9-b4cc-adbd339f74e5",
+    "suites_used": [
+        "Alarm"
+    ],
+    "apis_used": [
+        "DeleteAlarm"
+    ],
+    "scenario": "DeleteAlarm easy scenario",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Tokyo",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have an alarm that I'd like to delete, it's id is 593d-49e9"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I have deleted the alarm for you. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "alarm_id": "593d-49e9"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "alarm_id": "593d-49e9",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "1. #V DeleteAlarm: alarm_id=\"593d-49e9\"\n2. Respond to the user with the status returned from the DeleteAlarm tool.",
+                        "response": "{\n  \"id\": \"08431f9800b6467cb999de2efc139ea5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731178128,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"nZjYqeU9C\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteAlarm\",\n              \"arguments\": \"{\\\"alarm_id\\\": \\\"593d-49e9\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3709,\n    \"total_tokens\": 3741,\n    \"completion_tokens\": 32\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your alarm has been deleted.",
+                    "metadata": {
+                        "reflection": "Your alarm has been deleted.",
+                        "response": "{\n  \"id\": \"5828ee1120764b9f92f07b4ddd3dcb11\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731178130,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your alarm has been deleted.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3415,\n    \"total_tokens\": 3421,\n    \"completion_tokens\": 6\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "No that's it, thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

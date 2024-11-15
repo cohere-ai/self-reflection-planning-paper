@@ -1,0 +1,276 @@
+{
+    "name": "Alarm-Reminder-Weather-DeleteAlarm-2",
+    "conversation_id": "1c95ccbf-03ad-4791-89a7-f9f3708eb3dc",
+    "suites_used": [
+        "Alarm",
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "AddReminder",
+        "AddAlarm"
+    ],
+    "scenario": "The user is a freelancer who works from home. They set an alarm for 9:00 AM using AddAlarm. They also add a reminder to finish a project by noon using AddReminder. They check the current weather of their city using CurrentWeather and see that it is cloudy and windy. They decide to work indoors and add another reminder to order lunch using AddReminder. They wake up to the alarm and complete the first reminder using CompleteReminder. They check the forecast weather of their city using ForecastWeather and see that it will be sunny and warm in the afternoon. They decide to go for a walk after work and add another reminder to apply sunscreen using AddReminder. They delete the alarm using DeleteAlarm and start working on the project.",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 10:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Set an alarm for tomorrow at 9 AM. Also a reminder to send an email to the client at noon."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Alarm has been set for tomorrow at 9 am and a reminder has been set to email the client at noon.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "time": "09:00:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "send an email to the client",
+                            "due_date": "2023-09-11 12:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll help you set an alarm for tomorrow at 9 AM and create a reminder to send an email to the client at noon. Let's break this down into steps using the available tools.\n\nStep 1: Set an alarm for tomorrow at 9 AM\n#V1 = AddAlarm[time=\"09:00:00\"]\n\nStep 2: Add a reminder to send an email to the client at noon\n#V2 = AddReminder[task=\"Send an email to the client\", due_date=\"2023-09-12 12:00:00\"]\n\nNow, let's execute this plan:\n\nStep 1: Setting the alarm for tomorrow at 9 AM\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Send an email to the client",
+                            "due_date": "2023-09-12 12:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nCertainly! I've set an alarm for tomorrow at 9:00 AM for you. The alarm has been successfully added with the ID '5bff-dd80'.\n\nNow, let's set a reminder for sending an email to the client at noon. I'll use the AddReminder tool for this.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've set up both the alarm and the reminder for you. Here's a summary of what I've done:\n\n1. Alarm set for tomorrow at 9:00 AM:\n   - Alarm ID: 5bff-dd80\n\n2. Reminder added for tomorrow at 12:00 PM (noon):\n   - Task: Send an email to the client\n   - Reminder ID: 5b-dd80\n\nIs there anything else you'd like me to do for you?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Is it sunny outside?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The current weather is sunny with a high of 78 and a low of 60.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 78,
+                            "low": 60,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 78,
+                            "low": 60,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "To answer your question about whether it's sunny outside, I'll need to check the current weather in your location. Let me do that for you.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nYes, it is sunny outside in New York today. According to the current weather information, the conditions are reported as \"Sunny\" with a high of 78\u00b0F and a low of 60\u00b0F.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Set a reminder to apply sunscreen before lunch at 12:30."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok, reminder added to apply sunscreen at 12:30 pm.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "apply sunscreen",
+                            "due_date": "2023-09-11 12:30:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-d80"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Apply sunscreen before lunch",
+                            "due_date": "2023-09-11 12:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "20-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll set a reminder for you to apply sunscreen before lunch at 12:30.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've set a reminder for you to apply sunscreen before lunch at 12:30 PM today. The reminder has been added to your list with the ID '20-d9ca'. Is there anything else you'd like me to do?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm",
+        "DeleteAlarm",
+        "AddReminder",
+        "CompleteReminder",
+        "CurrentWeather",
+        "ForecastWeather"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 4,
+        "matches": 3,
+        "actions": 3,
+        "valid_actions": 2,
+        "bad_actions": 1,
+        "precision": 0.75,
+        "recall": 0.75,
+        "action_precision": 0.6666666666666666,
+        "bad_action_rate": 0.3333333333333333,
+        "success": false,
+        "soft_success": 0.5,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,125 @@
+{
+    "name": "FindAlarms-easy",
+    "conversation_id": "7e27daee-d11e-4a3b-8fb1-cb976029668e",
+    "suites_used": [
+        "Alarm"
+    ],
+    "apis_used": [
+        "FindAlarms"
+    ],
+    "scenario": "FindAlarms easy scenario",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "mstein"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey do I have any alarms set around 6 PM?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I found two alarm around 6 PM, one for 6 PM and one for 6:30 PM.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "FindAlarms",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_range": "17:00:00",
+                            "end_range": "19:00:00"
+                        }
+                    },
+                    "response": {
+                        "alarms": [
+                            {
+                                "alarm_id": "4631-000e",
+                                "time": "18:00:00"
+                            },
+                            {
+                                "alarm_id": "4e20-0a4c",
+                                "time": "18:30:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "FindAlarms",
+                        "parameters": {
+                            "start_range": "17:30:00",
+                            "end_range": "18:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarms": [
+                            {
+                                "alarm_id": "4631-000e",
+                                "time": "18:00:00"
+                            },
+                            {
+                                "alarm_id": "4e20-0a4c",
+                                "time": "18:30:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to check if you have any alarms set around 6 PM. To do this, we'll need to use the FindAlarms tool. Let me create a plan to retrieve this information for you.\n\nPlan:\nStep 1: Use the FindAlarms tool to search for alarms set around 6 PM.\n#V1 = FindAlarms[start_range=\"17:30:00\", end_range=\"18:30:00\"]\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nYes, you have two alarms set around 6 PM:\n\n1. An alarm set for 6:00 PM (18:00:00) with the alarm ID 4631-000e.\n2. An alarm set for 6:30 PM (18:30:00) with the alarm ID 4e20-0a4c.\n\nIs there anything specific you'd like to do with these alarms, such as modifying or deleting them?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Oh good, I don't need to set one then."
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

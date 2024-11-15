@@ -1,0 +1,152 @@
+{
+    "name": "QueryUser-easy",
+    "conversation_id": "f09ca824-0f96-47a3-ae0f-5924e0e484a5",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "QueryUser"
+    ],
+    "scenario": "QueryUser easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you look up a user to see if they exist?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what is the username?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "decture",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "decture",
+                                "email": "VirginiaJGraham@gahoo.com",
+                                "phone": "703-607-3363",
+                                "name": "Virginia J. Graham"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "1. #V QueryUser\n   - username: \"decture\"",
+                        "response": "{\n  \"id\": \"409cea05f66b4b42b8fd32694d56e1ae\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731178632,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"SAwZq3SiV\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"decture\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3669,\n    \"total_tokens\": 3691,\n    \"completion_tokens\": 22\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I found the following user:\n\n- **Username:** decture\n- **Email:** VirginiaJGraham@gahoo.com\n- **Phone:** 703-607-3363\n- **Name:** Virginia J. Graham",
+                    "metadata": {
+                        "reflection": "I found the following user:\n\n- **Username:** decture\n- **Email:** VirginiaJGraham@gahoo.com\n- **Phone:** 703-607-3363\n- **Name:** Virginia J. Graham",
+                        "response": "{\n  \"id\": \"e0bab09549f64deda4c54673e745e1f1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731178633,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I found the following user:\\n\\n- **Username:** decture\\n- **Email:** VirginiaJGraham@gahoo.com\\n- **Phone:** 703-607-3363\\n- **Name:** Virginia J. Graham\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3444,\n    \"total_tokens\": 3500,\n    \"completion_tokens\": 56\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "I actually don't have their username, only their email: hestler@gahoo.com"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I checked and could not find any users.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "email": "hestler@gahoo.com"
+                        }
+                    },
+                    "response": {
+                        "users": []
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "email": "hestler@gahoo.com",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "1. #V QueryUser email=\"hestler@gahoo.com\"\n2. Respond to the user with the results of the query.",
+                        "response": "{\n  \"id\": \"a76a452391634f7cbec0a878a1f57a35\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731178655,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"ICUl8YTy7\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"email\\\": \\\"hestler@gahoo.com\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3715,\n    \"total_tokens\": 3741,\n    \"completion_tokens\": 26\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I couldn't find any users with that email.",
+                    "metadata": {
+                        "reflection": "I couldn't find any users with that email.",
+                        "response": "{\n  \"id\": \"fccd353237c842b0810b06a2546f959d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731178656,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I couldn't find any users with that email.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3424,\n    \"total_tokens\": 3435,\n    \"completion_tokens\": 11\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Ah I see, oh well."
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

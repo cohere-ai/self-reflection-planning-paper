@@ -1,0 +1,304 @@
+{
+    "name": "Email-Reminder-Weather-DeleteReminder-0",
+    "conversation_id": "dff87b01-d181-4323-9955-655bc991ac4e",
+    "suites_used": [
+        "Email",
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders",
+        "DeleteReminder",
+        "AddReminder",
+        "SearchInbox"
+    ],
+    "scenario": "The user wants to delete a reminder for a meeting that has been cancelled. They first want to check their inbox for any emails related to the meeting (SearchInbox). They find one email from the organizer confirming the cancellation and another email from a colleague asking for some feedback on a report (SearchInbox). They reply to the organizer with a polite message (SendEmail) and open the report attachment from the colleague. They decide to add a new reminder to review the report later (AddReminder). They then go to their list of reminders (GetReminders) and find the reminder for the cancelled meeting. They delete the reminder (DeleteReminder) and check the current weather (CurrentWeather) to see if they can go for a walk.",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-12 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "mstein"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Can you check my email for information about the meeting today at 3 about going over our team's goals?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Ok I found two emails about your meeting todaay at 3 about going over your team's goals. The first email was sent a week ago to schedule the meeting. The second email was sent last night canceling the meeting.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "meeting 3"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "8c-7e2a-df490b13",
+                                "date": "2023-09-05 17:40:00",
+                                "sender": "misha.diae@somail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com",
+                                    "john.carbugle@fmail.com"
+                                ],
+                                "subject": "Meeting for team goals",
+                                "body": "Hey can we set up a meeting sometime to go over our team goals for the next quarter? Would next Tuesday at 3 work?"
+                            },
+                            {
+                                "email_id": "2f-9c6d-5e7a81c4",
+                                "date": "2023-09-11 18:00:00",
+                                "sender": "misha.diae@somail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com",
+                                    "john.carbugle@fmail.com"
+                                ],
+                                "subject": "Canceled: Meeting for team goals",
+                                "body": "Seems like multiple people can't make the meeting tomorrow. Let's reschedule for next week."
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "query": "meeting today at 3 about going over our team's goals",
+                            "start_date": "2023-09-12 00:00:00",
+                            "end_date": "2023-09-12 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Search for emails related to the meeting today at 3 PM.\n#V1 = SearchInbox[query=\"meeting today at 3 about going over our team's goals\", start_date=\"2023-09-12 00:00:00\", end_date=\"2023-09-12 23:59:59\"]",
+                        "response": "{\n  \"id\": \"61c03d1396444c0fbf360c28b86681e7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729596564,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"XFPJc8iQj\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchInbox\",\n              \"arguments\": \"{\\\"query\\\": \\\"meeting today at 3 about going over our team's goals\\\", \\\"start_date\\\": \\\"2023-09-12 00:00:00\\\", \\\"end_date\\\": \\\"2023-09-12 23:59:59\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3754,\n    \"total_tokens\": 3840,\n    \"completion_tokens\": 86\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I couldn't find any emails about the meeting today at 3 about going over our team's goals.",
+                    "metadata": {
+                        "reflection": "I couldn't find any emails about the meeting today at 3 about going over our team's goals.",
+                        "response": "{\n  \"id\": \"d4b5c8fc7d494f18922f4d57d7fdcee0\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729596569,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I couldn't find any emails about the meeting today at 3 about going over our team's goals.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3464,\n    \"total_tokens\": 3487,\n    \"completion_tokens\": 23\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Ok can you delete my reminder to write up some goals and add a new reminder to follow up with my manager at 3?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok I deleted your reminder to write up team goals and added a new reminder to follow up with your manager at 3 today.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Write up some goals before meeting",
+                                "due_date": "2023-09-12 15:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "4f-7a1d"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "follow up with my manager at 3"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Take out the trash",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Write abstract",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Write up some goals before meeting",
+                                "due_date": "2023-09-12 15:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-9a41",
+                                "task": "Pack for Paris",
+                                "due_date": "2023-09-11 20:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Get the list of reminders.\n#V1 = GetReminders[]\n\nStep 2: Filter the reminders to find the one about writing up some goals and delete it if it exists.\n#V2 = DeleteReminder[{\"reminder_id\": <reminder_id from #V1 for \"write up some goals\">}]\n\nStep 3: Add a new reminder to follow up with your manager at 3.\n#V3 = AddReminder[{\"task\": \"Follow up with manager\", \"due_date\": \"2023-09-12 15:00:00\"}]",
+                        "response": "{\n  \"id\": \"e7301b5598b849d0ad58f440d0fbdb31\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729596779,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"QMEaCxf9q\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4234,\n    \"total_tokens\": 4251,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "4f-7a1d",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"5b0e2c1095c64c329e71a275ead8e2ca\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729596782,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"Fbx5LG93j\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"4f-7a1d\\\"}\"\n            }\n          },\n          {\n            \"id\": \"1ZEwyCfqP\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Follow up with manager\\\", \\\"due_date\\\": \\\"2023-09-12 15:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4063,\n    \"total_tokens\": 4140,\n    \"completion_tokens\": 77\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Follow up with manager",
+                            "due_date": "2023-09-12 15:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Ok I deleted your reminder to write up some goals and added a new reminder to follow up with your manager at 3.",
+                    "metadata": {
+                        "reflection": "Ok I deleted your reminder to write up some goals and added a new reminder to follow up with your manager at 3.",
+                        "response": "{\n  \"id\": \"a854ccdccb174126aaad7e72c6787213\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729596787,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Ok I deleted your reminder to write up some goals and added a new reminder to follow up with your manager at 3.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4231,\n    \"total_tokens\": 4256,\n    \"completion_tokens\": 25\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchInbox",
+        "SendEmail",
+        "AddReminder",
+        "DeleteReminder",
+        "GetReminders",
+        "CurrentWeather"
+    ],
+    "intended_suites_used": [
+        "Email",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 4,
+        "matches": 3,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 0.75,
+        "recall": 0.75,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.75,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

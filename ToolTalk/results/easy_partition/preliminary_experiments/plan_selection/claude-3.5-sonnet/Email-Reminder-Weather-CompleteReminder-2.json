@@ -1,0 +1,489 @@
+{
+    "name": "Email-Reminder-Weather-CompleteReminder-2",
+    "conversation_id": "f91e4a9d-7a72-4512-889c-5586378e1138",
+    "suites_used": [
+        "Email",
+        "AccountTools",
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "CompleteReminder",
+        "GetReminders",
+        "SendEmail",
+        "QueryUser",
+        "HistoricWeather"
+    ],
+    "scenario": "The user has a reminder to write a blog post about the weather trends in their city (AddReminder). They use the HistoricWeather API to get the weather data for the past month (HistoricWeather). They analyze the data and write the blog post. They then search their inbox for any emails from their editor or readers (SearchInbox). They reply to any relevant emails and ask for feedback on their post (SendEmail). They complete the reminder (CompleteReminder).",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "When is my submission deadline for my blog post?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have a reminder to submit your blog post by 10 am today.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "submit blog post",
+                                "due_date": "2023-09-11 10:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Finish report",
+                                "due_date": "2023-09-11 08:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "apologize to landlord",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "submit blog post",
+                                "due_date": "2023-09-11 10:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "98-d687",
+                                "task": "buy Ana a present",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-08-27 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "To answer your question about the submission deadline for your blog post, we'll need to check your reminders or calendar events. Let's follow these steps to find the information you're looking for.\n\nStep 1: Check for any reminders related to the blog post submission.\n#V1 = GetReminders[]\n\nStep 2: If no relevant reminder is found in step 1, we'll check your calendar for any events related to the blog post submission.\n#V2 = QueryCalendar[start_time=\"2023-09-11 00:00:00\", end_time=\"2023-12-31 23:59:59\"]\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nBased on the reminders retrieved, I can see that you have a reminder for submitting your blog post. The submission deadline for your blog post is today, September 11, 2023, at 10:00:00 AM.\n\nIs there anything else you'd like to know about your reminders or any other assistance you need regarding your blog post submission?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Ok maybe I'll just write about the weather. What's the weather today and the historic weather for the month?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The weather in San Francisco today is cloudy with a high of 67 and a low of 52. The historic weather in September has a maximum of 78 and a minimum of 50.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "San Francisco"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 85,
+                            "low": 72,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "San Francisco",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 50,
+                            "max_temp": 90,
+                            "record_min_temp": 48,
+                            "record_max_temp": 102,
+                            "avg_rainfall": 3.0,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "San Francisco"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 85,
+                            "low": 72,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll help you get information about today's weather in San Francisco and the historic weather for this month. Let's break this down into steps:\n\nStep 1: Get the current weather for San Francisco.\n#V1 = CurrentWeather[location=\"San Francisco\"]\n\nStep 2: Get the historic weather for San Francisco for September.\n#V2 = HistoricWeather[location=\"San Francisco\", month=\"September\"]\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "San Francisco",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 50,
+                            "max_temp": 90,
+                            "record_min_temp": 48,
+                            "record_max_temp": 102,
+                            "avg_rainfall": 3.0,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nCertainly! I'd be happy to provide you with information about today's weather in San Francisco and the historic weather for the month. Let's start with today's weather and then we'll look at the historic data.\n\nToday's weather in San Francisco:\nThe current weather in San Francisco is sunny with a high of 85\u00b0F (29\u00b0C) and a low of 72\u00b0F (22\u00b0C). It's a beautiful, warm day!\n\nNow, let's get the historic weather information for September in San Francisco.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I'd be happy to provide you with information about today's weather in San Francisco and the historic weather for September. This could make for an interesting blog post topic.\n\nToday's Weather in San Francisco (September 11, 2023):\n- High temperature: 85\u00b0F (29\u00b0C)\n- Low temperature: 72\u00b0F (22\u00b0C)\n- Conditions: Sunny\n\nHistoric Weather for September in San Francisco:\n- Average minimum temperature: 50\u00b0F (10\u00b0C)\n- Average maximum temperature: 90\u00b0F (32\u00b0C)\n- Record low temperature: 48\u00b0F (9\u00b0C)\n- Record high temperature: 102\u00b0F (39\u00b0C)\n- Average rainfall: 3.0 inches (76.2 mm)\n- Snow days: 0 (San Francisco typically doesn't get snow in September)\n\nToday's weather is quite warm compared to the historic averages for September. The current high of 85\u00b0F is close to the typical maximum temperature for the month, while the low of 72\u00b0F is significantly higher than the average minimum.\n\nInterestingly, San Francisco has experienced some extreme temperatures in September historically, with a record high of 102\u00b0F and a record low of 48\u00b0F. However, such extremes are rare.\n\nSeptember is generally a dry month in San Francisco, with an average rainfall of only 3 inches. As expected, there are typically no snow days in September.\n\nThis information could form the basis of an interesting blog post about San Francisco's climate, perhaps focusing on how September weather typically marks a transition from the city's famous foggy summers to its clearer, warmer fall season.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Ok send an email to my editor (larajean) with this link to my blog post draft: 'docshare.com/12o89417uoihjns'"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok I've sent an email to your editor with the link to your blog post draft.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "username": "larajean"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "larajean",
+                                "email": "lara.jean@fmail.com",
+                                "phone": "941-773-9153",
+                                "name": "Lara C Jean"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "lara.jean@fmail.com"
+                            ],
+                            "subject": "blog post",
+                            "body": "here's my blogpost draft: docshare.com/12o89417uoihjns"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "larajean",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "larajean",
+                                "email": "lara.jean@fmail.com",
+                                "phone": "941-773-9153",
+                                "name": "Lara C Jean"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll help you send an email to your editor with the link to your blog post draft. Let's go through this step-by-step.\n\nStep 1: Find the email address of your editor (larajean)\n#V1 = QueryUser[username=\"larajean\"]\n\nStep 2: Compose and send the email\n#V2 = SendEmail[to=[#V1.email], subject=\"Blog Post Draft Link\", body=\"Hello,\\n\\nHere's the link to my blog post draft: docshare.com/12o89417uoihjns\\n\\nLooking forward to your feedback.\\n\\nBest regards,\\nSalcano\"]\n\nLet's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "lara.jean@fmail.com"
+                            ],
+                            "subject": "Blog Post Draft for Review",
+                            "body": "Dear Lara,\n\nI hope this email finds you well. I've completed a draft of my blog post and would like to share it with you for review.\n\nYou can access the draft using the following link: docshare.com/12o89417uoihjns\n\nPlease let me know if you have any feedback or suggestions for improvement.\n\nThank you for your time and assistance.\n\nBest regards,\nSal Cano",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've sent an email to your editor, Lara Jean, with the link to your blog post draft. Here's a summary of the action taken:\n\n1. I first queried the user database to find Lara Jean's email address.\n2. Then, I composed and sent an email to lara.jean@fmail.com with the subject \"Blog Post Draft for Review\" and included the link you provided (docshare.com/12o89417uoihjns) in the body of the email.\n\nThe email has been sent successfully with the ID: 5b-dd80-9f8a27ab. \n\nIs there anything else you'd like me to do regarding your blog post or communication with your editor?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Ok mark reminder as complete"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "Reminder to submit your blog post has been marked complete.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "14-579a"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Finish report",
+                                "due_date": "2023-09-11 08:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "apologize to landlord",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "submit blog post",
+                                "due_date": "2023-09-11 10:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "98-d687",
+                                "task": "buy Ana a present",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-08-27 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll mark your reminder for submitting the blog post as complete. Here's the plan to do that:\n\nStep 1: Get the list of reminders to find the correct reminder ID.\n#V1 = GetReminders[]\n\nStep 2: Complete the reminder using the reminder ID from step 1.\n#V2 = CompleteReminder[reminder_id: #V1['reminders'][0]['reminder_id']]\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "14-579a",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've marked the reminder to submit your blog post as complete. The reminder with ID '14-579a' for the task \"submit blog post\" has been successfully completed.\n\nIs there anything else you would like me to do?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchInbox",
+        "SendEmail",
+        "AddReminder",
+        "CompleteReminder",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Email",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 7,
+        "ground_truths": 6,
+        "matches": 6,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 0.8571428571428571,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

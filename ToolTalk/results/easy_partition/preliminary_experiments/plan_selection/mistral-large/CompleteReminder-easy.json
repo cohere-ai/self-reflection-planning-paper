@@ -1,0 +1,105 @@
+{
+    "name": "CompleteReminder-easy",
+    "conversation_id": "98f4a000-88ea-43a8-a3eb-09d3d2bdbe0e",
+    "suites_used": [
+        "Reminder"
+    ],
+    "apis_used": [
+        "CompleteReminder"
+    ],
+    "scenario": "CompleteReminder easy scenario",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "mstein"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you complete a reminder for me, it's id is 0b-5119"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I've completed the reminder for you. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "0b-5119"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "0b-5119",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Sure! Here is my plan:\n\nStep 1: Complete the reminder with the given ID.\n#V1 = CompleteReminder[reminder_id=0b-5119]\n\nWould you like me to proceed with the plan?",
+                        "response": "{\n  \"id\": \"2443c75da58441a98f57f0c9a4bd392e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115474,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"Bej6bpKIP\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CompleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"0b-5119\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3703,\n    \"total_tokens\": 3733,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The reminder with id 0b-5119 has been completed.",
+                    "metadata": {
+                        "reflection": "The reminder with id 0b-5119 has been completed.",
+                        "response": "{\n  \"id\": \"9ec322bd9c624e6a93310c7b5c8de7a7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115476,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"The reminder with id 0b-5119 has been completed.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3406,\n    \"total_tokens\": 3422,\n    \"completion_tokens\": 16\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "No that's it, thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

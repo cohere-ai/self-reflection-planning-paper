@@ -1,0 +1,105 @@
+{
+    "name": "DeleteAlarm-easy",
+    "conversation_id": "14d400f0-fa64-4ab9-b4cc-adbd339f74e5",
+    "suites_used": [
+        "Alarm"
+    ],
+    "apis_used": [
+        "DeleteAlarm"
+    ],
+    "scenario": "DeleteAlarm easy scenario",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Tokyo",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have an alarm that I'd like to delete, it's id is 593d-49e9"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I have deleted the alarm for you. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "alarm_id": "593d-49e9"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "alarm_id": "593d-49e9",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Given this request, we need to take the following steps:\n\nStep 1: Delete the requested alarm.\nDeleteAlarm[{\"alarm_id\": \"593d-49e9\"}]\n\nPlease confirm the plan so I can proceed.",
+                        "response": "{\n  \"id\": \"990576c95198407591769752d038e23d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727119277,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"5KMabU6Ql\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteAlarm\",\n              \"arguments\": \"{\\\"alarm_id\\\": \\\"593d-49e9\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3712,\n    \"total_tokens\": 3744,\n    \"completion_tokens\": 32\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Certainly! The alarm with ID 593d-49e9 has been successfully deleted. If there is anything else you need assistance with, feel free to ask!",
+                    "metadata": {
+                        "reflection": "Certainly! The alarm with ID 593d-49e9 has been successfully deleted. If there is anything else you need assistance with, feel free to ask!",
+                        "response": "{\n  \"id\": \"33d2305272274aa7b69319651c71339f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727119278,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Certainly! The alarm with ID 593d-49e9 has been successfully deleted. If there is anything else you need assistance with, feel free to ask!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3415,\n    \"total_tokens\": 3452,\n    \"completion_tokens\": 37\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "No that's it, thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

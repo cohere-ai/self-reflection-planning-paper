@@ -1,0 +1,153 @@
+{
+    "name": "SendEmail-easy",
+    "conversation_id": "5076cdf2-f6c2-4640-93eb-e307caf9f088",
+    "suites_used": [
+        "Email"
+    ],
+    "apis_used": [
+        "SendEmail"
+    ],
+    "scenario": "SendEmail easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Tokyo",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you send an email to my colleague?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's their email address?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, I can help with that! To proceed, I'll need some more details:\n\n- The email addresses of the receivers.\n- The subject of the email.\n- The content of the email.",
+                    "metadata": {
+                        "reflection": "Sure, I can help with that! To proceed, I'll need some more details:\n\n- The email addresses of the receivers.\n- The subject of the email.\n- The content of the email.",
+                        "response": "{\n  \"id\": \"4ab868b50bf74e2db5d1b555e0085d29\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727117351,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, I can help with that! To proceed, I'll need some more details:\\n\\n- The email addresses of the receivers.\\n- The subject of the email.\\n- The content of the email.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3624,\n    \"total_tokens\": 3670,\n    \"completion_tokens\": 46\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's olivieisme@somail.com"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "What would you like the subject to be?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sorry, could you confirm your colleague's email address?",
+                    "metadata": {
+                        "reflection": "Sorry, could you confirm your colleague's email address?",
+                        "response": "{\n  \"id\": \"c727ead6eea145e2a3d8f115d8882fe0\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727117353,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sorry, could you confirm your colleague's email address?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3648,\n    \"total_tokens\": 3661,\n    \"completion_tokens\": 13\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "It's just a test email, can you put 'test' as the subject? The body can be empty."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, I'll send it now.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "olivieisme@somail.com"
+                            ],
+                            "subject": "test",
+                            "body": ""
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "olivieisme@somail.com"
+                            ],
+                            "subject": "test",
+                            "body": "",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Send the email.\n#V1 = SendEmail[to: ['olivieisme@somail.com'], subject: 'test', body: '']",
+                        "response": "{\n  \"id\": \"06a8df3495404009b7e406343bf55ef8\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727117356,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"izlcMEJdp\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendEmail\",\n              \"arguments\": \"{\\\"to\\\": [\\\"olivieisme@somail.com\\\"], \\\"subject\\\": \\\"test\\\", \\\"body\\\": \\\"\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3736,\n    \"total_tokens\": 3774,\n    \"completion_tokens\": 38\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Email sent successfully! Do you need anything else?",
+                    "metadata": {
+                        "reflection": "Email sent successfully! Do you need anything else?",
+                        "response": "{\n  \"id\": \"56e17ae88083452385e5d1b594f3dc9c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727117358,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Email sent successfully! Do you need anything else?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3480,\n    \"total_tokens\": 3490,\n    \"completion_tokens\": 10\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

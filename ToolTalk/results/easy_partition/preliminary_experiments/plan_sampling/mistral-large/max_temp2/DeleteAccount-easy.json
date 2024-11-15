@@ -1,0 +1,125 @@
+{
+    "name": "DeleteAccount-easy",
+    "conversation_id": "c40b9b9e-e8f6-4a9b-8832-a119ed3e75b6",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "DeleteAccount"
+    ],
+    "scenario": "DeleteAccount easy scenario",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ahhchiu"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey this service sucks, I'd like to delete my account"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sorry to hear that, I need your password to delete your account.",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, I can help with that. Is there anything I can do to improve your experience?",
+                    "metadata": {
+                        "reflection": "Sure, I can help with that. Is there anything I can do to improve your experience?",
+                        "response": "{\n  \"id\": \"1e8b2aab857f4358a8caf942b604f376\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115619,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, I can help with that. Is there anything I can do to improve your experience?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3627,\n    \"total_tokens\": 3646,\n    \"completion_tokens\": 19\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Agh everything is annoying on this platform. It's eehahTe2t"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I have deleted your account. Please let us know if you have any feedback",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "password": "eehahTe2t"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "password": "eehahTe2t",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Ok, here's my plan:\n\nStep 1: Use `DeleteAccount` to delete the user's account.\n#V1 = DeleteAccount[password=eehahTe2t]\n\nDoes that sound good to you?",
+                        "response": "{\n  \"id\": \"93a68097df1d4b339099243120e43dce\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115624,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"kE6hVuViG\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteAccount\",\n              \"arguments\": \"{\\\"password\\\": \\\"eehahTe2t\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3729,\n    \"total_tokens\": 3754,\n    \"completion_tokens\": 25\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your account has been deleted.",
+                    "metadata": {
+                        "reflection": "Your account has been deleted.",
+                        "response": "{\n  \"id\": \"7cb13a7715d84c40bc541c626c13952e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115626,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your account has been deleted.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3429,\n    \"total_tokens\": 3435,\n    \"completion_tokens\": 6\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Just that you suck, bye bye!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

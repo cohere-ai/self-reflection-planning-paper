@@ -1,0 +1,556 @@
+{
+    "name": "Calendar-Reminder-Weather-ModifyEvent-0",
+    "conversation_id": "6dd5b1b5-a81b-4d25-a77a-cb430544c45d",
+    "suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CreateEvent",
+        "ModifyEvent",
+        "AddReminder",
+        "ForecastWeather",
+        "HistoricWeather"
+    ],
+    "scenario": "The user is planning a trip to New York with their friends. They want to create an event for the trip on their calendar (CreateEvent). They also want to check the weather forecast for New York for the next 3 days (ForecastWeather). They see that it will be sunny and warm, so they decide to add a reminder to pack sunscreen and sunglasses (AddReminder). They also want to see if there are any historic weather records for New York on the same dates as their trip (HistoricWeather). They find out that there was a heat wave two years ago, so they decide to modify their event to include a note about staying hydrated (ModifyEvent). They also want to invite their friends to the event, so they add their usernames as attendees (ModifyEvent).",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-06 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have a trip to New York. Can you add an event to my calendar for it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when is your trip?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure! I can help with that. Could you please provide the start and end times for the event?",
+                    "metadata": {
+                        "reflection": "Sure! I can help with that. Could you please provide the start and end times for the event?",
+                        "response": "{\n  \"id\": \"c643b686d9d5447cb1b0714736124d8e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147950,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure! I can help with that. Could you please provide the start and end times for the event?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3336,\n    \"total_tokens\": 3357,\n    \"completion_tokens\": 21\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's this weekend. I leave this Friday at 4. Can you check the weather too?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I've added an event to your calendar for this Friday at 4. I've also checked the weather for New York this weekend. It looks like it will be sunny and warm.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Trip to New York",
+                            "event_type": "event",
+                            "start_time": "2023-09-08 16:00:00",
+                            "end_time": "2023-09-08 16:00:00",
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-07",
+                                "high": 93,
+                                "low": 77,
+                                "conditions": "Sunny"
+                            },
+                            {
+                                "date": "2023-09-08",
+                                "high": 90,
+                                "low": 72,
+                                "conditions": "50% Rainy"
+                            },
+                            {
+                                "date": "2023-09-09",
+                                "high": 82,
+                                "low": 73,
+                                "conditions": "Cloudy"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "event",
+                            "event_type": "event",
+                            "start_time": "2023-09-06 16:00:00",
+                            "end_time": "2023-09-06 16:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"c34856638b1d412cb0fd038d72717a21\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147951,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"JBK0PiFVh\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CreateEvent\",\n              \"arguments\": \"{\\\"name\\\": \\\"event\\\", \\\"event_type\\\": \\\"event\\\", \\\"start_time\\\": \\\"2023-09-06 16:00:00\\\", \\\"end_time\\\": \\\"2023-09-06 16:00:00\\\"}\"\n            }\n          },\n          {\n            \"id\": \"VtXkC2PUl\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ForecastWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"New York\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3367,\n    \"total_tokens\": 3467,\n    \"completion_tokens\": 100\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-07",
+                                "high": 93,
+                                "low": 77,
+                                "conditions": "Sunny"
+                            },
+                            {
+                                "date": "2023-09-08",
+                                "high": 90,
+                                "low": 72,
+                                "conditions": "50% Rainy"
+                            },
+                            {
+                                "date": "2023-09-09",
+                                "high": 82,
+                                "low": 73,
+                                "conditions": "Cloudy"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your event has been added to your calendar. The weather in New York this weekend will be:\n\n- Friday: Sunny, High of 93, Low of 77\n- Saturday: 50% Rainy, High of 90, Low of 72\n- Sunday: Cloudy, High of 82, Low of 73",
+                    "metadata": {
+                        "reflection": "Your event has been added to your calendar. The weather in New York this weekend will be:\n\n- Friday: Sunny, High of 93, Low of 77\n- Saturday: 50% Rainy, High of 90, Low of 72\n- Sunday: Cloudy, High of 82, Low of 73",
+                        "response": "{\n  \"id\": \"0458f8f315d743c4aed3a14f8f17d978\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147953,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your event has been added to your calendar. The weather in New York this weekend will be:\\n\\n- Friday: Sunny, High of 93, Low of 77\\n- Saturday: 50% Rainy, High of 90, Low of 72\\n- Sunday: Cloudy, High of 82, Low of 73\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3675,\n    \"total_tokens\": 3753,\n    \"completion_tokens\": 78\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Oh seems pretty hot, looks like it's going to rain too. Can you set a reminder to pack sunscreen and an umbrella?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "I've set a reminder, is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pack sunscreen and an umbrella"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Pack sunscreen and an umbrella",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"f86b9c49956e47bba9a0b7ac9e854851\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147956,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"SqXuGWntC\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Pack sunscreen and an umbrella\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3761,\n    \"total_tokens\": 3789,\n    \"completion_tokens\": 28\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've set a reminder to pack sunscreen and an umbrella.",
+                    "metadata": {
+                        "reflection": "I've set a reminder to pack sunscreen and an umbrella.",
+                        "response": "{\n  \"id\": \"23f53fd61bbd4bc2bb4487f833146032\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147957,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I've set a reminder to pack sunscreen and an umbrella.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3837,\n    \"total_tokens\": 3853,\n    \"completion_tokens\": 16\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Is New York normally this hot?"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "New York normally has a high of 66 and a low of 55 this time of year. This year seems abnormally hot.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "New York",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "New York",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"038a06e657704b6e88ededc6f2f17a1c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147958,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"Uu9WD18Yo\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"HistoricWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"New York\\\", \\\"month\\\": \\\"September\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3864,\n    \"total_tokens\": 3894,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "New York is usually not this hot in September. The average high temperature is 66 degrees Fahrenheit, and the average low temperature is 55 degrees Fahrenheit. The record high temperature for September is 89 degrees Fahrenheit, and the record low temperature is 40 degrees Fahrenheit. The average rainfall for September is 2.13 inches, and there are typically no snow days.",
+                    "metadata": {
+                        "reflection": "New York is usually not this hot in September. The average high temperature is 66 degrees Fahrenheit, and the average low temperature is 55 degrees Fahrenheit. The record high temperature for September is 89 degrees Fahrenheit, and the record low temperature is 40 degrees Fahrenheit. The average rainfall for September is 2.13 inches, and there are typically no snow days.",
+                        "response": "{\n  \"id\": \"653d69d8cbf449f48af3827ac72ae1d0\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147959,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"New York is usually not this hot in September. The average high temperature is 66 degrees Fahrenheit, and the average low temperature is 55 degrees Fahrenheit. The record high temperature for September is 89 degrees Fahrenheit, and the record low temperature is 40 degrees Fahrenheit. The average rainfall for September is 2.13 inches, and there are typically no snow days.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3994,\n    \"total_tokens\": 4082,\n    \"completion_tokens\": 88\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "Oh wow, can you add a note to my event description to stay hydrated?"
+        },
+        {
+            "index": 9,
+            "role": "assistant",
+            "text": "Sure, I've added a note to your event to stay hydrated. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "e149636f-d9ca",
+                            "new_description": "Note: stay hydrated"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "e149636f-d9ca",
+                            "new_description": "Stay hydrated",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"62695dab97d54a8a9fb55c2baffc0d99\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147962,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"UEfTBpceT\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ModifyEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"e149636f-d9ca\\\", \\\"new_description\\\": \\\"Stay hydrated\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4046,\n    \"total_tokens\": 4092,\n    \"completion_tokens\": 46\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've added a note to your event description to stay hydrated.",
+                    "metadata": {
+                        "reflection": "I've added a note to your event description to stay hydrated.",
+                        "response": "{\n  \"id\": \"9e133a6736834f9cbf43d8c6416c297a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147963,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I've added a note to your event description to stay hydrated.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4132,\n    \"total_tokens\": 4148,\n    \"completion_tokens\": 16\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 10,
+            "role": "user",
+            "text": "Yeah, I'm going with my friends. Can you add them to the event?"
+        },
+        {
+            "index": 11,
+            "role": "assistant",
+            "text": "Sure, who are your friends?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, who are you going with?",
+                    "metadata": {
+                        "reflection": "Sure, who are you going with?",
+                        "response": "{\n  \"id\": \"ced66d04fbec4f9ca640fd4d79775ec7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147964,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, who are you going with?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4181,\n    \"total_tokens\": 4189,\n    \"completion_tokens\": 8\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 12,
+            "role": "user",
+            "text": "I'm going with my friends, Virginia (decture), Michael (mstein), and Olive (olivedo)."
+        },
+        {
+            "index": 13,
+            "role": "assistant",
+            "text": "Okay, I've added John, Mary, and Sam to your event. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "e149636f-d9ca",
+                            "new_attendees": [
+                                "decture",
+                                "mstein",
+                                "olivedo"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "decture",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "decture",
+                                "email": "VirginiaJGraham@gahoo.com",
+                                "phone": "703-607-3363",
+                                "name": "Virginia J. Graham"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"e6a744b366fb4bffbab0eb8fcacbcd4d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147966,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"TO2ULajXi\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"decture\\\"}\"\n            }\n          },\n          {\n            \"id\": \"StJMdmuQJ\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"mstein\\\"}\"\n            }\n          },\n          {\n            \"id\": \"nrK1qIBH2\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"olivedo\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4218,\n    \"total_tokens\": 4277,\n    \"completion_tokens\": 59\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "mstein",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "mstein",
+                                "email": "steinki89@fexter.com",
+                                "phone": "937-272-9068",
+                                "name": "Michael Steinke"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "olivedo",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "olivedo",
+                                "email": "olivieisme@somail.com",
+                                "phone": "440-328-5425",
+                                "name": "Olivie Doiron"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "e149636f-d9ca",
+                            "new_attendees": [
+                                "decture",
+                                "mstein",
+                                "olivedo"
+                            ],
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"cc75a1a3607e4881a97897303ac8c5f4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147967,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"q0SeZvr4x\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ModifyEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"e149636f-d9ca\\\", \\\"new_attendees\\\": [\\\"decture\\\", \\\"mstein\\\", \\\"olivedo\\\"]}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4555,\n    \"total_tokens\": 4610,\n    \"completion_tokens\": 55\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've added your friends to the event. Is there anything else I can help you with?",
+                    "metadata": {
+                        "reflection": "I've added your friends to the event. Is there anything else I can help you with?",
+                        "response": "{\n  \"id\": \"69e87a090cc0444986ca78d6162b9357\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147969,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I've added your friends to the event. Is there anything else I can help you with?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4651,\n    \"total_tokens\": 4671,\n    \"completion_tokens\": 20\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 14,
+            "role": "user",
+            "text": "No, that's it. Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 9,
+        "ground_truths": 6,
+        "matches": 5,
+        "actions": 4,
+        "valid_actions": 3,
+        "bad_actions": 1,
+        "precision": 0.5555555555555556,
+        "recall": 0.8333333333333334,
+        "action_precision": 0.75,
+        "bad_action_rate": 0.25,
+        "success": false,
+        "soft_success": 0.625,
+        "api_name_jaccard": 0.8333333333333334,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.8333333333333334
+    }
+}

@@ -1,0 +1,110 @@
+{
+    "name": "CurrentWeather-easy",
+    "conversation_id": "c59b5bc7-64a2-4b5f-8148-05675b78b019",
+    "suites_used": [
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather"
+    ],
+    "scenario": "CurrentWeather easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I'm thinking about going for a walk soon. What the weather currently like?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Conditions are sunny with a high of 78 and a low of 60. Have a nice walk!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 78,
+                            "low": 60,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 78,
+                            "low": 60,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Get the current weather in New York.\n#V1 = CurrentWeather[location=\"New York\"]",
+                        "response": "{\n  \"id\": \"cc3d8ea2628f47388373d696fa9836d1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731166075,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"WxY8gcU35\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CurrentWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"New York\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3682,\n    \"total_tokens\": 3704,\n    \"completion_tokens\": 22\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The weather in New York is currently sunny with a high of 78\u00b0F and a low of 60\u00b0F.",
+                    "metadata": {
+                        "reflection": "The weather in New York is currently sunny with a high of 78\u00b0F and a low of 60\u00b0F.",
+                        "response": "{\n  \"id\": \"6bfbf7d85154438d885be61392be1178\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731166077,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"The weather in New York is currently sunny with a high of 78\u00b0F and a low of 60\u00b0F.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3428,\n    \"total_tokens\": 3456,\n    \"completion_tokens\": 28\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Great, I'll go now."
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

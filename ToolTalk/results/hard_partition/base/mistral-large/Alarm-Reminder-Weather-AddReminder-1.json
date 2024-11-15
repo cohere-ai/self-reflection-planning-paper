@@ -1,0 +1,262 @@
+{
+    "name": "Alarm-Reminder-Weather-AddReminder-1",
+    "conversation_id": "1e1ad400-b86b-4e7c-9809-0351c22d4b6d",
+    "suites_used": [
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "AddReminder",
+        "HistoricWeather"
+    ],
+    "scenario": "The user wants to set a reminder to pay their electricity bill before the due date. They also want to compare the current weather and the historic weather of their location to see if they are using more or less electricity than usual. They use the AddReminder API to create a reminder with the task \"Pay electricity bill\" and the due date \"2021-12-15 23:59:59\". They then use the CurrentWeather API to get the current weather of their location. They see that the temperature is 15 degrees Celsius and the humidity is 60%. They then use the HistoricWeather API to get the weather data of their location for the same date last year. They see that the temperature was 10 degrees Celsius and the humidity was 40%. They conclude that they are using more electricity this year because of the higher temperature and humidity. They then use the GetReminders API to get a list of all their reminders. They see that they have another reminder to pay their rent on the same day. They use the CompleteReminder API to mark that reminder as done, since they have already paid their rent online.",
+    "user": {
+        "username": "lifeng",
+        "email": "lifeng@gahoo.com",
+        "phone": "512-322-9516",
+        "name": "Li Feng",
+        "password": "ooZ0ahKae",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "lifeng"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Set a reminder to pay my electricity bill and a reminder to pay my rent this Friday."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Okay I've set a reminder to pay your electricity bill and a reminder to pay your rend for 9/15.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pay electricity bill",
+                            "due_date": "2023-09-15 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pay rent",
+                            "due_date": "2023-09-15 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Pay electricity bill",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"3e07455a0aab4f4fac10636af22a9a59\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726148927,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"NxhfUgv31\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Pay electricity bill\\\"}\"\n            }\n          },\n          {\n            \"id\": \"1985yjOQB\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Pay rent\\\", \\\"due_date\\\": \\\"2023-09-15 00:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3332,\n    \"total_tokens\": 3400,\n    \"completion_tokens\": 68\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Pay rent",
+                            "due_date": "2023-09-15 00:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "20-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have set a reminder to pay your electricity bill and a reminder to pay your rent this Friday.",
+                    "metadata": {
+                        "reflection": "I have set a reminder to pay your electricity bill and a reminder to pay your rent this Friday.",
+                        "response": "{\n  \"id\": \"5112674d4138463580134fb2114ae5cd\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726148932,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have set a reminder to pay your electricity bill and a reminder to pay your rent this Friday.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3499,\n    \"total_tokens\": 3519,\n    \"completion_tokens\": 20\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "What's the historical temperature for this month vs the current temperature? I feel like I've been using the heating more."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "The historical temperature for September in Paris has a minimum of 50 and a maximum of 74. The current temperature high is 60 with a low of 52.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "Paris"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 60,
+                            "low": 52,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "Paris",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 50,
+                            "max_temp": 74,
+                            "record_min_temp": 40,
+                            "record_max_temp": 94,
+                            "avg_rainfall": 2.01,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "Paris"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 60,
+                            "low": 52,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"e828d3a84cf1488eae1399c962f46fb7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726148933,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"YEUxDoOy7\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CurrentWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"Paris\\\"}\"\n            }\n          },\n          {\n            \"id\": \"j3ADbIBIq\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"HistoricWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"Paris\\\", \\\"month\\\": \\\"September\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3582,\n    \"total_tokens\": 3631,\n    \"completion_tokens\": 49\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "Paris",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 50,
+                            "max_temp": 74,
+                            "record_min_temp": 40,
+                            "record_max_temp": 94,
+                            "avg_rainfall": 2.01,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The current temperature in Paris is 60\u00b0F with a low of 52\u00b0F. Historically, the average temperature in Paris during September ranges from 50\u00b0F to 74\u00b0F. The record low temperature is 40\u00b0F, and the record high temperature is 94\u00b0F. The average rainfall is 2.01 inches, and there are typically 0 snow days.",
+                    "metadata": {
+                        "reflection": "The current temperature in Paris is 60\u00b0F with a low of 52\u00b0F. Historically, the average temperature in Paris during September ranges from 50\u00b0F to 74\u00b0F. The record low temperature is 40\u00b0F, and the record high temperature is 94\u00b0F. The average rainfall is 2.01 inches, and there are typically 0 snow days.",
+                        "response": "{\n  \"id\": \"e8896558b56449a3a49359e0c94d38b5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726148935,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"The current temperature in Paris is 60\u00b0F with a low of 52\u00b0F. Historically, the average temperature in Paris during September ranges from 50\u00b0F to 74\u00b0F. The record low temperature is 40\u00b0F, and the record high temperature is 94\u00b0F. The average rainfall is 2.01 inches, and there are typically 0 snow days.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3809,\n    \"total_tokens\": 3898,\n    \"completion_tokens\": 89\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "AddReminder",
+        "CompleteReminder",
+        "GetReminders",
+        "CurrentWeather",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 4,
+        "matches": 3,
+        "actions": 2,
+        "valid_actions": 1,
+        "bad_actions": 1,
+        "precision": 0.75,
+        "recall": 0.75,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.5,
+        "success": false,
+        "soft_success": 0.375,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

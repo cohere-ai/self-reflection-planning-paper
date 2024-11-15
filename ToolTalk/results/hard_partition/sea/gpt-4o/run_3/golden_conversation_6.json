@@ -1,0 +1,423 @@
+{
+    "name": "golden_conversation_6",
+    "conversation_id": "6",
+    "suites_used": [
+        "AccountTools",
+        "Messages"
+    ],
+    "apis_used": [
+        "SendMessage",
+        "RegisterUser",
+        "QueryUser"
+    ],
+    "scenario": "The user creates a new account then wants to see if their friends have accounts as well. They have their email address, so they use (QueryUser) to look up their username and send them a message (SendMesage).",
+    "user": {
+        "username": "hestler",
+        "email": "j.hester@gahoo.com",
+        "phone": "708-340-0190",
+        "name": "Julian Hester",
+        "password": "Meizuch4uu"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hello, I would like to create a new account. I heard some of my friends are on the platform."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, in order to create an account, I will need a valid email address, a username, and a password. Optionally, you can provide your name and phone number as well.",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Please provide the following information to create your new account:\n\n1. **Username**: \n2. **Password**: \n3. **Email**: \n4. **Name** (optional): \n5. **Phone Number** (optional, format: xxx-xxx-xxxx): \n\nOnce you provide this information, I'll proceed with creating your account.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Sure, is hestler available? You can use j.hester@gahoo.com as my email address. My name is Julian Hester. Can you set my password to Meizuch4uu?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Done, I have created your account. Your username is hestler. I have logged you into the platform.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "hestler",
+                            "password": "Meizuch4uu",
+                            "email": "j.hester@gahoo.com",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "hestler",
+                            "email": "j.hester@gahoo.com",
+                            "phone": null,
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "hestler"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "Step 1: Query for users with the username \"hestler\" to check availability.\n#V1 = QueryUser[username=\"hestler\"]\n\nStep 2: If no users are returned, register the new user with the provided details.\n#V2 = RegisterUser[username=\"hestler\", email=\"j.hester@gahoo.com\", password=\"Meizuch4uu\", name=\"Julian Hester\", phone=\"\"]",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "hestler",
+                            "password": "Meizuch4uu",
+                            "email": "j.hester@gahoo.com",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "hestler",
+                            "email": "j.hester@gahoo.com",
+                            "phone": null,
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "It seems that I am unable to check the availability of the username \"hestler\" because you are not logged in. However, I can proceed with registering the account for you. If the username is already taken, I'll let you know.\n\nLet's proceed with the registration.",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your account has been successfully created with the username \"hestler\". Welcome to the platform, Julian Hester! If you need any further assistance, feel free to ask.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Great, can you check if my friends are on the platform as well? Their emails are justintime@fmail.com steinki89@fexter.com and bob.candi@fmail.com"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, it looks like Justin and Michael are on the platform. Unfortunately, the third email address returned no results.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "justinkool",
+                                "email": "justintime@fmail.com",
+                                "phone": "123-456-7890",
+                                "name": "Justin Kool"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "email": "steinki89@fexter.com"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "mstein",
+                                "email": "steinki89@fexter.com",
+                                "phone": "937-272-9068",
+                                "name": "Michael Steinke"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "email": "bob.candi@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "users": []
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "email": "justintime@fmail.com",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "justinkool",
+                                "email": "justintime@fmail.com",
+                                "phone": "123-456-7890",
+                                "name": "Justin Kool"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Query the platform for users with the email \"justintime@fmail.com\".\n#V1 = QueryUser(email=\"justintime@fmail.com\")\n\nStep 2: Query the platform for users with the email \"steinki89@fexter.com\".\n#V2 = QueryUser(email=\"steinki89@fexter.com\")\n\nStep 3: Query the platform for users with the email \"bob.candi@fmail.com\".\n#V3 = QueryUser(email=\"bob.candi@fmail.com\")",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"email\": \"steinki89@fexter.com\"}",
+                                "name": "QueryUser"
+                            },
+                            {
+                                "arguments": "{\"email\": \"bob.candi@fmail.com\"}",
+                                "name": "QueryUser"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "email": "steinki89@fexter.com",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "mstein",
+                                "email": "steinki89@fexter.com",
+                                "phone": "937-272-9068",
+                                "name": "Michael Steinke"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "email": "bob.candi@fmail.com",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "users": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I found two of your friends on the platform:\n\n1. **Justin Kool** - Username: justinkool, Email: justintime@fmail.com\n2. **Michael Steinke** - Username: mstein, Email: steinki89@fexter.com\n\nUnfortunately, I couldn't find anyone with the email bob.candi@fmail.com.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Ah, that's too bad. Can you send them a message for me? Just let them know I signed up"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "I've sent a message to Justin and Michael. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "receiver": "justinkool",
+                            "message": "Hey, I just signed up for the platform. How are you?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "receiver": "mstein",
+                            "message": "Hey, I just signed up for the platform. How are you?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "5c5373e0-ecf4712d"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "justinkool",
+                            "message": "Hello Justin, Julian (hestler) has just signed up on the platform!",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Send a message to Justin, letting him know that Julian has signed up.\n#V1 = SendMessage(receiver=\"justinkool\", message=\"Hello Justin, Julian (hestler) has just signed up on the platform!\")\n\nStep 2: Send a message to Michael, letting him know that Julian has signed up.\n#V2 = SendMessage(receiver=\"mstein\", message=\"Hello Michael, Julian (hestler) has just signed up on the platform!\")",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"receiver\": \"mstein\", \"message\": \"Hello Michael, Julian (hestler) has just signed up on the platform!\"}",
+                                "name": "SendMessage"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "mstein",
+                            "message": "Hello Michael, Julian (hestler) has just signed up on the platform!",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "message_id": "5c5373e0-ecf4712d"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've sent messages to Justin and Michael letting them know that you've signed up on the platform.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "No that's it"
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm",
+        "FindAlarms",
+        "QueryCalendar",
+        "SearchInbox",
+        "SendEmail"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Calendar",
+        "Email"
+    ],
+    "metrics": {
+        "predictions": 7,
+        "ground_truths": 6,
+        "matches": 6,
+        "actions": 3,
+        "valid_actions": 3,
+        "bad_actions": 0,
+        "precision": 0.8571428571428571,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

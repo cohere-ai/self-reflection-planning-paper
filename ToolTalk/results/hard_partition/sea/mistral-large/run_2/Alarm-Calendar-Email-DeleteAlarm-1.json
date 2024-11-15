@@ -1,0 +1,307 @@
+{
+    "name": "Alarm-Calendar-Email-DeleteAlarm-1",
+    "conversation_id": "ea9c44d7-cc68-4474-8eeb-f753b2888af2",
+    "suites_used": [
+        "Alarm",
+        "Calendar"
+    ],
+    "apis_used": [
+        "DeleteAlarm",
+        "AddAlarm",
+        "QueryCalendar"
+    ],
+    "scenario": "The user has a reminder on their calendar to buy a birthday gift for their friend at 3:00 PM (CreateEvent). The user sets an alarm for 2:30 PM to make sure they don't forget (AddAlarm). The user then queries their calendar for any other events happening today (QueryCalendar) and sees that they have a dentist appointment at 4:00 PM (CreateEvent). The user realizes that they don't have enough time to buy the gift and go to the dentist, so they decide to cancel the dentist appointment (DeleteEvent). The user then calls the dentist to reschedule and receives a confirmation email (SendEmail). The user searches their inbox for the email and adds the new appointment to their calendar (SearchInbox + CreateEvent).",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I need to remember to buy a birthday gift for my spouse before I go home. Can you set an alarm for 2:30 to remind me?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I've set an alarm for 2:30 PM to remind you to buy a birthday gift for your spouse.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "time": "14:30:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "14:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Set an alarm for 2:30 PM.\n#V1 = AddAlarm[time=\"14:30:00\"]",
+                        "response": "{\n  \"id\": \"8b75e943d6dc4015ba60dfb808d199cd\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729598318,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"2Ty2FMXeE\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddAlarm\",\n              \"arguments\": \"{\\\"time\\\": \\\"14:30:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3709,\n    \"total_tokens\": 3737,\n    \"completion_tokens\": 28\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Alarm set for 2:30.",
+                    "metadata": {
+                        "reflection": "Alarm set for 2:30.",
+                        "response": "{\n  \"id\": \"f27e36bd14ae4c76b1aef91ee5fe5cfb\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729598320,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Alarm set for 2:30.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3426,\n    \"total_tokens\": 3436,\n    \"completion_tokens\": 10\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Thanks! Can you also check my calendar to see if I have any other events today?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sure, you have a dentist appointment at 4:00 PM today.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-11 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "29496535-b409",
+                                "name": "Dentist Appointment",
+                                "event_type": "event",
+                                "start_time": "2023-09-11 15:00:00",
+                                "end_time": "2023-09-11 17:00:00",
+                                "location": "dental office",
+                                "description": null,
+                                "attendees": null
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-11 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "29496535-b409",
+                                "name": "Dentist Appointment",
+                                "event_type": "event",
+                                "start_time": "2023-09-11 15:00:00",
+                                "end_time": "2023-09-11 17:00:00",
+                                "location": "dental office",
+                                "description": null,
+                                "attendees": null
+                            },
+                            {
+                                "event_id": "bb4588f1-c21c",
+                                "name": "Team Summit",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 13:00:00",
+                                "end_time": "2023-09-11 14:30:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": [
+                                    "justinkool",
+                                    "lifeng",
+                                    "decture",
+                                    "ahhchiu",
+                                    "salcano",
+                                    "mstein"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve the calendar events for today.\n#V1 = QueryCalendar[start_time=\"2023-09-11 00:00:00\", end_time=\"2023-09-11 23:59:59\"]",
+                        "response": "{\n  \"id\": \"6bb28411ae2d43698d85cc64d4352ff6\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729598426,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"wDwuucXLJ\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryCalendar\",\n              \"arguments\": \"{\\\"start_time\\\": \\\"2023-09-11 00:00:00\\\", \\\"end_time\\\": \\\"2023-09-11 23:59:59\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3867,\n    \"total_tokens\": 3933,\n    \"completion_tokens\": 66\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have two events scheduled for today:\n\n1. **Team Summit**\n   - **Type:** Meeting\n   - **Time:** 1:00 PM - 2:30 PM\n   - **Attendees:** justinkool, lifeng, decture, ahhchiu, salcano, mstein\n\n2. **Dentist Appointment**\n   - **Type:** Event\n   - **Time:** 3:00 PM - 5:00 PM\n   - **Location:** Dental Office",
+                    "metadata": {
+                        "reflection": "You have two events scheduled for today:\n\n1. **Team Summit**\n   - **Type:** Meeting\n   - **Time:** 1:00 PM - 2:30 PM\n   - **Attendees:** justinkool, lifeng, decture, ahhchiu, salcano, mstein\n\n2. **Dentist Appointment**\n   - **Type:** Event\n   - **Time:** 3:00 PM - 5:00 PM\n   - **Location:** Dental Office",
+                        "response": "{\n  \"id\": \"0434f61a4c3a4e5bac5a52c8b9123446\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729598435,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"You have two events scheduled for today:\\n\\n1. **Team Summit**\\n   - **Type:** Meeting\\n   - **Time:** 1:00 PM - 2:30 PM\\n   - **Attendees:** justinkool, lifeng, decture, ahhchiu, salcano, mstein\\n\\n2. **Dentist Appointment**\\n   - **Type:** Event\\n   - **Time:** 3:00 PM - 5:00 PM\\n   - **Location:** Dental Office\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3823,\n    \"total_tokens\": 3943,\n    \"completion_tokens\": 120\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Oh shoot, I forgot about that. I don't think I'll have enough time to buy the gift before the appointment if I leave at 2:30. Can you change the alarm for 1:30 instead?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, I've changed the alarm to 1:30 PM.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "time": "13:30:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "20d0-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "alarm_id": "5bff-dd80"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "alarm_id": "5bff-dd80",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Delete the existing alarm set for 2:30 PM to remind about the birthday gift.\n#V1 = DeleteAlarm[{\"alarm_id\": \"5bff-dd80\"}]\n\nStep 2: Set a new alarm for 1:30 PM to remind about the birthday gift.\n#V2 = AddAlarm[{\"time\": \"13:30:00\"}]",
+                        "response": "{\n  \"id\": \"c65069690302443895aee94f9e41e0bf\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729598594,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"XCKVFO3vU\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteAlarm\",\n              \"arguments\": \"{\\\"alarm_id\\\": \\\"5bff-dd80\\\"}\"\n            }\n          },\n          {\n            \"id\": \"hdd3YRaZk\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddAlarm\",\n              \"arguments\": \"{\\\"time\\\": \\\"13:30:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4179,\n    \"total_tokens\": 4234,\n    \"completion_tokens\": 55\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "13:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "20d0-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've changed the alarm to 1:30 PM.",
+                    "metadata": {
+                        "reflection": "I've changed the alarm to 1:30 PM.",
+                        "response": "{\n  \"id\": \"4182800623464298b33e8b3f366ea24e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729598597,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I've changed the alarm to 1:30 PM.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3907,\n    \"total_tokens\": 3921,\n    \"completion_tokens\": 14\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm",
+        "CreateEvent",
+        "DeleteEvent",
+        "QueryCalendar",
+        "SearchInbox",
+        "SendEmail"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Calendar",
+        "Email"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 4,
+        "matches": 4,
+        "actions": 3,
+        "valid_actions": 3,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

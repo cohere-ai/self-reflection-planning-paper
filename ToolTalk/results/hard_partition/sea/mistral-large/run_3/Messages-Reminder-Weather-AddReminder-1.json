@@ -1,0 +1,328 @@
+{
+    "name": "Messages-Reminder-Weather-AddReminder-1",
+    "conversation_id": "a2b446cd-055b-4173-9f4c-8b61dcab7b63",
+    "suites_used": [
+        "Reminder"
+    ],
+    "apis_used": [
+        "AddReminder",
+        "GetReminders",
+        "DeleteReminder"
+    ],
+    "scenario": "The user wants to organize their tasks for the week. They want to add a reminder to finish their project report by Friday (AddReminder). They also want to add a reminder to call their mom on her birthday on Wednesday (AddReminder). They want to get a list of their reminders to see what else they need to do (GetReminders). They realize they have already completed one of their reminders, so they want to delete it (DeleteReminder). They also want to check the weather for the weekend to see if they can go hiking (ForecastWeather).",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Tokyo",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ahhchiu"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I need to organize my reminders. Can you add a reminder to finish my report by Friday and a reminder to call my mom on 9/17 for her birthday?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I have added a reminder to finish your report on 9/15 and a reminder to call your mom on 9/17.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "finish your report",
+                            "due_date": "2023-09-15 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "call your mom",
+                            "due_date": "2023-09-17 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "20-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Finish the report",
+                            "due_date": "2023-09-15 09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Add a reminder to finish the report by Friday.\n#V1 = AddReminder[task=\"Finish the report\", due_date=\"2023-09-15 09:00:00\"]\n\nStep 2: Add a reminder to call mom on her birthday.\n#V2 = AddReminder[task=\"Call mom for her birthday\", due_date=\"2023-09-17 10:00:00\"]",
+                        "response": "{\n  \"id\": \"2dd969a012e242b285e570556b5730d0\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691214,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"45UmUa21s\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Finish the report\\\", \\\"due_date\\\": \\\"2023-09-15 09:00:00\\\"}\"\n            }\n          },\n          {\n            \"id\": \"c5hMfTZgV\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Call mom for her birthday\\\", \\\"due_date\\\": \\\"2023-09-17 10:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3788,\n    \"total_tokens\": 3886,\n    \"completion_tokens\": 98\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Call mom for her birthday",
+                            "due_date": "2023-09-17 10:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "20-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have added the reminders for you.",
+                    "metadata": {
+                        "reflection": "I have added the reminders for you.",
+                        "response": "{\n  \"id\": \"a3eefecb33bd4977b4b729aaee265f35\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691218,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have added the reminders for you.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3549,\n    \"total_tokens\": 3558,\n    \"completion_tokens\": 9\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Can you check if I have any other reminders for the week?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "You have two other reminders for this week. The first is to buy groceries by today. The second is to call Amy tomorrow.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Buy groceries",
+                                "due_date": "2023-09-11 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Call Amy",
+                                "due_date": "2023-09-11 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "5b-dd80",
+                                "task": "finish your report",
+                                "due_date": "2023-09-15 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "20-d9ca",
+                                "task": "call your mom",
+                                "due_date": "2023-09-17 23:59:59",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Buy groceries",
+                                "due_date": "2023-09-11 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Call Amy",
+                                "due_date": "2023-09-11 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Dentist appointment",
+                                "due_date": "2023-09-15 14:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "12-949b",
+                                "task": "Review exam notes",
+                                "due_date": "2023-09-08 20:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "e3-793f",
+                                "task": "Practice exercises",
+                                "due_date": "2023-09-08 20:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "5b-dd80",
+                                "task": "finish your report",
+                                "due_date": "2023-09-15 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "20-d9ca",
+                                "task": "call your mom",
+                                "due_date": "2023-09-17 23:59:59",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Check for any reminders for the user.\n#V1 = GetReminders[]",
+                        "response": "{\n  \"id\": \"42126baa5f144bbd85dfbecc6a7d1d55\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691293,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"wHGGE7192\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3940,\n    \"total_tokens\": 3957,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here are your reminders for the week:\n\n- Buy groceries (Due: 2023-09-11)\n- Call Amy (Due: 2023-09-11)\n- Dentist appointment (Due: 2023-09-15 14:00)\n- Review exam notes (Due: 2023-09-08 20:00)\n- Practice exercises (Due: 2023-09-08 20:00)\n- finish your report (Due: 2023-09-15)\n- call your mom (Due: 2023-09-17)",
+                    "metadata": {
+                        "reflection": "Here are your reminders for the week:\n\n- Buy groceries (Due: 2023-09-11)\n- Call Amy (Due: 2023-09-11)\n- Dentist appointment (Due: 2023-09-15 14:00)\n- Review exam notes (Due: 2023-09-08 20:00)\n- Practice exercises (Due: 2023-09-08 20:00)\n- finish your report (Due: 2023-09-15)\n- call your mom (Due: 2023-09-17)",
+                        "response": "{\n  \"id\": \"480a09f4576349cf9d7ce83fce22644f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691294,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here are your reminders for the week:\\n\\n- Buy groceries (Due: 2023-09-11)\\n- Call Amy (Due: 2023-09-11)\\n- Dentist appointment (Due: 2023-09-15 14:00)\\n- Review exam notes (Due: 2023-09-08 20:00)\\n- Practice exercises (Due: 2023-09-08 20:00)\\n- finish your report (Due: 2023-09-15)\\n- call your mom (Due: 2023-09-17)\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4036,\n    \"total_tokens\": 4211,\n    \"completion_tokens\": 175\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Ok, I already called Amy. Can you delete that one?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure I have deleted the reminder to call Amy.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "14-579a"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "14-579a",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Delete the reminder to call Amy.\n#V1 = DeleteReminder[reminder_id=\"14-579a\"]",
+                        "response": "{\n  \"id\": \"a104cc915be146c6ab8d492d1ba8eb34\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691368,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"oF6SYUL4i\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"14-579a\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4272,\n    \"total_tokens\": 4302,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have deleted the reminder to call Amy.",
+                    "metadata": {
+                        "reflection": "I have deleted the reminder to call Amy.",
+                        "response": "{\n  \"id\": \"3a1d0660286540d8b92896a77e180ed3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729691370,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have deleted the reminder to call Amy.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3984,\n    \"total_tokens\": 3993,\n    \"completion_tokens\": 9\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "AddReminder",
+        "DeleteReminder",
+        "GetReminders",
+        "ForecastWeather"
+    ],
+    "intended_suites_used": [
+        "Messages",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 4,
+        "matches": 4,
+        "actions": 3,
+        "valid_actions": 3,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

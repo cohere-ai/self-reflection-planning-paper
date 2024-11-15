@@ -3,7 +3,7 @@
 > [!NOTE]  
 > This repo contains our adaptation of the ToolTalk benchmark repository. The primary changes can be found in the `src/evaluation/predictors` folder, where we had added a predictor classes for each of the models we evaluated. 
 > Systems can be run using the `src/evaluation/evaluate.py` script, after exporting the necessary API key.
-> The files containing the results presented in the paper are located in the `results` folder.
+> The files containing the results presented in the paper are located in the `results` folder and the `src/scripts/pprint_evals.py` script can be used to print results for a given file or folder.
 > The original README can be found below.
 
 

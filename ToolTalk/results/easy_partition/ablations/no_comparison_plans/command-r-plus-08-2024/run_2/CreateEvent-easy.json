@@ -1,0 +1,134 @@
+{
+    "name": "CreateEvent-easy",
+    "conversation_id": "0be430e6-236f-432c-9287-82666ef1b1a3",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "CreateEvent"
+    ],
+    "scenario": "CreateEvent easy scenario",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I just got tickets for a Beatles concert this Friday. Can you create an event for me?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when is the concert?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, I'm unable to create an event for you.",
+                    "metadata": {
+                        "reflection": "Respond to user with: \"#V1 = CreateEvent(name='Beatles concert', event_type='event', description='I have tickets for the Beatles concert this Friday', start_time='2023-09-15 00:00:00', end_time='2023-09-15 23:59:59', location='New York')\"",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It goes from 8-11 at Madison Square Garden."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've created the event for you.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Beatles concert",
+                            "event_type": "event",
+                            "description": "Beatles concert at Madison Square Garden",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: #V1 = CreateEvent[name:Beatles concert, event_type:event, description:Beatles concert at Madison Square Garden, start_time:2023-09-15 20:00:00, end_time:2023-09-15 23:00:00, location:Madison Square Garden]",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've created an event for you called 'Beatles concert' at Madison Square Garden on Friday from 8-11pm. The event ID is e149636f-d9ca.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

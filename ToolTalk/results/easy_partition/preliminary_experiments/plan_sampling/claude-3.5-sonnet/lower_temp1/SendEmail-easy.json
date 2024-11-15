@@ -1,0 +1,176 @@
+{
+    "name": "SendEmail-easy",
+    "conversation_id": "5076cdf2-f6c2-4640-93eb-e307caf9f088",
+    "suites_used": [
+        "Email"
+    ],
+    "apis_used": [
+        "SendEmail"
+    ],
+    "scenario": "SendEmail easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Tokyo",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you send an email to my colleague?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's their email address?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com",
+                            "phone": "123-456-7890",
+                            "name": "Justin Kool"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to help you send an email to your colleague. However, before we proceed, I'll need some more information to ensure we can send the email correctly. Let me outline a plan to gather the necessary information and send the email:\n\nStep 1: Check if the user is logged in.\n#V1 = GetAccountInformation[]\n\nStep 2: If logged in, gather email details from the user.\n(This step doesn't use a tool, but we'll ask the user for information)\n\nStep 3: Send the email using the provided information.\n#V3 = SendEmail[to, subject, body]\n\nNow, let's start with the first step:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I'd be happy to help you send an email to your colleague. To do this, I'll need some more information from you. Here's what I need to know:\n\n1. The email address of your colleague\n2. The subject of the email\n3. The content of the email you want to send\n\nOnce you provide this information, I can use the SendEmail tool to send the email for you. Could you please provide these details?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's olivieisme@somail.com"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "What would you like the subject to be?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com",
+                            "phone": "123-456-7890",
+                            "name": "Justin Kool"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to help you send an email to your colleague at olivieisme@somail.com. To proceed, I'll need a few more details from you:\n\n1. What would you like the subject of the email to be?\n2. What message would you like to include in the body of the email?\n\nOnce you provide this information, I can use the SendEmail tool to compose and send the email for you. Also, since you're asking me to send an email on your behalf, I'll need to make sure you're logged in first. Let me check that for you.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I'd be happy to help you send an email to your colleague. I've retrieved your account information to ensure we send the email from the correct address. Now, I'll need a few more details to compose the email. Could you please provide me with:\n\n1. The subject of the email\n2. The content or message you'd like to send\n\nOnce you provide this information, I'll be able to draft and send the email for you.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "It's just a test email, can you put 'test' as the subject? The body can be empty."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, I'll send it now.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "olivieisme@somail.com"
+                            ],
+                            "subject": "test",
+                            "body": ""
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Certainly! I can help you send a test email to your colleague. I'll use the information you've provided to create and send the email. Here's the plan I'll follow:\n\nStep 1: Log in to your account to ensure we have the necessary permissions to send an email.\n#V1 = UserLogin(username=\"justinkool\", password=\"\")\n\nStep 2: Send the test email to your colleague.\n#V2 = SendEmail(to=[\"olivieisme@somail.com\"], subject=\"test\", body=\"\")\n\nNow, let's execute this plan:\n\nStep 1: First, we need to log in to your account. However, I don't have your password, so I'll need to ask you for it.\n\nCould you please provide your password so I can log in to your account and send the email? (Note: Always be cautious about sharing passwords. In a real-world scenario, the system should be designed to not require sharing passwords with an AI assistant.)",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.0,
+        "api_name_recall": 0.0,
+        "api_name_precision": 0.0
+    }
+}

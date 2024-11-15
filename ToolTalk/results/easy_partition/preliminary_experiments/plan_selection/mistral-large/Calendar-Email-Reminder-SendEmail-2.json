@@ -1,0 +1,367 @@
+{
+    "name": "Calendar-Email-Reminder-SendEmail-2",
+    "conversation_id": "c32379dc-2bb9-4eab-8b07-5471932ba605",
+    "suites_used": [
+        "AccountTools",
+        "Calendar",
+        "Email"
+    ],
+    "apis_used": [
+        "SendEmail",
+        "ModifyEvent",
+        "QueryUser",
+        "QueryCalendar"
+    ],
+    "scenario": "The user wants to modify an existing event with the name \"Birthday party\", the type \"event\", the description \"Celebrate my birthday with friends and family\", the start time \"2021-01-16 18:00:00\", the end time \"2021-01-16 22:00:00\", and the location \"My house\" (QueryCalendar). They decide to change the start time to \"2021-01-16 19:00:00\", the end time to \"2021-01-16 23:00:00\", and the location to \"The restaurant\" (ModifyEvent). They then send an email to the attendees with the subject \"Event update\", the body \"Hi, I have made some changes to the event details for my birthday party. Please see the new information below and let me know if you can still make it.\", and the to addresses \"user@domain.com\", \"friend1@domain.com\", \"friend2@domain.com\", and \"family@domain.com\" (SendEmail). They then add a reminder with the task \"Make reservation at the restaurant\" and the due date \"2021-01-15 12:00:00\" (AddReminder). They then complete the reminder with the reminder_id returned from the previous call (CompleteReminder).",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Can you change the location for my birthday party event on sunday to \"Steak and Shake\" and send an email to all my friends on the invite saying \"Hi, I have made some changes to the event details for my birthday party. I've decided to go to a restaurant instead- let me know if you can still make it.\""
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Okay I changed the location of your event titled \"Birthday Party\" and sent your friends an email.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-17 00:00:00",
+                            "end_time": "2023-09-17 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "c3463779-7861",
+                                "name": "Birthday Party",
+                                "event_type": "event",
+                                "start_time": "2023-09-17 11:30:00",
+                                "end_time": "2023-09-17 15:30:00",
+                                "location": "Chuck e cheeses",
+                                "description": "Happy 40th!",
+                                "attendees": [
+                                    "decture",
+                                    "SuryaRani90",
+                                    "geoff"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "c3463779-7861",
+                            "new_location": "Steak and Shake"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "username": "SuryaRani90"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "SuryaRani90",
+                                "email": "suryarani.kumar@myfictionalemail.com",
+                                "phone": "415-555-6789",
+                                "name": "Surya Rani Kumar"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "username": "geoff"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "geoff",
+                                "email": "geoff.smith@example.com",
+                                "phone": "555-123-4567",
+                                "name": "Jeff Smith"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "suryarani.kumar@myfictionalemail.com",
+                                "geoff.smith@example.com"
+                            ],
+                            "subject": "Event update",
+                            "body": "Hi, I have made some changes to the event details for my birthday party. I've decided to go to a restaurant instead- let me know if you can still make it."
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-17 00:00:00",
+                            "end_time": "2023-09-17 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "c3463779-7861",
+                                "name": "Birthday Party",
+                                "event_type": "event",
+                                "start_time": "2023-09-17 11:30:00",
+                                "end_time": "2023-09-17 15:30:00",
+                                "location": "Chuck e cheeses",
+                                "description": "Happy 40th!",
+                                "attendees": [
+                                    "decture",
+                                    "SuryaRani90",
+                                    "geoff"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Query your calendar for events on Sunday.\n#V1 = QueryCalendar[{\n  \"start_time\": \"2023-09-17 00:00:00\",\n  \"end_time\": \"2023-09-17 23:59:59\"\n}]\nStep 2: Modify the event found in step 1 to have the location \"Steak and Shake\".\n#V2 = ModifyEvent[{\n  \"event_id\": #V1.event_id,\n  \"new_location\": \"Steak and Shake\"\n}]\nStep 3: Get the attendees of the event.\n#V3 = QueryCalendar[{\n  \"start_time\": \"2023-09-17 00:00:00\",\n  \"end_time\": \"2023-09-17 23:59:59\"\n}]\nStep 4: Send an email to the attendees of the event.\n#V4 = SendEmail[{\n  \"to\": #V3.attendees,\n  \"subject\": \"Changes to Birthday Party\",\n  \"body\": \"Hi, I have made some changes to the event details for my birthday party. I've decided to go to a restaurant instead- let me know if you can still make it.\"\n}]\n\nDoes this plan look good?",
+                        "response": "{\n  \"id\": \"9c864ef14edd4877aa4f6800392917f2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115926,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"WLPsGbYfi\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryCalendar\",\n              \"arguments\": \"{\\\"start_time\\\": \\\"2023-09-17 00:00:00\\\", \\\"end_time\\\": \\\"2023-09-17 23:59:59\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4029,\n    \"total_tokens\": 4095,\n    \"completion_tokens\": 66\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "c3463779-7861",
+                            "new_location": "Steak and Shake",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"287453972c7c427cadbb78add7950620\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115928,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"Qt7MtMSHx\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ModifyEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"c3463779-7861\\\", \\\"new_location\\\": \\\"Steak and Shake\\\"}\"\n            }\n          },\n          {\n            \"id\": \"VV5HzRvL2\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchMessages\",\n              \"arguments\": \"{\\\"query\\\": \\\"Happy 40th\\\", \\\"match_type\\\": \\\"any\\\", \\\"sender\\\": \\\"decture\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3628,\n    \"total_tokens\": 3713,\n    \"completion_tokens\": 85\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "Happy 40th",
+                            "match_type": "any",
+                            "sender": "decture",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "query": "Happy 40th",
+                            "match_type": "any",
+                            "sender": "decture@gmail.com",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"b17853eaef004ce6910e7579f7179d2c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115931,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"ztmB2hETD\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchInbox\",\n              \"arguments\": \"{\\\"query\\\": \\\"Happy 40th\\\", \\\"match_type\\\": \\\"any\\\", \\\"sender\\\": \\\"decture@gmail.com\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3795,\n    \"total_tokens\": 3841,\n    \"completion_tokens\": 46\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "SuryaRani90",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "SuryaRani90",
+                                "email": "suryarani.kumar@myfictionalemail.com",
+                                "phone": "415-555-6789",
+                                "name": "Surya Rani Kumar"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"85f3bfd6b3824a40bbfe0edf4f485d68\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115933,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"qYTBNiVWx\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"SuryaRani90\\\"}\"\n            }\n          },\n          {\n            \"id\": \"5uBgfQxJJ\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"geoff\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3881,\n    \"total_tokens\": 3925,\n    \"completion_tokens\": 44\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "geoff",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "geoff",
+                                "email": "geoff.smith@example.com",
+                                "phone": "555-123-4567",
+                                "name": "Jeff Smith"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "suryarani.kumar@myfictionalemail.com",
+                                "geoff.smith@example.com"
+                            ],
+                            "subject": "Change of Plans for Birthday Party",
+                            "body": "Hi, I have made some changes to the event details for my birthday party. I've decided to go to a restaurant instead- let me know if you can still make it.",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"6ade7510d8854cf791929aefa33b6dfc\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115936,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"xO7lbdUKT\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendEmail\",\n              \"arguments\": \"{\\\"to\\\": [\\\"suryarani.kumar@myfictionalemail.com\\\", \\\"geoff.smith@example.com\\\"], \\\"subject\\\": \\\"Change of Plans for Birthday Party\\\", \\\"body\\\": \\\"Hi, I have made some changes to the event details for my birthday party. I've decided to go to a restaurant instead- let me know if you can still make it.\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4115,\n    \"total_tokens\": 4214,\n    \"completion_tokens\": 99\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have changed the location for your event to \"Steak and Shake\" and I have notified all the attendees. Is there anything else I can help with?",
+                    "metadata": {
+                        "reflection": "You have changed the location for your event to \"Steak and Shake\" and I have notified all the attendees. Is there anything else I can help with?",
+                        "response": "{\n  \"id\": \"0ad55fb431284a93bf8fa329990464cc\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115939,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"You have changed the location for your event to \\\"Steak and Shake\\\" and I have notified all the attendees. Is there anything else I can help with?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4270,\n    \"total_tokens\": 4306,\n    \"completion_tokens\": 36\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "ModifyEvent",
+        "QueryCalendar",
+        "SendEmail",
+        "AddReminder",
+        "CompleteReminder"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Email",
+        "Reminder"
+    ],
+    "metrics": {
+        "predictions": 7,
+        "ground_truths": 5,
+        "matches": 5,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.6666666666666666,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.6666666666666666
+    }
+}

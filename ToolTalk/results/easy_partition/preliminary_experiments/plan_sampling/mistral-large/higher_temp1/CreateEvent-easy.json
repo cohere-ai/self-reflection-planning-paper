@@ -1,0 +1,155 @@
+{
+    "name": "CreateEvent-easy",
+    "conversation_id": "0be430e6-236f-432c-9287-82666ef1b1a3",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "CreateEvent"
+    ],
+    "scenario": "CreateEvent easy scenario",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I just got tickets for a Beatles concert this Friday. Can you create an event for me?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when is the concert?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "I'll create an event in your calendar for the Beatles concert this Friday. Let me know the start and end times of the concert, as well as its location.",
+                    "metadata": {
+                        "reflection": "I'll create an event in your calendar for the Beatles concert this Friday. Let me know the start and end times of the concert, as well as its location.",
+                        "response": "{\n  \"id\": \"ed4fa69bcb3048ff99e3283bca0b290e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727119106,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I'll create an event in your calendar for the Beatles concert this Friday. Let me know the start and end times of the concert, as well as its location.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3634,\n    \"total_tokens\": 3669,\n    \"completion_tokens\": 35\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It goes from 8-11 at Madison Square Garden."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've created the event for you.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "The Beatles concert",
+                            "event_type": "event",
+                            "description": "Going to see The Beatles performance at Madison Square Garden",
+                            "start_time": "2023-09-08 20:00:00",
+                            "end_time": "2023-09-08 23:00:00",
+                            "location": "Madison Square Garden",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": null,
+                    "exception": "Start time and end time must be in the future.",
+                    "metadata": {
+                        "reflection": "Here is the relevant plan:\n\nStep 1: Create event for concert\n#V1 = CreateEvent[name=The Beatles concert, event_type=event, description=Going to see The Beatles performance at Madison Square Garden, start_time=2023-09-08 20:00:00, end_time=2023-09-08 23:00:00, location=Madison Square Garden]\n\nDoes that work for you?",
+                        "response": "{\n  \"id\": \"5947435f078a4b068d3bc9fae9119a21\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727119112,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"ZzKLa7SKH\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CreateEvent\",\n              \"arguments\": \"{\\\"name\\\": \\\"The Beatles concert\\\", \\\"event_type\\\": \\\"event\\\", \\\"description\\\": \\\"Going to see The Beatles performance at Madison Square Garden\\\", \\\"start_time\\\": \\\"2023-09-08 20:00:00\\\", \\\"end_time\\\": \\\"2023-09-08 23:00:00\\\", \\\"location\\\": \\\"Madison Square Garden\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3786,\n    \"total_tokens\": 3895,\n    \"completion_tokens\": 109\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "The Beatles concert",
+                            "event_type": "event",
+                            "description": "Going to see The Beatles performance at Madison Square Garden",
+                            "start_time": "2023-09-11 08:00:00",
+                            "end_time": "2023-09-11 11:00:00",
+                            "location": "Madison Square Garden",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": null,
+                    "exception": "Start time and end time must be in the future.",
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"b4e529d99d2649cea002c46adf3e14f2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727119117,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"PVVZenwWY\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CreateEvent\",\n              \"arguments\": \"{\\\"name\\\": \\\"The Beatles concert\\\", \\\"event_type\\\": \\\"event\\\", \\\"description\\\": \\\"Going to see The Beatles performance at Madison Square Garden\\\", \\\"start_time\\\": \\\"2023-09-11 08:00:00\\\", \\\"end_time\\\": \\\"2023-09-11 11:00:00\\\", \\\"location\\\": \\\"Madison Square Garden\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3515,\n    \"total_tokens\": 3624,\n    \"completion_tokens\": 109\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "//\r [{\"name\": \"CreateEvent\", \"arguments\": {\"name\": \"The Beatles concert\", \"event_type\": \"event\", \"description\": \"Going to see The Beatles performance at Madison Square Garden\", \"start_time\": \"2023-09-15 08:00:00\", \"end_time\": \"2023-09-15 11:00:00\", \"location\": \"Madison Square Garden\"}}]",
+                    "metadata": {
+                        "reflection": "//\r [{\"name\": \"CreateEvent\", \"arguments\": {\"name\": \"The Beatles concert\", \"event_type\": \"event\", \"description\": \"Going to see The Beatles performance at Madison Square Garden\", \"start_time\": \"2023-09-15 08:00:00\", \"end_time\": \"2023-09-15 11:00:00\", \"location\": \"Madison Square Garden\"}}]",
+                        "response": "{\n  \"id\": \"ee6154394a9e4fd59b90887042f182c4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727119121,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"//\\r [{\\\"name\\\": \\\"CreateEvent\\\", \\\"arguments\\\": {\\\"name\\\": \\\"The Beatles concert\\\", \\\"event_type\\\": \\\"event\\\", \\\"description\\\": \\\"Going to see The Beatles performance at Madison Square Garden\\\", \\\"start_time\\\": \\\"2023-09-15 08:00:00\\\", \\\"end_time\\\": \\\"2023-09-15 11:00:00\\\", \\\"location\\\": \\\"Madison Square Garden\\\"}}]\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3671,\n    \"total_tokens\": 3780,\n    \"completion_tokens\": 109\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 2,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 0.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

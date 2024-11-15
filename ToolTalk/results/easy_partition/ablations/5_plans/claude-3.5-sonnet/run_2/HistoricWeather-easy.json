@@ -1,0 +1,141 @@
+{
+    "name": "HistoricWeather-easy",
+    "conversation_id": "2eda051f-b04b-43db-9ee7-bd121218d9b4",
+    "suites_used": [
+        "Weather"
+    ],
+    "apis_used": [
+        "HistoricWeather"
+    ],
+    "scenario": "HistoricWeather easy scenario",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "It's really hot today, like over 100. Is it normally this hot here?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "From historic weather data, the record high for London in September if 89 F. 100 is a new record.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "London",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "London"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 80,
+                            "low": 56,
+                            "conditions": "Mostly Cloudy"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Check the current weather in London.\n#V1 = CurrentWeather(location=\"London\")\n\nStep 2: Get historical weather data for London for the current month (September).\n#V2 = HistoricWeather(location=\"London\", month=\"September\")",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "London",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nI apologize, but there seems to be a misunderstanding. According to the current weather data for London, it's not actually over 100 degrees today. The current high temperature is 80\u00b0F (about 27\u00b0C), which is warm but not extremely hot. The low temperature is 56\u00b0F (about 13\u00b0C), and the conditions are described as \"Mostly Cloudy.\"\n\nTo answer your question about whether it's normally this hot in London, we should look at historical weather data for this time of year. Let's check the historical weather for September in London.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize, but there seems to be a misunderstanding in your perception of the current temperature. According to the current weather data for London, the high temperature today (September 11, 2023) is actually 80\u00b0F (about 27\u00b0C), which is warm but not over 100\u00b0F as you mentioned. The conditions are described as \"Mostly Cloudy.\"\n\nTo address your question about whether it's normally this hot in London:\n\n1. The current high of 80\u00b0F (27\u00b0C) is indeed warmer than usual for September in London.\n\n2. According to the historical weather data for September in London:\n   - The average maximum temperature is around 66\u00b0F (19\u00b0C)\n   - The record high temperature for September is 89\u00b0F (32\u00b0C)\n\nSo, while today's temperature of 80\u00b0F is above average, it's not unprecedented. It's about 14\u00b0F (8\u00b0C) above the typical September high, but still below the record high for the month.\n\nTo summarize:\n1. It's not over 100\u00b0F today as you thought, but it is warmer than usual.\n2. The current temperature (80\u00b0F) is higher than the average September high (66\u00b0F) in London.\n3. However, it's not breaking any records, as London has seen temperatures up to 89\u00b0F in September before.\n\nIf you're feeling particularly hot today, it might be due to factors like humidity, lack of wind, or being in an area with less air circulation (like a city center with lots of buildings). Remember to stay hydrated and seek shade or cool areas if you're feeling uncomfortable in the heat.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Great, thanks global warming."
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

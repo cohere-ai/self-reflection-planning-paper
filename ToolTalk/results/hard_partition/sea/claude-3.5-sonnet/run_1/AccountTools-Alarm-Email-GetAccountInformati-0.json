@@ -1,0 +1,413 @@
+{
+    "name": "AccountTools-Alarm-Email-GetAccountInformati-0",
+    "conversation_id": "c9c87c8a-4d76-4df2-ae6b-c9c336e72ec2",
+    "suites_used": [
+        "AccountTools",
+        "Email"
+    ],
+    "apis_used": [
+        "SendEmail",
+        "UpdateAccountInformation",
+        "LogoutUser",
+        "GetAccountInformation",
+        "UserLogin"
+    ],
+    "scenario": "The user wants to log in to their account and check their account information (UserLogin + GetAccountInformation). They notice that their email and phone number are outdated, so they decide to update them (UpdateAccountInformation). They also want to change their password to a more secure one (ChangePassword). They then want to send an email to their friend to let them know about their new contact details (SendEmail). They log out of their account after finishing their tasks (LogoutUser).",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you help me check my account information?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I see you're not logged in. Can you provide you username and password?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {}
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize, but it seems you are not currently logged in to your account. In order to check your account information, you'll need to log in first. Would you like me to help you log in to your account?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Yeah, it's justinkool and justforkicks123"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've logged you in. Looks like your current email is justintime@fmail.com, your phone number is 123-456-7890, and name is set to Justin Kool. Is that correct?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com",
+                            "phone": "123-456-7890",
+                            "name": "Justin Kool"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com",
+                            "phone": "123-456-7890",
+                            "name": "Justin Kool"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nGreat! I've successfully logged you in. Now, let's retrieve your account information. Here's the plan:\n\nStep 1: Retrieve account information\n#V1 = GetAccountInformation[]\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat! I've successfully logged you in and retrieved your account information. Here's what I found:\n\nUsername: justinkool\nEmail: justintime@fmail.com\nPhone: 123-456-7890\nName: Justin Kool\n\nIs there anything specific about your account information you'd like to know or update?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks! Looks like this account has a wrong number and my dead name. Can you help me update them?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, what would you like to change them to?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": " \n\nStep 1: Update the account information with the new phone number and name.\n#V1 = UpdateAccountInformation[password=\"justforkicks123\", new_phone_number=\"\", new_name=\"\"]\n\nCertainly! I'd be happy to help you update your account information. To do this, we'll need your current password and the new information you'd like to set. \n\nCould you please provide:\n1. The new phone number you'd like to use\n2. The name you'd like to change to\n\nAlso, just to confirm, we'll be using your current password (justforkicks123) to make these changes. Is that correct?\n\nOnce you provide this information, I can help you update your account.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "My new number is 987-654-3210 and my name is Jessica Kool."
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "I've updated your account information. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UpdateAccountInformation",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "password": "justforkicks123",
+                            "new_phone_number": "987-654-3210",
+                            "new_name": "Jessica Kool"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UpdateAccountInformation",
+                        "parameters": {
+                            "password": "justforkicks123",
+                            "new_phone_number": "987-654-3210",
+                            "new_name": "Jessica Kool",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat! I've updated your account information. Your phone number has been changed to 987-654-3210 and your name has been updated to Jessica Kool. Is there anything else you'd like me to do with your account?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "Yes, can you send an email to my friend to let them know about my new contact details? Then I think I'm done for the day so you can log me out."
+        },
+        {
+            "index": 9,
+            "role": "assistant",
+            "text": "Sure, what's your friend's email address?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com",
+                            "phone": "987-654-3210",
+                            "name": "Jessica Kool"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I'd be happy to help you send an email to your friend about your updated contact details. I'll need a few pieces of information from you:\n\n1. Your friend's email address\n2. The subject line you'd like for the email\n3. Any specific wording you'd like in the email body, or if you'd like me to draft it for you\n\nOnce you provide this information, I'll compose the email for you to review before sending. After that, I can log you out as requested.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 10,
+            "role": "user",
+            "text": "It's will.derms@gahoo.com"
+        },
+        {
+            "index": 11,
+            "role": "assistant",
+            "text": "I've sent the email. Have a nice day!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "to": [
+                                "will.derms@gahoo.com"
+                            ],
+                            "subject": "New contact details",
+                            "body": "Hi Will, this is Jessica Kool. I've changed my phone number to 987-654-3210. Please update your records. Thanks!"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "LogoutUser",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "will.derms@gahoo.com"
+                            ],
+                            "subject": "Updated Contact Information for Jessica",
+                            "body": "Hi Will,\n\nI wanted to let you know that I've updated my contact information. My new details are:\n\nName: Jessica Kool\nPhone: 987-654-3210\n\nPlease update your records accordingly.\n\nBest regards,\nJessica",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": " \n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "LogoutUser",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've sent an email to your friend Will at will.derms@gahoo.com with your updated contact information. The email has been sent successfully.\n\nI've also logged you out of your account as requested. Is there anything else you need help with?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "ChangePassword",
+        "GetAccountInformation",
+        "LogoutUser",
+        "UpdateAccountInformation",
+        "UserLogin",
+        "SendEmail"
+    ],
+    "intended_suites_used": [
+        "AccountTools",
+        "Alarm",
+        "Email"
+    ],
+    "metrics": {
+        "predictions": 7,
+        "ground_truths": 5,
+        "matches": 5,
+        "actions": 4,
+        "valid_actions": 4,
+        "bad_actions": 0,
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

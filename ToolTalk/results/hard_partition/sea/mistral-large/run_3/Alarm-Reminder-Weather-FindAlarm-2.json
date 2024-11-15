@@ -1,0 +1,265 @@
+{
+    "name": "Alarm-Reminder-Weather-FindAlarm-2",
+    "conversation_id": "1941f3b6-2ce7-431a-ba30-b1e5b5d0019d",
+    "suites_used": [
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "AddReminder",
+        "ForecastWeather"
+    ],
+    "scenario": "The user wants to do some gardening on a sunny day. They want to get the weather forecast for the next three days (ForecastWeather) and choose the best day to do it. They want to set a reminder to buy some seeds and fertilizer (AddReminder). They also want to set an alarm for the morning of the chosen day (AddAlarm). They want to check their existing reminders (GetReminders) and complete any that are related to gardening (CompleteReminder). They want to delete any alarms that are not needed for the chosen day (FindAlarms + DeleteAlarm).",
+    "user": {
+        "username": "lifeng",
+        "email": "lifeng@gahoo.com",
+        "phone": "512-322-9516",
+        "name": "Li Feng",
+        "password": "ooZ0ahKae",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "lifeng"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Is it going to be sunny in the next three days?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "The weather forecast in Paris for the next three days are rainy, cloudy, and sunny.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "Paris"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 78,
+                                "low": 58,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 72,
+                                "low": 64,
+                                "conditions": "Cloudy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 76,
+                                "low": 60,
+                                "conditions": "Sunny"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "Paris"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 78,
+                                "low": 58,
+                                "conditions": "60% Rainy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 72,
+                                "low": 64,
+                                "conditions": "Cloudy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 76,
+                                "low": 60,
+                                "conditions": "Sunny"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve the weather forecast for Paris for the next three days.\n#V1 = ForecastWeather[location=\"Paris\"]",
+                        "response": "{\n  \"id\": \"1b3008fe7582462b973a04fc42600dee\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729681923,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"zjoz6KqVz\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ForecastWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"Paris\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3684,\n    \"total_tokens\": 3707,\n    \"completion_tokens\": 23\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "It will be sunny on 2023-09-14.",
+                    "metadata": {
+                        "reflection": "It will be sunny on 2023-09-14.",
+                        "response": "{\n  \"id\": \"bd0283d7c8ad43518f0c30ba28e854af\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729681925,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"It will be sunny on 2023-09-14.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3502,\n    \"total_tokens\": 3520,\n    \"completion_tokens\": 18\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Set a reminder to buy seeds and fertilizer on the rainy day and to go to sleep early on the cloudy day."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok I've set a reminder on 9/12 to buy seeds and fertilizer and on 9/13 to go to sleep early.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "buy seeds and fertilizer",
+                            "due_date": "2023-09-12 08:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "go to sleep early",
+                            "due_date": "2023-09-13 08:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Buy seeds and fertilizer",
+                            "due_date": "2023-09-12",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": null,
+                    "exception": "time data '2023-09-12' does not match format '%Y-%m-%d %H:%M:%S'",
+                    "metadata": {
+                        "reflection": "Step 1: Get the weather forecast for Paris.\n#V1 = ForecastWeather[{\"location\": \"Paris\"}]\n\nStep 2: Set a reminder to buy seeds and fertilizer on the rainy day.\n#V2 = AddReminder[{\"task\": \"Buy seeds and fertilizer\", \"due_date\": #V1.forecast[0].date}]\n\nStep 3: Set a reminder to go to sleep early on the cloudy day.\n#V3 = AddReminder[{\"task\": \"Go to sleep early\", \"due_date\": #V1.forecast[1].date}]",
+                        "response": "{\n  \"id\": \"b2be8953c8ad4e43bf7dbe9b1127528a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729682025,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"Y1CFt2tID\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Buy seeds and fertilizer\\\", \\\"due_date\\\": \\\"2023-09-12\\\"}\"\n            }\n          },\n          {\n            \"id\": \"37Xch4Ige\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Go to sleep early\\\", \\\"due_date\\\": \\\"2023-09-13\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4020,\n    \"total_tokens\": 4102,\n    \"completion_tokens\": 82\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Buy seeds and fertilizer",
+                            "due_date": "2023-09-12 00:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"674a252b5c6e4aa984b6a34746e3803c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729682029,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"hUCXEJD3C\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Buy seeds and fertilizer\\\", \\\"due_date\\\": \\\"2023-09-12 00:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3664,\n    \"total_tokens\": 3717,\n    \"completion_tokens\": 53\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Go to sleep early",
+                            "due_date": "2023-09-13 00:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "20-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"a1b5f21575e942568423e11f7e2669aa\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729682031,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"B4eShf2uG\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Go to sleep early\\\", \\\"due_date\\\": \\\"2023-09-13 00:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3765,\n    \"total_tokens\": 3815,\n    \"completion_tokens\": 50\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have set a reminder to buy seeds and fertilizer on September 12th and to go to sleep early on September 13th.",
+                    "metadata": {
+                        "reflection": "I have set a reminder to buy seeds and fertilizer on September 12th and to go to sleep early on September 13th.",
+                        "response": "{\n  \"id\": \"15dafccd5bfe4b6a8cb340eed9e77667\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729682034,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have set a reminder to buy seeds and fertilizer on September 12th and to go to sleep early on September 13th.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3863,\n    \"total_tokens\": 3894,\n    \"completion_tokens\": 31\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm",
+        "DeleteAlarm",
+        "FindAlarms",
+        "AddReminder",
+        "CompleteReminder",
+        "GetReminders",
+        "ForecastWeather"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 3,
+        "matches": 3,
+        "actions": 3,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "action_precision": 0.6666666666666666,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

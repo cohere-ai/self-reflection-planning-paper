@@ -1,0 +1,289 @@
+{
+    "name": "Calendar-Messages-Weather-DeleteEvent-0",
+    "conversation_id": "259cb6f6-e8a8-4edc-a1ea-6e4dcd2d6335",
+    "suites_used": [
+        "Calendar",
+        "Messages"
+    ],
+    "apis_used": [
+        "SendMessage",
+        "DeleteEvent",
+        "QueryCalendar"
+    ],
+    "scenario": "The user wants to cancel a meeting with a client due to a personal emergency. They first check their calendar for the event details (QueryCalendar). They then delete the event from their calendar (DeleteEvent). They also send a message to the client explaining the situation and apologizing for the inconvenience (SendMessage). They then search for any previous messages from the client to see if they have any alternative contacts or preferences (SearchMessages). They also check the weather of the client's location to see if there are any adverse conditions that might affect their rescheduling (CurrentWeather).",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-10 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I need to cancel my meeting with Alicia tomorrow. Can you check the details for the event?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I found a meeting tomorrow at 10 am with the title Justin:Alicia. The description says \"Talk about anything. Move to your convenience.\" The attendees are you and Alicia (aliciab)",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-11 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "5480d946-2381",
+                                "name": "Justin:Alicia",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 10:00:00",
+                                "end_time": "2023-09-11 10:30:00",
+                                "location": "Conference Room 1",
+                                "description": "Talk about anything. Move to your convenience.",
+                                "attendees": [
+                                    "justinkool",
+                                    "aliciab"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-11 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "5480d946-2381",
+                                "name": "Justin:Alicia",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 10:00:00",
+                                "end_time": "2023-09-11 10:30:00",
+                                "location": "Conference Room 1",
+                                "description": "Talk about anything. Move to your convenience.",
+                                "attendees": [
+                                    "justinkool",
+                                    "aliciab"
+                                ]
+                            },
+                            {
+                                "event_id": "b448cdb4-caac",
+                                "name": "Weekly Team Meeting",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 10:00:00",
+                                "end_time": "2023-09-11 11:00:00",
+                                "location": "Conference Room 3",
+                                "description": "Weekly team meeting to discuss progress and updates.",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano",
+                                    "mstein",
+                                    "lifeng"
+                                ]
+                            },
+                            {
+                                "event_id": "c3463779-7861",
+                                "name": "Doctor's Appointment",
+                                "event_type": "event",
+                                "start_time": "2023-09-11 10:30:00",
+                                "end_time": "2023-09-11 11:30:00",
+                                "location": "123 Main St. San Francisco, CA 94105",
+                                "description": "Annual checkup with Dr. Tang",
+                                "attendees": null
+                            },
+                            {
+                                "event_id": "bb4588f1-c21c",
+                                "name": "Lunch with Li Feng",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 12:00:00",
+                                "end_time": "2023-09-11 13:00:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": [
+                                    "justinkool",
+                                    "lifeng"
+                                ]
+                            },
+                            {
+                                "event_id": "294b409-6535",
+                                "name": "1 on 1 with Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Query the calendar for tomorrow's events.\n#V1 = QueryCalendar(start_time=\"2023-09-11 00:00:00\", end_time=\"2023-09-11 23:59:59\")\n\nStep 2: Filter the results to find the meeting with Alicia and display the details to the user.\n\nStep 3: Delete the event using the event ID from the filtered results.\n#V3 = DeleteEvent(event_id=[event_id from filtered results])",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nBased on the calendar query results, I can provide you with the details of your meeting with Alicia tomorrow. Here's the information:\n\nEvent Name: Justin:Alicia\nEvent Type: Meeting\nDate: September 11, 2023 (tomorrow)\nStart Time: 10:00:00\nEnd Time: 10:30:00\nLocation: Conference Room 1\nDescription: Talk about anything. Move to your convenience.\nAttendees: justinkool (you), aliciab (Alicia)\nEvent ID: 5480d946-2381\n\nNow that we have confirmed the details of the meeting, would you like me to help you cancel this event?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Can you delete the meeting and send a message to her apologizing for the inconvenience?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I deleted the event tomorrow and sent an apology message to Alicia.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "5480d946-2381"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "aliciab",
+                            "message": "I'm sorry, but I have to cancel out meeting tomorrow."
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteEvent",
+                        "parameters": {
+                            "event_id": "5480d946-2381",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Delete the event from the calendar.\n#V1 = DeleteEvent[event_id=\"5480d946-2381\"]\n\nStep 2: Send a message to Alicia apologizing for canceling the meeting.\n#V2 = SendMessage[receiver=\"aliciab\", message=\"Hi Alicia, I apologize for the inconvenience, but I need to cancel our meeting scheduled for tomorrow at 10:00 AM. I hope we can reschedule soon. Thank you for your understanding.\"]",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "aliciab",
+                            "message": "Hi Alicia, I apologize for the inconvenience, but I need to cancel our meeting scheduled for tomorrow at 10:00 AM. I've removed it from the calendar. If you'd like to reschedule, please let me know and we can find a new time that works for both of us. Thank you for your understanding.",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nThe meeting has been successfully deleted. Now, I'll send a message to Alicia apologizing for the inconvenience.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've completed the tasks you requested. Here's a summary of what I've done:\n\n1. I deleted the meeting with Alicia scheduled for tomorrow at 10:00 AM. The deletion was successful.\n\n2. I sent a message to Alicia (username: aliciab) apologizing for the cancellation. The message included:\n   - An apology for the inconvenience\n   - Information about the cancelled meeting (date and time)\n   - A note that the event has been removed from the calendar\n   - An offer to reschedule if needed\n\nThe message was sent successfully with the message ID 'e149636f-ecc3f121'.\n\nIs there anything else you would like me to do regarding this cancellation or any other matters?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "DeleteEvent",
+        "QueryCalendar",
+        "SearchMessages",
+        "SendMessage",
+        "CurrentWeather"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Messages",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 3,
+        "matches": 3,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

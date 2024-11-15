@@ -1,0 +1,105 @@
+{
+    "name": "DeleteReminder-easy",
+    "conversation_id": "d0f9d405-c454-4c7a-8ea6-594ecf3ffec2",
+    "suites_used": [
+        "Reminder"
+    ],
+    "apis_used": [
+        "DeleteReminder"
+    ],
+    "scenario": "DeleteReminder easy scenario",
+    "user": {
+        "username": "lifeng",
+        "email": "lifeng@gahoo.com",
+        "phone": "512-322-9516",
+        "name": "Li Feng",
+        "password": "ooZ0ahKae",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "lifeng"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have a reminder I'd like to delete, it's id is 59-80bc"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Done, I have deleted the reminder.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "59-80bc"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "59-80bc",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Sure, I can help you with that. Here is the plan:\nStep 1: Delete the reminder.\n#V1 = DeleteReminder[reminder_id = \"59-80bc\"]\n\nCan I proceed with the execution of this plan?",
+                        "response": "{\n  \"id\": \"f3ffa3637ccf4d44a661fdd4d825c5ce\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727119325,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"LsrGbTtJv\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"59-80bc\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3708,\n    \"total_tokens\": 3737,\n    \"completion_tokens\": 29\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your reminder was deleted successfully! Is there anything else I can assist you with?",
+                    "metadata": {
+                        "reflection": "Your reminder was deleted successfully! Is there anything else I can assist you with?",
+                        "response": "{\n  \"id\": \"8c26f1ba688440689750e3bf3da3e315\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727119326,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your reminder was deleted successfully! Is there anything else I can assist you with?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3408,\n    \"total_tokens\": 3424,\n    \"completion_tokens\": 16\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,162 @@
+{
+    "name": "CreateEvent-easy",
+    "conversation_id": "0be430e6-236f-432c-9287-82666ef1b1a3",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "CreateEvent"
+    ],
+    "scenario": "CreateEvent easy scenario",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I just got tickets for a Beatles concert this Friday. Can you create an event for me?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when is the concert?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "description": "Beatles concert tickets",
+                            "start_time": "2023-09-15 19:00:00",
+                            "end_time": "2023-09-15 21:00:00",
+                            "location": "New York",
+                            "attendees": [
+                                "olivedo"
+                            ],
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "1. #V1: CreateEvent\n   - name: \"Beatles Concert\"\n   - event_type: \"event\"\n   - description: \"Beatles concert tickets\"\n   - start_time: \"2023-09-15 19:00:00\"\n   - end_time: \"2023-09-15 21:00:00\"\n   - location: \"New York\"\n   - attendees: [\"olivedo\"]",
+                        "response": "{\n  \"id\": \"4e28574ad9a24100b1577fe476d86ba1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731452587,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"cE8Jsoarn\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CreateEvent\",\n              \"arguments\": \"{\\\"name\\\": \\\"Beatles Concert\\\", \\\"event_type\\\": \\\"event\\\", \\\"description\\\": \\\"Beatles concert tickets\\\", \\\"start_time\\\": \\\"2023-09-15 19:00:00\\\", \\\"end_time\\\": \\\"2023-09-15 21:00:00\\\", \\\"location\\\": \\\"New York\\\", \\\"attendees\\\": [\\\"olivedo\\\"]}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3780,\n    \"total_tokens\": 3891,\n    \"completion_tokens\": 111\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "Event created successfully!",
+                    "metadata": {
+                        "reflection": "Event created successfully!",
+                        "response": "{\n  \"id\": \"76559bedc4354ffaafb53e647af54396\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731452591,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Event created successfully!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3501,\n    \"total_tokens\": 3505,\n    \"completion_tokens\": 4\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It goes from 8-11 at Madison Square Garden."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've created the event for you.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Beatles concert",
+                            "event_type": "event",
+                            "description": "The Beatles Concert",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Create the event using the CreateEvent function.\n\n#V1 = CreateEvent[name: \"Beatles concert\", event_type: \"event\", description: \"The Beatles Concert\", start_time: \"2023-09-15 20:00:00\", end_time: \"2023-09-15 23:00:00\", location: \"Madison Square Garden\"]",
+                        "response": "{\n  \"id\": \"bb78efdcfd8545819a4b94fff53a8471\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731452633,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"jg5L8fFKE\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CreateEvent\",\n              \"arguments\": \"{\\\"name\\\": \\\"Beatles concert\\\", \\\"event_type\\\": \\\"event\\\", \\\"description\\\": \\\"The Beatles Concert\\\", \\\"start_time\\\": \\\"2023-09-15 20:00:00\\\", \\\"end_time\\\": \\\"2023-09-15 23:00:00\\\", \\\"location\\\": \\\"Madison Square Garden\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3788,\n    \"total_tokens\": 3890,\n    \"completion_tokens\": 102\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your event has been created!",
+                    "metadata": {
+                        "reflection": "Your event has been created!",
+                        "response": "{\n  \"id\": \"aca34d0eb9fb4c13bb14451db28c20a0\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731452636,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your event has been created!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3514,\n    \"total_tokens\": 3520,\n    \"completion_tokens\": 6\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 2,
+        "valid_actions": 1,
+        "bad_actions": 1,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.5,
+        "success": false,
+        "soft_success": 0.5,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

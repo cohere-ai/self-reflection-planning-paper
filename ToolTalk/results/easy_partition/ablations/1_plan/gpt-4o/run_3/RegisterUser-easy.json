@@ -1,0 +1,138 @@
+{
+    "name": "RegisterUser-easy",
+    "conversation_id": "79e26be0-f2bb-41e1-b3a7-2273ef6dd194",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "RegisterUser"
+    ],
+    "scenario": "RegisterUser easy scenario",
+    "user": {
+        "username": "hestler",
+        "email": "j.hester@gahoo.com",
+        "phone": "708-340-0190",
+        "name": "Julian Hester",
+        "password": "Meizuch4uu"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I'd like to sign up for a new account!"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, to sign up for a new account, I'll need your name, email, phone number, username, and a password.",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Since the necessary information for registering a new account is not available from the previous conversation or metadata, and we cannot ask the user for additional input, the plan cannot proceed as per the current guidelines.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "My name is Julian Hester, my email is j.hester@gahoo.com, my phone number is 708-340-0190. Can you set my username to hestler and my password to Meizuch4uu?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sure, I've created your account. You have already been logged in.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "hestler",
+                            "password": "Meizuch4uu",
+                            "email": "j.hester@gahoo.com",
+                            "phone": "708-340-0190",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "hestler",
+                            "email": "j.hester@gahoo.com",
+                            "phone": "708-340-0190",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "hestler",
+                            "password": "Meizuch4uu",
+                            "email": "j.hester@gahoo.com",
+                            "name": "Julian Hester",
+                            "phone": "708-340-0190"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "hestler",
+                            "email": "j.hester@gahoo.com",
+                            "phone": "708-340-0190",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Register the user with the provided information.\n- Name: Julian Hester\n- Email: j.hester@gahoo.com\n- Phone: 708-340-0190\n- Username: hestler\n- Password: Meizuch4uu\n\n#V1 = RegisterUser(username=\"hestler\", password=\"Meizuch4uu\", email=\"j.hester@gahoo.com\", name=\"Julian Hester\", phone=\"708-340-0190\")",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your account has been successfully created! Here are your details:\n\n- **Name:** Julian Hester\n- **Username:** hestler\n- **Email:** j.hester@gahoo.com\n- **Phone:** 708-340-0190\n\nIf you need any further assistance, feel free to ask!",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Wow that was easy! Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,124 @@
+{
+    "name": "QueryUser-easy",
+    "conversation_id": "f09ca824-0f96-47a3-ae0f-5924e0e484a5",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "QueryUser"
+    ],
+    "scenario": "QueryUser easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you look up a user to see if they exist?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what is the username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Respond to user with: \"Respond to user with: \"Certainly! I can help you look up a user to see if they exist. To do this, I'll need either a username or an email address to search for. Could you please provide either a username or an email address of the user you want to look up?\"\"",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "I actually don't have their username, only their email: hestler@gahoo.com"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay, I checked and could not find any users.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "email": "hestler@gahoo.com"
+                        }
+                    },
+                    "response": {
+                        "users": []
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "email": "hestler@gahoo.com",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Respond to user with: \"#V1 = QueryUser[email=hestler@gahoo.com]\"",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've looked up the user with the email address hestler@gahoo.com, but it appears that no user with this email address exists in the system. The query returned an empty list of users.\n\nIs there anything else you'd like me to check? Perhaps you have another email address or a username we could try?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Ah I see, oh well."
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

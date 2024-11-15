@@ -1,0 +1,153 @@
+{
+    "name": "SendMessage-easy",
+    "conversation_id": "79898399-9748-4482-b842-e9f0c95befbb",
+    "suites_used": [
+        "Messages"
+    ],
+    "apis_used": [
+        "SendMessage"
+    ],
+    "scenario": "SendMessage easy scenario",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey, can I send a message to my friend justinkool?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what do you want to say?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, I can help you with that. Please provide the message you want to send.",
+                    "metadata": {
+                        "reflection": "Sure, I can help you with that. Please provide the message you want to send.",
+                        "response": "{\n  \"id\": \"3c3a5709124f42a085b6fee324fc2bdb\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727109859,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, I can help you with that. Please provide the message you want to send.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3627,\n    \"total_tokens\": 3645,\n    \"completion_tokens\": 18\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "How about something simple like a greeting?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sounds good, I'll send it now.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "justinkool",
+                            "message": "Hello, how are you?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "justinkool",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "justinkool",
+                                "email": "justintime@fmail.com",
+                                "phone": "123-456-7890",
+                                "name": "Justin Kool"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Find the user justinkool.\n#V1 = QueryUser[username=justinkool]\nStep 2: Send a message to justinkool.\n#V2 = SendMessage[receiver=justinkool, message=Hello, justinkool! How are you doing?]",
+                        "response": "{\n  \"id\": \"b61eba4a61c64a7c932ce13b8d5512d9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727109864,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"CPatlHw17\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"justinkool\\\"}\"\n            }\n          },\n          {\n            \"id\": \"4gOJmDB1j\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendMessage\",\n              \"arguments\": \"{\\\"receiver\\\": \\\"justinkool\\\", \\\"message\\\": \\\"Hello, justinkool! How are you doing?\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3729,\n    \"total_tokens\": 3786,\n    \"completion_tokens\": 57\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "justinkool",
+                            "message": "Hello, justinkool! How are you doing?",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I sent a message to justinkool saying \"Hello, justinkool! How are you doing?\"",
+                    "metadata": {
+                        "reflection": "I sent a message to justinkool saying \"Hello, justinkool! How are you doing?\"",
+                        "response": "{\n  \"id\": \"5a7c77c07b3f447ea8660d2236bdf45d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727109868,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I sent a message to justinkool saying \\\"Hello, justinkool! How are you doing?\\\"\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3555,\n    \"total_tokens\": 3576,\n    \"completion_tokens\": 21\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Great, thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

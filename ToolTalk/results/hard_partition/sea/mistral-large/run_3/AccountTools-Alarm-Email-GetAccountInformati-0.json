@@ -1,0 +1,428 @@
+{
+    "name": "AccountTools-Alarm-Email-GetAccountInformati-0",
+    "conversation_id": "c9c87c8a-4d76-4df2-ae6b-c9c336e72ec2",
+    "suites_used": [
+        "AccountTools",
+        "Email"
+    ],
+    "apis_used": [
+        "SendEmail",
+        "UpdateAccountInformation",
+        "LogoutUser",
+        "GetAccountInformation",
+        "UserLogin"
+    ],
+    "scenario": "The user wants to log in to their account and check their account information (UserLogin + GetAccountInformation). They notice that their email and phone number are outdated, so they decide to update them (UpdateAccountInformation). They also want to change their password to a more secure one (ChangePassword). They then want to send an email to their friend to let them know about their new contact details (SendEmail). They log out of their account after finishing their tasks (LogoutUser).",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you help me check my account information?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I see you're not logged in. Can you provide you username and password?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {}
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve the account information of the logged-in user.\n#V1 = GetAccountInformation[]\n\nStep 2: If the user is not logged in (indicated by an error or lack of account information), prompt the user to log in.\n#V2 = SendMessage[receiver=user, message=\"Please log in to check your account information.\"]\n\nStep 3: If the user is logged in, display the account information to the user.\n#V3 = SendMessage[receiver=user, message=#V1.user]",
+                        "response": "{\n  \"id\": \"df25a560975c403aa4d91cea7ac842e1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729635888,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"QoxlJwiT3\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetAccountInformation\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3772,\n    \"total_tokens\": 3788,\n    \"completion_tokens\": 16\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, but you need to be logged in to view your account information. Would you like to log in?",
+                    "metadata": {
+                        "reflection": "I'm sorry, but you need to be logged in to view your account information. Would you like to log in?",
+                        "response": "{\n  \"id\": \"ddfb5abbf57c4352ad500177aeb877ee\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729635889,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I'm sorry, but you need to be logged in to view your account information. Would you like to log in?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3381,\n    \"total_tokens\": 3406,\n    \"completion_tokens\": 25\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Yeah, it's justinkool and justforkicks123"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've logged you in. Looks like your current email is justintime@fmail.com, your phone number is 123-456-7890, and name is set to Justin Kool. Is that correct?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com",
+                            "phone": "123-456-7890",
+                            "name": "Justin Kool"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Respond to user with: \"```python\n#V1 = UserLogin[username: justinkool, password: justforkicks123]\n#V2 = GetAccountInformation[]\"",
+                        "response": "{\n  \"id\": \"d5308bdb65dd4c079d32d9c6a9423ff9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729635979,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"jLRKdxW6o\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"UserLogin\",\n              \"arguments\": \"{\\\"username\\\": \\\"justinkool\\\", \\\"password\\\": \\\"justforkicks123\\\"}\"\n            }\n          },\n          {\n            \"id\": \"bOQHob8Bg\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetAccountInformation\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3731,\n    \"total_tokens\": 3778,\n    \"completion_tokens\": 47\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com",
+                            "phone": "123-456-7890",
+                            "name": "Justin Kool"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here is your account information:\n\n- Username: justinkool\n- Email: justintime@fmail.com\n- Phone: 123-456-7890\n- Name: Justin Kool",
+                    "metadata": {
+                        "reflection": "Here is your account information:\n\n- Username: justinkool\n- Email: justintime@fmail.com\n- Phone: 123-456-7890\n- Name: Justin Kool",
+                        "response": "{\n  \"id\": \"4de51d295ce448a7ad131cb38a35dd46\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729635981,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here is your account information:\\n\\n- Username: justinkool\\n- Email: justintime@fmail.com\\n- Phone: 123-456-7890\\n- Name: Justin Kool\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3555,\n    \"total_tokens\": 3606,\n    \"completion_tokens\": 51\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks! Looks like this account has a wrong number and my dead name. Can you help me update them?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, what would you like to change them to?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UpdateAccountInformation",
+                        "parameters": {
+                            "password": "justforkicks123",
+                            "new_phone_number": "new_phone_number",
+                            "new_name": "new_name",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": null,
+                    "exception": "The phone number format is invalid.",
+                    "metadata": {
+                        "reflection": "Step 1: Update the user's phone number and name.\n#V1 = UpdateAccountInformation[password=\"justforkicks123\", new_phone_number=\"new_phone_number\", new_name=\"new_name\"]",
+                        "response": "{\n  \"id\": \"172ec88ad5ca4ddbac59f8943b0efed9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729636061,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"NmPUFY5BV\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"UpdateAccountInformation\",\n              \"arguments\": \"{\\\"password\\\": \\\"justforkicks123\\\", \\\"new_phone_number\\\": \\\"new_phone_number\\\", \\\"new_name\\\": \\\"new_name\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4011,\n    \"total_tokens\": 4062,\n    \"completion_tokens\": 51\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, but the phone number format is invalid. Please provide a phone number in the format xxx-xxx-xxxx.",
+                    "metadata": {
+                        "reflection": "I'm sorry, but the phone number format is invalid. Please provide a phone number in the format xxx-xxx-xxxx.",
+                        "response": "{\n  \"id\": \"147fb43595cb430eace01971f4151e17\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729636063,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I'm sorry, but the phone number format is invalid. Please provide a phone number in the format xxx-xxx-xxxx.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3727,\n    \"total_tokens\": 3756,\n    \"completion_tokens\": 29\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "My new number is 987-654-3210 and my name is Jessica Kool."
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "I've updated your account information. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UpdateAccountInformation",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "password": "justforkicks123",
+                            "new_phone_number": "987-654-3210",
+                            "new_name": "Jessica Kool"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UpdateAccountInformation",
+                        "parameters": {
+                            "password": "justforkicks123",
+                            "new_phone_number": "987-654-3210",
+                            "new_name": "Jessica Kool",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Update the phone number and name.\n#V1 = UpdateAccountInformation[password=\"justforkicks123\", new_phone_number=\"987-654-3210\", new_name=\"Jessica Kool\"]",
+                        "response": "{\n  \"id\": \"41083394b5f4464ea3e04628ad57f8e3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729636119,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"QLtOzW0sJ\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"UpdateAccountInformation\",\n              \"arguments\": \"{\\\"password\\\": \\\"justforkicks123\\\", \\\"new_phone_number\\\": \\\"987-654-3210\\\", \\\"new_name\\\": \\\"Jessica Kool\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4056,\n    \"total_tokens\": 4116,\n    \"completion_tokens\": 60\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your account information has been updated successfully. Is there anything else I can help you with?",
+                    "metadata": {
+                        "reflection": "Your account information has been updated successfully. Is there anything else I can help you with?",
+                        "response": "{\n  \"id\": \"79012bbe66824c55abf00186db55529f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729636121,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your account information has been updated successfully. Is there anything else I can help you with?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3772,\n    \"total_tokens\": 3790,\n    \"completion_tokens\": 18\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "Yes, can you send an email to my friend to let them know about my new contact details? Then I think I'm done for the day so you can log me out."
+        },
+        {
+            "index": 9,
+            "role": "assistant",
+            "text": "Sure, what's your friend's email address?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "friend's email"
+                            ],
+                            "subject": "Jessica Kool's New Contact Details",
+                            "body": "Hi, Jessica Kool wanted me to let you know that their new phone number is 987-654-3210. Best, Assistant",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": null,
+                    "exception": "friend's email is not a valid email address.",
+                    "metadata": {
+                        "reflection": "Step 1: Ask for the friend's email address.\nStep 2: Send an email to the friend with the new contact details.\n#V1 = SendEmail[to=[\"friend's email\"], subject=\"Jessica Kool's New Contact Details\", body=\"Hi, Jessica Kool wanted me to let you know that their new phone number is 987-654-3210. Best, Assistant\"]\nStep 3: Log out the user.\n#V2 = LogoutUser[]",
+                        "response": "{\n  \"id\": \"8dcdb15a07b5424c9c0b6e7e37ac65f5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729636197,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"SvFF5wVId\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendEmail\",\n              \"arguments\": \"{\\\"to\\\": [\\\"friend's email\\\"], \\\"subject\\\": \\\"Jessica Kool's New Contact Details\\\", \\\"body\\\": \\\"Hi, Jessica Kool wanted me to let you know that their new phone number is 987-654-3210. Best, Assistant\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4270,\n    \"total_tokens\": 4347,\n    \"completion_tokens\": 77\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, I need a valid email address to send the email. Could you provide it?",
+                    "metadata": {
+                        "reflection": "I'm sorry, I need a valid email address to send the email. Could you provide it?",
+                        "response": "{\n  \"id\": \"406e0911335a49b6b9ec57190d167aea\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729636199,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I'm sorry, I need a valid email address to send the email. Could you provide it?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3954,\n    \"total_tokens\": 3975,\n    \"completion_tokens\": 21\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 10,
+            "role": "user",
+            "text": "It's will.derms@gahoo.com"
+        },
+        {
+            "index": 11,
+            "role": "assistant",
+            "text": "I've sent the email. Have a nice day!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "to": [
+                                "will.derms@gahoo.com"
+                            ],
+                            "subject": "New contact details",
+                            "body": "Hi Will, this is Jessica Kool. I've changed my phone number to 987-654-3210. Please update your records. Thanks!"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "LogoutUser",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "will.derms@gahoo.com"
+                            ],
+                            "subject": "Updated Contact Details",
+                            "body": "Hi Will,\n\nJessica has updated her contact details.\nNew number: 987-654-3210\nName: Jessica Kool\n\nBest,\nJessica",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Send an email to your friend with your new contact details.\n#V1 = SendEmail[{\"to\": \"will.derms@gahoo.com\", \"subject\": \"Updated Contact Details\", \"body\": \"Hi Will,\\n\\nJessica has updated her contact details.\\nNew number: 987-654-3210\\nName: Jessica Kool\\n\\nBest,\\nJessica\"}]\n\nStep 2: Log you out.\n#V2 = UserLogout[{\"session_token\": \"e149636f-d9ca-0792\"}]",
+                        "response": "{\n  \"id\": \"2012a0a931a74edc8885bf3504b59fbe\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729636274,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"HLKuahucv\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendEmail\",\n              \"arguments\": \"{\\\"to\\\": [\\\"will.derms@gahoo.com\\\"], \\\"subject\\\": \\\"Updated Contact Details\\\", \\\"body\\\": \\\"Hi Will,\\\\n\\\\nJessica has updated her contact details.\\\\nNew number: 987-654-3210\\\\nName: Jessica Kool\\\\n\\\\nBest,\\\\nJessica\\\"}\"\n            }\n          },\n          {\n            \"id\": \"IWBRyau7j\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"LogoutUser\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4327,\n    \"total_tokens\": 4430,\n    \"completion_tokens\": 103\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "LogoutUser",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've sent the email and logged you out. Is there anything else I can help you with today?",
+                    "metadata": {
+                        "reflection": "I've sent the email and logged you out. Is there anything else I can help you with today?",
+                        "response": "{\n  \"id\": \"6b02f9cf8296419098df52e3166e661e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729636277,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I've sent the email and logged you out. Is there anything else I can help you with today?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4058,\n    \"total_tokens\": 4080,\n    \"completion_tokens\": 22\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "ChangePassword",
+        "GetAccountInformation",
+        "LogoutUser",
+        "UpdateAccountInformation",
+        "UserLogin",
+        "SendEmail"
+    ],
+    "intended_suites_used": [
+        "AccountTools",
+        "Alarm",
+        "Email"
+    ],
+    "metrics": {
+        "predictions": 8,
+        "ground_truths": 5,
+        "matches": 5,
+        "actions": 6,
+        "valid_actions": 4,
+        "bad_actions": 0,
+        "precision": 0.625,
+        "recall": 1.0,
+        "action_precision": 0.6666666666666666,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

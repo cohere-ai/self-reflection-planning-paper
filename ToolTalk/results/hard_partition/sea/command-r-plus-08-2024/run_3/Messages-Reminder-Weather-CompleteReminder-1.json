@@ -1,0 +1,260 @@
+{
+    "name": "Messages-Reminder-Weather-CompleteReminder-1",
+    "conversation_id": "8ab3dafb-ef39-48d8-aae4-22fddab8d489",
+    "suites_used": [
+        "Reminder"
+    ],
+    "apis_used": [
+        "AddReminder",
+        "GetReminders",
+        "CompleteReminder"
+    ],
+    "scenario": "The user wants to complete a reminder to pay their rent. They want to see how much money they have left in their bank account (GetBalance). They see that they have enough to pay the rent, but not much more. They want to see if they can save some money by switching to a cheaper electricity plan (GetElectricityPlans). They see that there is a plan that offers a lower rate, but requires a 12-month contract. They want to see how the weather has changed in their area in the past year (HistoricWeather). They see that there have been more hot and cold days than usual, which means more electricity usage. They decide to stick with their current plan, which has no contract. They pay their rent online (PayRent). They complete the reminder to pay their rent (CompleteReminder).",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I forgot to pay rent this month. Can you set a reminder for me to pay rent on the first day of the month for the rest of the year?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure I have set reminders for 10/1, 11/1, and 12/1 to pay rent.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pay rent",
+                            "due_date": "2023-10-01 00:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pay rent",
+                            "due_date": "2023-11-01 00:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "20-d9ca"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pay rent",
+                            "due_date": "2023-12-01 00:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "07-1add"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {}
+                    },
+                    "response": null,
+                    "exception": "Only one user can be logged in at a time. Current user is salcano.",
+                    "metadata": {
+                        "reflection": "Step 1: Check the user's login status. If the user is not logged in, prompt them to log in first.\n#V1 = UserLogin()\n\nStep 2: Retrieve the user's existing reminders.\n#V2 = GetReminders()\n\nStep 3: Analyze the existing reminders to check for any reminders related to rent payment. If there are no existing reminders or no rent-related reminders, proceed to Step 4.\n\nStep 4: Set reminders for the user to pay rent on the first day of each remaining month of the year (October, November, and December).\n#V3 = AddReminder(task=\"pay rent\", due_date=\"2023-10-01 00:00:00\")\n#V4 = AddReminder(task=\"pay rent\", due_date=\"2023-11-01 00:00:00\")\n#V5 = AddReminder(task=\"pay rent\", due_date=\"2023-12-01 00:00:00\")",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Finish report",
+                                "due_date": "2023-09-11 08:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "apologize to landlord",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "submit blog post",
+                                "due_date": "2023-09-11 10:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "98-d687",
+                                "task": "buy Ana a present",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-08-27 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "The user is already logged in. I will now retrieve the user's existing reminders.",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Reflection: The user has five existing reminders. I will now analyze these reminders to check for any reminders related to rent payment.\nModel calls directly_answer (separate model-call ommitted)",
+                    "metadata": {
+                        "reflection": "The user has five existing reminders. I will now analyze these reminders to check for any reminders related to rent payment.",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "I sent a message to my landlord apologizing about the late rent. Can you mark my reminder to do that as complete?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sure, I marked your reminder to apologize to your landlord as complete.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "apologize to landlord",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "5b-dd80",
+                                "task": "Pay rent",
+                                "due_date": "2023-10-01 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "20-d9ca",
+                                "task": "Pay rent",
+                                "due_date": "2023-11-01 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "07-1add",
+                                "task": "Pay rent",
+                                "due_date": "2023-12-01 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "59-80bc"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sorry! There was an error: status_code: 500, body: {'message': 'internal server error, this has been reported to our developers. id 93cad417f82579787e446c1a4e9a4b6e'}",
+                    "metadata": {
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "CompleteReminder",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Messages",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 5,
+        "matches": 0,
+        "actions": 1,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 0.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.25,
+        "api_name_recall": 0.3333333333333333,
+        "api_name_precision": 0.5
+    }
+}

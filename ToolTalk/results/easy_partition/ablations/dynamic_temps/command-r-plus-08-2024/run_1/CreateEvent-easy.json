@@ -1,0 +1,109 @@
+{
+    "name": "CreateEvent-easy",
+    "conversation_id": "0be430e6-236f-432c-9287-82666ef1b1a3",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "CreateEvent"
+    ],
+    "scenario": "CreateEvent easy scenario",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I just got tickets for a Beatles concert this Friday. Can you create an event for me?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when is the concert?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Reflection: Step 1: #V1 = AskUser(question=\"Please provide the following details for the Beatles concert event:\n1. Event description (optional):\n2. Location (optional):\n3. Attendees (if any, provide their usernames):\")\nStep 2: #V2 = CreateEvent(name='Beatles concert', event_type='event', description=#V1[0], start_time='2023-09-15 19:00:00', end_time='2023-09-15 22:00:00', location=#V1[1], attendees=#V1[2])\nModel calls directly_answer (separate model-call ommitted)",
+                    "metadata": {
+                        "reflection": "Step 1: #V1 = AskUser(question=\"Please provide the following details for the Beatles concert event:\n1. Event description (optional):\n2. Location (optional):\n3. Attendees (if any, provide their usernames):\")\nStep 2: #V2 = CreateEvent(name='Beatles concert', event_type='event', description=#V1[0], start_time='2023-09-15 19:00:00', end_time='2023-09-15 22:00:00', location=#V1[1], attendees=#V1[2])",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It goes from 8-11 at Madison Square Garden."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've created the event for you.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, I can't create an event for you.",
+                    "metadata": {
+                        "reflection": "Respond to user with: \"#V1 = CreateEvent(name='Beatles concert', event_type='event', description='Attending the Beatles concert at Madison Square Garden on Friday, September 15th, from 8:00 PM to 11:00 PM', start_time='2023-09-15 20:00:00', end_time='2023-09-15 23:00:00', location='Madison Square Garden', attendees=[])\"",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 0,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0,
+        "recall": 0.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.0,
+        "api_name_recall": 0.0,
+        "api_name_precision": 1
+    }
+}

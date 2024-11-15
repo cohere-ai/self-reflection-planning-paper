@@ -1,0 +1,420 @@
+{
+    "name": "Messages-Reminder-Weather-SearchMessage-2",
+    "conversation_id": "f5bccae7-ab75-4c20-a5a6-87aa456c36fe",
+    "suites_used": [
+        "Email",
+        "AccountTools",
+        "Reminder",
+        "Weather"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "AddReminder",
+        "SearchInbox",
+        "SendEmail",
+        "GetAccountInformation",
+        "HistoricWeather"
+    ],
+    "scenario": "The user wants to do some research on the weather patterns of New York for a school project. They use HistoricWeather to get the weather data of New York for the past month. They see that the data is incomplete and only has 10 records. They use SearchMessages to look for any messages from their teacher with the query \"weather\". They see that they have a message from two days ago that says they can use any online source for the data. They use SendMessage to thank their teacher and ask for some recommendations. They get a reply with a link to a website that has more data. They use GetReminders to see if they have any reminders for the project. They see that they have one with the task \"Submit weather project\" and the due_date set to next Monday. They use DeleteReminder to delete the reminder and create a new one with the same task and due_date, but with a note that says \"Use website for data\".",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 16:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hi, I'm working on a project about weather patterns in New York for my AP Environmental Science class. Can you pull up the data on what the average temperature has been for today for each year in the last decade?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sorry, I don't have the data for the last 10 years but the high today is 85 degrees and the low is 72 degrees.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "San Francisco"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 85,
+                            "low": 72,
+                            "conditions": "Sunny"
+                        }
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "New York",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve historical weather data for New York for the current month.\n#V1 = HistoricWeather[location=\"New York\", month=\"September\"]",
+                        "response": "{\n  \"id\": \"82e1526a33df417082228b1790898aa7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729674096,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"6hl7zNl97\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"HistoricWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"New York\\\", \\\"month\\\": \\\"September\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3722,\n    \"total_tokens\": 3752,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here is the average weather data for New York in September:\n\n- Average Minimum Temperature: 55\u00b0F\n- Average Maximum Temperature: 66\u00b0F\n- Record Minimum Temperature: 40\u00b0F\n- Record Maximum Temperature: 89\u00b0F\n- Average Rainfall: 2.13 inches\n- Average Snow Days: 0 days\n\nWould you like to know anything else?",
+                    "metadata": {
+                        "reflection": "Here is the average weather data for New York in September:\n\n- Average Minimum Temperature: 55\u00b0F\n- Average Maximum Temperature: 66\u00b0F\n- Record Minimum Temperature: 40\u00b0F\n- Record Maximum Temperature: 89\u00b0F\n- Average Rainfall: 2.13 inches\n- Average Snow Days: 0 days\n\nWould you like to know anything else?",
+                        "response": "{\n  \"id\": \"5813351060c0488a989b47e7e2620b1b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729674098,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here is the average weather data for New York in September:\\n\\n- Average Minimum Temperature: 55\u00b0F\\n- Average Maximum Temperature: 66\u00b0F\\n- Record Minimum Temperature: 40\u00b0F\\n- Record Maximum Temperature: 89\u00b0F\\n- Average Rainfall: 2.13 inches\\n- Average Snow Days: 0 days\\n\\nWould you like to know anything else?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3491,\n    \"total_tokens\": 3591,\n    \"completion_tokens\": 100\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "That's annoying. Do you have any historical data about the weather here in September?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sure the historical minimum temperature has been 50 degrees, the historical maximum has been 90 degrees, with the record minimum and maximum being 48 and 102. Average rainfall is 3 inches and there are typically 0 snow days.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "San Francisco",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 50,
+                            "max_temp": 90,
+                            "record_min_temp": 48,
+                            "record_max_temp": 102,
+                            "avg_rainfall": 3.0,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "New York",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve historic weather data for September in New York.\n#V1 = HistoricWeather[\"location\": \"New York\", \"month\": \"September\"]",
+                        "response": "{\n  \"id\": \"809ba50f8f8a47bba31036260286b36f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729674171,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"xLWoTBu36\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"HistoricWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"New York\\\", \\\"month\\\": \\\"September\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3875,\n    \"total_tokens\": 3905,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here is the historical weather data for New York in September:\n\n- Average Minimum Temperature: 55\u00b0F\n- Average Maximum Temperature: 66\u00b0F\n- Record Minimum Temperature: 40\u00b0F\n- Record Maximum Temperature: 89\u00b0F\n- Average Rainfall: 2.13 inches\n- Average Snow Days: 0 days",
+                    "metadata": {
+                        "reflection": "Here is the historical weather data for New York in September:\n\n- Average Minimum Temperature: 55\u00b0F\n- Average Maximum Temperature: 66\u00b0F\n- Record Minimum Temperature: 40\u00b0F\n- Record Maximum Temperature: 89\u00b0F\n- Average Rainfall: 2.13 inches\n- Average Snow Days: 0 days",
+                        "response": "{\n  \"id\": \"71f6cfb5774c43a5b415cafebd767b06\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729674173,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here is the historical weather data for New York in September:\\n\\n- Average Minimum Temperature: 55\u00b0F\\n- Average Maximum Temperature: 66\u00b0F\\n- Record Minimum Temperature: 40\u00b0F\\n- Record Maximum Temperature: 89\u00b0F\\n- Average Rainfall: 2.13 inches\\n- Average Snow Days: 0 days\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3643,\n    \"total_tokens\": 3733,\n    \"completion_tokens\": 90\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Ok, I don't think that's good enough for my project. Can you check my email for any messages from my teacher about weather?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, I found an email from Mrs. Fritz titled 'How to research weather patterns' with a list of links to weather websites.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "weather"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "7c-c867-6a524766",
+                                "date": "2023-09-07 16:00:00",
+                                "sender": "Sara.Fritz@gahoo.com",
+                                "receivers": [
+                                    "VirginiaJGraham@gahoo.com",
+                                    "lifeng@gahoo.com",
+                                    "steinki89@fexter.com",
+                                    "hugosalcano@somail.com"
+                                ],
+                                "subject": "How to research weather patterns",
+                                "body": "Hello class!\n\nI had some questions about how to research weather patterns. I've included a list of websites that should help you get started on your project.\n- https://www.dailyweather.com/\n- https://www.theweatherdb.net\n- https://www.weathergate.com/research\n\nThanks, Mrs. Fritz"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "New York",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Respond to user with: \"Plan 2: Respond to user with: \"I can't read your email. However, I'm happy to assist you with searching for information related to weather patterns in New York for your project. What specific details are you looking for?\"\"",
+                        "response": "{\n  \"id\": \"b84f36942457430f80baf9247e4b3d22\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729674237,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"ZM2utXTI3\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"HistoricWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"New York\\\", \\\"month\\\": \\\"September\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4114,\n    \"total_tokens\": 4144,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "weather",
+                            "sender": "teacher",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"82f4efae475f4830acfda6cd697d5f45\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729674238,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"K9UHdxeAh\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchMessages\",\n              \"arguments\": \"{\\\"query\\\": \\\"weather\\\", \\\"sender\\\": \\\"teacher\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3860,\n    \"total_tokens\": 3888,\n    \"completion_tokens\": 28\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I don't see any messages from your teacher about weather.",
+                    "metadata": {
+                        "reflection": "I don't see any messages from your teacher about weather.",
+                        "response": "{\n  \"id\": \"71aa51aafb9a4deea96c3117454bd133\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729674239,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I don't see any messages from your teacher about weather.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3927,\n    \"total_tokens\": 3940,\n    \"completion_tokens\": 13\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Ok great, can you send an email to everyone else Mrs. Fritz sent that email to asking if any of the websites were useful? And then set a reminder for me to check my email in 3 hours."
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "Got it, I have sent the email and set the reminder.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "decture",
+                            "email": "VirginiaJGraham@gahoo.com",
+                            "phone": "703-607-3363",
+                            "name": "Virginia J. Graham"
+                        }
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "lifeng@gahoo.com",
+                                "steinki89@fexter.com",
+                                "hugosalcano@somail.com"
+                            ],
+                            "subject": "Did you find the websites useful?",
+                            "body": "Did anyone try the websites yet? Are any of the websites useful?"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "check my email",
+                            "due_date": "2023-09-11 19:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "lifeng@gahoo.com",
+                                "steinki89@fexter.com",
+                                "hugosalcano@somail.com"
+                            ],
+                            "subject": "Follow-up on weather research websites",
+                            "body": "Hi everyone,\n\nWere any of the websites Mrs. Fritz sent useful? Let me know your thoughts.\n\nThanks,\nVirginia",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Compose an email asking about the usefulness of the websites and send it to the identified recipients.\n#V1 = SendEmail[{\"to\": [\"lifeng@gahoo.com\", \"steinki89@fexter.com\", \"hugosalcano@somail.com\"], \"subject\": \"Follow-up on weather research websites\", \"body\": \"Hi everyone,\\n\\nWere any of the websites Mrs. Fritz sent useful? Let me know your thoughts.\\n\\nThanks,\\nVirginia\"}]\n\nStep 2: Set a reminder to check email in 3 hours.\n#V2 = AddReminder[{\"task\": \"Check email for responses\", \"due_date\": \"2023-09-11 19:00:00\"}]",
+                        "response": "{\n  \"id\": \"b7ee7c0a41e4492c823b53be30fd472a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729674368,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"5jq7i5juM\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendEmail\",\n              \"arguments\": \"{\\\"to\\\": [\\\"lifeng@gahoo.com\\\", \\\"steinki89@fexter.com\\\", \\\"hugosalcano@somail.com\\\"], \\\"subject\\\": \\\"Follow-up on weather research websites\\\", \\\"body\\\": \\\"Hi everyone,\\\\n\\\\nWere any of the websites Mrs. Fritz sent useful? Let me know your thoughts.\\\\n\\\\nThanks,\\\\nVirginia\\\"}\"\n            }\n          },\n          {\n            \"id\": \"JLkaywqWq\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Check email for responses\\\", \\\"due_date\\\": \\\"2023-09-11 19:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4595,\n    \"total_tokens\": 4746,\n    \"completion_tokens\": 151\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Check email for responses",
+                            "due_date": "2023-09-11 19:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I sent the email and set a reminder for you to check your email in 3 hours.",
+                    "metadata": {
+                        "reflection": "I sent the email and set a reminder for you to check your email in 3 hours.",
+                        "response": "{\n  \"id\": \"bb28073d719d4cd3bbc86c74d5d1a55d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729674373,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I sent the email and set a reminder for you to check your email in 3 hours.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4341,\n    \"total_tokens\": 4360,\n    \"completion_tokens\": 19\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchMessages",
+        "SendMessage",
+        "DeleteReminder",
+        "GetReminders",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Messages",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 6,
+        "ground_truths": 6,
+        "matches": 2,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 0.3333333333333333,
+        "recall": 0.3333333333333333,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.3333333333333333,
+        "api_name_jaccard": 0.42857142857142855,
+        "api_name_recall": 0.5,
+        "api_name_precision": 0.75
+    }
+}

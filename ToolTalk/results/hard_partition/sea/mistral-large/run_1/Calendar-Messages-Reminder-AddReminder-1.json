@@ -1,0 +1,531 @@
+{
+    "name": "Calendar-Messages-Reminder-AddReminder-1",
+    "conversation_id": "35b5029c-e42d-429a-b0cc-d0be8a73ef87",
+    "suites_used": [
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders",
+        "CompleteReminder",
+        "DeleteReminder",
+        "AddReminder"
+    ],
+    "scenario": "The user wants to check their calendar for any upcoming events and reminders. They first query their calendar for the events that occur in the next week (QueryCalendar). They then get a list of their reminders that are due in the next week (GetReminders). They see that they have a reminder to pay their rent by the end of the month, and they decide to do it right away (CompleteReminder). They also see that they have an event for a birthday party on the weekend, and they want to buy a gift for the host. They add a reminder to order a gift online by Friday (AddReminder). They then send a message to the host to RSVP and ask for their address (SendMessage).",
+    "user": {
+        "username": "ShadowRider32",
+        "name": "Alex Knight",
+        "email": "shadowrider32@emailprovider.com",
+        "phone": "555-555-1234",
+        "password": "MysticKnight#123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ShadowRider32"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I want to go through my upcoming reminders for the week one at a time. Can you help with that?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, your first reminder is to pay rent.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "pay rent",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "buy gift for Emily",
+                                "due_date": "2023-09-16 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Schedule date with Barnie",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "pay rent",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "buy gift for Emily",
+                                "due_date": "2023-09-16 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Schedule date with Barnie",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve upcoming reminders.\n#V1 = GetReminders[]\n\nStep 2: Display the first reminder.\n#V2 = SendMessage[receiver: ShadowRider32, message: \"Your first reminder is: \" + #V1[0]]\n\nStep 3: Wait for the user's response to proceed to the next reminder.\n#V3 = SendMessage[receiver: ShadowRider32, message: \"Do you want to see the next reminder? (yes/no)\"]\n\nStep 4: Conditional check to proceed to the next reminder or stop.\n#V4 = If the user's response is \"yes\", continue to the next step. If \"no\", stop the process.\n\nStep 5: Continue displaying reminders one by one until the user stops or all reminders are shown.\n#V5 = Loop through the reminders, sending a message for each reminder and asking the user if they want to see the next one. Stop the loop if the user's response is \"no\" or all reminders have been displayed.",
+                        "response": "{\n  \"id\": \"c41e5c595ccc4f9eb01e61015f03d9f1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950003,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"wOgl88Yt3\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3910,\n    \"total_tokens\": 3927,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here are your reminders for the week:\n\n1. pay rent\n2. buy gift for Emily\n3. Call grandma\n4. Schedule date with Barnie\n\nWould you like to go through them one by one?",
+                    "metadata": {
+                        "reflection": "Here are your reminders for the week:\n\n1. pay rent\n2. buy gift for Emily\n3. Call grandma\n4. Schedule date with Barnie\n\nWould you like to go through them one by one?",
+                        "response": "{\n  \"id\": \"9145b5a09894430398816f529323ff20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950004,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here are your reminders for the week:\\n\\n1. pay rent\\n2. buy gift for Emily\\n3. Call grandma\\n4. Schedule date with Barnie\\n\\nWould you like to go through them one by one?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3565,\n    \"total_tokens\": 3614,\n    \"completion_tokens\": 49\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Ok, done. Mark as complete."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Marked reminder as complete. Do you want to move on to your next reminder?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "59-80bc"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "59-80bc",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Fetch all the reminders for the week.\n#V1 = GetReminders[]\n\nStep 2: Complete the first reminder.\n#V2 = CompleteReminder[reminder_id=\"59-80bc\"]",
+                        "response": "{\n  \"id\": \"a9247c33d9784cfc94d65da517a3dc2d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950095,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"MIcJyD8Zu\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CompleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"59-80bc\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3967,\n    \"total_tokens\": 3996,\n    \"completion_tokens\": 29\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your next reminder is to buy a gift for Emily by September 16th.",
+                    "metadata": {
+                        "reflection": "Your next reminder is to buy a gift for Emily by September 16th.",
+                        "response": "{\n  \"id\": \"c8b56239bf574c51b016661d3633ceaf\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950097,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your next reminder is to buy a gift for Emily by September 16th.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3655,\n    \"total_tokens\": 3672,\n    \"completion_tokens\": 17\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "yes"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "The next reminder is to buy a gift for Emily by Friday.",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "pay rent",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "buy gift for Emily",
+                                "due_date": "2023-09-16 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Schedule date with Barnie",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve the user's upcoming reminders for the week.\n#V1 = GetReminders[]\n\nStep 2: Present the first reminder to the user.\n#V2 = User[Reminder: #V1[0]]\n\nStep 3: Wait for the user's confirmation to mark the reminder as complete.\n#V3 = User[Confirmation]\n\nStep 4: Mark the reminder as complete.\n#V4 = CompleteReminder[reminder_id=#V1[0]['reminder_id'], session_token=\"98a5a87a-7714-b404\"]",
+                        "response": "{\n  \"id\": \"2dc56a539c204682bc11764fb42aef1d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950177,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"ZvLthjvKO\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4148,\n    \"total_tokens\": 4165,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your next reminder is to buy a gift for Emily by September 16th.",
+                    "metadata": {
+                        "reflection": "Your next reminder is to buy a gift for Emily by September 16th.",
+                        "response": "{\n  \"id\": \"98f5fa268bcc4fff807ebc1bfb141548\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950179,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your next reminder is to buy a gift for Emily by September 16th.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3900,\n    \"total_tokens\": 3917,\n    \"completion_tokens\": 17\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "next"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "The next reminder is to call your grandma",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "pay rent",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "buy gift for Emily",
+                                "due_date": "2023-09-16 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Schedule date with Barnie",
+                                "due_date": null,
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Respond to user with: \"Respond to user with: \"Understood. Let's proceed with your next reminder. The next reminder is to buy a gift for Emily by Friday.\"\"",
+                        "response": "{\n  \"id\": \"7d56fac8282d4cae9a9924de879c79b3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950265,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"f0KWjA1U2\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4058,\n    \"total_tokens\": 4075,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The next reminder is to call grandma.",
+                    "metadata": {
+                        "reflection": "The next reminder is to call grandma.",
+                        "response": "{\n  \"id\": \"48920d1f6b9a4d789063efeb8d1179cf\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950266,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"The next reminder is to call grandma.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3917,\n    \"total_tokens\": 3926,\n    \"completion_tokens\": 9\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "Add a reminder to call my mom tomorrow"
+        },
+        {
+            "index": 9,
+            "role": "assistant",
+            "text": "Okay, I added the reminder. Do you want to move on to your next reminder?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Call my mom",
+                            "due_date": "2023-09-12 00:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Call mom",
+                            "due_date": "2023-09-12 09:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Add a reminder to call mom.\n#V1 = AddReminder({\"task\": \"Call mom\", \"due_date\": \"2023-09-12 09:00:00\"})",
+                        "response": "{\n  \"id\": \"9d3f4fb9d6fe43aeb3296268331cbf70\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950314,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"WKPWMXLvK\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Call mom\\\", \\\"due_date\\\": \\\"2023-09-12 09:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4092,\n    \"total_tokens\": 4140,\n    \"completion_tokens\": 48\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Reminder added.",
+                    "metadata": {
+                        "reflection": "Reminder added.",
+                        "response": "{\n  \"id\": \"65017e425f584b83ae8ee418e0bf09b3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950316,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Reminder added.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3809,\n    \"total_tokens\": 3813,\n    \"completion_tokens\": 4\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 10,
+            "role": "user",
+            "text": "yes"
+        },
+        {
+            "index": 11,
+            "role": "assistant",
+            "text": "The next reminder is to schedule a date with Barnie.",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "pay rent",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "buy gift for Emily",
+                                "due_date": "2023-09-16 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "4f-7a1d",
+                                "task": "Schedule date with Barnie",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "5b-dd80",
+                                "task": "Call my mom",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve the user's reminders.\n#V1 = GetReminders[]\n\nStep 2: Present the first reminder from the list and ask the user if they want to mark it as complete or add a new one.\n#V2 = User input (based on the user's response)\n\nStep 3: If the user wants to mark a reminder as complete, use the CompleteReminder tool.\n#V3 = CompleteReminder[reminder_id=#V1[0].reminder_id]\n\nStep 4: If the user wants to add a new reminder, use the AddReminder tool.\n#V4 = AddReminder[task=#V2, due_date=#V2]",
+                        "response": "{\n  \"id\": \"24edccb65532491eb3f8164407996766\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950460,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"CymWeRzfC\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4322,\n    \"total_tokens\": 4339,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The next reminder is to schedule a date with Barnie.",
+                    "metadata": {
+                        "reflection": "The next reminder is to schedule a date with Barnie.",
+                        "response": "{\n  \"id\": \"3e4256f5f14c46f496fa37c4c9929f22\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950461,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"The next reminder is to schedule a date with Barnie.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4110,\n    \"total_tokens\": 4122,\n    \"completion_tokens\": 12\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 12,
+            "role": "user",
+            "text": "Delete that one."
+        },
+        {
+            "index": 13,
+            "role": "assistant",
+            "text": "Reminder deleted. That is all the reminders you have.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "4f-7a1d"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "4f-7a1d",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Delete the reminder for scheduling a date with Barnie.\n#V1 = DeleteReminder(reminder_id = \"4f-7a1d\")",
+                        "response": "{\n  \"id\": \"fb4b1d7cf15d480c8e2c9d9302b3f255\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950507,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"aF9QVNv92\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"4f-7a1d\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4215,\n    \"total_tokens\": 4245,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Reminder deleted. Do you want to move on to your next reminder?",
+                    "metadata": {
+                        "reflection": "Reminder deleted. Do you want to move on to your next reminder?",
+                        "response": "{\n  \"id\": \"18d43203fbd242ce8ac35b28c87e1b36\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727950509,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Reminder deleted. Do you want to move on to your next reminder?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3921,\n    \"total_tokens\": 3936,\n    \"completion_tokens\": 15\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "QueryCalendar",
+        "SendMessage",
+        "AddReminder",
+        "CompleteReminder",
+        "GetReminders"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Messages",
+        "Reminder"
+    ],
+    "metrics": {
+        "predictions": 7,
+        "ground_truths": 4,
+        "matches": 4,
+        "actions": 3,
+        "valid_actions": 3,
+        "bad_actions": 0,
+        "precision": 0.5714285714285714,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

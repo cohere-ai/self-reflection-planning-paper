@@ -1,0 +1,211 @@
+{
+    "name": "SearchInbox-easy",
+    "conversation_id": "92a4155a-ec03-4e64-b74f-b2b890738b6f",
+    "suites_used": [
+        "Email"
+    ],
+    "apis_used": [
+        "SearchInbox"
+    ],
+    "scenario": "SearchInbox easy scenario",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "mstein"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you search my inbox for emails from John?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's John's email address?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "sender": "John",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Sure, I can help with that! Here is a plan:\nStep 1: Search for emails from John.\n#V1 = SearchInbox[sender: \"John\"]\n\nDoes this plan look good?",
+                        "response": "{\n  \"id\": \"1c81db4d5fcf40ac86a61510a18baec2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115430,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"sIYiB6Odj\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchInbox\",\n              \"arguments\": \"{\\\"sender\\\": \\\"John\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3684,\n    \"total_tokens\": 3705,\n    \"completion_tokens\": 21\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "No emails found from John.",
+                    "metadata": {
+                        "reflection": "No emails found from John.",
+                        "response": "{\n  \"id\": \"3ebd5dbbc5a2460da9971b3b14ffc0bb\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115431,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"No emails found from John.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3387,\n    \"total_tokens\": 3393,\n    \"completion_tokens\": 6\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's john.carbugle@fmail.com"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sure, here are the 3 most recent emails from John: London Recommendations, RE: Project Update, RE: Project Update. Would you like to summarize them?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "sender": "john.carbugle@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "75-ff99-d8d1383b",
+                                "date": "2023-09-09 11:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com"
+                                ],
+                                "subject": "London Recommendations",
+                                "body": "Hey I'm coming to London in a few days. Do you have any recommendations for restaurants?"
+                            },
+                            {
+                                "email_id": "b5-cf2d-5231552e",
+                                "date": "2023-09-05 00:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "RE: Project Update",
+                                "body": "Oh I see, that's a good point Li, I can add a new section in the doc about this."
+                            },
+                            {
+                                "email_id": "0b-5119-b5f0a5b5",
+                                "date": "2023-09-02 00:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "RE: Project Update",
+                                "body": "Hey I was able to look at the updates you sent over. I think we should go with the second option. I left some comments in the document. Let me know if you have any questions."
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "sender": "john.carbugle@fmail.com",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "75-ff99-d8d1383b",
+                                "date": "2023-09-09 11:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com"
+                                ],
+                                "subject": "London Recommendations",
+                                "body": "Hey I'm coming to London in a few days. Do you have any recommendations for restaurants?"
+                            },
+                            {
+                                "email_id": "b5-cf2d-5231552e",
+                                "date": "2023-09-05 00:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "RE: Project Update",
+                                "body": "Oh I see, that's a good point Li, I can add a new section in the doc about this."
+                            },
+                            {
+                                "email_id": "0b-5119-b5f0a5b5",
+                                "date": "2023-09-02 00:00:00",
+                                "sender": "john.carbugle@fmail.com",
+                                "receivers": [
+                                    "steinki89@fexter.com",
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "RE: Project Update",
+                                "body": "Hey I was able to look at the updates you sent over. I think we should go with the second option. I left some comments in the document. Let me know if you have any questions."
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Search inbox for emails from John's email\n#V1 = SearchInbox[sender: john.carbugle@fmail.com]\n\nIs that ok?",
+                        "response": "{\n  \"id\": \"deed4ef099fd446187b7542d33fcfca4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115435,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"09Ib8BQw9\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchInbox\",\n              \"arguments\": \"{\\\"sender\\\": \\\"john.carbugle@fmail.com\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3709,\n    \"total_tokens\": 3740,\n    \"completion_tokens\": 31\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here are the 5 most recent emails from John:\n\n1. **Email ID:** 75-ff99-d8d1383b\n   - **Date:** 2023-09-09 11:00:00\n   - **Sender:** john.carbugle@fmail.com\n   - **Receivers:** steinki89@fexter.com\n   - **Subject:** London Recommendations\n   - **Body:** Hey I'm coming to London in a few days. Do you have any recommendations for restaurants?\n\n2. **Email ID:** b5-cf2d-5231552e\n   - **Date:** 2023-09-05 00:00:00\n   - **Sender:** john.carbugle@fmail.com\n   - **Receivers:** steinki89@fexter.com, lifeng@gahoo.com\n   - **Subject:** RE: Project Update\n   - **Body:** Oh I see, that's a good point Li, I can add a new section in the doc about this.\n\n3. **Email ID:** 0b-5119-b5f0a5b5\n   - **Date:** 2023-09-02 00:00:00\n   - **Sender:** john.carbugle@fmail.com\n   - **Receivers:** steinki89@fexter.com, lifeng@gahoo.com\n   - **Subject:** RE: Project Update\n   - **Body:** Hey I was able to look at the updates you sent over. I think we should go with the second option. I left some comments in the document. Let me know if you have any questions.",
+                    "metadata": {
+                        "reflection": "Here are the 5 most recent emails from John:\n\n1. **Email ID:** 75-ff99-d8d1383b\n   - **Date:** 2023-09-09 11:00:00\n   - **Sender:** john.carbugle@fmail.com\n   - **Receivers:** steinki89@fexter.com\n   - **Subject:** London Recommendations\n   - **Body:** Hey I'm coming to London in a few days. Do you have any recommendations for restaurants?\n\n2. **Email ID:** b5-cf2d-5231552e\n   - **Date:** 2023-09-05 00:00:00\n   - **Sender:** john.carbugle@fmail.com\n   - **Receivers:** steinki89@fexter.com, lifeng@gahoo.com\n   - **Subject:** RE: Project Update\n   - **Body:** Oh I see, that's a good point Li, I can add a new section in the doc about this.\n\n3. **Email ID:** 0b-5119-b5f0a5b5\n   - **Date:** 2023-09-02 00:00:00\n   - **Sender:** john.carbugle@fmail.com\n   - **Receivers:** steinki89@fexter.com, lifeng@gahoo.com\n   - **Subject:** RE: Project Update\n   - **Body:** Hey I was able to look at the updates you sent over. I think we should go with the second option. I left some comments in the document. Let me know if you have any questions.",
+                        "response": "{\n  \"id\": \"10fb5aa0f12641b7ab6b2d08b8bcdf8a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115436,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here are the 5 most recent emails from John:\\n\\n1. **Email ID:** 75-ff99-d8d1383b\\n   - **Date:** 2023-09-09 11:00:00\\n   - **Sender:** john.carbugle@fmail.com\\n   - **Receivers:** steinki89@fexter.com\\n   - **Subject:** London Recommendations\\n   - **Body:** Hey I'm coming to London in a few days. Do you have any recommendations for restaurants?\\n\\n2. **Email ID:** b5-cf2d-5231552e\\n   - **Date:** 2023-09-05 00:00:00\\n   - **Sender:** john.carbugle@fmail.com\\n   - **Receivers:** steinki89@fexter.com, lifeng@gahoo.com\\n   - **Subject:** RE: Project Update\\n   - **Body:** Oh I see, that's a good point Li, I can add a new section in the doc about this.\\n\\n3. **Email ID:** 0b-5119-b5f0a5b5\\n   - **Date:** 2023-09-02 00:00:00\\n   - **Sender:** john.carbugle@fmail.com\\n   - **Receivers:** steinki89@fexter.com, lifeng@gahoo.com\\n   - **Subject:** RE: Project Update\\n   - **Body:** Hey I was able to look at the updates you sent over. I think we should go with the second option. I left some comments in the document. Let me know if you have any questions.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3811,\n    \"total_tokens\": 4229,\n    \"completion_tokens\": 418\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "No I'm good. Just wanted to see if I missed anything. Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

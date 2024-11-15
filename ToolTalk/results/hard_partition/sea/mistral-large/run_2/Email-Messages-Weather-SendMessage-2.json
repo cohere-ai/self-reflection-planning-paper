@@ -1,0 +1,333 @@
+{
+    "name": "Email-Messages-Weather-SendMessage-2",
+    "conversation_id": "41778a52-58b0-4ff1-aa42-e82eb8fe904b",
+    "suites_used": [
+        "Weather",
+        "Messages"
+    ],
+    "apis_used": [
+        "SearchMessages",
+        "SendMessage",
+        "ForecastWeather"
+    ],
+    "scenario": "The user wants to send a message to their online date to ask them out for a coffee. They want to impress them with their knowledge of the weather and suggest a nice place to meet. They want to check the historic weather of their date's location to see if there is a pattern or trend (HistoricWeather). They search for the weather of their date's location for the last 10 days (HistoricWeather). They find that the weather has been mostly sunny and warm. They also want to check the forecast weather of their date's location for the next 3 days to see if there is any chance of rain or snow (ForecastWeather). They find that the weather will be mostly cloudy and cool. They then search for messages from their date to see if they have mentioned any preferences or hobbies (SearchMessages). They search for messages with the sender \"date\" and the query \"coffee\" or \"hobby\" in the last week (SearchMessages). They find that their date likes coffee with almond milk and enjoys reading books. They then compose a message to their date with the weather information and a suggestion of a cozy cafe with a bookshelf (SendMessage).",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I want to ask Virginia from FindADate out on a date but not sure if we should go to the park or some cafe. Can you check the weather tomorrow?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure the weather tomorrow is partly cloudy with a low of 58 and a high of 78.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 78,
+                                "low": 58,
+                                "conditions": "Partly Cloudy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 72,
+                                "low": 64,
+                                "conditions": "80% Rainy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 76,
+                                "low": 60,
+                                "conditions": "Sunny"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ForecastWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "forecast": [
+                            {
+                                "date": "2023-09-12",
+                                "high": 78,
+                                "low": 58,
+                                "conditions": "Partly Cloudy"
+                            },
+                            {
+                                "date": "2023-09-13",
+                                "high": 72,
+                                "low": 64,
+                                "conditions": "80% Rainy"
+                            },
+                            {
+                                "date": "2023-09-14",
+                                "high": 76,
+                                "low": 60,
+                                "conditions": "Sunny"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Check the weather forecast for tomorrow in New York.\n#V1 = ForecastWeather[location=New York]\n\nStep 2: Determine if the weather is suitable for outdoor activities like going to the park.\n#V2 = ForecastWeather[location=New York]\n\nStep 3: Provide a recommendation based on the weather forecast.\n#V3 = ForecastWeather[location=New York]",
+                        "response": "{\n  \"id\": \"55642e23b81242c2bef5001a3e01acb3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729592110,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"jOmYnBB65\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ForecastWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"New York\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3773,\n    \"total_tokens\": 3796,\n    \"completion_tokens\": 23\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The weather tomorrow will be partly cloudy with a high of 78 and a low of 58.",
+                    "metadata": {
+                        "reflection": "The weather tomorrow will be partly cloudy with a high of 78 and a low of 58.",
+                        "response": "{\n  \"id\": \"af85d5fd4d5e4f20bb82600f578456bb\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729592113,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"The weather tomorrow will be partly cloudy with a high of 78 and a low of 58.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3528,\n    \"total_tokens\": 3551,\n    \"completion_tokens\": 23\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Ok can you search through messages with her for \"milk\"?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "What is her username?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "sender": "virginia",
+                            "query": "milk",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Search for messages containing the keyword \"milk\" between the user and Virginia.\n#V1 = SearchMessages[{\"sender\": \"virginia\", \"query\": \"milk\"}]",
+                        "response": "{\n  \"id\": \"463678c7703e4dc3bdc1decb13f1b6d0\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729592205,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"PJ44LO8ls\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchMessages\",\n              \"arguments\": \"{\\\"sender\\\": \\\"virginia\\\", \\\"query\\\": \\\"milk\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3936,\n    \"total_tokens\": 3965,\n    \"completion_tokens\": 29\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I couldn't find any messages with Virginia that contain the word \"milk\".",
+                    "metadata": {
+                        "reflection": "I couldn't find any messages with Virginia that contain the word \"milk\".",
+                        "response": "{\n  \"id\": \"ec1dacfb14604fcd92b3c0a07b0a02a5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729592209,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I couldn't find any messages with Virginia that contain the word \\\"milk\\\".\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3635,\n    \"total_tokens\": 3652,\n    \"completion_tokens\": 17\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "It's decture"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Okay, I found two messages: \"Why are people so obsessed with oat milk?\" and \"I could never drink oat milk\"",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "milk",
+                            "sender": "decture"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "006f526d-00747977",
+                                "timestamp": "2023-09-10 14:05:00",
+                                "sender": "decture",
+                                "message": "Why are people so obsessed with oat milk?"
+                            },
+                            {
+                                "message_id": "00747977-006f526d",
+                                "timestamp": "2023-09-10 14:07:13",
+                                "sender": "decture",
+                                "message": "I could never drink oat milk"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "milk",
+                            "sender": "decture",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "00747977-006f526d",
+                                "timestamp": "2023-09-10 14:07:13",
+                                "sender": "decture",
+                                "message": "I could never drink oat milk"
+                            },
+                            {
+                                "message_id": "006f526d-00747977",
+                                "timestamp": "2023-09-10 14:05:00",
+                                "sender": "decture",
+                                "message": "Why are people so obsessed with oat milk?"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Search for messages with Virginia from FindADate that contain the word \"milk\".\n#V1 = SearchMessages[query=\"milk\", sender=\"decture\"]",
+                        "response": "{\n  \"id\": \"b0265d0a3585422a983d0debfb015bc7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729592280,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"uf35plYa6\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchMessages\",\n              \"arguments\": \"{\\\"query\\\": \\\"milk\\\", \\\"sender\\\": \\\"decture\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3946,\n    \"total_tokens\": 3975,\n    \"completion_tokens\": 29\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I found two messages with the word \"milk\" in them.\n\n1. \"I could never drink oat milk\"\n2. \"Why are people so obsessed with oat milk?\"",
+                    "metadata": {
+                        "reflection": "I found two messages with the word \"milk\" in them.\n\n1. \"I could never drink oat milk\"\n2. \"Why are people so obsessed with oat milk?\"",
+                        "response": "{\n  \"id\": \"8634d15412ee44cdb4849582e2d331ee\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729592282,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I found two messages with the word \\\"milk\\\" in them.\\n\\n1. \\\"I could never drink oat milk\\\"\\n2. \\\"Why are people so obsessed with oat milk?\\\"\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3789,\n    \"total_tokens\": 3831,\n    \"completion_tokens\": 42\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Ok send her a message saying \"Meet me at Oatz tomorrow at 10. You'll get why people are so obsessed once you try their latte.\""
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "Okay I sent Virginia the message.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "decture",
+                            "message": "Meet me at Oatz tomorrow at 10. You'll get why people are so obsessed once you try their latte."
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "decture",
+                            "message": "Meet me at Oatz tomorrow at 10. You'll get why people are so obsessed once you try their latte.",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Respond to user with: \"\"",
+                        "response": "{\n  \"id\": \"3e4504f149394ef6aa90385afb62f54f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729592394,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"rZvkz323w\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendMessage\",\n              \"arguments\": \"{\\\"receiver\\\": \\\"decture\\\", \\\"message\\\": \\\"Meet me at Oatz tomorrow at 10. You'll get why people are so obsessed once you try their latte.\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4190,\n    \"total_tokens\": 4246,\n    \"completion_tokens\": 56\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Message sent!",
+                    "metadata": {
+                        "reflection": "Message sent!",
+                        "response": "{\n  \"id\": \"bbae3171b480427fab3ab144b4fc1bd1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729592398,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Message sent!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3972,\n    \"total_tokens\": 3975,\n    \"completion_tokens\": 3\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchMessages",
+        "SendMessage",
+        "ForecastWeather",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Email",
+        "Messages",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 3,
+        "matches": 3,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

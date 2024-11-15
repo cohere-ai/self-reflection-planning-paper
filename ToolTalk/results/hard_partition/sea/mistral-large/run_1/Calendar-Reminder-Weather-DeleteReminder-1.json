@@ -1,0 +1,355 @@
+{
+    "name": "Calendar-Reminder-Weather-DeleteReminder-1",
+    "conversation_id": "cf1b6080-50b2-41fd-be5f-e9adfbdc2a65",
+    "suites_used": [
+        "Calendar",
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders",
+        "CreateEvent",
+        "DeleteReminder",
+        "AddReminder"
+    ],
+    "scenario": "The user is planning a trip to Paris next week. They want to create an event for their flight departure and arrival (CreateEvent). They also want to create a reminder to pack their passport and other essentials (AddReminder). They want to see the weather forecast for Paris to decide what clothes to bring (ForecastWeather). They see that it will be sunny and warm, so they want to modify their reminder to include sunscreen and sunglasses (ModifyEvent). They also want to delete the reminder for their dentist appointment that they had scheduled for the same week (DeleteReminder).",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ahhchiu"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hi can you make an event for my flight departure and arrival to and from Paris? Both flights are 10 hours and I depart tomorrow at 8 am and arrive back here on 9/20 at 3 pm."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I added events for your flight departure and arrival to your calendar.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Flight to Paris",
+                            "event_type": "event",
+                            "start_time": "2023-09-12 08:00:00",
+                            "end_time": "2023-09-12 18:00:00"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Flight to San Francisco",
+                            "event_type": "event",
+                            "start_time": "2023-09-20 03:00:00",
+                            "end_time": "2023-09-20 13:00:00"
+                        }
+                    },
+                    "response": {
+                        "event_id": "03c93f31-b8a6"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Flight Departure to Paris",
+                            "event_type": "event",
+                            "description": "Flight from San Francisco to Paris",
+                            "start_time": "2023-09-12 08:00:00",
+                            "end_time": "2023-09-12 18:00:00",
+                            "location": "San Francisco to Paris",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "### Step 1: Create the departure event\n**Tool:** CreateEvent\n**Parameters:**\n- name: \"Flight Departure to Paris\"\n- event_type: \"event\"\n- description: \"Flight from San Francisco to Paris\"\n- start_time: \"2023-09-12 08:00:00\"\n- end_time: \"2023-09-12 18:00:00\"\n- location: \"San Francisco to Paris\"\n\n### Step 2: Create the arrival event\n**Tool:** CreateEvent\n**Parameters:**\n- name: \"Flight Arrival from Paris\"\n- event_type: \"event\"\n- description: \"Flight from Paris to San Francisco\"\n- start_time: \"2023-09-20 03:00:00\"\n- end_time: \"2023-09-20 13:00:00\"\n- location: \"Paris to San Francisco\"\n\n### Execution Plan\n\n**Step 1: Create the Departure Event**\n```plaintext\n#V1 = CreateEvent[name=\"Flight Departure to Paris\", event_type=\"event\", description=\"Flight from San Francisco to Paris\", start_time=\"2023-09-12 08:00:00\", end_time=\"2023-09-12 18:00:00\", location=\"San Francisco to Paris\"]\n```\n\n**Step 2: Create the Arrival Event**\n```plaintext\n#V2 = CreateEvent[name=\"Flight Arrival from Paris\", event_type=\"event\", description=\"Flight from Paris to San Francisco\", start_time=\"2023-09-20 03:00:00\", end_time=\"2023-09-20 13:00:00\", location=\"Paris to San Francisco\"]",
+                        "response": "{\n  \"id\": \"99605fc07c0c440eae21f03b0472c312\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727965494,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"AKa1rSaZv\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CreateEvent\",\n              \"arguments\": \"{\\\"name\\\": \\\"Flight Departure to Paris\\\", \\\"event_type\\\": \\\"event\\\", \\\"description\\\": \\\"Flight from San Francisco to Paris\\\", \\\"start_time\\\": \\\"2023-09-12 08:00:00\\\", \\\"end_time\\\": \\\"2023-09-12 18:00:00\\\", \\\"location\\\": \\\"San Francisco to Paris\\\"}\"\n            }\n          },\n          {\n            \"id\": \"GiAXryqBB\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CreateEvent\",\n              \"arguments\": \"{\\\"name\\\": \\\"Flight Arrival from Paris\\\", \\\"event_type\\\": \\\"event\\\", \\\"description\\\": \\\"Flight from Paris to San Francisco\\\", \\\"start_time\\\": \\\"2023-09-20 03:00:00\\\", \\\"end_time\\\": \\\"2023-09-20 13:00:00\\\", \\\"location\\\": \\\"Paris to San Francisco\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4154,\n    \"total_tokens\": 4366,\n    \"completion_tokens\": 212\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Flight Arrival from Paris",
+                            "event_type": "event",
+                            "description": "Flight from Paris to San Francisco",
+                            "start_time": "2023-09-20 03:00:00",
+                            "end_time": "2023-09-20 13:00:00",
+                            "location": "Paris to San Francisco",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "03c93f31-b8a6"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have created two events for your flight departure and arrival to and from Paris. The event IDs are e149636f-d9ca and 03c93f31-b8a6.",
+                    "metadata": {
+                        "reflection": "I have created two events for your flight departure and arrival to and from Paris. The event IDs are e149636f-d9ca and 03c93f31-b8a6.",
+                        "response": "{\n  \"id\": \"7c914e19290545f7bef3571595bdf1f5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727965501,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have created two events for your flight departure and arrival to and from Paris. The event IDs are e149636f-d9ca and 03c93f31-b8a6.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3686,\n    \"total_tokens\": 3735,\n    \"completion_tokens\": 49\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Can you also set a reminder to pack my bags at 8 pm tonight? Also check if there are any reminders set during my trip?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay I added a reminder for you to pack your bags at 8 pm tonight. You have a reminder on 9/15 at 2 pm for a dentist appiontment.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Dentist appointment",
+                                "due_date": "2023-09-15 14:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pack bags",
+                            "due_date": "2023-09-11 20:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Pack bags",
+                            "due_date": "2023-09-11 20:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Respond to user with: \"\"",
+                        "response": "{\n  \"id\": \"98221c3563ed4a4f9d3054da58c2c8b4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727965719,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"Q70MVlhpS\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Pack bags\\\", \\\"due_date\\\": \\\"2023-09-11 20:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4015,\n    \"total_tokens\": 4063,\n    \"completion_tokens\": 48\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Buy groceries",
+                                "due_date": "2023-09-11 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Call Amy",
+                                "due_date": "2023-09-11 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Dentist appointment",
+                                "due_date": "2023-09-15 14:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "12-949b",
+                                "task": "Review exam notes",
+                                "due_date": "2023-09-08 20:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "e3-793f",
+                                "task": "Practice exercises",
+                                "due_date": "2023-09-08 20:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "5b-dd80",
+                                "task": "Pack bags",
+                                "due_date": "2023-09-11 20:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"e25dd81be101493f94df6c1f5650c5f0\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727965722,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"P2LbWWl1i\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3779,\n    \"total_tokens\": 3796,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I added a reminder to pack your bags at 8 pm tonight.\n\nHere are the reminders you have set during your trip:\n\n- Dentist appointment on 2023-09-15 at 14:00:00",
+                    "metadata": {
+                        "reflection": "I added a reminder to pack your bags at 8 pm tonight.\n\nHere are the reminders you have set during your trip:\n\n- Dentist appointment on 2023-09-15 at 14:00:00",
+                        "response": "{\n  \"id\": \"d7015599af02413e8b1306527f1d86eb\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727965723,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I added a reminder to pack your bags at 8 pm tonight.\\n\\nHere are the reminders you have set during your trip:\\n\\n- Dentist appointment on 2023-09-15 at 14:00:00\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4168,\n    \"total_tokens\": 4225,\n    \"completion_tokens\": 57\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Delete the reminder for the dentist appointment."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Okay I have deleted the reminder.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "0b-5119"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "0b-5119",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Delete the reminder.\n#V1 = DeleteReminder[{\"reminder_id\": \"0b-5119\"}]",
+                        "response": "{\n  \"id\": \"62ac7f8d6f1f4039a1f0780c8562c7a5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727965808,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"eRiv5zziT\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"0b-5119\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4304,\n    \"total_tokens\": 4334,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I deleted the reminder for the dentist appointment.",
+                    "metadata": {
+                        "reflection": "I deleted the reminder for the dentist appointment.",
+                        "response": "{\n  \"id\": \"e098490719e94846b27fb73fac26e9e7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727965810,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I deleted the reminder for the dentist appointment.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4016,\n    \"total_tokens\": 4026,\n    \"completion_tokens\": 10\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "CreateEvent",
+        "ModifyEvent",
+        "AddReminder",
+        "DeleteReminder",
+        "ForecastWeather"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 5,
+        "ground_truths": 5,
+        "matches": 5,
+        "actions": 4,
+        "valid_actions": 4,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

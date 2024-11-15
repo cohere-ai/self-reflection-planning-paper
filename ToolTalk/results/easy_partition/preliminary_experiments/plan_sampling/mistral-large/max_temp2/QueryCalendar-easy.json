@@ -1,0 +1,159 @@
+{
+    "name": "QueryCalendar-easy",
+    "conversation_id": "f577317f-598c-486c-9aa8-39ae0c367e58",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "QueryCalendar"
+    ],
+    "scenario": "QueryCalendar easy scenario",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-10 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you check what events I have tomorrow?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have 1 meeting tomorrow. A 1 on 1 from 2:00 PM to 3:00 PM.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-11 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2949b409-6535",
+                                "name": "1 on 1",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "New York"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-10",
+                            "high": 75,
+                            "low": 70,
+                            "conditions": "80% Rainy"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Get the start date and time for the query.\n#V1 = CurrentWeather[New York]\n\nStep 2: Get the end date and time for the query.\n#V2 = Calculator[#V1 + 1 day]\n\nStep 3: Query the calendar for events between the start and end time.\n#V3 = QueryCalendar[start_time=#V1, end_time=#V2]\n\nDoes this plan look good to you?",
+                        "response": "{\n  \"id\": \"e74d5d608f51412fb127321edfbbaeb6\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115553,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"7gl6N3stq\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CurrentWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"New York\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3749,\n    \"total_tokens\": 3771,\n    \"completion_tokens\": 22\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-11 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2949b409-6535",
+                                "name": "1 on 1",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"002a14d9c3e94b8fa58ef520fb890a70\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115555,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"uwsoRHXVD\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryCalendar\",\n              \"arguments\": \"{\\\"start_time\\\": \\\"2023-09-11 00:00:00\\\", \\\"end_time\\\": \\\"2023-09-11 23:59:59\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3426,\n    \"total_tokens\": 3492,\n    \"completion_tokens\": 66\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here is the weather for today in New York:\n\nSeptember 10th: 80% Rainy, High: 75 Low: 70\n\nAlso here are the events you have for tomorrow:\n\n- Meeting with justinkool\n  - Name: 1 on 1\n  - Time: 14:00 - 15:00\n  - Location: online\n  - Description: bi-weekly sync",
+                    "metadata": {
+                        "reflection": "Here is the weather for today in New York:\n\nSeptember 10th: 80% Rainy, High: 75 Low: 70\n\nAlso here are the events you have for tomorrow:\n\n- Meeting with justinkool\n  - Name: 1 on 1\n  - Time: 14:00 - 15:00\n  - Location: online\n  - Description: bi-weekly sync",
+                        "response": "{\n  \"id\": \"2116e92a5a584eb187423a7d189ce74b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115557,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here is the weather for today in New York:\\n\\nSeptember 10th: 80% Rainy, High: 75 Low: 70\\n\\nAlso here are the events you have for tomorrow:\\n\\n- Meeting with justinkool\\n  - Name: 1 on 1\\n  - Time: 14:00 - 15:00\\n  - Location: online\\n  - Description: bi-weekly sync\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3653,\n    \"total_tokens\": 3754,\n    \"completion_tokens\": 101\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Is that all? I thought I had more meetings tomorrow."
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

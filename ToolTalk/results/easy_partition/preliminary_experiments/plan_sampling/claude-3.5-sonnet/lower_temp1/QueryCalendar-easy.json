@@ -1,0 +1,135 @@
+{
+    "name": "QueryCalendar-easy",
+    "conversation_id": "f577317f-598c-486c-9aa8-39ae0c367e58",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "QueryCalendar"
+    ],
+    "scenario": "QueryCalendar easy scenario",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-10 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you check what events I have tomorrow?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have 1 meeting tomorrow. A 1 on 1 from 2:00 PM to 3:00 PM.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-11 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2949b409-6535",
+                                "name": "1 on 1",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-11 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2949b409-6535",
+                                "name": "1 on 1",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 14:00:00",
+                                "end_time": "2023-09-11 15:00:00",
+                                "location": "online",
+                                "description": "bi-weekly sync",
+                                "attendees": [
+                                    "justinkool",
+                                    "salcano"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to check your events for tomorrow. To do this, we'll need to use the QueryCalendar tool to retrieve your scheduled events. Let me create a plan to accomplish this for you.\n\nPlan:\nStep 1: Determine the date range for tomorrow.\n#V1 = Calculate tomorrow's date range based on the current timestamp.\n\nStep 2: Query the calendar for events within tomorrow's date range.\n#V2 = QueryCalendar[start_time=#V1_start, end_time=#V1_end]\n\nNow, let's execute this plan:\n\nStep 1: Determining tomorrow's date range\nThe current timestamp is 2023-09-10 09:00:00. Tomorrow would be 2023-09-11. We need to set the time range from 00:00:00 to 23:59:59 to cover the entire day.\n\n#V1_start = \"2023-09-11 00:00:00\"\n#V1_end = \"2023-09-11 23:59:59\"\n\nStep 2: Querying the calendar for tomorrow's events\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've checked your calendar for tomorrow, September 11, 2023. Here's what I found:\n\nYou have one event scheduled for tomorrow:\n\n1. Event: 1 on 1 (Meeting)\n   - Time: 2:00 PM - 3:00 PM\n   - Location: Online\n   - Description: Bi-weekly sync\n   - Attendees: justinkool and yourself (salcano)\n\nThis appears to be a regular bi-weekly meeting with Justin Kool. It's scheduled for an hour and will be held online. \n\nIs there anything else you'd like to know about this event or your schedule for tomorrow?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Is that all? I thought I had more meetings tomorrow."
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

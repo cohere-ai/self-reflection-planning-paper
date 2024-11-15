@@ -1,0 +1,399 @@
+{
+    "name": "Calendar-Reminder-Weather-QueryCalendar-0",
+    "conversation_id": "5077c89c-8134-4562-bd5f-805fa9678c33",
+    "suites_used": [
+        "Calendar",
+        "Email"
+    ],
+    "apis_used": [
+        "SendEmail",
+        "ModifyEvent",
+        "QueryCalendar"
+    ],
+    "scenario": "The user wants to plan a trip to Paris with their friends. They want to check their calendar for any events that might conflict with their travel dates (QueryCalendar). They find that they have a meeting on the first day of their trip, so they decide to modify the event to a later date (ModifyEvent). They also want to create a reminder to book their flight tickets (AddReminder). They then want to see the weather forecast for Paris to decide what to pack (ForecastWeather). They also want to compare the current weather in Paris with their home city (CurrentWeather + CurrentWeather).",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Can you check my calendar for any meetings from 9/15-9/21?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have a meeting with Alice at 10 am on 9/15, a meeting with Bob at 1 pm on 9/18, and a meeting with Tracy at 3pm on 9/19.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-15 00:00:00",
+                            "end_time": "2023-09-21 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2ff57743-1180",
+                                "name": "Hugo-Alice",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-15 10:00:00",
+                                "end_time": "2023-09-15 10:30:00",
+                                "location": "Conference Room 2",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "alice"
+                                ]
+                            },
+                            {
+                                "event_id": "7ea2fc9f-f7b4",
+                                "name": "Bob-Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-18 14:00:00",
+                                "end_time": "2023-09-18 15:00:00",
+                                "location": "online",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "bob"
+                                ]
+                            },
+                            {
+                                "event_id": "7cdd6d20-040e",
+                                "name": "Tracy-Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-19 11:00:00",
+                                "end_time": "2023-09-19 11:30:00",
+                                "location": "online",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "tracy"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-15 00:00:00",
+                            "end_time": "2023-09-21 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2ff57743-1180",
+                                "name": "Hugo-Alice",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-15 10:00:00",
+                                "end_time": "2023-09-15 10:30:00",
+                                "location": "Conference Room 2",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "alice"
+                                ]
+                            },
+                            {
+                                "event_id": "7ea2fc9f-f7b4",
+                                "name": "Bob-Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-18 14:00:00",
+                                "end_time": "2023-09-18 15:00:00",
+                                "location": "online",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "bob"
+                                ]
+                            },
+                            {
+                                "event_id": "7cdd6d20-040e",
+                                "name": "Tracy-Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-19 11:00:00",
+                                "end_time": "2023-09-19 11:30:00",
+                                "location": "online",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "tracy"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"3167fac64ed14c1d8534ff5e75f5352e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726148001,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"0wa8Hp9xi\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryCalendar\",\n              \"arguments\": \"{\\\"start_time\\\": \\\"2023-09-15 00:00:00\\\", \\\"end_time\\\": \\\"2023-09-21 23:59:59\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3336,\n    \"total_tokens\": 3402,\n    \"completion_tokens\": 66\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have 3 meetings scheduled from 9/15-9/21:\n\n1. Meeting with Alice on 9/15 from 10:00 AM to 10:30 AM in Conference Room 2.\n2. Meeting with Bob on 9/18 from 2:00 PM to 3:00 PM online.\n3. Meeting with Tracy on 9/19 from 11:00 AM to 11:30 AM online.",
+                    "metadata": {
+                        "reflection": "You have 3 meetings scheduled from 9/15-9/21:\n\n1. Meeting with Alice on 9/15 from 10:00 AM to 10:30 AM in Conference Room 2.\n2. Meeting with Bob on 9/18 from 2:00 PM to 3:00 PM online.\n3. Meeting with Tracy on 9/19 from 11:00 AM to 11:30 AM online.",
+                        "response": "{\n  \"id\": \"7166728d7cf34248a564588710bef0fd\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726148003,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"You have 3 meetings scheduled from 9/15-9/21:\\n\\n1. Meeting with Alice on 9/15 from 10:00 AM to 10:30 AM in Conference Room 2.\\n2. Meeting with Bob on 9/18 from 2:00 PM to 3:00 PM online.\\n3. Meeting with Tracy on 9/19 from 11:00 AM to 11:30 AM online.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3795,\n    \"total_tokens\": 3907,\n    \"completion_tokens\": 112\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "I'm going to leave for Paris on 9/15, so can you move the meeting with Alice to 1 pm on 9/16? And can you shift each of the other two meetings later by 3 hours?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok I have modified your meetings.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "2ff57743-1180",
+                            "new_start_time": "2023-09-16 13:00:00",
+                            "new_end_time": "2023-09-16 13:30:00"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "7ea2fc9f-f7b4",
+                            "new_start_time": "2023-09-18 17:00:00",
+                            "new_end_time": "2023-09-18 18:00:00"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "7cdd6d20-040e",
+                            "new_start_time": "2023-09-19 14:00:00",
+                            "new_end_time": "2023-09-19 14:30:00"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "2ff57743-1180",
+                            "new_start_time": "2023-09-16 13:00:00",
+                            "new_end_time": "2023-09-16 13:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"96fd912b39c34f52a7392461977a0ec5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726148006,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"xshmEecdM\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ModifyEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"2ff57743-1180\\\", \\\"new_start_time\\\": \\\"2023-09-16 13:00:00\\\", \\\"new_end_time\\\": \\\"2023-09-16 13:30:00\\\"}\"\n            }\n          },\n          {\n            \"id\": \"Drrc1cdOa\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ModifyEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"7ea2fc9f-f7b4\\\", \\\"new_start_time\\\": \\\"2023-09-18 17:00:00\\\", \\\"new_end_time\\\": \\\"2023-09-18 18:00:00\\\"}\"\n            }\n          },\n          {\n            \"id\": \"5dG9bTOgD\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ModifyEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"7cdd6d20-040e\\\", \\\"new_start_time\\\": \\\"2023-09-19 14:00:00\\\", \\\"new_end_time\\\": \\\"2023-09-19 14:30:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3898,\n    \"total_tokens\": 4161,\n    \"completion_tokens\": 263\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "7ea2fc9f-f7b4",
+                            "new_start_time": "2023-09-18 17:00:00",
+                            "new_end_time": "2023-09-18 18:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "7cdd6d20-040e",
+                            "new_start_time": "2023-09-19 14:00:00",
+                            "new_end_time": "2023-09-19 14:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have rescheduled your meeting with Alice to 1 pm on 9/16. I have also shifted your meetings with Bob and Tracy to 5 pm on 9/18 and 2 pm on 9/19 respectively.",
+                    "metadata": {
+                        "reflection": "I have rescheduled your meeting with Alice to 1 pm on 9/16. I have also shifted your meetings with Bob and Tracy to 5 pm on 9/18 and 2 pm on 9/19 respectively.",
+                        "response": "{\n  \"id\": \"e79ee82b13db4c1e9e452a682b9a776c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726148013,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have rescheduled your meeting with Alice to 1 pm on 9/16. I have also shifted your meetings with Bob and Tracy to 5 pm on 9/18 and 2 pm on 9/19 respectively.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4287,\n    \"total_tokens\": 4339,\n    \"completion_tokens\": 52\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Can you send an email to Alice (alis@fmail.com), Bob (bobbyboi@gahoo), and Tracy (mymomisthebest@somail.com) notifying them that I will be working from Paris from 9/15-9/21?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok I sent an email to Alice, Bob, and Tracy notifying them of your travel plans.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "alis@fmail.com",
+                                "bobbyboi@gahoo",
+                                "mymomisthebest@somail.com"
+                            ],
+                            "subject": "Working from Paris",
+                            "body": "I will be working from Paris from 9/15-9/21."
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "alis@fmail.com",
+                                "bobbyboi@gahoo",
+                                "mymomisthebest@somail.com"
+                            ],
+                            "subject": "Working from Paris",
+                            "body": "I will be working from Paris from 9/15-9/21.",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"9de5a08aa30447f49de078e9f52c3718\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726148016,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"eytYALHL8\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendEmail\",\n              \"arguments\": \"{\\\"to\\\": [\\\"alis@fmail.com\\\", \\\"bobbyboi@gahoo\\\", \\\"mymomisthebest@somail.com\\\"], \\\"subject\\\": \\\"Working from Paris\\\", \\\"body\\\": \\\"I will be working from Paris from 9/15-9/21.\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4360,\n    \"total_tokens\": 4438,\n    \"completion_tokens\": 78\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have sent the email.",
+                    "metadata": {
+                        "reflection": "I have sent the email.",
+                        "response": "{\n  \"id\": \"93c50025eaf94cea83d19b86aed17a47\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726148019,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have sent the email.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4494,\n    \"total_tokens\": 4500,\n    \"completion_tokens\": 6\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "ModifyEvent",
+        "QueryCalendar",
+        "AddReminder",
+        "CurrentWeather",
+        "ForecastWeather"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 5,
+        "ground_truths": 5,
+        "matches": 5,
+        "actions": 4,
+        "valid_actions": 4,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

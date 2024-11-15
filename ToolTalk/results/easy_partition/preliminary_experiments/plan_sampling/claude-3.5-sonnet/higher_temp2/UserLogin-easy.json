@@ -1,0 +1,140 @@
+{
+    "name": "UserLogin-easy",
+    "conversation_id": "1df9e4a7-b93c-45c1-8914-10fdaf0b86ab",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "UserLogin"
+    ],
+    "scenario": "UserLogin easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you log me in?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Certainly! I'd be happy to help you log in. To do that, I'll need your username and password. However, before we proceed, I want to remind you that it's important to keep your login credentials secure. You should never share your password with anyone, including AI assistants like me.\n\nSince you're asking to log in, I assume you already have an account. If that's the case, we can use the UserLogin tool to authenticate you. Here's the plan:\n\nStep 1: Use the UserLogin tool to authenticate the user.\n#V1 = UserLogin[username, password]\n\nFor this step, I'll need you to provide your username and password. Could you please provide your username? Once you do, I'll ask for your password separately for security reasons.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "What's your password?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Thank you for providing your username. To log you in, I'll need your password as well. However, for security reasons, I recommend that you don't share your password in this chat. Instead, I can guide you through the login process using the UserLogin tool.\n\nHere's the plan to log you in:\n\nStep 1: Use the UserLogin tool to attempt logging in with the provided username.\n#V1 = UserLogin[username=\"justinkool\", password=\"<user_input>\"]\n\nTo proceed with the login, please provide your password. Once you do, I'll use the UserLogin tool to log you in securely.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "justforkicks123"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "You're logged in!",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "justinkool",
+                            "password": "justforkicks123"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll help you log in using the information you've provided. Let me create a plan to log you in using the available tools.\n\nPlan:\nStep 1: Log in the user using the provided username and password.\n#V1 = UserLogin(username=\"justinkool\", password=\"justforkicks123\")\n\nNow, I'll execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat! You've been successfully logged in, Justin. Your session token is e149636f-d9ca-0792. Is there anything else I can help you with?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

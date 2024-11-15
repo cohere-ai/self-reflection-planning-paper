@@ -1,0 +1,201 @@
+{
+    "name": "SendEmail-easy",
+    "conversation_id": "5076cdf2-f6c2-4640-93eb-e307caf9f088",
+    "suites_used": [
+        "Email"
+    ],
+    "apis_used": [
+        "SendEmail"
+    ],
+    "scenario": "SendEmail easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Tokyo",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey can you send an email to my colleague?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's their email address?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com",
+                            "phone": "123-456-7890",
+                            "name": "Justin Kool"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Verify user's login status\n#V1 = GetAccountInformation[]",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I'd be happy to help you send an email to your colleague. To do this, I'll need some information from you. Here's what we need to proceed:\n\n1. The email address of your colleague\n2. The subject of the email\n3. The content of the email\n\nCould you please provide these details? Once you give me this information, I can use the SendEmail tool to send the email on your behalf.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's olivieisme@somail.com"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "What would you like the subject to be?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com",
+                            "phone": "123-456-7890",
+                            "name": "Justin Kool"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Respond to user with: \"\"",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I'd be happy to help you send an email to your colleague. I have your account information, and I see that you're logged in as Justin Kool. Before we proceed with sending the email, I'll need a few more details from you:\n\n1. What would you like the subject of the email to be?\n2. What message would you like to include in the body of the email?\n\nOnce you provide this information, I can help you send the email to your colleague at olivieisme@somail.com.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "It's just a test email, can you put 'test' as the subject? The body can be empty."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, I'll send it now.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "olivieisme@somail.com"
+                            ],
+                            "subject": "test",
+                            "body": ""
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "olivieisme@somail.com"
+                            ],
+                            "subject": "test",
+                            "body": "",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Send the email using the SendEmail tool.\n#V1 = SendEmail(to=[\"olivieisme@somail.com\"], subject=\"test\", body=\"\")",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've sent the test email as you requested. Here's a summary of what I did:\n\n1. Recipient: olivieisme@somail.com\n2. Subject: test\n3. Body: Left empty as per your request\n\nThe email has been sent successfully. The system generated an email ID for this message: 5b-dd80-9f8a27ab. This ID can be used for reference if needed.\n\nIs there anything else you'd like me to do regarding this email or any other tasks?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

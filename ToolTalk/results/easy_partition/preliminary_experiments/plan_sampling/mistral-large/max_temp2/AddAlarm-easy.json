@@ -1,0 +1,105 @@
+{
+    "name": "AddAlarm-easy",
+    "conversation_id": "90a1a217-55bc-4d6d-8b76-99440aae3a1a",
+    "suites_used": [
+        "Alarm"
+    ],
+    "apis_used": [
+        "AddAlarm"
+    ],
+    "scenario": "AddAlarm easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 13:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have class tonight at 7. Can you set an alarm for 6:30?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I have set an alarm for you at 6:30 PM",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "time": "18:30:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "18:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Certainly! Let's set an alarm for 6:30.\n\nStep 1: Add an alarm for 6:30.\n#V1 = AddAlarm[time=\"18:30:00\"]",
+                        "response": "{\n  \"id\": \"7a85fb1b54964d04afc95ca86e8527ac\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115599,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"YcI9DUQ7j\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddAlarm\",\n              \"arguments\": \"{\\\"time\\\": \\\"18:30:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3701,\n    \"total_tokens\": 3729,\n    \"completion_tokens\": 28\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your alarm has been set for 6:30 PM. The alarm ID is 5bff-dd80.",
+                    "metadata": {
+                        "reflection": "Your alarm has been set for 6:30 PM. The alarm ID is 5bff-dd80.",
+                        "response": "{\n  \"id\": \"9276ca19eead4303b79f2819c412f2ba\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727115601,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your alarm has been set for 6:30 PM. The alarm ID is 5bff-dd80.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3414,\n    \"total_tokens\": 3440,\n    \"completion_tokens\": 26\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Thanks, I think I'll take a quick nap."
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

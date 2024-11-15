@@ -1,0 +1,159 @@
+{
+    "name": "SendVerificationCode-easy",
+    "conversation_id": "163ea4f3-57e8-4f95-a6f1-d01bf4fe2b3b",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "SendVerificationCode"
+    ],
+    "scenario": "SendVerificationCode easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I think I forgot my password, can you help me reset it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Please provide your username or the email associated with your account so that I can initiate the password reset process.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok, what's your email address associated with the account?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "justinkool"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "To help you reset your password, I'll follow these steps:\n\nStep 1: Find the user account by querying with the given username.\n#V1 = QueryUser(username=\"justinkool\")\n\nStep 2: Send a verification code to the backup email associated with the username.\n#V2 = SendVerificationCode(username=\"justinkool\", email=#V1[0].email)\n\nStep 3: Ask the user to provide the verification code they've received.\n\nStep 4: Once the user provides the verification code, reset the password using the code and a new password.\n#V3 = ResetPassword(username=\"justinkool\", verification_code=\"USER_PROVIDED_CODE\", new_password=\"NEW_PASSWORD\")\n\nLet's start with Step 1. I'll query for the user account information.",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "It seems that you're not logged in, so I can't retrieve your email address directly. Could you please provide the email associated with your account, so I can send a verification code for password reset?",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Should be justintime@fmail.com"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok, I've sent you a verification code to your email address. You can use this to reset your password.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "To help you reset your password, we will follow these steps:\n\nStep 1: Verify the user information to ensure the username and email match an existing account.\n#V1 = QueryUser(username=\"justinkool\", email=\"justintime@fmail.com\")\n\nStep 2: Send a verification code to the user's backup email to initiate the password reset process.\n#V2 = SendVerificationCode(username=\"justinkool\", email=\"justintime@fmail.com\")\n\nIf both steps are successful, you will receive a verification code in your backup email. Let me know when you have it, and we can proceed to reset the password.",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"username\": \"justinkool\", \"email\": \"justintime@fmail.com\"}",
+                                "name": "SendVerificationCode"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "It seems that I need you to be logged in to proceed with resetting your password. Since you're not logged in, I can send a verification code to your email to help you reset it. Would you like to proceed with that?",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks I got it!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.0,
+        "api_name_recall": 0.0,
+        "api_name_precision": 0.0
+    }
+}

@@ -1,0 +1,260 @@
+{
+    "name": "AccountTools-Alarm-Calendar-AddAlarm-0",
+    "conversation_id": "de6eb33d-0ea2-468e-bd84-ebf4ea3827c8",
+    "suites_used": [
+        "Alarm",
+        "Calendar",
+        "AccountTools"
+    ],
+    "apis_used": [
+        "CreateEvent",
+        "AddAlarm",
+        "RegisterUser"
+    ],
+    "scenario": "The user wants to create a new account and set an alarm for an important meeting the next day. They use RegisterUser to sign up with their username, password, email, name, and phone. They receive a session_token and their account information. They use CreateEvent to add the meeting to their calendar, providing the name, event_type, description, start_time, end_time, location, and attendees. They receive an event_id on success. They use AddAlarm to set an alarm for 30 minutes before the meeting, providing their session_token and the time. They receive an alarm_id on success. They use QueryCalendar to check their schedule for the next day, providing their session_token, start_time, and end_time. They receive a list of events in the time range. They use LogoutUser to log out of their account, providing their session_token. They receive a status of success or failed.",
+    "user": {
+        "username": "hestler",
+        "email": "j.hester@gahoo.com",
+        "phone": "708-340-0190",
+        "name": "Julian Hester",
+        "password": "Meizuch4uu"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hi assistant, I want to make a new account and put an important meeting on the calendar for tomorrow."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Ok, I can help with that. Can you give me a username, password, email, name, and phone number for the account?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Let's start by gathering the necessary information to create your new account. Could you please provide the following details?\n\n1. Username\n2. Password\n3. Email\n4. Name (optional)\n5. Phone (optional)",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "My name is Julian Hester and I want my user name to be hestler. Email is j.hester@gahoo.com, phone is 708-340-0190 and password should be Meizuch4uu."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Thanks, I made the account. Can you give me the the name of the event and the start and end time?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "hestler",
+                            "password": "Meizuch4uu",
+                            "email": "j.hester@gahoo.com",
+                            "phone": "708-340-0190",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "hestler",
+                            "email": "j.hester@gahoo.com",
+                            "phone": "708-340-0190",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "hestler",
+                            "password": "Meizuch4uu",
+                            "email": "j.hester@gahoo.com",
+                            "name": "Julian Hester",
+                            "phone": "708-340-0190"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "hestler",
+                            "email": "j.hester@gahoo.com",
+                            "phone": "708-340-0190",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Register a new user account with the given details.\n#V1 = RegisterUser(username=\"hestler\", password=\"Meizuch4uu\", email=\"j.hester@gahoo.com\", name=\"Julian Hester\", phone=\"708-340-0190\")\n\nStep 2: After successfully creating the account, add a new meeting to the calendar for tomorrow.\n#V2 = CreateEvent(name=\"Important Meeting\", event_type=\"meeting\", description=\"Important meeting with stakeholders\", start_time=\"2023-09-12 09:00:00\", end_time=\"2023-09-12 10:00:00\", location=\"Seattle\", attendees=[\"hestler\"])",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your account has been successfully created with the username \"hestler\". Now, let's schedule your important meeting for tomorrow. Could you please provide the details of the meeting, such as the start and end time, location, and any attendees?",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks, the event is a client meeting with Alice (alice59) from 8 am to 9. Can you also add an alarm for 30 minutes before the meeting?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Got it, I've created the event and alarm.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "name": "Client Meeting",
+                            "event_type": "meeting",
+                            "start_time": "2023-09-12 08:00:00",
+                            "end_time": "2023-09-12 09:00:00",
+                            "attendees": [
+                                "alice59"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "time": "07:30:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Client Meeting with Alice",
+                            "event_type": "meeting",
+                            "description": "Meeting with client Alice",
+                            "start_time": "2023-09-12 08:00:00",
+                            "end_time": "2023-09-12 09:00:00",
+                            "attendees": [
+                                "alice59"
+                            ],
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Create a new calendar event for the client meeting with Alice.\n#V1 = CreateEvent[name=\"Client Meeting with Alice\", event_type=\"meeting\", description=\"Meeting with client Alice\", start_time=\"2023-09-12 08:00:00\", end_time=\"2023-09-12 09:00:00\", attendees=[\"alice59\"]]\n\nStep 2: Add an alarm for 30 minutes before the meeting starts.\n#V2 = AddAlarm[time=\"07:30:00\"]",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"time\": \"07:30:00\"}",
+                                "name": "AddAlarm"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "07:30:00",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've scheduled the client meeting with Alice from 8:00 AM to 9:00 AM tomorrow and set an alarm for 7:30 AM. If you need anything else, feel free to ask!",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks, that's all for now."
+        }
+    ],
+    "intended_apis_used": [
+        "LogoutUser",
+        "RegisterUser",
+        "AddAlarm",
+        "CreateEvent",
+        "QueryCalendar"
+    ],
+    "intended_suites_used": [
+        "AccountTools",
+        "Alarm",
+        "Calendar"
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 3,
+        "matches": 3,
+        "actions": 3,
+        "valid_actions": 3,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,139 @@
+{
+    "name": "HistoricWeather-easy",
+    "conversation_id": "2eda051f-b04b-43db-9ee7-bd121218d9b4",
+    "suites_used": [
+        "Weather"
+    ],
+    "apis_used": [
+        "HistoricWeather"
+    ],
+    "scenario": "HistoricWeather easy scenario",
+    "user": {
+        "username": "mstein",
+        "email": "steinki89@fexter.com",
+        "phone": "937-272-9068",
+        "name": "Michael Steinke",
+        "password": "weiChe0oo"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "It's really hot today, like over 100. Is it normally this hot here?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "From historic weather data, the record high for London in September if 89 F. 100 is a new record.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "London",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "London"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-09-11",
+                            "high": 80,
+                            "low": 56,
+                            "conditions": "Mostly Cloudy"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "1. #V CurrentWeather: {\"location\": \"London\"}\n2. #V HistoricWeather: {\"location\": \"London\", \"month\": \"September\"}\n3. #V Respond to user with comparison of current temperature and historic data.",
+                        "response": "{\n  \"id\": \"1c894790a98440a1a645b700a024303a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731178333,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"ZIJnFflDu\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CurrentWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"London\\\"}\"\n            }\n          },\n          {\n            \"id\": \"dcMpatpJ5\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"HistoricWeather\",\n              \"arguments\": \"{\\\"location\\\": \\\"London\\\", \\\"month\\\": \\\"September\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3713,\n    \"total_tokens\": 3760,\n    \"completion_tokens\": 47\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "HistoricWeather",
+                        "parameters": {
+                            "location": "London",
+                            "month": "September"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "min_temp": 55,
+                            "max_temp": 66,
+                            "record_min_temp": 40,
+                            "record_max_temp": 89,
+                            "avg_rainfall": 2.13,
+                            "snow_days": 0
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "It is currently 80 degrees in London. The average temperature in September is 60 degrees, with a record high of 89 degrees.",
+                    "metadata": {
+                        "reflection": "It is currently 80 degrees in London. The average temperature in September is 60 degrees, with a record high of 89 degrees.",
+                        "response": "{\n  \"id\": \"5a158b65df9b44baa341e1466d981108\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731178334,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"It is currently 80 degrees in London. The average temperature in September is 60 degrees, with a record high of 89 degrees.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3561,\n    \"total_tokens\": 3592,\n    \"completion_tokens\": 31\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Great, thanks global warming."
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

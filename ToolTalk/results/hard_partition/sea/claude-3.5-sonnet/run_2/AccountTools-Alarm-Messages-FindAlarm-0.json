@@ -1,0 +1,473 @@
+{
+    "name": "AccountTools-Alarm-Messages-FindAlarm-0",
+    "conversation_id": "2527d668-fc2f-461d-8bb9-53ec3274c8ba",
+    "suites_used": [
+        "Alarm",
+        "AccountTools"
+    ],
+    "apis_used": [
+        "UserLogin",
+        "AddAlarm",
+        "DeleteAlarm",
+        "FindAlarms"
+    ],
+    "scenario": "The user wants to set an alarm for 8:00 am to catch a flight. They use UserLogin to log in to the app. They use FindAlarms to check if they already have an alarm set for that time. They see that they have an alarm set for 7:30 am, but they want to change it. They use DeleteAlarm to remove the old alarm. They use AddAlarm to set a new alarm for 8:00 am..",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have a morning flight tomorrow. Can you set an alarm for 8:00 am?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I notice you're not logged in. Can you log in first?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "08:00:00"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "content": "Respond to user with: \"#V1 = AddAlarm[time=\"08:00:00\"]\"",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize, but it seems that you are not currently logged in to the system. In order to set an alarm, you need to be logged into your account. Let me help you with the login process first, and then we can set the alarm for you.\n\nTo proceed, I'll need your username and password. However, for security reasons, it's best if you don't share your password with me directly. Instead, let's go through the login process step by step.\n\n1. Can you please provide your username?\n2. Once you provide your username, I'll guide you through the login process.\n3. After successful login, we'll set the alarm for 8:00 AM.\n\nCould you please provide your username so we can start the login process?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Sure, my username is ahhchiu and my password is eehahTe2t."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Great, you're logged in. I've set an alarm for you at 8:00 am. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "ahhchiu",
+                            "password": "eehahTe2t"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "time": "08:00:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "ahhchiu",
+                            "password": "eehahTe2t"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Respond to user with: \"\"",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "08:00:00",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nGreat! You've been successfully logged in. Now, let's set an alarm for 8:00 am tomorrow. I'll use the AddAlarm function to do this for you.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat! I've successfully logged you in and set an alarm for 8:00 AM tomorrow morning. The alarm has been created with the ID '5bff-dd80'. Is there anything else you need help with regarding your morning flight or any other tasks?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Actually, can you check what alarms I have set? I think I need to delete some."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "You currently have alarms set for 7:30, 7:40, 7:50, 8:00, and 8:30 am. Which one would you like to delete?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "FindAlarms",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "alarms": [
+                            {
+                                "alarm_id": "593d-49e9",
+                                "time": "07:30:00"
+                            },
+                            {
+                                "alarm_id": "4631-000e",
+                                "time": "07:40:00"
+                            },
+                            {
+                                "alarm_id": "4e20-0a4c",
+                                "time": "07:50:00"
+                            },
+                            {
+                                "alarm_id": "5bff-dd80",
+                                "time": "08:00:00"
+                            },
+                            {
+                                "alarm_id": "987a-5fa5",
+                                "time": "08:30:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "FindAlarms",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "alarms": [
+                            {
+                                "alarm_id": "593d-49e9",
+                                "time": "07:30:00"
+                            },
+                            {
+                                "alarm_id": "4631-000e",
+                                "time": "07:40:00"
+                            },
+                            {
+                                "alarm_id": "4e20-0a4c",
+                                "time": "07:50:00"
+                            },
+                            {
+                                "alarm_id": "987a-5fa5",
+                                "time": "08:30:00"
+                            },
+                            {
+                                "alarm_id": "5bff-dd80",
+                                "time": "08:00:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Respond to user with: \"#V1 = FindAlarms[]\"",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've checked your alarms, and here's what I found:\n\n1. Alarm at 07:30:00 (ID: 593d-49e9)\n2. Alarm at 07:40:00 (ID: 4631-000e)\n3. Alarm at 07:50:00 (ID: 4e20-0a4c)\n4. Alarm at 08:30:00 (ID: 987a-5fa5)\n5. Alarm at 08:00:00 (ID: 5bff-dd80) - This is the one we just set\n\nYou have five alarms set in total. The last one (08:00:00) is the one we just set for your morning flight tomorrow. Would you like to delete any of these alarms?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Can you delete all the old ones?"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "I have deleted all of your alarms except for the 8:00 am alarm. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "alarm_id": "593d-49e9"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "alarm_id": "4631-000e"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "alarm_id": "4e20-0a4c"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "alarm_id": "987a-5fa5"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "alarm_id": "593d-49e9",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Delete the 7:30 AM alarm\n#V1 = DeleteAlarm[session_token=\"e149636f-d9ca-0792\", alarm_id=\"593d-49e9\"]\n\nStep 2: Delete the 7:40 AM alarm\n#V2 = DeleteAlarm[session_token=\"e149636f-d9ca-0792\", alarm_id=\"4631-000e\"]\n\nStep 3: Delete the 7:50 AM alarm\n#V3 = DeleteAlarm[session_token=\"e149636f-d9ca-0792\", alarm_id=\"4e20-0a4c\"]\n\nStep 4: Delete the 8:30 AM alarm\n#V4 = DeleteAlarm[session_token=\"e149636f-d9ca-0792\", alarm_id=\"987a-5fa5\"]\n\nStep 5: Confirm the remaining alarms\n#V5 = FindAlarms[session_token=\"e149636f-d9ca-0792\"]",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "alarm_id": "4631-000e",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "alarm_id": "4e20-0a4c",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "alarm_id": "987a-5fa5",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "FindAlarms",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "alarms": [
+                            {
+                                "alarm_id": "5bff-dd80",
+                                "time": "08:00:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've deleted all the alarms except for the one we just set at 8:00 am for your morning flight tomorrow. Here's a summary of what I did:\n\n1. Deleted the alarm set for 7:30 am\n2. Deleted the alarm set for 7:40 am\n3. Deleted the alarm set for 7:50 am\n4. Deleted the alarm set for 8:30 am\n\nNow you only have one alarm set for 8:00 am (alarm ID: 5bff-dd80). Is there anything else you'd like me to do regarding your alarms or any other assistance you need?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "No, that's all. Thanks!"
+        }
+    ],
+    "intended_apis_used": [
+        "GetAccountInformation",
+        "UserLogin",
+        "AddAlarm",
+        "DeleteAlarm",
+        "FindAlarms",
+        "SendMessage"
+    ],
+    "intended_suites_used": [
+        "AccountTools",
+        "Alarm",
+        "Messages"
+    ],
+    "metrics": {
+        "predictions": 9,
+        "ground_truths": 7,
+        "matches": 7,
+        "actions": 7,
+        "valid_actions": 6,
+        "bad_actions": 0,
+        "precision": 0.7777777777777778,
+        "recall": 1.0,
+        "action_precision": 0.8571428571428571,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

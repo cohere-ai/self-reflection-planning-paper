@@ -1,0 +1,113 @@
+{
+    "name": "GetAccountInformation-easy",
+    "conversation_id": "f1d450b1-2ef7-416c-b9b9-85a5a286e6e4",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "GetAccountInformation"
+    ],
+    "scenario": "GetAccountInformation easy scenario",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey, can you fetch my account information? I want to make sure everything is up to date"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I was able to fetch your account information. Looks like your username is decture, your email is VirgniaJGraham@gahoo.com, your phone number is 703-607-3363, and your name is Virginia J. Graham.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "decture",
+                            "email": "VirginiaJGraham@gahoo.com",
+                            "phone": "703-607-3363",
+                            "name": "Virginia J. Graham"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "decture",
+                            "email": "VirginiaJGraham@gahoo.com",
+                            "phone": "703-607-3363",
+                            "name": "Virginia J. Graham"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Certainly! Here is the plan to fetch your account information:\n\nStep 1: Fetch the account information of the logged-in user.\n#V1 = GetAccountInformation[]",
+                        "response": "{\n  \"id\": \"1a3dea606c7e40b6bd227a79705bb8ed\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727111830,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"cAiYdVSGr\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetAccountInformation\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3686,\n    \"total_tokens\": 3702,\n    \"completion_tokens\": 16\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here is your account information:\n\n- Username: decture\n- Email: VirginiaJGraham@gahoo.com\n- Phone: 703-607-3363\n- Name: Virginia J. Graham\n\nIs there anything else you would like to know or do?",
+                    "metadata": {
+                        "reflection": "Here is your account information:\n\n- Username: decture\n- Email: VirginiaJGraham@gahoo.com\n- Phone: 703-607-3363\n- Name: Virginia J. Graham\n\nIs there anything else you would like to know or do?",
+                        "response": "{\n  \"id\": \"fcfa42339bca435fb090e8bc5900326f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727111831,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here is your account information:\\n\\n- Username: decture\\n- Email: VirginiaJGraham@gahoo.com\\n- Phone: 703-607-3363\\n- Name: Virginia J. Graham\\n\\nIs there anything else you would like to know or do?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3442,\n    \"total_tokens\": 3509,\n    \"completion_tokens\": 67\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "That looks good to me. Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 0,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1,
+        "bad_action_rate": 0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

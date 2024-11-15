@@ -1,0 +1,245 @@
+{
+    "name": "Messages-Reminder-Weather-SendMessage-2",
+    "conversation_id": "d29f91e2-fca5-427c-847c-a33a826e20be",
+    "suites_used": [
+        "Reminder",
+        "Weather",
+        "Messages"
+    ],
+    "apis_used": [
+        "CurrentWeather",
+        "AddReminder",
+        "SendMessage"
+    ],
+    "scenario": "The user wants to send a message to their family about their vacation. They first use the HistoricWeather API to get the weather information of the location they visited for the past week. They see that it was mostly rainy and cold. They then use the CurrentWeather API to get the weather information of their current location, which is a different city. They see that it is sunny and warm. They then use the ForecastWeather API to get the weather information of their destination, which is their home city. They see that it is cloudy and mild. They then use the SendMessage API to send their family a message with their weather comparison and some photos of their trip. They also tell their family their flight details and their expected arrival time. They use the AddReminder API to create a reminder to check in with their family when they land.",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-11-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey, I want to send my dad (bestdad) a message updating them on my flight info and arrival time. Can you also check the weather back in Boston to see if my flight might be delayed?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I can do that for you. What is your flight info and arrival time? The weather in Boston will be rainy and cold.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "Boston"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-11-11",
+                            "high": 40,
+                            "low": 23,
+                            "conditions": "90% Rainy"
+                        }
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CurrentWeather",
+                        "parameters": {
+                            "location": "Boston"
+                        }
+                    },
+                    "response": {
+                        "weather": {
+                            "date": "2023-11-11",
+                            "high": 40,
+                            "low": 23,
+                            "conditions": "90% Rainy"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to help you send a message to your dad about your flight info and check the weather in Boston. Let's break this down into steps:\n\nStep 1: Check the current weather in Boston to see if there might be any flight delays.\n#V1 = CurrentWeather(location=\"Boston\")\n\nStep 2: Check the user's upcoming events (assuming the flight is an event in the calendar) to get the flight information.\n#V2 = QueryCalendar(start_time=\"2023-11-11 09:00:00\", end_time=\"2023-11-18 23:59:59\")\n\nStep 3: Compose and send a message to the user's dad with the flight information and weather update.\n#V3 = SendMessage(receiver=\"bestdad\", message=\"Hi Dad, I wanted to update you on my flight info and arrival time. {flight_info} The current weather in Boston is {weather_info}, so there {delay_info}. I'll keep you posted if anything changes!\")\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "flight information arrival time",
+                            "match_type": "all",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nThank you for providing that information. I'll create a plan to help you send a message to your dad about your flight info and check the weather in Boston. Here's the step-by-step plan:\n\nStep 1: Check the current weather in Boston\n#V1 = CurrentWeather(location=\"Boston\")\n\nStep 2: Search for any existing messages or emails about flight information\n#V2 = SearchMessages(query=\"flight information arrival time\", match_type=\"all\")\n\nStep 3: Send a message to your dad with the flight information and weather update\n#V3 = SendMessage(receiver=\"bestdad\", message=\"\")\n\nNow, let's execute this plan:\n\nStep 1: We've already completed this step by checking the current weather in Boston. The result is stored in #V1.\n\nStep 2: Let's search for any existing messages about your flight information.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nThank you for providing me with that information. I'll be happy to help you send a message to your dad about your flight information and arrival time, as well as check the weather in Boston. Let me outline a plan to accomplish this:\n\nStep 1: Check the current weather in Boston.\n#V1 = CurrentWeather[location=Boston]\n\nStep 2: Search for any existing messages about flight information.\n#V2 = SearchMessages[query=\"flight information arrival time\", match_type=\"all\"]\n\nStep 3: Send a message to your dad with the flight information and weather update.\n#V3 = SendMessage[receiver=\"bestdad\", message=\"(To be composed based on available information)\"]\n\nNow, let's go through these steps:\n\nStep 1: I've already checked the current weather in Boston. The result shows:\nDate: 2023-11-11\nHigh: 40\u00b0F\nLow: 23\u00b0F\nConditions: 90% Rainy\n\nStep 2: I've searched for messages containing flight information, but no relevant messages were found. This means we don't have any stored information about your flight details.\n\nStep 3: Since we don't have your specific flight information, I'll need to ask you for those details before we can send a message to your dad. Could you please provide me with your flight number, departure time, and expected arrival time?\n\nOnce you give me that information, I can compose a message for your dad that includes both your flight details and the current weather in Boston. The rainy conditions in Boston might indeed cause some delays, so it would be wise to mention this possibility in the message.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "I'll be on UA111 and should arrive around 10PM, but since it's rainy the flight might be delayed. Can you also set a reminder for me to call my dad when I land?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Sure, I have sent the message and set a reminder.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "bestdad",
+                            "message": "Hi Dad, I'll be on UA111 and should arrive around 10PM."
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "call dad when I land"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "bestdad",
+                            "message": "Hi Dad, I wanted to update you on my flight info. I'll be on UA111 and should arrive around 10 PM. However, it's quite rainy in Boston (90% chance of rain with temperatures between 23\u00b0F and 40\u00b0F), so there might be a delay. I'll keep you posted if anything changes.",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Certainly! I'll help you send a message to your dad about your flight information and set a reminder for you to call him when you land. Let me create a plan to accomplish this for you.\n\nStep 1: Send a message to your dad about your flight information.\n#V1 = SendMessage[receiver=\"bestdad\", message=\"Hi Dad, I wanted to update you on my flight info. I'll be on UA111 and should arrive around 10 PM. However, it's quite rainy in Boston (90% chance of rain with temperatures between 23\u00b0F and 40\u00b0F), so there might be a delay. I'll keep you posted if anything changes.\"]\n\nStep 2: Set a reminder to call your dad when you land.\n#V2 = AddReminder[task=\"Call Dad after landing\", due_date=\"2023-11-11 22:30:00\"]\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Call Dad after landing from flight UA111",
+                            "due_date": "2023-11-11 22:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nCertainly! I've sent a message to your dad (username: bestdad) with the flight information and weather update. Now, let's set a reminder for you to call your dad when you land.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've taken care of both tasks for you. Here's what I've done:\n\n1. Sent a message to your dad (username: bestdad) with your flight information and the current weather conditions in Boston. The message reads:\n\n   \"Hi Dad, I wanted to update you on my flight info. I'll be on UA111 and should arrive around 10 PM. However, it's quite rainy in Boston (90% chance of rain with temperatures between 23\u00b0F and 40\u00b0F), so there might be a delay. I'll keep you posted if anything changes.\"\n\n2. Set a reminder for you to call your dad when you land. I've set it for 10:30 PM, assuming your flight arrives on time at 10 PM. This gives you a little time to get off the plane and collect your belongings. The reminder reads: \"Call Dad after landing from flight UA111\"\n\nIs there anything else you'd like me to do regarding your travel plans or communication with your dad?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks"
+        }
+    ],
+    "intended_apis_used": [
+        "SendMessage",
+        "AddReminder",
+        "CurrentWeather",
+        "ForecastWeather",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Messages",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 3,
+        "matches": 3,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.75,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.75
+    }
+}

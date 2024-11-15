@@ -1,0 +1,315 @@
+{
+    "name": "Calendar-Reminder-Weather-ModifyEvent-1",
+    "conversation_id": "e32a3a5c-ce4e-4ef6-9a95-fa8cf3bcfb21",
+    "suites_used": [
+        "Calendar",
+        "Reminder"
+    ],
+    "apis_used": [
+        "AddReminder",
+        "ModifyEvent",
+        "QueryCalendar"
+    ],
+    "scenario": "The user is a busy professional who has a lot of meetings and deadlines. They want to query their calendar for the next week to see their schedule (QueryCalendar). They see that they have a meeting with a client on Monday at 10 am, but they also have a reminder to finish a report by 11 am (GetReminders). They decide to reschedule the meeting to Tuesday at 9 am, so they modify the event on their calendar (ModifyEvent). They also want to check the weather for Monday to see if they need an umbrella (CurrentWeather). They see that it will be rainy, so they add a reminder to bring an umbrella (AddReminder). They also want to complete the reminder for the report, so they mark it as done (CompleteReminder).",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-29 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "justinkool"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "What's the calendar look like for today and tomorrow?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Today you have a meeting with a client from 10 to 10:30 am, a submission deadline for your paper from 11 to 11:30 am, and a meeting with your professor from 2 to 3 pm. Tomorrow you have no events.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-29 00:00:00",
+                            "end_time": "2023-09-30 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2ff57743-1180",
+                                "name": "Client Meeting",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-29 10:00:00",
+                                "end_time": "2023-09-29 10:30:00",
+                                "location": "Conference Room 2",
+                                "description": "Meeting with client from XBoe.",
+                                "attendees": [
+                                    "justinkool",
+                                    "mstein"
+                                ]
+                            },
+                            {
+                                "event_id": "7ea2fc9f-f7b4",
+                                "name": "Meet with Professor Xiu",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-29 14:00:00",
+                                "end_time": "2023-09-29 15:00:00",
+                                "location": "University CS Center",
+                                "description": "Meet with Professor Xiu to discuss research.",
+                                "attendees": [
+                                    "justinkool",
+                                    "proxiu"
+                                ]
+                            },
+                            {
+                                "event_id": "7cdd6d20-040e",
+                                "name": "Paper Submission Deadline",
+                                "event_type": "event",
+                                "start_time": "2023-09-29 11:00:00",
+                                "end_time": "2023-09-29 11:30:00",
+                                "location": null,
+                                "description": "Last day to submit paper to conference.",
+                                "attendees": null
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-29 00:00:00",
+                            "end_time": "2023-09-29 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2ff57743-1180",
+                                "name": "Client Meeting",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-29 10:00:00",
+                                "end_time": "2023-09-29 10:30:00",
+                                "location": "Conference Room 2",
+                                "description": "Meeting with client from XBoe.",
+                                "attendees": [
+                                    "justinkool",
+                                    "mstein"
+                                ]
+                            },
+                            {
+                                "event_id": "7ea2fc9f-f7b4",
+                                "name": "Meet with Professor Xiu",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-29 14:00:00",
+                                "end_time": "2023-09-29 15:00:00",
+                                "location": "University CS Center",
+                                "description": "Meet with Professor Xiu to discuss research.",
+                                "attendees": [
+                                    "justinkool",
+                                    "proxiu"
+                                ]
+                            },
+                            {
+                                "event_id": "7cdd6d20-040e",
+                                "name": "Paper Submission Deadline",
+                                "event_type": "event",
+                                "start_time": "2023-09-29 11:00:00",
+                                "end_time": "2023-09-29 11:30:00",
+                                "location": null,
+                                "description": "Last day to submit paper to conference.",
+                                "attendees": null
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve the user's calendar events for today, September 29, 2023.\n#V1 = QueryCalendar[start_time=\"2023-09-29 00:00:00\", end_time=\"2023-09-29 23:59:59\"]\n\nStep 2: Retrieve the user's calendar events for tomorrow, September 30, 2023.\n#V2 = QueryCalendar[start_time=\"2023-09-30 00:00:00\", end_time=\"2023-09-30 23:59:59\"]\n\nStep 3: Present the combined calendar events for both days.\n#V3 = FormatResults[#V1, #V2]",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"start_time\": \"2023-09-30 00:00:00\", \"end_time\": \"2023-09-30 23:59:59\"}",
+                                "name": "QueryCalendar"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-30 00:00:00",
+                            "end_time": "2023-09-30 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here's your calendar for today and tomorrow:\n\n### Today (September 29, 2023):\n1. **Client Meeting**\n   - **Time:** 10:00 AM - 10:30 AM\n   - **Location:** Conference Room 2\n   - **Description:** Meeting with client from XBoe.\n   - **Attendees:** justinkool, mstein\n\n2. **Paper Submission Deadline**\n   - **Time:** 11:00 AM - 11:30 AM\n   - **Description:** Last day to submit paper to conference.\n\n3. **Meet with Professor Xiu**\n   - **Time:** 2:00 PM - 3:00 PM\n   - **Location:** University CS Center\n   - **Description:** Meet with Professor Xiu to discuss research.\n   - **Attendees:** justinkool, proxiu\n\n### Tomorrow (September 30, 2023):\n- No events scheduled.\n\nIf you need any more details or assistance, feel free to ask!",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Ok can you reschedule the meeting with the client to 11 am tomorrow? Also set a reminder to leave the house at 1:30 pm."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I have rescheduled your meeting and set a reminder. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "2ff57743-1180",
+                            "new_start_time": "2023-09-30 11:00:00",
+                            "new_end_time": "2023-09-30 11:30:00"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Leave the house",
+                            "due_date": "2023-09-29 13:30:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "2ff57743-1180",
+                            "new_start_time": "2023-09-30 11:00:00",
+                            "new_end_time": "2023-09-30 11:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Reschedule the \"Client Meeting\" from today to tomorrow at 11:00 am.\n#V1 = ModifyEvent[event_id=\"2ff57743-1180\", new_start_time=\"2023-09-30 11:00:00\", new_end_time=\"2023-09-30 11:30:00\"]\n\nStep 2: Set a reminder for September 29, 2023, at 1:30 pm to leave the house.\n#V2 = AddReminder[task=\"Leave the house\", due_date=\"2023-09-29 13:30:00\"]",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"task\": \"Leave the house\", \"due_date\": \"2023-09-29 13:30:00\"}",
+                                "name": "AddReminder"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Leave the house",
+                            "due_date": "2023-09-29 13:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The meeting with the client has been successfully rescheduled to 11:00 AM tomorrow. I've also set a reminder for you to leave the house at 1:30 PM today.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "ModifyEvent",
+        "QueryCalendar",
+        "AddReminder",
+        "CompleteReminder",
+        "GetReminders",
+        "CurrentWeather"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 3,
+        "matches": 3,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

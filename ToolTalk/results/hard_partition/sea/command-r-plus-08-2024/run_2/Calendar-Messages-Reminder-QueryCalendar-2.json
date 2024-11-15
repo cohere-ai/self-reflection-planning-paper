@@ -1,0 +1,233 @@
+{
+    "name": "Calendar-Messages-Reminder-QueryCalendar-2",
+    "conversation_id": "9a054cc8-a79e-4f1c-8495-56f1c75357ae",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "ModifyEvent",
+        "QueryCalendar"
+    ],
+    "scenario": "The user wants to modify an event they created earlier to accommodate a new attendee. They query their calendar to find the event id of the event they want to modify (QueryCalendar). They then modify the event by adding the new attendee to the list of attendees and changing the location to a larger venue (ModifyEvent). They also send a message to the original attendees of the event to notify them of the changes and introduce the new attendee (SendMessage). They then query their calendar again to see if the modified event conflicts with any other events or reminders they have (QueryCalendar). They find that they have a reminder for a task that is due on the same day as the event. They decide to postpone the task and change the due date of the reminder (ModifyReminder).",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Can you add Erica (erica) and Steve (stevene) to the meeting on Monday for the Team Summit? Also change the location to Room 1a now that we have more people."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Okay I have modified the event.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 09:00:00",
+                            "end_time": "2023-09-11 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "bb4588f1-c21c",
+                                "name": "Team Summit",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 13:00:00",
+                                "end_time": "2023-09-11 14:30:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": [
+                                    "justinkool",
+                                    "lifeng",
+                                    "decture",
+                                    "ahhchiu",
+                                    "salcano",
+                                    "mstein"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "bb4588f1-c21c",
+                            "new_location": "Room 1a",
+                            "new_attendees": [
+                                "justinkool",
+                                "lifeng",
+                                "decture",
+                                "ahhchiu",
+                                "salcano",
+                                "mstein",
+                                "erica",
+                                "stevene"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetAccountInformation",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "user": {
+                            "username": "decture",
+                            "email": "VirginiaJGraham@gahoo.com",
+                            "phone": "703-607-3363",
+                            "name": "Virginia J. Graham"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Check if the user is logged in.\n#V1 = GetAccountInformation()\nStep 2: Find the user's events for Monday, using a time range to cover the entire day.\n#V2 = QueryCalendar[2023-09-11 00:00:00, 2023-09-12 00:00:00]\nStep 3: If events are found, check if there is more than one event. If so, ask the user to specify which event to modify.\n#V3 = UserInput[Please specify which event you want to modify: ]\nStep 4: Modify the selected event by adding the new attendees and changing the location.\n#V4 = ModifyEvent[event_id = #V2[event_id], new_attendees = [erica, stevene], new_location = Room 1a]\nStep 5: Inform the user about the successful modification of the meeting details.\n#V5 = UserOutput[The meeting details have been updated as requested.]",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-12 00:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "29496535-b409",
+                                "name": "Dentist Appointment",
+                                "event_type": "event",
+                                "start_time": "2023-09-11 15:00:00",
+                                "end_time": "2023-09-11 17:00:00",
+                                "location": "dental office",
+                                "description": null,
+                                "attendees": null
+                            },
+                            {
+                                "event_id": "bb4588f1-c21c",
+                                "name": "Team Summit",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 13:00:00",
+                                "end_time": "2023-09-11 14:30:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": [
+                                    "justinkool",
+                                    "lifeng",
+                                    "decture",
+                                    "ahhchiu",
+                                    "salcano",
+                                    "mstein"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "The user is logged in.\nStep 2: Find the user's events for Monday, using a time range to cover the entire day.\n#V2 = QueryCalendar[2023-09-11 00:00:00, 2023-09-12 00:00:00]",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "29496535-b409",
+                            "new_attendees": [
+                                "erica",
+                                "stevene"
+                            ],
+                            "new_location": "Room 1a",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "The user has a meeting on Monday called \"Team Summit\".\nStep 4: Modify the selected event by adding the new attendees and changing the location.\n#V4 = ModifyEvent[event_id = 29496535-b409, new_attendees = [erica, stevene], new_location = Room 1a]",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "Sorry! There was an error: No valid tool-use call found",
+                    "metadata": {
+                        "source": "multihop_call",
+                        "reflection": "The event has been successfully modified.\nStep 5: Inform the user about the successful modification of the meeting details.\n#V5 = UserOutput[The meeting details have been updated as requested.]"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "ModifyEvent",
+        "QueryCalendar",
+        "SendMessage"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Messages",
+        "Reminder"
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 2,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 0,
+        "bad_actions": 1,
+        "precision": 0.3333333333333333,
+        "recall": 0.5,
+        "action_precision": 0.0,
+        "bad_action_rate": 1.0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 0.6666666666666666,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.6666666666666666
+    }
+}

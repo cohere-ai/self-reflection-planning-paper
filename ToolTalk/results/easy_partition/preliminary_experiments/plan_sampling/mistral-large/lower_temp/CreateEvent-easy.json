@@ -1,0 +1,134 @@
+{
+    "name": "CreateEvent-easy",
+    "conversation_id": "0be430e6-236f-432c-9287-82666ef1b1a3",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "CreateEvent"
+    ],
+    "scenario": "CreateEvent easy scenario",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I just got tickets for a Beatles concert this Friday. Can you create an event for me?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when is the concert?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure! I can help with that. Could you please provide the start and end times for the event?",
+                    "metadata": {
+                        "reflection": "Sure! I can help with that. Could you please provide the start and end times for the event?",
+                        "response": "{\n  \"id\": \"8526e85d85e7465faae7fba9e184d653\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727105816,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure! I can help with that. Could you please provide the start and end times for the event?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3634,\n    \"total_tokens\": 3655,\n    \"completion_tokens\": 21\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It goes from 8-11 at Madison Square Garden."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've created the event for you.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "description": "Beatles concert at Madison Square Garden",
+                            "start_time": "2023-09-11 20:00:00",
+                            "end_time": "2023-09-11 23:00:00",
+                            "location": "Madison Square Garden",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Create the event.\n#V1 = CreateEvent[name=\"Beatles Concert\", event_type=\"event\", description=\"Beatles concert at Madison Square Garden\", start_time=\"2023-09-11 20:00:00\", end_time=\"2023-09-11 23:00:00\", location=\"Madison Square Garden\"]",
+                        "response": "{\n  \"id\": \"0c2100fab4c24ce6809d109a898f4b88\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727105819,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"Hq1vg1V1k\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CreateEvent\",\n              \"arguments\": \"{\\\"name\\\": \\\"Beatles Concert\\\", \\\"event_type\\\": \\\"event\\\", \\\"description\\\": \\\"Beatles concert at Madison Square Garden\\\", \\\"start_time\\\": \\\"2023-09-11 20:00:00\\\", \\\"end_time\\\": \\\"2023-09-11 23:00:00\\\", \\\"location\\\": \\\"Madison Square Garden\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3767,\n    \"total_tokens\": 3873,\n    \"completion_tokens\": 106\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your event has been created! Here are the details:\n\n- **Event Name:** Beatles Concert\n- **Description:** Beatles concert at Madison Square Garden\n- **Start Time:** 2023-09-11 20:00:00\n- **End Time:** 2023-09-11 23:00:00\n- **Location:** Madison Square Garden",
+                    "metadata": {
+                        "reflection": "Your event has been created! Here are the details:\n\n- **Event Name:** Beatles Concert\n- **Description:** Beatles concert at Madison Square Garden\n- **Start Time:** 2023-09-11 20:00:00\n- **End Time:** 2023-09-11 23:00:00\n- **Location:** Madison Square Garden",
+                        "response": "{\n  \"id\": \"b76fe4387875498196b222002fbd8d24\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727105823,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your event has been created! Here are the details:\\n\\n- **Event Name:** Beatles Concert\\n- **Description:** Beatles concert at Madison Square Garden\\n- **Start Time:** 2023-09-11 20:00:00\\n- **End Time:** 2023-09-11 23:00:00\\n- **Location:** Madison Square Garden\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3518,\n    \"total_tokens\": 3612,\n    \"completion_tokens\": 94\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 0,
+        "actions": 1,
+        "valid_actions": 0,
+        "bad_actions": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "action_precision": 0.0,
+        "bad_action_rate": 1.0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

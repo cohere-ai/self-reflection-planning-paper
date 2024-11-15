@@ -1,0 +1,413 @@
+{
+    "name": "golden_conversation_6",
+    "conversation_id": "6",
+    "suites_used": [
+        "AccountTools",
+        "Messages"
+    ],
+    "apis_used": [
+        "SendMessage",
+        "RegisterUser",
+        "QueryUser"
+    ],
+    "scenario": "The user creates a new account then wants to see if their friends have accounts as well. They have their email address, so they use (QueryUser) to look up their username and send them a message (SendMesage).",
+    "user": {
+        "username": "hestler",
+        "email": "j.hester@gahoo.com",
+        "phone": "708-340-0190",
+        "name": "Julian Hester",
+        "password": "Meizuch4uu"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hello, I would like to create a new account. I heard some of my friends are on the platform."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, in order to create an account, I will need a valid email address, a username, and a password. Optionally, you can provide your name and phone number as well.",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, I can help you with that! To create a new account, I will need some information from you:\n\n1. Username\n2. Password\n3. Email\n4. Name (optional)\n5. Phone number (optional, format: xxx-xxx-xxxx)\n\nPlease provide this information, and I will guide you through the process.",
+                    "metadata": {
+                        "reflection": "Sure, I can help you with that! To create a new account, I will need some information from you:\n\n1. Username\n2. Password\n3. Email\n4. Name (optional)\n5. Phone number (optional, format: xxx-xxx-xxxx)\n\nPlease provide this information, and I will guide you through the process.",
+                        "response": "{\n  \"id\": \"44a99475725c4c6eb300b74dfa498866\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116620,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, I can help you with that! To create a new account, I will need some information from you:\\n\\n1. Username\\n2. Password\\n3. Email\\n4. Name (optional)\\n5. Phone number (optional, format: xxx-xxx-xxxx)\\n\\nPlease provide this information, and I will guide you through the process.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3633,\n    \"total_tokens\": 3712,\n    \"completion_tokens\": 79\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Sure, is hestler available? You can use j.hester@gahoo.com as my email address. My name is Julian Hester. Can you set my password to Meizuch4uu?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Done, I have created your account. Your username is hestler. I have logged you into the platform.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "hestler",
+                            "password": "Meizuch4uu",
+                            "email": "j.hester@gahoo.com",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "hestler",
+                            "email": "j.hester@gahoo.com",
+                            "phone": null,
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "username": "hestler"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "Step 1: Check if the username is available.\n#V1 = QueryUser[username=\"hestler\"]\nStep 2: Register the user if the username is available.\n#V2 = RegisterUser[username=\"hestler\", password=\"Meizuch4uu\", email=\"j.hester@gahoo.com\", name=\"Julian Hester\"]",
+                        "response": "{\n  \"id\": \"b1adf24b411041efae3cfa0301b95bf3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727114840,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"j8rlFzMUy\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"hestler\\\"}\"\n            }\n          },\n          {\n            \"id\": \"mKMZIbWSc\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"RegisterUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"hestler\\\", \\\"password\\\": \\\"Meizuch4uu\\\", \\\"email\\\": \\\"j.hester@gahoo.com\\\", \\\"name\\\": \\\"Julian Hester\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3811,\n    \"total_tokens\": 3884,\n    \"completion_tokens\": 73\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "RegisterUser",
+                        "parameters": {
+                            "username": "jhester",
+                            "password": "Meizuch4uu",
+                            "email": "j.hester@gahoo.com",
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792",
+                        "user": {
+                            "username": "jhester",
+                            "email": "j.hester@gahoo.com",
+                            "phone": null,
+                            "name": "Julian Hester"
+                        }
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"7c517396f2bf49b5884d5498de2d1b06\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727114843,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"W84l8oi3C\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"RegisterUser\",\n              \"arguments\": \"{\\\"username\\\": \\\"jhester\\\", \\\"password\\\": \\\"Meizuch4uu\\\", \\\"email\\\": \\\"j.hester@gahoo.com\\\", \\\"name\\\": \\\"Julian Hester\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3482,\n    \"total_tokens\": 3538,\n    \"completion_tokens\": 56\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your account has been created successfully! Your username is jhester.",
+                    "metadata": {
+                        "reflection": "Your account has been created successfully! Your username is jhester.",
+                        "response": "{\n  \"id\": \"bbecfe2a47fe4b52a2c7e314789f0776\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727114847,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your account has been created successfully! Your username is jhester.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3637,\n    \"total_tokens\": 3651,\n    \"completion_tokens\": 14\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Great, can you check if my friends are on the platform as well? Their emails are justintime@fmail.com steinki89@fexter.com and bob.candi@fmail.com"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Sure, it looks like Justin and Michael are on the platform. Unfortunately, the third email address returned no results.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "justinkool",
+                                "email": "justintime@fmail.com",
+                                "phone": "123-456-7890",
+                                "name": "Justin Kool"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "email": "steinki89@fexter.com"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "mstein",
+                                "email": "steinki89@fexter.com",
+                                "phone": "937-272-9068",
+                                "name": "Michael Steinke"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "email": "bob.candi@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "users": []
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "email": "justintime@fmail.com",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "justinkool",
+                                "email": "justintime@fmail.com",
+                                "phone": "123-456-7890",
+                                "name": "Justin Kool"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Query for user information given the email addresses.\n#V1 = QueryUser[email=justintime@fmail.com]\n#V2 = QueryUser[email=steinki89@fexter.com]\n#V3 = QueryUser[email=bob.candi@fmail.com]",
+                        "response": "{\n  \"id\": \"6cc389a1fa5a418ba776e641a7f3c9f9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116638,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"mV8WARu6r\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"email\\\": \\\"justintime@fmail.com\\\"}\"\n            }\n          },\n          {\n            \"id\": \"XKdXvhR5R\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"email\\\": \\\"steinki89@fexter.com\\\"}\"\n            }\n          },\n          {\n            \"id\": \"3ievApmQQ\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryUser\",\n              \"arguments\": \"{\\\"email\\\": \\\"bob.candi@fmail.com\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4036,\n    \"total_tokens\": 4117,\n    \"completion_tokens\": 81\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "email": "steinki89@fexter.com",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "users": [
+                            {
+                                "username": "mstein",
+                                "email": "steinki89@fexter.com",
+                                "phone": "937-272-9068",
+                                "name": "Michael Steinke"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryUser",
+                        "parameters": {
+                            "email": "bob.candi@fmail.com",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "users": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I found 2 of your friends on the platform.\njustinkool: justintime@fmail.com\nmstein: steinki89@fexter.com\n\nI could not find bob.candi@fmail.com.",
+                    "metadata": {
+                        "reflection": "I found 2 of your friends on the platform.\njustinkool: justintime@fmail.com\nmstein: steinki89@fexter.com\n\nI could not find bob.candi@fmail.com.",
+                        "response": "{\n  \"id\": \"d7f7383165c44be898eef4fe610f3832\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116640,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I found 2 of your friends on the platform.\\njustinkool: justintime@fmail.com\\nmstein: steinki89@fexter.com\\n\\nI could not find bob.candi@fmail.com.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3950,\n    \"total_tokens\": 4006,\n    \"completion_tokens\": 56\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Ah, that's too bad. Can you send them a message for me? Just let them know I signed up"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "I've sent a message to Justin and Michael. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "receiver": "justinkool",
+                            "message": "Hey, I just signed up for the platform. How are you?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "receiver": "mstein",
+                            "message": "Hey, I just signed up for the platform. How are you?"
+                        }
+                    },
+                    "response": {
+                        "message_id": "5c5373e0-ecf4712d"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "justinkool",
+                            "message": "Hey, I just signed up for the platform.",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Query user information for Justin\n#V1 = QueryUser[email=justintime@fmail.com]\nStep 2: Query user information for Michael\n#V2 = QueryUser[email=steinki89@fexter.com]\nStep 3: Query user information for Bob\n#V3 = QueryUser[email=bob.candi@fmail.com]\nStep 4: Send message to Justin\n#V4 = SendMessage[receiver=justinkool, message=\"Hey, I just signed up for the platform.\"]\nStep 5: Send message to Michael\n#V5 = SendMessage[receiver=mstein, message=\"Hey, I just signed up for the platform.\"]",
+                        "response": "{\n  \"id\": \"fc12b80ed19944b48c30b000e6167142\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116648,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"DPZQYsWlt\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendMessage\",\n              \"arguments\": \"{\\\"receiver\\\": \\\"justinkool\\\", \\\"message\\\": \\\"Hey, I just signed up for the platform.\\\"}\"\n            }\n          },\n          {\n            \"id\": \"BhA0L54nX\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendMessage\",\n              \"arguments\": \"{\\\"receiver\\\": \\\"mstein\\\", \\\"message\\\": \\\"Hey, I just signed up for the platform.\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4475,\n    \"total_tokens\": 4545,\n    \"completion_tokens\": 70\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "mstein",
+                            "message": "Hey, I just signed up for the platform.",
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "message_id": "5c5373e0-ecf4712d"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Sent messages to Justin and Michael. Is there anything else you need help with?",
+                    "metadata": {
+                        "reflection": "Sent messages to Justin and Michael. Is there anything else you need help with?",
+                        "response": "{\n  \"id\": \"646b17ad1d6345739b6ca2edace74057\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727116650,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sent messages to Justin and Michael. Is there anything else you need help with?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4189,\n    \"total_tokens\": 4206,\n    \"completion_tokens\": 17\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "No that's it"
+        }
+    ],
+    "intended_apis_used": [
+        "AddAlarm",
+        "FindAlarms",
+        "QueryCalendar",
+        "SearchInbox",
+        "SendEmail"
+    ],
+    "intended_suites_used": [
+        "Alarm",
+        "Calendar",
+        "Email"
+    ],
+    "metrics": {
+        "predictions": 7,
+        "ground_truths": 6,
+        "matches": 5,
+        "actions": 3,
+        "valid_actions": 2,
+        "bad_actions": 1,
+        "precision": 0.7142857142857143,
+        "recall": 0.8333333333333334,
+        "action_precision": 0.6666666666666666,
+        "bad_action_rate": 0.3333333333333333,
+        "success": false,
+        "soft_success": 0.5555555555555557,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,371 @@
+{
+    "name": "Email-Reminder-Weather-SendEmail-2",
+    "conversation_id": "3dac15e3-932a-4251-adf7-40220fa50eb1",
+    "suites_used": [
+        "Email",
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders",
+        "CompleteReminder",
+        "SendEmail",
+        "SearchInbox"
+    ],
+    "scenario": "The user wants to send an email to their colleague with some feedback on their presentation (SendEmail). They first watch the presentation video and take some notes. They then write an email with their feedback and suggestions. They also want to add a reminder to follow up with their colleague in a week (AddReminder). They then send the email (SendEmail). They then want to see if they have any other pending tasks, so they get a list of their reminders (GetReminders). They see that they have a reminder to complete a survey that is due today. They click on the link in the reminder and complete the survey. They then mark the reminder as complete (CompleteReminder). They also want to see how the weather has changed since they started working from home, so they query the historic weather data for the past month (HistoricWeather).",
+    "user": {
+        "username": "lifeng",
+        "email": "lifeng@gahoo.com",
+        "phone": "512-322-9516",
+        "name": "Li Feng",
+        "password": "ooZ0ahKae",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "lifeng"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hi can you check my reminders."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have a reminder due today to complete the survey and a reminder due today to review Sarah's presentation.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "1f-2a3b",
+                                "task": "Complete survey",
+                                "due_date": "2023-09-11 22:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "ff-7890",
+                                "task": "Review Sarah's presentation",
+                                "due_date": "2023-09-11 22:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Take out the trash",
+                                "due_date": null,
+                                "status": "complete"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Write abstract",
+                                "due_date": "2023-09-12 00:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Call grandma",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-2a3b",
+                                "task": "Complete survey",
+                                "due_date": "2023-09-11 22:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "ff-7890",
+                                "task": "Review Sarah's presentation",
+                                "due_date": "2023-09-11 22:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "**Step 1:** Retrieve reminders associated with the user.\n#V1 = GetReminders[]",
+                        "response": "{\n  \"id\": \"8b50aa9c3be742fa807f605f0868b7ed\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729683005,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"M22lRWicb\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3672,\n    \"total_tokens\": 3689,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here are your reminders:\n\n- Take out the trash (complete)\n- Write abstract (due 2023-09-12 00:00:00)\n- Call grandma\n- Complete survey (due 2023-09-11 22:00:00)\n- Review Sarah's presentation (due 2023-09-11 22:00:00)",
+                    "metadata": {
+                        "reflection": "Here are your reminders:\n\n- Take out the trash (complete)\n- Write abstract (due 2023-09-12 00:00:00)\n- Call grandma\n- Complete survey (due 2023-09-11 22:00:00)\n- Review Sarah's presentation (due 2023-09-11 22:00:00)",
+                        "response": "{\n  \"id\": \"a304f3123c0143e2afda8ca0ade2506b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729683006,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here are your reminders:\\n\\n- Take out the trash (complete)\\n- Write abstract (due 2023-09-12 00:00:00)\\n- Call grandma\\n- Complete survey (due 2023-09-11 22:00:00)\\n- Review Sarah's presentation (due 2023-09-11 22:00:00)\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3618,\n    \"total_tokens\": 3723,\n    \"completion_tokens\": 105\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Okay, I completed the survey. Can you check for Sarah's (sarah.wolfe@myfictionalemail.com) presentation in my inbox?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I marked your reminder to complete the survey as complete. Here is an email from Sarah about her presentation with a link to a video.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "1f-2a3b"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "sender": "sarah.wolfe@myfictionalemail.com"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "b5-cf2d-5231552e",
+                                "date": "2023-09-07 13:00:00",
+                                "sender": "sarah.wolfe@myfictionalemail.com",
+                                "receivers": [
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "Your invoices",
+                                "body": "Hey Li, I recorded a practice run of my presentation, can you take a look?\n\nMyCloudDocs.com/presentation-67890.mp4"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchInbox",
+                        "parameters": {
+                            "query": "presentation",
+                            "sender": "sarah.wolfe@myfictionalemail.com",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "emails": [
+                            {
+                                "email_id": "b5-cf2d-5231552e",
+                                "date": "2023-09-07 13:00:00",
+                                "sender": "sarah.wolfe@myfictionalemail.com",
+                                "receivers": [
+                                    "lifeng@gahoo.com"
+                                ],
+                                "subject": "Your invoices",
+                                "body": "Hey Li, I recorded a practice run of my presentation, can you take a look?\n\nMyCloudDocs.com/presentation-67890.mp4"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Search for Sarah's presentation in the inbox.\n#V1 = SearchInbox[{\"query\": \"presentation\", \"sender\": \"sarah.wolfe@myfictionalemail.com\"}]",
+                        "response": "{\n  \"id\": \"4a6529362742485d8e6f8d639bbaa36c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729683087,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"EyppSRBi2\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchInbox\",\n              \"arguments\": \"{\\\"query\\\": \\\"presentation\\\", \\\"sender\\\": \\\"sarah.wolfe@myfictionalemail.com\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3931,\n    \"total_tokens\": 3973,\n    \"completion_tokens\": 42\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I found an email from Sarah Wolfe with the subject \"Your invoices\" sent on September 7th. The email says:\n\n\"Hey Li, I recorded a practice run of my presentation, can you take a look?\n\nMyCloudDocs.com/presentation-67890.mp4\"",
+                    "metadata": {
+                        "reflection": "I found an email from Sarah Wolfe with the subject \"Your invoices\" sent on September 7th. The email says:\n\n\"Hey Li, I recorded a practice run of my presentation, can you take a look?\n\nMyCloudDocs.com/presentation-67890.mp4\"",
+                        "response": "{\n  \"id\": \"b104e6d6dd0a4a1093822ae8b556d290\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729683089,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I found an email from Sarah Wolfe with the subject \\\"Your invoices\\\" sent on September 7th. The email says:\\n\\n\\\"Hey Li, I recorded a practice run of my presentation, can you take a look?\\n\\nMyCloudDocs.com/presentation-67890.mp4\\\"\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3771,\n    \"total_tokens\": 3841,\n    \"completion_tokens\": 70\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Can you reply to Sarah saying that it's mostly good but she should talk slower and reduce the number of words on her slides?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok I have responded to her email about her presentation with your feedback.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "sarah.wolfe@myfictionalemail.com"
+                            ],
+                            "subject": "Re: Your presentation",
+                            "body": "Hi Sarah,\n\nI watched your presentation video and I think it's mostly good. I think you should talk slower and reduce the number of words on your slides.\n\nThanks,\nLi"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "sarah.wolfe@myfictionalemail.com"
+                            ],
+                            "subject": "Re: Your presentation",
+                            "body": "Hi Sarah,\n\nThanks for sharing it with me. The presentation is mostly good but you should talk slower and reduce the number of words on your slides.\n\nBest,\n\nLi",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Mark the survey reminder complete.\n#V1 = CompleteReminder[{\"reminder_id\": \"1f-2a3b\"}]\n\nStep 2: Search Sarah's (sarah.wolfe@myfictionalemail.com) presentation in the inbox.\n#V2 = SearchInbox[{\"sender\": \"sarah.wolfe@myfictionalemail.com\"}]\n\nStep 3: Send an email to Sarah with my feedback.\n#V3 = SendEmail[{\"to\": \"sarah.wolfe@myfictionalemail.com\", \"subject\": \"Re: Your presentation\", \"body\": \"Hi Sarah,\\n\\nThanks for sharing it with me. The presentation is mostly good but you should talk slower and reduce the number of words on your slides.\\n\\nBest,\\n\\nLi\"}]",
+                        "response": "{\n  \"id\": \"d6f21289c3be48979ae64108f87fa9b4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729683192,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"rmtOFTh5t\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendEmail\",\n              \"arguments\": \"{\\\"to\\\": [\\\"sarah.wolfe@myfictionalemail.com\\\"], \\\"subject\\\": \\\"Re: Your presentation\\\", \\\"body\\\": \\\"Hi Sarah,\\\\n\\\\nThanks for sharing it with me. The presentation is mostly good but you should talk slower and reduce the number of words on your slides.\\\\n\\\\nBest,\\\\n\\\\nLi\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4414,\n    \"total_tokens\": 4504,\n    \"completion_tokens\": 90\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I sent a reply to Sarah saying that the presentation is mostly good but she should talk slower and reduce the number of words on her slides.",
+                    "metadata": {
+                        "reflection": "I sent a reply to Sarah saying that the presentation is mostly good but she should talk slower and reduce the number of words on her slides.",
+                        "response": "{\n  \"id\": \"656c57553b1941db8079a745ce2e4f30\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729683196,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I sent a reply to Sarah saying that the presentation is mostly good but she should talk slower and reduce the number of words on her slides.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4036,\n    \"total_tokens\": 4064,\n    \"completion_tokens\": 28\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Awesome, can you mark the reminder as complete?"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "I have marked your reminder to review Sarah's presentation as complete.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "ff-7890"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CompleteReminder",
+                        "parameters": {
+                            "reminder_id": "ff-7890",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Mark the reminder as complete.\n#V1 = CompleteReminder[reminder_id=\"ff-7890\"]",
+                        "response": "{\n  \"id\": \"dbb1e97dbbe84cc5a372730b668d79ef\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729683268,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"nwssMYgKi\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"CompleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"ff-7890\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4421,\n    \"total_tokens\": 4450,\n    \"completion_tokens\": 29\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have marked the reminder to review Sarah's presentation as complete.",
+                    "metadata": {
+                        "reflection": "I have marked the reminder to review Sarah's presentation as complete.",
+                        "response": "{\n  \"id\": \"992cea301bef4b78befc2c99bb6ddf8a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729683271,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have marked the reminder to review Sarah's presentation as complete.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4135,\n    \"total_tokens\": 4149,\n    \"completion_tokens\": 14\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SendEmail",
+        "AddReminder",
+        "CompleteReminder",
+        "GetReminders",
+        "HistoricWeather"
+    ],
+    "intended_suites_used": [
+        "Email",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 5,
+        "matches": 4,
+        "actions": 2,
+        "valid_actions": 2,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 0.8,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.8,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

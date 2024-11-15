@@ -1,0 +1,382 @@
+{
+    "name": "Calendar-Reminder-Weather-DeleteReminder-1",
+    "conversation_id": "cf1b6080-50b2-41fd-be5f-e9adfbdc2a65",
+    "suites_used": [
+        "Calendar",
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders",
+        "CreateEvent",
+        "DeleteReminder",
+        "AddReminder"
+    ],
+    "scenario": "The user is planning a trip to Paris next week. They want to create an event for their flight departure and arrival (CreateEvent). They also want to create a reminder to pack their passport and other essentials (AddReminder). They want to see the weather forecast for Paris to decide what clothes to bring (ForecastWeather). They see that it will be sunny and warm, so they want to modify their reminder to include sunscreen and sunglasses (ModifyEvent). They also want to delete the reminder for their dentist appointment that they had scheduled for the same week (DeleteReminder).",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ahhchiu"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hi can you make an event for my flight departure and arrival to and from Paris? Both flights are 10 hours and I depart tomorrow at 8 am and arrive back here on 9/20 at 3 pm."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I added events for your flight departure and arrival to your calendar.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Flight to Paris",
+                            "event_type": "event",
+                            "start_time": "2023-09-12 08:00:00",
+                            "end_time": "2023-09-12 18:00:00"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Flight to San Francisco",
+                            "event_type": "event",
+                            "start_time": "2023-09-20 03:00:00",
+                            "end_time": "2023-09-20 13:00:00"
+                        }
+                    },
+                    "response": {
+                        "event_id": "03c93f31-b8a6"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Flight to Paris",
+                            "event_type": "event",
+                            "description": "Departure flight to Paris",
+                            "start_time": "2023-09-12 08:00:00",
+                            "end_time": "2023-09-12 18:00:00",
+                            "location": "San Francisco Airport",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Create an event for the departure flight to Paris\n#V1 = CreateEvent(name=\"Flight to Paris\", event_type=\"event\", description=\"Departure flight to Paris\", start_time=\"2023-09-12 08:00:00\", end_time=\"2023-09-12 18:00:00\", location=\"San Francisco Airport\")\n\nStep 2: Create an event for the return flight from Paris\n#V2 = CreateEvent(name=\"Flight from Paris\", event_type=\"event\", description=\"Return flight from Paris\", start_time=\"2023-09-20 15:00:00\", end_time=\"2023-09-21 01:00:00\", location=\"San Francisco Airport\")",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Flight from Paris",
+                            "event_type": "event",
+                            "description": "Return flight from Paris",
+                            "start_time": "2023-09-20 15:00:00",
+                            "end_time": "2023-09-20 25:00:00",
+                            "location": "San Francisco Airport",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": null,
+                    "exception": "time data '2023-09-20 25:00:00' does not match format '%Y-%m-%d %H:%M:%S'",
+                    "metadata": {
+                        "content": "\n\nGreat! I've created an event for your departure flight to Paris. Now, let's create an event for your return flight.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Flight from Paris",
+                            "event_type": "event",
+                            "description": "Return flight from Paris",
+                            "start_time": "2023-09-20 05:00:00",
+                            "end_time": "2023-09-20 15:00:00",
+                            "location": "San Francisco Airport",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "03c93f31-b8a6"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nI apologize for the error in creating the second event. Let me correct that and create the return flight event with the correct time format.\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've created two events for your flights to and from Paris. Here's a summary of what I've done:\n\n1. Flight to Paris:\n   - Event name: Flight to Paris\n   - Date: Tomorrow (September 12, 2023)\n   - Departure time: 8:00 AM\n   - Arrival time: 6:00 PM (assuming a 10-hour flight)\n   - Location: San Francisco Airport\n\n2. Flight from Paris:\n   - Event name: Flight from Paris\n   - Date: September 20, 2023\n   - Departure time: 5:00 AM (calculated based on the 10-hour flight duration and 3:00 PM arrival)\n   - Arrival time: 3:00 PM\n   - Location: San Francisco Airport\n\nBoth events have been successfully added to your calendar. The flight to Paris has been assigned the event ID 'e149636f-d9ca', and the return flight has been assigned the event ID '03c93f31-b8a6'.\n\nIs there anything else you'd like me to do regarding your trip to Paris?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Can you also set a reminder to pack my bags at 8 pm tonight? Also check if there are any reminders set during my trip?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Okay I added a reminder for you to pack your bags at 8 pm tonight. You have a reminder on 9/15 at 2 pm for a dentist appiontment.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Dentist appointment",
+                                "due_date": "2023-09-15 14:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "Pack bags",
+                            "due_date": "2023-09-11 20:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Pack bags for Paris trip",
+                            "due_date": "2023-09-11 20:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Add a reminder to pack bags\n#V1 = AddReminder[task=\"Pack bags for Paris trip\", due_date=\"2023-09-11 20:00:00\"]\n\nStep 2: Get all current reminders\n#V2 = GetReminders[]\n\nStep 3: Query your calendar for the duration of your trip\n#V3 = QueryCalendar[start_time=\"2023-09-12 08:00:00\", end_time=\"2023-09-20 13:00:00\"]",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "Buy groceries",
+                                "due_date": "2023-09-11 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "Call Amy",
+                                "due_date": "2023-09-11 23:59:59",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Dentist appointment",
+                                "due_date": "2023-09-15 14:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "12-949b",
+                                "task": "Review exam notes",
+                                "due_date": "2023-09-08 20:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "e3-793f",
+                                "task": "Practice exercises",
+                                "due_date": "2023-09-08 20:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "5b-dd80",
+                                "task": "Pack bags for Paris trip",
+                                "due_date": "2023-09-11 20:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've set a reminder for you to pack your bags at 8 PM tonight. The reminder has been added successfully.\n\nRegarding your request to check for reminders during your trip, I've retrieved all your current reminders. Based on your travel dates (departing tomorrow, September 12th, and returning on September 20th), there is one reminder set during your trip:\n\n- Dentist appointment on September 15th at 2:00 PM\n\nYou might want to reschedule this appointment or make arrangements if you'll be away during this time.\n\nIs there anything else you'd like me to do regarding your reminders or trip preparations?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Delete the reminder for the dentist appointment."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Okay I have deleted the reminder.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "0b-5119"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "0b-5119",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Respond to user with: \"<function_calls>\n<invoke>\n<tool_name>DeleteReminder</tool_name>\n<parameters>\n<reminder_id>0b-5119</reminder_id>\n</parameters>\n</invoke>\n</function_calls>\"",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI've successfully deleted the reminder for your dentist appointment. Is there anything else you would like me to do?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "CreateEvent",
+        "ModifyEvent",
+        "AddReminder",
+        "DeleteReminder",
+        "ForecastWeather"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 6,
+        "ground_truths": 5,
+        "matches": 4,
+        "actions": 5,
+        "valid_actions": 3,
+        "bad_actions": 1,
+        "precision": 0.6666666666666666,
+        "recall": 0.8,
+        "action_precision": 0.6,
+        "bad_action_rate": 0.2,
+        "success": false,
+        "soft_success": 0.6400000000000001,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

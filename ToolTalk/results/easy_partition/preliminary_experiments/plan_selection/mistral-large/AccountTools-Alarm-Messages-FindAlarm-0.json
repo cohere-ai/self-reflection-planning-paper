@@ -1,0 +1,341 @@
+{
+    "name": "AccountTools-Alarm-Messages-FindAlarm-0",
+    "conversation_id": "2527d668-fc2f-461d-8bb9-53ec3274c8ba",
+    "suites_used": [
+        "Alarm",
+        "AccountTools"
+    ],
+    "apis_used": [
+        "UserLogin",
+        "AddAlarm",
+        "DeleteAlarm",
+        "FindAlarms"
+    ],
+    "scenario": "The user wants to set an alarm for 8:00 am to catch a flight. They use UserLogin to log in to the app. They use FindAlarms to check if they already have an alarm set for that time. They see that they have an alarm set for 7:30 am, but they want to change it. They use DeleteAlarm to remove the old alarm. They use AddAlarm to set a new alarm for 8:00 am..",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have a morning flight tomorrow. Can you set an alarm for 8:00 am?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, I notice you're not logged in. Can you log in first?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "08:00:00"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "Certainly! I can help with that.\n\nStep 1: Set an alarm for 8:00 am.\n#V1 = AddAlarm[time=\"08:00:00\"]",
+                        "response": "{\n  \"id\": \"a1777b5af3d14b83baf2d1d90e631f26\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727117049,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"QHraAKT9p\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddAlarm\",\n              \"arguments\": \"{\\\"time\\\": \\\"08:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3693,\n    \"total_tokens\": 3721,\n    \"completion_tokens\": 28\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You need to log in to use this feature.",
+                    "metadata": {
+                        "reflection": "You need to log in to use this feature.",
+                        "response": "{\n  \"id\": \"c45072f060874c24a17e4f18a252b4d1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727117051,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"You need to log in to use this feature.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3404,\n    \"total_tokens\": 3414,\n    \"completion_tokens\": 10\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Sure, my username is ahhchiu and my password is eehahTe2t."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Great, you're logged in. I've set an alarm for you at 8:00 am. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "ahhchiu",
+                            "password": "eehahTe2t"
+                        }
+                    },
+                    "response": {
+                        "session_token": "e149636f-d9ca-0792"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "time": "08:00:00"
+                        }
+                    },
+                    "response": {
+                        "alarm_id": "5bff-dd80"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddAlarm",
+                        "parameters": {
+                            "time": "08:00:00"
+                        }
+                    },
+                    "response": null,
+                    "exception": "User is not logged in",
+                    "metadata": {
+                        "reflection": "Step 1: Log in user\n#V1 = UserLogin[{\"username\": \"ahhchiu\", \"password\": \"eehahTe2t\"}]",
+                        "response": "{\n  \"id\": \"6e3d8185f6b14913ba84aa04066628eb\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727113190,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"NevvexlhF\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddAlarm\",\n              \"arguments\": \"{\\\"time\\\": \\\"08:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3723,\n    \"total_tokens\": 3751,\n    \"completion_tokens\": 28\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I'm sorry, but I can't set an alarm for you right now. You need to be logged in to do that.",
+                    "metadata": {
+                        "reflection": "I'm sorry, but I can't set an alarm for you right now. You need to be logged in to do that.",
+                        "response": "{\n  \"id\": \"51e1a4742cc248dcb434334c23cb0783\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727113192,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I'm sorry, but I can't set an alarm for you right now. You need to be logged in to do that.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3444,\n    \"total_tokens\": 3472,\n    \"completion_tokens\": 28\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Actually, can you check what alarms I have set? I think I need to delete some."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "You currently have alarms set for 7:30, 7:40, 7:50, 8:00, and 8:30 am. Which one would you like to delete?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "FindAlarms",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "alarms": [
+                            {
+                                "alarm_id": "593d-49e9",
+                                "time": "07:30:00"
+                            },
+                            {
+                                "alarm_id": "4631-000e",
+                                "time": "07:40:00"
+                            },
+                            {
+                                "alarm_id": "4e20-0a4c",
+                                "time": "07:50:00"
+                            },
+                            {
+                                "alarm_id": "5bff-dd80",
+                                "time": "08:00:00"
+                            },
+                            {
+                                "alarm_id": "987a-5fa5",
+                                "time": "08:30:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "FindAlarms",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792"
+                        }
+                    },
+                    "response": {
+                        "alarms": [
+                            {
+                                "alarm_id": "593d-49e9",
+                                "time": "07:30:00"
+                            },
+                            {
+                                "alarm_id": "4631-000e",
+                                "time": "07:40:00"
+                            },
+                            {
+                                "alarm_id": "4e20-0a4c",
+                                "time": "07:50:00"
+                            },
+                            {
+                                "alarm_id": "987a-5fa5",
+                                "time": "08:30:00"
+                            },
+                            {
+                                "alarm_id": "5bff-dd80",
+                                "time": "08:00:00"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Sure, I can help with that. Here is my plan:\n\nStep 1: Find all alarms set by the user.\n#V1 = FindAlarms[]\n\nStep 2: Present the alarms to the user.\n#V2 = Search[List the alarms, given #V1]\n\nDoes this plan sound good to you?",
+                        "response": "{\n  \"id\": \"f20bb1a5cd1f4a9cae47fa4781948d76\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727113197,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"SpUnL4y08\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"FindAlarms\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3991,\n    \"total_tokens\": 4007,\n    \"completion_tokens\": 16\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "You have 5 alarms set:\n\n1. 07:30:00\n2. 07:40:00\n3. 07:50:00\n4. 08:30:00\n5. 08:00:00\n\nWould you like to delete any?",
+                    "metadata": {
+                        "reflection": "You have 5 alarms set:\n\n1. 07:30:00\n2. 07:40:00\n3. 07:50:00\n4. 08:30:00\n5. 08:00:00\n\nWould you like to delete any?",
+                        "response": "{\n  \"id\": \"05349a94ae164322901a995eaef3823b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727113198,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"You have 5 alarms set:\\n\\n1. 07:30:00\\n2. 07:40:00\\n3. 07:50:00\\n4. 08:30:00\\n5. 08:00:00\\n\\nWould you like to delete any?\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3806,\n    \"total_tokens\": 3884,\n    \"completion_tokens\": 78\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Can you delete all the old ones?"
+        },
+        {
+            "index": 7,
+            "role": "assistant",
+            "text": "I have deleted all of your alarms except for the 8:00 am alarm. Is there anything else I can help you with?",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "alarm_id": "593d-49e9"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "alarm_id": "4631-000e"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "alarm_id": "4e20-0a4c"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteAlarm",
+                        "parameters": {
+                            "session_token": "e149636f-d9ca-0792",
+                            "alarm_id": "987a-5fa5"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Sure, I will delete all the alarms except for the one at 8:00 am.",
+                    "metadata": {
+                        "reflection": "Sure, I will delete all the alarms except for the one at 8:00 am.",
+                        "response": "{\n  \"id\": \"9f20bebf307b4dd78dde512a7b688ec9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1727117065,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Sure, I will delete all the alarms except for the one at 8:00 am.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4161,\n    \"total_tokens\": 4182,\n    \"completion_tokens\": 21\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 8,
+            "role": "user",
+            "text": "No, that's all. Thanks!"
+        }
+    ],
+    "intended_apis_used": [
+        "GetAccountInformation",
+        "UserLogin",
+        "AddAlarm",
+        "DeleteAlarm",
+        "FindAlarms",
+        "SendMessage"
+    ],
+    "intended_suites_used": [
+        "AccountTools",
+        "Alarm",
+        "Messages"
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 7,
+        "matches": 1,
+        "actions": 2,
+        "valid_actions": 0,
+        "bad_actions": 0,
+        "precision": 0.3333333333333333,
+        "recall": 0.14285714285714285,
+        "action_precision": 0.0,
+        "bad_action_rate": 0.0,
+        "success": false,
+        "soft_success": 0.14285714285714285,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 0.5,
+        "api_name_precision": 1.0
+    }
+}

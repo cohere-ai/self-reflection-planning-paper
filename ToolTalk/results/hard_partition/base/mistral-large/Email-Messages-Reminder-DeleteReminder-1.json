@@ -1,0 +1,310 @@
+{
+    "name": "Email-Messages-Reminder-DeleteReminder-1",
+    "conversation_id": "25921b06-9668-4be7-b28c-d8432db6103b",
+    "suites_used": [
+        "Email",
+        "Reminder"
+    ],
+    "apis_used": [
+        "GetReminders",
+        "SendEmail",
+        "DeleteReminder",
+        "AddReminder"
+    ],
+    "scenario": "The user wants to delete a reminder for a task that they have postponed to a later date. They first log in to the app and get a session_token. They then use the GetReminders API to see all their reminders. They find the reminder_id of the task they want to delete and use the DeleteReminder API to remove it. They then use the AddReminder API to create a new reminder for the same task, but with a different due_date. They then use the SearchInbox API to look for any emails from the task assigner, using the assigner's email address as the sender parameter and the task name as the query. They open the most recent email and use the SendEmail API to inform the assigner that they have postponed the task and updated the reminder. They then use the SearchMessages API to look for any messages from the assigner, using the assigner's username as the sender parameter and the task name as the query. They open the most recent message and use the SendMessage API to send an apology message that they have postponed the task and updated the reminder.",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I couldn't finish my report on time. Can you delete my reminder to finish the report by 8 am today?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Okay I deleted your reminder to finish your report at 8 am today.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Finish report",
+                                "due_date": "2023-09-11 08:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "reminder_id": "0b-5119"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "GetReminders",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminders": [
+                            {
+                                "reminder_id": "0b-5119",
+                                "task": "Finish report",
+                                "due_date": "2023-09-11 08:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "59-80bc",
+                                "task": "apologize to landlord",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "14-579a",
+                                "task": "submit blog post",
+                                "due_date": "2023-09-11 10:00:00",
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "98-d687",
+                                "task": "buy Ana a present",
+                                "due_date": null,
+                                "status": "pending"
+                            },
+                            {
+                                "reminder_id": "1f-8a4c",
+                                "task": "Buy Brody a birthday present",
+                                "due_date": "2023-08-27 00:00:00",
+                                "status": "pending"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"d32fd79b12c3462fa3e9515d6b86d5f3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147940,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"ORXCIcywo\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"GetReminders\",\n              \"arguments\": \"{}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3340,\n    \"total_tokens\": 3357,\n    \"completion_tokens\": 17\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "DeleteReminder",
+                        "parameters": {
+                            "reminder_id": "0b-5119",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"902e28fbbc3544b5b01b2109c6ceb623\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147941,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"xVSsDVy3r\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteReminder\",\n              \"arguments\": \"{\\\"reminder_id\\\": \\\"0b-5119\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3644,\n    \"total_tokens\": 3674,\n    \"completion_tokens\": 30\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Your reminder to finish the report by 8 am today has been deleted.",
+                    "metadata": {
+                        "reflection": "Your reminder to finish the report by 8 am today has been deleted.",
+                        "response": "{\n  \"id\": \"597268b3ef204fb4a0bcf33981a3911e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147943,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Your reminder to finish the report by 8 am today has been deleted.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3714,\n    \"total_tokens\": 3729,\n    \"completion_tokens\": 15\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Can you send an email asking the professor (profx@gahoo.com) for an extension to 3 pm?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok I have sent an email to your professor asking for an extension for the deadline for the report to 3pm.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "profx@gahoo.com"
+                            ],
+                            "subject": "Extension for report",
+                            "body": "Hey professor, I couldn't finish my report on time. Can I have an extension to 3 pm today? Thanks, Hugo"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "profx@gahoo.com"
+                            ],
+                            "subject": "Request for Extension",
+                            "body": "Dear Professor X,\n\nI am writing to request an extension for my report. I was unable to finish it on time and would greatly appreciate it if you could extend the deadline to 3 pm today.\n\nThank you for your understanding.\n\nBest regards,\nSal C.",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"acc1b2c4fe5c4b22b7b03ff63281c6fc\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147943,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"i6ZI0KN8i\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendEmail\",\n              \"arguments\": \"{\\\"to\\\": [\\\"profx@gahoo.com\\\"], \\\"subject\\\": \\\"Request for Extension\\\", \\\"body\\\": \\\"Dear Professor X,\\\\n\\\\nI am writing to request an extension for my report. I was unable to finish it on time and would greatly appreciate it if you could extend the deadline to 3 pm today.\\\\n\\\\nThank you for your understanding.\\\\n\\\\nBest regards,\\\\nSal C.\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3567,\n    \"total_tokens\": 3668,\n    \"completion_tokens\": 101\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I sent an email to your professor asking for an extension to 3 pm.",
+                    "metadata": {
+                        "reflection": "I sent an email to your professor asking for an extension to 3 pm.",
+                        "response": "{\n  \"id\": \"86f1f9c6c5de4e5b8666bb008ca1e820\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147946,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I sent an email to your professor asking for an extension to 3 pm.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3724,\n    \"total_tokens\": 3740,\n    \"completion_tokens\": 16\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Set a reminder to check my email in an hour."
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "I have set a reminder to check your email at 10 am.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "task": "check your email",
+                            "due_date": "2023-09-11 10:00:00"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "AddReminder",
+                        "parameters": {
+                            "task": "Check email",
+                            "due_date": "2023-09-11 10:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "reminder_id": "5b-dd80"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"d5420eb2b96f490d8a7b3ba594c57c9d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147947,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"9Ir7xYEgU\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"AddReminder\",\n              \"arguments\": \"{\\\"task\\\": \\\"Check email\\\", \\\"due_date\\\": \\\"2023-09-11 10:00:00\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3726,\n    \"total_tokens\": 3774,\n    \"completion_tokens\": 48\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I have set a reminder to check your email in an hour.",
+                    "metadata": {
+                        "reflection": "I have set a reminder to check your email in an hour.",
+                        "response": "{\n  \"id\": \"4a8aa79e882d4b1d9483922d00972235\",\n  \"object\": \"chat.completion\",\n  \"created\": 1726147949,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I have set a reminder to check your email in an hour.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3822,\n    \"total_tokens\": 3835,\n    \"completion_tokens\": 13\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchInbox",
+        "SendEmail",
+        "SearchMessages",
+        "SendMessage",
+        "AddReminder",
+        "DeleteReminder",
+        "GetReminders"
+    ],
+    "intended_suites_used": [
+        "Email",
+        "Messages",
+        "Reminder"
+    ],
+    "metrics": {
+        "predictions": 4,
+        "ground_truths": 4,
+        "matches": 4,
+        "actions": 3,
+        "valid_actions": 3,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

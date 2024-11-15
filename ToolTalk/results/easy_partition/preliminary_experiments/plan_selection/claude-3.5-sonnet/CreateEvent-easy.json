@@ -1,0 +1,174 @@
+{
+    "name": "CreateEvent-easy",
+    "conversation_id": "0be430e6-236f-432c-9287-82666ef1b1a3",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "CreateEvent"
+    ],
+    "scenario": "CreateEvent easy scenario",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I just got tickets for a Beatles concert this Friday. Can you create an event for me?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when is the concert?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Certainly! I'd be happy to create an event for your Beatles concert this Friday. To do this, we'll need to use the CreateEvent tool. However, we'll need some more information from you to create the event properly. Let's go through this step by step.\n\nStep 1: Create the event using the information we have.\n\n#V1 = CreateEvent(\n    name=\"Beatles Concert\",\n    event_type=\"event\",\n    description=\"Attending a Beatles concert\",\n    start_time=\"2023-09-15 20:00:00\",  # Assuming a typical concert start time of 8 PM\n    end_time=\"2023-09-15 23:00:00\",    # Assuming a 3-hour duration\n    location=\"To be confirmed\"\n)\n\nNow, I'll explain the choices I made and what additional information we might need:\n\n1. Name: I've set it as \"Beatles Concert\".\n2. Event Type: I've set it as \"event\" since it's not a meeting.\n3. Description: I've added a basic description.\n4. Start Time: I've assumed the concert is this Friday (September 15, 2023) at 8 PM. We'll need to confirm this.\n5. End Time: I've assumed a 3-hour duration, ending at 11 PM. This might need adjustment.\n6. Location: I've set it as \"To be confirmed\" because we don't know the venue yet.\n\nLet me know if you'd like to adjust any of these details. Specifically, it would be helpful if you could provide:\n\n1. The exact start time of the concert\n2. The expected duration or end time\n3. The venue or location of the concert\n\nOnce you provide this information, I can update the event for you. Would you like to provide these details now?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It goes from 8-11 at Madison Square Garden."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've created the event for you.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "UserLogin",
+                        "parameters": {
+                            "username": "olivedo",
+                            "password": ""
+                        }
+                    },
+                    "response": null,
+                    "exception": "Only one user can be logged in at a time. Current user is olivedo.",
+                    "metadata": {
+                        "content": "Certainly! I'd be happy to create an event for your Beatles concert this Friday. I'll use the information you've provided to set up the event in your calendar. Let me create a plan to do this for you.\n\nPlan:\nStep 1: Log in to the user's account.\n#V1 = UserLogin(username=\"olivedo\", password=\"\")\n\nStep 2: Create the event for the Beatles concert.\n#V2 = CreateEvent(\n    name=\"Beatles Concert\",\n    event_type=\"event\",\n    description=\"Attending a Beatles concert at Madison Square Garden\",\n    start_time=\"2023-09-15 20:00:00\",\n    end_time=\"2023-09-15 23:00:00\",\n    location=\"Madison Square Garden\"\n)\n\nStep 3: Confirm the event has been created by querying the calendar.\n#V3 = QueryCalendar(start_time=\"2023-09-15 00:00:00\", end_time=\"2023-09-15 23:59:59\")\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-15 00:00:00",
+                            "end_time": "2023-09-15 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": []
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nGreat! I'd be happy to create an event for your Beatles concert this Friday. Before we proceed, I'll need to create a plan to add this event to your calendar. Here's the step-by-step plan:\n\nStep 1: Determine the exact date for this Friday.\n#V1 = QueryCalendar(start_time=\"2023-09-15 00:00:00\", end_time=\"2023-09-15 23:59:59\")\n\nStep 2: Create the event in your calendar.\n#V2 = CreateEvent(name=\"Beatles Concert\", event_type=\"event\", description=\"Beatles concert at Madison Square Garden\", start_time=\"2023-09-15 20:00:00\", end_time=\"2023-09-15 23:00:00\", location=\"Madison Square Garden\")\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "description": "Beatles concert at Madison Square Garden",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "\n\nCertainly! I'd be happy to create an event for your Beatles concert this Friday. I've checked your calendar, and it looks like you don't have any other events scheduled for that day. Let's go ahead and add this exciting concert to your calendar.\n\nHere's the plan to create the event:\n\nStep 1: Create the event for the Beatles concert.\n#V1 = CreateEvent[name=\"Beatles Concert\", event_type=\"event\", description=\"Beatles concert at Madison Square Garden\", start_time=\"2023-09-15 20:00:00\", end_time=\"2023-09-15 23:00:00\", location=\"Madison Square Garden\"]\n\nNow, let's execute this plan:\n\n",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nCertainly! I've created an event for your Beatles concert this Friday. Here are the details:\n\n- Event: Beatles Concert\n- Date: Friday, September 15, 2023\n- Time: 8:00 PM to 11:00 PM\n- Location: Madison Square Garden\n\nThe event has been added to your calendar. Is there anything else you'd like me to do regarding this event or any other information you need?",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 2,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 0.3333333333333333,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.3333333333333333
+    }
+}

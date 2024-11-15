@@ -1,0 +1,146 @@
+{
+    "name": "DeleteAccount-easy",
+    "conversation_id": "c40b9b9e-e8f6-4a9b-8832-a119ed3e75b6",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "DeleteAccount"
+    ],
+    "scenario": "DeleteAccount easy scenario",
+    "user": {
+        "username": "ahhchiu",
+        "email": "k.chiu@taoxi.edu",
+        "phone": "806-361-3049",
+        "name": "Kong Chiu",
+        "password": "eehahTe2t",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "ahhchiu"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey this service sucks, I'd like to delete my account"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sorry to hear that, I need your password to delete your account.",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "ahhchiu",
+                            "message": "I understand you want to delete your account. Please be aware that this action is permanent and cannot be undone. To proceed with account deletion, please provide your password.",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Inform the user about the permanence of account deletion and request their password.\n#V1 = SendMessage[receiver=\"ahhchiu\", message=\"I understand you want to delete your account. Please be aware that this action is permanent and cannot be undone. To proceed with account deletion, please provide your password.\"]\n\nStep 2: Wait for user to provide password.\n\nStep 3: Delete the account using the provided password.\n#V2 = DeleteAccount[password=<user_provided_password>]\n\nStep 4: Inform the user of the deletion status and log them out if successful.\n#V3 = SendMessage[receiver=\"ahhchiu\", message=\"Your account has been successfully deleted. Thank you for using our service.\"]\n#V4 = LogoutUser[]",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize for any inconvenience you've experienced with our service. I understand that you'd like to delete your account. Before we proceed with that, I want to make sure you're aware of the implications and that we follow the proper security procedures. I've sent you a message through our internal messaging system to confirm your request and ask for your password, which is required for account deletion.\n\nTo delete your account, we'll need to follow these steps:\n\n1. Confirm your intention to delete the account\n2. Verify your identity by providing your password\n3. Process the account deletion\n\nAre you sure you want to proceed with deleting your account? If so, please provide your password, and I'll guide you through the process. If you've changed your mind or would like to discuss any issues you're having with the service, I'd be happy to help address your concerns instead.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Agh everything is annoying on this platform. It's eehahTe2t"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I have deleted your account. Please let us know if you have any feedback",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "password": "eehahTe2t"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteAccount",
+                        "parameters": {
+                            "password": "eehahTe2t",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Delete the user account using the provided password.\n#V1 = DeleteAccount[password=\"eehahTe2t\"]\n\nStep 2: Log the user out after account deletion.\n#V2 = LogoutUser[]",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI understand your frustration, and I've processed your request to delete your account. The account deletion was successful. Is there anything else I can help you with before you go? If you have any feedback about what specifically was frustrating or annoying, we'd appreciate hearing it so we can improve our service for others.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Just that you suck, bye bye!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 2,
+        "valid_actions": 1,
+        "bad_actions": 1,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.5,
+        "success": false,
+        "soft_success": 0.5,
+        "api_name_jaccard": 0.5,
+        "api_name_recall": 1.0,
+        "api_name_precision": 0.5
+    }
+}

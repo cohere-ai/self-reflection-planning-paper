@@ -1,0 +1,105 @@
+{
+    "name": "DeleteEvent-easy",
+    "conversation_id": "2b717c3a-063f-4c9a-938d-4ab5da16d513",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "DeleteEvent"
+    ],
+    "scenario": "DeleteEvent easy scenario",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Seattle",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I have a one on one that I can't make anymore. Can you delete the meeting for me? It's id is 2949b409-6535"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "I have deleted the event for you.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "DeleteEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "2949b409-6535"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "DeleteEvent",
+                        "parameters": {
+                            "event_id": "2949b409-6535",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "1. #V DeleteEvent: event_id=\"2949b409-6535\"",
+                        "response": "{\n  \"id\": \"b01dcc1af8844ff081f38eb2f4a6de1d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731176907,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"AYd3RZUOQ\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"DeleteEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"2949b409-6535\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3707,\n    \"total_tokens\": 3741,\n    \"completion_tokens\": 34\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "The meeting has been deleted.",
+                    "metadata": {
+                        "reflection": "The meeting has been deleted.",
+                        "response": "{\n  \"id\": \"cc4030effc2949f7bfc40e3eb1fca753\",\n  \"object\": \"chat.completion\",\n  \"created\": 1731176909,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"The meeting has been deleted.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3431,\n    \"total_tokens\": 3437,\n    \"completion_tokens\": 6\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

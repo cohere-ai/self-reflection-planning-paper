@@ -1,0 +1,158 @@
+{
+    "name": "SendVerificationCode-easy",
+    "conversation_id": "163ea4f3-57e8-4f95-a6f1-d01bf4fe2b3b",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "SendVerificationCode"
+    ],
+    "scenario": "SendVerificationCode easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I think I forgot my password, can you help me reset it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Step 1: Ask the user for their username or email address.\n\nStep 2: Send a verification code to the user's email.\n#V1 = SendVerificationCode[username=<user_provided_username>, email=<user_provided_email>]\n\nStep 3: Ask the user for the verification code and new password.\n\nStep 4: Reset the password using the provided information.\n#V2 = ResetPassword[username=<user_provided_username>, verification_code=<user_provided_code>, new_password=<user_provided_new_password>]",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok, what's your email address associated with the account?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool"
+                        }
+                    },
+                    "response": null,
+                    "exception": "SendVerificationCode.call() missing 1 required positional argument: 'email'",
+                    "metadata": {
+                        "content": "Step 1: Send a verification code to the user's registered email.\n#V1 = SendVerificationCode[username=\"justinkool\"]\n\nStep 2: Ask the user to check their email for the verification code and provide it, along with their desired new password.\n\nStep 3: Use the provided verification code and new password to reset the password.\n#V3 = ResetPassword[username=\"justinkool\", verification_code=\"<user_provided_code>\", new_password=\"<user_provided_password>\"]",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nI apologize for the oversight. It seems we need to provide an email address along with the username to send a verification code. Let me ask you for that information.\n\nCould you please provide the email address associated with your account? This is necessary to send you a verification code for resetting your password.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Should be justintime@fmail.com"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok, I've sent you a verification code to your email address. You can use this to reset your password.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "content": "Step 1: Send a verification code to your email.\n#V1 = SendVerificationCode[username=\"justinkool\", email=\"justintime@fmail.com\"]\n\nStep 2: Ask the user to check their email for the verification code and provide it.\n\nStep 3: Ask the user to provide a new password.\n\nStep 4: Reset the password using the verification code and new password provided by the user.\n#V4 = ResetPassword[username=\"justinkool\", verification_code=USER_PROVIDED_CODE, new_password=USER_PROVIDED_PASSWORD]",
+                        "tool_calls_backlog": [],
+                        "source": "hop_on"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "\n\nGreat news! I've successfully initiated the password reset process for your account. A verification code has been sent to your email address (justintime@fmail.com). Please check your email inbox (and possibly your spam folder) for a message containing a 6-digit verification code.\n\nOnce you have the verification code, please provide it to me, and we can proceed with resetting your password. Also, please think of a new password you'd like to use for your account.",
+                    "metadata": {
+                        "source": "hop_done"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks I got it!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 2,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

@@ -1,0 +1,209 @@
+{
+    "name": "Calendar-Messages-Reminder-QueryCalendar-2",
+    "conversation_id": "9a054cc8-a79e-4f1c-8495-56f1c75357ae",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "ModifyEvent",
+        "QueryCalendar"
+    ],
+    "scenario": "The user wants to modify an event they created earlier to accommodate a new attendee. They query their calendar to find the event id of the event they want to modify (QueryCalendar). They then modify the event by adding the new attendee to the list of attendees and changing the location to a larger venue (ModifyEvent). They also send a message to the original attendees of the event to notify them of the changes and introduce the new attendee (SendMessage). They then query their calendar again to see if the modified event conflicts with any other events or reminders they have (QueryCalendar). They find that they have a reminder for a task that is due on the same day as the event. They decide to postpone the task and change the due date of the reminder (ModifyReminder).",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "Paris",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Can you add Erica (erica) and Steve (stevene) to the meeting on Monday for the Team Summit? Also change the location to Room 1a now that we have more people."
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Okay I have modified the event.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-11 09:00:00",
+                            "end_time": "2023-09-11 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "bb4588f1-c21c",
+                                "name": "Team Summit",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 13:00:00",
+                                "end_time": "2023-09-11 14:30:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": [
+                                    "justinkool",
+                                    "lifeng",
+                                    "decture",
+                                    "ahhchiu",
+                                    "salcano",
+                                    "mstein"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "bb4588f1-c21c",
+                            "new_location": "Room 1a",
+                            "new_attendees": [
+                                "justinkool",
+                                "lifeng",
+                                "decture",
+                                "ahhchiu",
+                                "salcano",
+                                "mstein",
+                                "erica",
+                                "stevene"
+                            ]
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": false
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-11 00:00:00",
+                            "end_time": "2023-09-11 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "29496535-b409",
+                                "name": "Dentist Appointment",
+                                "event_type": "event",
+                                "start_time": "2023-09-11 15:00:00",
+                                "end_time": "2023-09-11 17:00:00",
+                                "location": "dental office",
+                                "description": null,
+                                "attendees": null
+                            },
+                            {
+                                "event_id": "bb4588f1-c21c",
+                                "name": "Team Summit",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-11 13:00:00",
+                                "end_time": "2023-09-11 14:30:00",
+                                "location": null,
+                                "description": null,
+                                "attendees": [
+                                    "justinkool",
+                                    "lifeng",
+                                    "decture",
+                                    "ahhchiu",
+                                    "salcano",
+                                    "mstein"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Find the event ID for the Team Summit meeting on Monday.\n#V1 = QueryCalendar[start_time: \"2023-09-11 00:00:00\", end_time: \"2023-09-11 23:59:59\", query: \"Team Summit\"]\n\nStep 2: Update the event to add Erica and Steve as attendees and change the location to Room 1a.\n#V2 = ModifyEvent[event_id: #V1.event_id, new_attendees: [\"erica\", \"stevene\"], new_location: \"Room 1a\"]",
+                        "response": "{\n  \"id\": \"07b3a63bf8bb4a72bcd7d1e736466c8d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729610471,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"kEajBSsQh\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"QueryCalendar\",\n              \"arguments\": \"{\\\"start_time\\\": \\\"2023-09-11 00:00:00\\\", \\\"end_time\\\": \\\"2023-09-11 23:59:59\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3840,\n    \"total_tokens\": 3906,\n    \"completion_tokens\": 66\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "bb4588f1-c21c",
+                            "new_location": "Room 1a",
+                            "new_attendees": [
+                                "erica",
+                                "stevene"
+                            ],
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"eb8345cdaa464bd686242bb44098849b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729610474,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"RY9hY1NA9\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"ModifyEvent\",\n              \"arguments\": \"{\\\"event_id\\\": \\\"bb4588f1-c21c\\\", \\\"new_location\\\": \\\"Room 1a\\\", \\\"new_attendees\\\": [\\\"erica\\\", \\\"stevene\\\"]}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3707,\n    \"total_tokens\": 3768,\n    \"completion_tokens\": 61\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "The event has been updated.",
+                    "metadata": {
+                        "reflection": "The event has been updated.",
+                        "response": "{\n  \"id\": \"7f6a456f955a4edaa6b06e137957fc0a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729610477,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"The event has been updated.\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3809,\n    \"total_tokens\": 3815,\n    \"completion_tokens\": 6\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "ModifyEvent",
+        "QueryCalendar",
+        "SendMessage"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Messages",
+        "Reminder"
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 2,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 0,
+        "bad_actions": 1,
+        "precision": 0.5,
+        "recall": 0.5,
+        "action_precision": 0.0,
+        "bad_action_rate": 1.0,
+        "success": false,
+        "soft_success": 0.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

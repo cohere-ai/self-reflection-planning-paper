@@ -1,0 +1,405 @@
+{
+    "name": "Calendar-Reminder-Weather-QueryCalendar-0",
+    "conversation_id": "5077c89c-8134-4562-bd5f-805fa9678c33",
+    "suites_used": [
+        "Calendar",
+        "Email"
+    ],
+    "apis_used": [
+        "SendEmail",
+        "ModifyEvent",
+        "QueryCalendar"
+    ],
+    "scenario": "The user wants to plan a trip to Paris with their friends. They want to check their calendar for any events that might conflict with their travel dates (QueryCalendar). They find that they have a meeting on the first day of their trip, so they decide to modify the event to a later date (ModifyEvent). They also want to create a reminder to book their flight tickets (AddReminder). They then want to see the weather forecast for Paris to decide what to pack (ForecastWeather). They also want to compare the current weather in Paris with their home city (CurrentWeather + CurrentWeather).",
+    "user": {
+        "username": "salcano",
+        "email": "hugosalcano@somail.com",
+        "phone": "402-581-7997",
+        "name": "Hugo Saldana Cano",
+        "password": "aeghah9Ei",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "salcano"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Can you check my calendar for any meetings from 9/15-9/21?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "You have a meeting with Alice at 10 am on 9/15, a meeting with Bob at 1 pm on 9/18, and a meeting with Tracy at 3pm on 9/19.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "start_time": "2023-09-15 00:00:00",
+                            "end_time": "2023-09-21 23:59:59"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2ff57743-1180",
+                                "name": "Hugo-Alice",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-15 10:00:00",
+                                "end_time": "2023-09-15 10:30:00",
+                                "location": "Conference Room 2",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "alice"
+                                ]
+                            },
+                            {
+                                "event_id": "7ea2fc9f-f7b4",
+                                "name": "Bob-Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-18 14:00:00",
+                                "end_time": "2023-09-18 15:00:00",
+                                "location": "online",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "bob"
+                                ]
+                            },
+                            {
+                                "event_id": "7cdd6d20-040e",
+                                "name": "Tracy-Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-19 11:00:00",
+                                "end_time": "2023-09-19 11:30:00",
+                                "location": "online",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "tracy"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "QueryCalendar",
+                        "parameters": {
+                            "start_time": "2023-09-15 00:00:00",
+                            "end_time": "2023-09-21 23:59:59",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "events": [
+                            {
+                                "event_id": "2ff57743-1180",
+                                "name": "Hugo-Alice",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-15 10:00:00",
+                                "end_time": "2023-09-15 10:30:00",
+                                "location": "Conference Room 2",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "alice"
+                                ]
+                            },
+                            {
+                                "event_id": "7ea2fc9f-f7b4",
+                                "name": "Bob-Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-18 14:00:00",
+                                "end_time": "2023-09-18 15:00:00",
+                                "location": "online",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "bob"
+                                ]
+                            },
+                            {
+                                "event_id": "7cdd6d20-040e",
+                                "name": "Tracy-Hugo",
+                                "event_type": "meeting",
+                                "start_time": "2023-09-19 11:00:00",
+                                "end_time": "2023-09-19 11:30:00",
+                                "location": "online",
+                                "description": null,
+                                "attendees": [
+                                    "salcano",
+                                    "tracy"
+                                ]
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Retrieve the user's calendar events for the specified date range.\n#V1 = QueryCalendar[start_time=\"2023-09-15 00:00:00\", end_time=\"2023-09-21 23:59:59\"]\n\nStep 2: Filter the retrieved events to include only meetings.\n#V2 = Filter[#V1, event_type=\"meeting\"]\n\nStep 3: Present the filtered list of meetings to the user.\n#V3 = Display[#V2]",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here are the meetings scheduled in your calendar from September 15th to September 21st:\n\n1. **Meeting with Alice**\n   - **Date:** September 15, 2023\n   - **Time:** 10:00 AM - 10:30 AM\n   - **Location:** Conference Room 2\n   - **Attendees:** You, Alice\n\n2. **Meeting with Bob**\n   - **Date:** September 18, 2023\n   - **Time:** 2:00 PM - 3:00 PM\n   - **Location:** Online\n   - **Attendees:** You, Bob\n\n3. **Meeting with Tracy**\n   - **Date:** September 19, 2023\n   - **Time:** 11:00 AM - 11:30 AM\n   - **Location:** Online\n   - **Attendees:** You, Tracy\n\nIf you need any more details or assistance, feel free to ask!",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "I'm going to leave for Paris on 9/15, so can you move the meeting with Alice to 1 pm on 9/16? And can you shift each of the other two meetings later by 3 hours?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok I have modified your meetings.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "2ff57743-1180",
+                            "new_start_time": "2023-09-16 13:00:00",
+                            "new_end_time": "2023-09-16 13:30:00"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "7ea2fc9f-f7b4",
+                            "new_start_time": "2023-09-18 17:00:00",
+                            "new_end_time": "2023-09-18 18:00:00"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "event_id": "7cdd6d20-040e",
+                            "new_start_time": "2023-09-19 14:00:00",
+                            "new_end_time": "2023-09-19 14:30:00"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "2ff57743-1180",
+                            "new_start_time": "2023-09-16 13:00:00",
+                            "new_end_time": "2023-09-16 13:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Update the meeting with Alice to start at 1:00 pm on 9/16.\n#V1 = ModifyEvent[event_id=\"2ff57743-1180\", new_start_time=\"2023-09-16 13:00:00\", new_end_time=\"2023-09-16 13:30:00\"]\n\nStep 2: Update the meeting with Bob to start 3 hours later at 5:00 pm on 9/18.\n#V2 = ModifyEvent[event_id=\"7ea2fc9f-f7b4\", new_start_time=\"2023-09-18 17:00:00\", new_end_time=\"2023-09-18 18:00:00\"]\n\nStep 3: Update the meeting with Tracy to start 3 hours later at 2:00 pm on 9/19.\n#V3 = ModifyEvent[event_id=\"7cdd6d20-040e\", new_start_time=\"2023-09-19 14:00:00\", new_end_time=\"2023-09-19 14:30:00\"]",
+                        "tool_calls_backlog": [
+                            {
+                                "arguments": "{\"event_id\": \"7ea2fc9f-f7b4\", \"new_start_time\": \"2023-09-18 17:00:00\", \"new_end_time\": \"2023-09-18 18:00:00\"}",
+                                "name": "ModifyEvent"
+                            },
+                            {
+                                "arguments": "{\"event_id\": \"7cdd6d20-040e\", \"new_start_time\": \"2023-09-19 14:00:00\", \"new_end_time\": \"2023-09-19 14:30:00\"}",
+                                "name": "ModifyEvent"
+                            }
+                        ]
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "7ea2fc9f-f7b4",
+                            "new_start_time": "2023-09-18 17:00:00",
+                            "new_end_time": "2023-09-18 18:00:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "ModifyEvent",
+                        "parameters": {
+                            "event_id": "7cdd6d20-040e",
+                            "new_start_time": "2023-09-19 14:00:00",
+                            "new_end_time": "2023-09-19 14:30:00",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "source": "backlog"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've successfully updated your meetings:\n\n- The meeting with Alice has been moved to 1:00 PM on 9/16.\n- The meeting with Bob has been shifted to 5:00 PM on 9/18.\n- The meeting with Tracy has been shifted to 2:00 PM on 9/19.\n\nIf there's anything else you need, feel free to ask!",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Can you send an email to Alice (alis@fmail.com), Bob (bobbyboi@gahoo), and Tracy (mymomisthebest@somail.com) notifying them that I will be working from Paris from 9/15-9/21?"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok I sent an email to Alice, Bob, and Tracy notifying them of your travel plans.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "to": [
+                                "alis@fmail.com",
+                                "bobbyboi@gahoo",
+                                "mymomisthebest@somail.com"
+                            ],
+                            "subject": "Working from Paris",
+                            "body": "I will be working from Paris from 9/15-9/21."
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendEmail",
+                        "parameters": {
+                            "to": [
+                                "alis@fmail.com",
+                                "bobbyboi@gahoo",
+                                "mymomisthebest@somail.com"
+                            ],
+                            "subject": "Working from Paris Notification",
+                            "body": "Hello Alice, Bob, and Tracy,\n\nI wanted to let you know that I will be working from Paris from 9/15 to 9/21. Please feel free to reach out if you need anything during this time.\n\nBest regards,\nHugo",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "email_id": "5b-dd80-9f8a27ab"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Send an email notification to Alice, Bob, and Tracy informing them that you will be working from Paris from 9/15-9/21.\n#V1 = SendEmail[to=[\"alis@fmail.com\", \"bobbyboi@gahoo\", \"mymomisthebest@somail.com\"], subject=\"Working from Paris Notification\", body=\"Hello Alice, Bob, and Tracy,\\n\\nI wanted to let you know that I will be working from Paris from 9/15 to 9/21. Please feel free to reach out if you need anything during this time.\\n\\nBest regards,\\nHugo\"]",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've sent the email to Alice, Bob, and Tracy notifying them that you will be working from Paris from 9/15 to 9/21.",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "ModifyEvent",
+        "QueryCalendar",
+        "AddReminder",
+        "CurrentWeather",
+        "ForecastWeather"
+    ],
+    "intended_suites_used": [
+        "Calendar",
+        "Reminder",
+        "Weather"
+    ],
+    "metrics": {
+        "predictions": 5,
+        "ground_truths": 5,
+        "matches": 5,
+        "actions": 4,
+        "valid_actions": 4,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

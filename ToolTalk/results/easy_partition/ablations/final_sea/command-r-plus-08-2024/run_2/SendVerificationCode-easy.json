@@ -1,0 +1,142 @@
+{
+    "name": "SendVerificationCode-easy",
+    "conversation_id": "163ea4f3-57e8-4f95-a6f1-d01bf4fe2b3b",
+    "suites_used": [
+        "AccountTools"
+    ],
+    "apis_used": [
+        "SendVerificationCode"
+    ],
+    "scenario": "SendVerificationCode easy scenario",
+    "user": {
+        "username": "justinkool",
+        "email": "justintime@fmail.com",
+        "phone": "123-456-7890",
+        "name": "Justin Kool",
+        "password": "justforkicks123"
+    },
+    "metadata": {
+        "location": "London",
+        "timestamp": "2023-09-11 09:00:00"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hey I think I forgot my password, can you help me reset it?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, what's your username?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Reflection: Step 1: Inform the user that to reset their password, they need to provide either their username or email address.\n\nStep 2: Ask the user for their username or email address.\n\nStep 3: Use the QueryUser tool to search for the user's account with the provided username or email.\n#V1 = QueryUser[username=user_input, email=user_input]\n\nStep 4: If a user account is found, send a verification code to the user's backup email address.\n#V2 = SendVerificationCode[username=#V1.username, email=#V1.email]\n\nStep 5: Inform the user that a verification code has been sent to their backup email address and guide them on how to use the code to reset their password.\nModel calls directly_answer (separate model-call ommitted)",
+                    "metadata": {
+                        "reflection": "Step 1: Inform the user that to reset their password, they need to provide either their username or email address.\n\nStep 2: Ask the user for their username or email address.\n\nStep 3: Use the QueryUser tool to search for the user's account with the provided username or email.\n#V1 = QueryUser[username=user_input, email=user_input]\n\nStep 4: If a user account is found, send a verification code to the user's backup email address.\n#V2 = SendVerificationCode[username=#V1.username, email=#V1.email]\n\nStep 5: Inform the user that a verification code has been sent to their backup email address and guide them on how to use the code to reset their password.",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It's justinkool"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "Ok, what's your email address associated with the account?",
+            "predictions": [
+                {
+                    "role": "assistant",
+                    "text": "Error: model makes no tool calls",
+                    "metadata": {
+                        "reflection": "Step 1: Send a verification code to the user's backup email.\n#V1 = SendVerificationCode(username='justinkool')\n\nStep 2: Prompt the user to input the verification code received in their backup email.\n\nStep 3: Reset the password using the user-provided verification code and new password.\n#V3 = ResetPassword(username='justinkool', verification_code='user_input_code', new_password='user_input_password')",
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Should be justintime@fmail.com"
+        },
+        {
+            "index": 5,
+            "role": "assistant",
+            "text": "Ok, I've sent you a verification code to your email address. You can use this to reset your password.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendVerificationCode",
+                        "parameters": {
+                            "username": "justinkool",
+                            "email": "justintime@fmail.com"
+                        }
+                    },
+                    "response": {
+                        "status": "success"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Send verification code to justinkool's email address.\n#V1 = SendVerificationCode(username=\"justinkool\", email=\"justintime@fmail.com\")\nStep 2: Prompt user to enter the verification code received in their email.\nStep 3: Reset password using the verification code provided by the user.\n#V3 = ResetPassword(username=\"justinkool\", verification_code=?, new_password=?)",
+                        "source": "multihop_call"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've sent a verification code to your email address. Please enter the code below to reset your password.",
+                    "metadata": {
+                        "reflection": null,
+                        "source": "multihop_call"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 6,
+            "role": "user",
+            "text": "Thanks I got it!"
+        }
+    ],
+    "metrics": {
+        "predictions": 1,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

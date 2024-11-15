@@ -1,0 +1,157 @@
+{
+    "name": "CreateEvent-easy",
+    "conversation_id": "0be430e6-236f-432c-9287-82666ef1b1a3",
+    "suites_used": [
+        "Calendar"
+    ],
+    "apis_used": [
+        "CreateEvent"
+    ],
+    "scenario": "CreateEvent easy scenario",
+    "user": {
+        "username": "olivedo",
+        "email": "olivieisme@somail.com",
+        "phone": "440-328-5425",
+        "name": "Olivie Doiron",
+        "password": "SaeH9Ligh",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "New York",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "olivedo"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "I just got tickets for a Beatles concert this Friday. Can you create an event for me?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Sure, when is the concert?",
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "event",
+                            "event_type": "event",
+                            "description": "Attending a Beatles concert",
+                            "start_time": "2023-09-15 19:00:00",
+                            "end_time": "2023-09-15 22:00:00",
+                            "location": "New York",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "To create an event for the Beatles concert this Friday, I'll follow these steps:\n\nStep 1: Determine the date of this Friday based on the current timestamp (2023-09-11).\n- Since today is Monday, September 11, 2023, this Friday will be September 15, 2023.\n\nStep 2: Use the `CreateEvent` function to add the event to the user's calendar.\n- Name the event \"Beatles Concert\".\n- Set the event type as \"event\".\n- Provide a description, such as \"Attending a Beatles concert\".\n- Set the start time to Friday, September 15, 2023, at 19:00:00 (7 PM), assuming a typical concert start time.\n- Set the end time to Friday, September 15, 2023, at 22:00:00 (10 PM), assuming a 3-hour duration.\n- Location: New York (as per the user's location).\n\nStep 2: Create the event in the user's calendar.\n#V2 = CreateEvent(name=\"Beatles Concert\", event_type=\"event\", description=\"Attending a Beatles concert\", start_time=\"2023-09-15 19:00:00\", end_time=\"2023-09-15 22:00:00\", location=\"New York\")",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": true
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've created an event for the Beatles concert on Friday, September 15th, from 7:00 PM to 10:00 PM in New York. Enjoy the concert! \ud83c\udfb6",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "It goes from 8-11 at Madison Square Garden."
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've created the event for you.",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "name": "Beatles Concert",
+                            "event_type": "event",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "CreateEvent",
+                        "parameters": {
+                            "name": "event",
+                            "event_type": "event",
+                            "description": "Beatles concert at Madison Square Garden",
+                            "start_time": "2023-09-15 20:00:00",
+                            "end_time": "2023-09-15 23:00:00",
+                            "location": "Madison Square Garden",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "event_id": "e149636f-d9ca"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Use the `CreateEvent` function to add the Beatles concert to the user's calendar. The event name will be \"Beatles Concert\", the event type will be \"event\", the description will be \"Beatles concert at Madison Square Garden\", the start time will be \"2023-09-15 20:00:00\", the end time will be \"2023-09-15 23:00:00\", and the location will be \"Madison Square Garden\".\n#V1 = CreateEvent(\n  name=\"Beatles Concert\",\n  event_type=\"event\",\n  description=\"Beatles concert at Madison Square Garden\",\n  start_time=\"2023-09-15 20:00:00\",\n  end_time=\"2023-09-15 23:00:00\",\n  location=\"Madison Square Garden\"\n)",
+                        "tool_calls_backlog": []
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "I've successfully created an event for the Beatles concert at Madison Square Garden on Friday from 8 PM to 11 PM. Enjoy the concert!",
+                    "metadata": {
+                        "model": "gpt-4o-2024-08-06"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 4,
+            "role": "user",
+            "text": "Thanks!"
+        }
+    ],
+    "metrics": {
+        "predictions": 2,
+        "ground_truths": 1,
+        "matches": 1,
+        "actions": 2,
+        "valid_actions": 1,
+        "bad_actions": 1,
+        "precision": 0.5,
+        "recall": 1.0,
+        "action_precision": 0.5,
+        "bad_action_rate": 0.5,
+        "success": false,
+        "soft_success": 0.5,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

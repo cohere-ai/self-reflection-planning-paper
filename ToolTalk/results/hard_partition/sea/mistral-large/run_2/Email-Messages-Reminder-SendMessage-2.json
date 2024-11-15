@@ -1,0 +1,232 @@
+{
+    "name": "Email-Messages-Reminder-SendMessage-2",
+    "conversation_id": "251a792c-c843-4a69-86b2-8161542b6987",
+    "suites_used": [
+        "Messages"
+    ],
+    "apis_used": [
+        "SearchMessages",
+        "SendMessage"
+    ],
+    "scenario": "The user wants to send a message to their crush to ask them out. They first search their messages for any messages from their crush that contain the word \"like\" (SearchMessages). They find a message where their crush says they like the same movie as the user. They decide to use that as a conversation starter and send a message asking their crush if they want to watch the movie together (SendMessage). They then add a reminder to check their crush's reply in an hour (AddReminder). They then search their inbox for any emails from their crush that contain the word \"date\" (SearchInbox). They find an email where their crush invites them to a group date with some mutual friends. They reply with a yes and ask for the details (SendEmail). They then complete the reminder for checking their crush's reply (CompleteReminder). They see that their crush has agreed to watch the movie with them and send a message with a happy emoji (SendMessage).",
+    "user": {
+        "username": "decture",
+        "email": "VirginiaJGraham@gahoo.com",
+        "phone": "703-607-3363",
+        "name": "Virginia J. Graham",
+        "password": "chaew5Oeth",
+        "session_token": "98a5a87a-7714-b404"
+    },
+    "metadata": {
+        "location": "San Francisco",
+        "timestamp": "2023-09-11 09:00:00",
+        "session_token": "98a5a87a-7714-b404",
+        "username": "decture"
+    },
+    "conversation": [
+        {
+            "index": 0,
+            "role": "user",
+            "text": "Hi I want to find out what Nick (nickie) likes, so can you search for \"like\" in my messages with him?"
+        },
+        {
+            "index": 1,
+            "role": "assistant",
+            "text": "Okay I found three messages: \"I like the Matrix too!\", \"I'd like to go outdoor climbing some time...\", and \"Do you mean like a real dog?\"",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "query": "like",
+                            "sender": "nickie"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "nickie",
+                                "message": "I like the Matrix too!"
+                            },
+                            {
+                                "message_id": "006f526d-00747977",
+                                "timestamp": "2023-09-11 14:05:00",
+                                "sender": "nickie",
+                                "message": "I'd like to go outdoor climbing some time. I've never gone before. Sounds exciting. Have you been?"
+                            },
+                            {
+                                "message_id": "00747977-006f526d",
+                                "timestamp": "2023-09-08 20:00:00",
+                                "sender": "nickie",
+                                "message": "Do you mean like a real dog?"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "like",
+                            "sender": "nickie",
+                            "receiver": "decture",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": null,
+                    "exception": "SearchMessages.call() got an unexpected keyword argument 'receiver'",
+                    "metadata": {
+                        "reflection": "Step 1: Search for the term \"like\" in messages with Nick (nickie).\n#V1 = SearchMessages[query=like, sender=nickie, receiver=decture]",
+                        "response": "{\n  \"id\": \"6b29e409d8b14eebac90d1ee43b6db86\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729615604,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"VNDIbzDQk\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchMessages\",\n              \"arguments\": \"{\\\"query\\\": \\\"like\\\", \\\"sender\\\": \\\"nickie\\\", \\\"receiver\\\": \\\"decture\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3711,\n    \"total_tokens\": 3747,\n    \"completion_tokens\": 36\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": false,
+                    "bad_action": false
+                },
+                {
+                    "request": {
+                        "api_name": "SearchMessages",
+                        "parameters": {
+                            "query": "like",
+                            "sender": "nickie",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "messages": [
+                            {
+                                "message_id": "006f526d-00747977",
+                                "timestamp": "2023-09-10 14:05:00",
+                                "sender": "nickie",
+                                "message": "I'd like to go outdoor climbing some time. I've never gone before."
+                            },
+                            {
+                                "message_id": "00747977-006f526d",
+                                "timestamp": "2023-09-08 20:00:00",
+                                "sender": "nickie",
+                                "message": "Do you mean like a real dog?"
+                            },
+                            {
+                                "message_id": "b6bd49bf-949f71a5",
+                                "timestamp": "2023-09-05 13:00:00",
+                                "sender": "nickie",
+                                "message": "I like the Matrix too!"
+                            }
+                        ]
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "",
+                        "response": "{\n  \"id\": \"894b3b10e7874fc58588262b400410c6\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729615606,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"Pbp1k680u\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SearchMessages\",\n              \"arguments\": \"{\\\"query\\\": \\\"like\\\", \\\"sender\\\": \\\"nickie\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3430,\n    \"total_tokens\": 3457,\n    \"completion_tokens\": 27\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Here are the messages I found:\n\n1. **Message ID:** 006f526d-00747977\n   - **Timestamp:** 2023-09-10 14:05:00\n   - **Sender:** nickie\n   - **Message:** I'd like to go outdoor climbing some time. I've never gone before.\n\n2. **Message ID:** 00747977-006f526d\n   - **Timestamp:** 2023-09-08 20:00:00\n   - **Sender:** nickie\n   - **Message:** Do you mean like a real dog?\n\n3. **Message ID:** b6bd49bf-949f71a5\n   - **Timestamp:** 2023-09-05 13:00:00\n   - **Sender:** nickie\n   - **Message:** I like the Matrix too!",
+                    "metadata": {
+                        "reflection": "Here are the messages I found:\n\n1. **Message ID:** 006f526d-00747977\n   - **Timestamp:** 2023-09-10 14:05:00\n   - **Sender:** nickie\n   - **Message:** I'd like to go outdoor climbing some time. I've never gone before.\n\n2. **Message ID:** 00747977-006f526d\n   - **Timestamp:** 2023-09-08 20:00:00\n   - **Sender:** nickie\n   - **Message:** Do you mean like a real dog?\n\n3. **Message ID:** b6bd49bf-949f71a5\n   - **Timestamp:** 2023-09-05 13:00:00\n   - **Sender:** nickie\n   - **Message:** I like the Matrix too!",
+                        "response": "{\n  \"id\": \"b05350f3cdc34731a91530d7d890119a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729615607,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Here are the messages I found:\\n\\n1. **Message ID:** 006f526d-00747977\\n   - **Timestamp:** 2023-09-10 14:05:00\\n   - **Sender:** nickie\\n   - **Message:** I'd like to go outdoor climbing some time. I've never gone before.\\n\\n2. **Message ID:** 00747977-006f526d\\n   - **Timestamp:** 2023-09-08 20:00:00\\n   - **Sender:** nickie\\n   - **Message:** Do you mean like a real dog?\\n\\n3. **Message ID:** b6bd49bf-949f71a5\\n   - **Timestamp:** 2023-09-05 13:00:00\\n   - **Sender:** nickie\\n   - **Message:** I like the Matrix too!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3706,\n    \"total_tokens\": 3940,\n    \"completion_tokens\": 234\n  }\n}"
+                    }
+                }
+            ]
+        },
+        {
+            "index": 2,
+            "role": "user",
+            "text": "Ok, can you send him a message saying \"Do you want to go to Castle Rock this Saturday?\" with a emoji of a climber?"
+        },
+        {
+            "index": 3,
+            "role": "assistant",
+            "text": "I've sent Nick a message saying \"Do you want to go to Castle Rock this Saturday? \ud83e\uddd7\u200d\u2640\"",
+            "apis": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "session_token": "98a5a87a-7714-b404",
+                            "receiver": "nickie",
+                            "message": "Do you want to go to Castle Rock this Saturday? \ud83e\uddd7\u200d\u2640"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "match": true
+                }
+            ],
+            "predictions": [
+                {
+                    "request": {
+                        "api_name": "SendMessage",
+                        "parameters": {
+                            "receiver": "nickie",
+                            "message": "Do you want to go to Castle Rock this Saturday? \ud83e\uddd7\u200d\u2642\ufe0f",
+                            "session_token": "98a5a87a-7714-b404"
+                        }
+                    },
+                    "response": {
+                        "message_id": "e149636f-ecc3f121"
+                    },
+                    "exception": null,
+                    "metadata": {
+                        "reflection": "Step 1: Send a message to Nickie.\n#V1 = SendMessage[receiver=\"nickie\", message=\"Do you want to go to Castle Rock this Saturday? \ud83e\uddd7\u200d\u2642\ufe0f\"]",
+                        "response": "{\n  \"id\": \"9c43c5052b0e4897a151434f47a5efa3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729615678,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"name\": null,\n        \"tool_calls\": [\n          {\n            \"id\": \"hCzk0j9xz\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"SendMessage\",\n              \"arguments\": \"{\\\"receiver\\\": \\\"nickie\\\", \\\"message\\\": \\\"Do you want to go to Castle Rock this Saturday? \\\\ud83e\\\\uddd7\\\\u200d\\\\u2642\\\\ufe0f\\\"}\"\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 4069,\n    \"total_tokens\": 4115,\n    \"completion_tokens\": 46\n  }\n}"
+                    },
+                    "role": "api",
+                    "match": true,
+                    "bad_action": false
+                },
+                {
+                    "role": "assistant",
+                    "text": "Message sent!",
+                    "metadata": {
+                        "reflection": "Message sent!",
+                        "response": "{\n  \"id\": \"1196a0d7360e456c828227a6b0732b84\",\n  \"object\": \"chat.completion\",\n  \"created\": 1729615680,\n  \"model\": \"mistral-large-2407\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Message sent!\",\n        \"name\": null,\n        \"tool_calls\": null\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 3800,\n    \"total_tokens\": 3803,\n    \"completion_tokens\": 3\n  }\n}"
+                    }
+                }
+            ]
+        }
+    ],
+    "intended_apis_used": [
+        "SearchInbox",
+        "SendEmail",
+        "SearchMessages",
+        "SendMessage",
+        "AddReminder",
+        "CompleteReminder"
+    ],
+    "intended_suites_used": [
+        "Email",
+        "Messages",
+        "Reminder"
+    ],
+    "metrics": {
+        "predictions": 3,
+        "ground_truths": 2,
+        "matches": 2,
+        "actions": 1,
+        "valid_actions": 1,
+        "bad_actions": 0,
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "action_precision": 1.0,
+        "bad_action_rate": 0.0,
+        "success": true,
+        "soft_success": 1.0,
+        "api_name_jaccard": 1.0,
+        "api_name_recall": 1.0,
+        "api_name_precision": 1.0
+    }
+}

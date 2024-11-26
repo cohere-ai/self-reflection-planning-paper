@@ -1,1 +1,1 @@
-*       @sophiaalthammer @cohere-ai/code-owners
+* @sophiaalthammer
